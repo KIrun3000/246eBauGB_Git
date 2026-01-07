@@ -292,7 +292,7 @@ Diese müssen **alle erfüllt** werden[^4]
 
 ### FAQ 7: Was kosten die Einsparungen durch § 246e?
 
-**Keine Planung** = keine Bebauungsplankosten (HOAI § 21)[^1].
+**Keine Planung** = keine Bebauungsplankosten (Planungsaufwand entfällt laut Gesetzesbegründung)[^1].
 
 **Orientierungswerte (BT-Drs. 21/781, S. 14):**
 - Innenbereich: bis ~10.863 € gespart[^1]
