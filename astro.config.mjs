@@ -8,5 +8,11 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://246ebaugb.de',
-  integrations: [mdx(), sitemap()]
+  trailingSlash: 'always',
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !page.endsWith('/check/'),
+    }),
+  ],
 });

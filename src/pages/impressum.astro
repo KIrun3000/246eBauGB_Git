@@ -1,39 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+
+const title = "Impressum";
+const description = "Anbieterkennzeichnung gemäß § 5 TMG und Kontaktinformationen.";
 ---
 
-<BaseLayout 
-  title="Impressum – §246e BauGB Brandenburg"
-  description="Impressum und Kontaktinformationen"
->
+<BaseLayout title={title}>
+  <SEO title={title} description={description} />
+  
   <div class="container">
     <div class="legal-content">
       <h1>Impressum</h1>
       
-      <div class="placeholder-notice">
-        <p>
-          <strong>Hinweis:</strong> Dieses Impressum ist ein Platzhalter und muss vor 
-          Veröffentlichung der Website mit den tatsächlichen Betreiberdaten vervollständigt werden.
-        </p>
-      </div>
-
       <h2>Angaben gemäß § 5 TMG</h2>
       <p>
-        [Name/Firma]<br>
-        [Straße und Hausnummer]<br>
-        [PLZ und Ort]
+        Luca Ingenbleek<br>
+        Rosa-Luxemburg-Straße 17<br>
+        10178 Berlin
       </p>
 
       <h2>Kontakt</h2>
       <p>
-        E-Mail: [E-Mail-Adresse]<br>
-        Telefon: [Telefonnummer]
-      </p>
-
-      <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-      <p>
-        [Name]<br>
-        [Adresse]
+        E-Mail: <a href="mailto:kontakt@246ebaugb.de">kontakt@246ebaugb.de</a>
+        <!-- TODO: echte E-Mail vor Go-Live einsetzen -->
       </p>
 
       <h2>Haftungsausschluss</h2>
@@ -42,7 +32,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p>
         Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, 
         Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. 
-        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten 
+        Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten 
         nach den allgemeinen Gesetzen verantwortlich.
       </p>
       <p>
@@ -75,31 +65,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .legal-content {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
+    line-height: 1.7;
   }
 
-  .placeholder-notice {
-    background: #fff3cd;
-    border-left: 4px solid #ffc107;
-    padding: 1rem 1.5rem;
+  h1 {
     margin-bottom: 2rem;
-    border-radius: 4px;
-  }
-
-  .placeholder-notice strong {
-    display: block;
-    margin-bottom: 0.5rem;
   }
 
   h2 {
     margin-top: 2rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid #e5e7eb;
   }
 
   h2:first-of-type {
     margin-top: 0;
     padding-top: 0;
     border-top: none;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 </style>

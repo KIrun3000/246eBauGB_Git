@@ -175,6 +175,33 @@ Ein Agent-generierter Artikel ist erfolgreich, wenn:
 - Die Site generiert automatisch Sitemap und RSS
 - Keine manuelle Konfiguration der Routen nötig
 
+---
+
+## Definition of Done (Content)
+
+**Vor Publish/Merge MUSS jeder Content diese Checkliste erfüllen:**
+
+### ✅ Sourcing & Accuracy
+- Jede harte Behauptung hat eine Quelle (Primärquellen zuerst: Gesetz, BT-Drs., amtliche Begründung)
+- 100m IMMER als "Leitplanke aus Gesetzesbegründung (BT-Drs. 21/781, S. 28)", NIEMALS als Normtext
+- Keine unsourced Praxisbehauptungen oder lokale Beispiele ohne öffentliche Belege
+- Keine schnell veraltenden Listen/Zahlen ohne "Stand: Datum + Quelle + Update-Hinweis"
+
+### ✅ Technical SEO
+- Title/Description gesetzt, Canonical vorhanden
+- SourcesBox verwendet (Primär → Sekundär)
+- Interne Links zu Pillars gesetzt
+
+### ✅ Build & Preview
+- `npm run build` → Exit Code 0
+- `npm run preview` → mind. 2 Seiten manuell geprüft
+- Safety grep clean (keine "30%", "19 Gemeinden", "HOAI", etc. in aktiven Seiten)
+
+**Details:** Siehe [CONTENT_DOD.md](./CONTENT_DOD.md)
+
+---
+
 ## Kontakt bei Fragen
 
 Dieser Contract ist "living document" und kann angepasst werden, wenn Agents auf Probleme stoßen.
+
