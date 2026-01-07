@@ -1,34 +1,78 @@
 ---
-export interface Props {
-  sources: Array<{
-    label: string;
-    url: string;
-  }>;
+export interface Source {
+  label: string;
+  url: string;
+  type?: 'primary' | 'secondary';
 }
 
-const { sources } = Astro.props;
+export interface Props {
+  sources?: Source[];
+  primarySources?: Source[];
+  secondarySources?: Source[];
+}
+
+const { sources, primarySources, secondarySources } = Astro.props;
+
+// If sources array is provided without categorization, use it directly
+const primary = primarySources || (sources ? sources.filter(s => s.type === 'primary') : []);
+const secondary = secondarySources || (sources ? sources.filter(s => s.type === 'secondary') : []);
+const uncategorized = sources ? sources.filter(s => !s.type) : [];
 ---
 
-{sources && sources.length > 0 && (
+{(primary.length > 0 || secondary.length > 0 || uncategorized.length > 0) && (
   <aside class="sources-box">
-    <h3>Quellen & weiterführende Links</h3>
-    <ul>
-      {sources.map((source) => (
-        <li>
-          <a href={source.url} target="_blank" rel="noopener noreferrer">
-            {source.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <h3>Quellen</h3>
+    
+    {primary.length > 0 && (
+      <div class="source-category">
+        <h4>Primärquellen (Gesetz & amtliche Begründung)</h4>
+        <ul>
+          {primary.map((source) => (
+            <li>
+              <a href={source.url} target="_blank" rel="noopener noreferrer">
+                {source.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    
+    {secondary.length > 0 && (
+      <div class="source-category">
+        <h4>Sekundärquellen (Behörden-FAQ & Kommentare)</h4>
+        <ul>
+          {secondary.map((source) => (
+            <li>
+              <a href={source.url} target="_blank" rel="noopener noreferrer">
+                {source.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    
+    {uncategorized.length > 0 && (
+      <div class="source-category">
+        <ul>
+          {uncategorized.map((source) => (
+            <li>
+              <a href={source.url} target="_blank" rel="noopener noreferrer">
+                {source.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
   </aside>
 )}
 
 <style>
   .sources-box {
     background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 4px;
+    border-left: 4px solid #0066cc;
     padding: 1.5rem;
     margin: 2rem 0;
   }
@@ -36,8 +80,27 @@ const { sources } = Astro.props;
   .sources-box h3 {
     margin-top: 0;
     margin-bottom: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    color: #212529;
+    font-weight: 600;
+  }
+
+  .source-category {
+    margin-bottom: 1.5rem;
+  }
+
+  .source-category:last-child {
+    margin-bottom: 0;
+  }
+
+  .source-category h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
     color: #495057;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .sources-box ul {
@@ -48,11 +111,22 @@ const { sources } = Astro.props;
 
   .sources-box li {
     margin-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .sources-box li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #0066cc;
+    font-weight: bold;
   }
 
   .sources-box a {
     color: #0066cc;
     text-decoration: none;
+    font-size: 0.95rem;
   }
 
   .sources-box a:hover {

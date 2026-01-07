@@ -68,14 +68,7 @@ updated_at: "2026-01-07"
 
 **Kurz:** § 246e ist **nicht an § 201a gebunden**[^5]. Gilt bundesweit ohne Markterfordernis[^5].
 
-**Aber:** 19 Brandenburg-Gemeinden sind § 201a-ausgewiesen (Mietpreisbremse 2020, Verlängerung bis 2029 geplant)[^6]:
-- Potsdam (kreisfreie Stadt)
-- Werder (Havel), Kleinmachnow, Teltow, Stahnsdorf, Schwielowsee, Nuthetal, Großbeeren (Potsdam-Mittelmark)
-- Schönefeld, Wildau, Königs Wusterhausen (Dahme-Spreewald)
-- Falkensee, Dallgow-Döberitz (Havelland)
-- Hohen Neuendorf, Glienicke/Nordbahn, Mühlenbecker Land (Oberhavel)
-- Bernau bei Berlin, Panketal, Wandlitz (Barnim)
-- Erkner (Oder-Spree)
+**Hinweis Mietpreisbegrenzung:** Brandenburg weist Gemeinden in der **Mietpreisbegrenzungsverordnung (MietbegrenzV) vom 03.12.2025** aus (gültig ab 01.01.2026). Dies ist eine landesrechtliche Regelung für Mietpreisbremse und betrifft **nicht die Anwendbarkeit von § 246e BauGB** (gilt bundesweit ohne Markterfordernis). Aktuelle Liste: 36 Gemeinden (Stand 01.01.2026); stets in der Verordnung prüfen[^6].
 
 **Relevanz:** § 201a betrifft **§ 250 BauGB** (Umwandlungsschutz) und **§ 31 Abs. 3 / § 34 Abs. 3b BauGB** (Befreiung/Abweichung), nicht § 246e[^6].
 
@@ -149,7 +142,7 @@ Bei § 246e-Vorhaben im Außenbereich:
 2. **Benehmen** mit Naturschutzbehörde erforderlich[^1]
 3. **Umweltprüfung** läuft parallel[^1]
 
-**Brandenburg besonders:** Biosphärenreservate (Spreewald, Schorfheide-Chorin), Naturparks, FFH-Gebiete → erhöhte Anforderungen[^1]
+**Brandenburg besonders:** Biosphärenreservate, Naturparks und FFH-Gebiete → erhöhte Anforderungen[^1]
 
 **Quelle:**[^1]
 
