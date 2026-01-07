@@ -1,22 +1,39 @@
 ---
-layout: ../layouts/ArticleLayout.astro
-title: "Gemeinde-Zustimmung bei §246e BauGB – Verfahren und Tipps"
-description: "Wie läuft das Verfahren zur Gemeinde-Zustimmung nach §246e BauGB ab? Praktische Tipps, Ablauf und häufige Stolpersteine für Grundstückseigentümer in Brandenburg."
+layout: ../layouts/BaseLayout.astro
+title: "Gemeindezustimmung § 246e BauGB – Vorgehen & Ablauf"
+description: "Gemeindezustimmung nach § 36a BauGB bei § 246e: Ablauf, erforderliche Unterlagen, typische Stolpersteine und praktische Tipps für Brandenburg."
 ---
 
+import SourcesBox from '../components/SourcesBox.astro';
 import Disclaimer from '../components/Disclaimer.astro';
 
-## Einleitung
+export const primarySources = [
+  { label: '§ 36a BauGB – Zustimmung der Gemeinde', url: 'https://www.gesetze-im-internet.de/bbaug/__36a.html' },
+  { label: '§ 246e BauGB – Gesetzestext', url: 'https://www.gesetze-im-internet.de/bbaug/__246e.html' },
+  { label: 'BT-Drs. 21/781 – Gesetzesbegründung zu § 246e', url: 'https://dserver.bundestag.de/btd/21/007/2100781.pdf' },
+];
 
-Die Zustimmung der Gemeinde ist eine zwingende Voraussetzung für jedes Bauvorhaben nach §246e BauGB. Ohne diese Zustimmung ist das Bauvorhaben nicht genehmigungsfähig. Doch wie läuft das Verfahren ab? Worauf müssen Sie achten? Und was können Sie tun, wenn die Gemeinde zögert?
+export const secondarySources = [
+  { label: 'BMWSB – Bau-Turbo: Informationen für Privatpersonen', url: 'https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html' },
+];
 
-Dieser Artikel erklärt Ihnen das Verfahren zur Gemeinde-Zustimmung in Brandenburg Schritt für Schritt.
+<div class="pillar-page">
 
-## Rechtliche Grundlagen
+# Gemeindezustimmung bei § 246e BauGB
 
-### Warum ist die Gemeinde-Zustimmung erforderlich?
+**Vorgehen, Ablauf und Stolpersteine (Stand: Januar 2026)**
 
-§246e BauGB räumt den Gemeinden ein Mitspracherecht ein, weil:
+*Rechtshinweis: Keine Rechtsberatung; siehe [Disclaimer](#disclaimer) am Ende.*
+
+---
+
+## Warum ist die Gemeindezustimmung erforderlich?
+
+Die Zustimmung der Gemeinde (§ 36a BauGB) ist eine **zwingende Voraussetzung** für jedes Bauvorhaben nach § 246e BauGB. Ohne diese Zustimmung ist das Bauvorhaben nicht genehmigungsfähig.
+
+### Rechtliche Grundlage
+
+§ 36a BauGB räumt den Gemeinden ein Mitspracherecht ein, weil:
 
 - Gemeinden die örtlichen Verhältnisse am besten kennen
 - Sie ihre städtebauliche Entwicklung steuern können sollen
@@ -24,7 +41,7 @@ Dieser Artikel erklärt Ihnen das Verfahren zur Gemeinde-Zustimmung in Brandenbu
 
 ### Rechtsnatur der Zustimmung
 
-Die Gemeinde-Zustimmung nach §246e BauGB ist ein **eigenständiger Verwaltungsakt**. Sie ist:
+Die Gemeinde-Zustimmung nach § 36a BauGB ist ein **eigenständiger Verwaltungsakt**. Sie ist:
 
 - Nicht Teil der Baugenehmigung
 - Voraussetzung für die Baugenehmigung
@@ -36,39 +53,39 @@ Die Gemeinde hat bei ihrer Entscheidung **Ermessen**. Das bedeutet:
 
 - Sie muss nicht zustimmen, auch wenn formale Voraussetzungen erfüllt sind
 - Sie kann städtebauliche Erwägungen einbeziehen
-- Ihre Entscheidung muss aber verhältnismäßig sein
+- Ihre Entscheidung muss aber verhältnismäßig und nachvollziehbar sein
+
+---
 
 ## Ablauf des Verfahrens
 
+**Hinweis:** Der folgende Ablauf stellt einen typischen Verfahrensrahmen dar. Die konkrete Dauer und Ausgestaltung kann je nach Gemeinde variieren.
+
 ### Phase 1: Vorabklärung (informell)
 
-**Zeitrahmen**: 1-4 Wochen
+Bevor Sie einen formalen Antrag stellen, empfiehlt sich ein informelles Vorgespräch:
 
-Bevor Sie einen formalen Antrag stellen, sollten Sie ein informelles Vorgespräch führen:
-
-**Vorbereitung**:
+**Vorbereitung:**
 - Informieren Sie sich über zuständige Ansprechpartner (Bauamt, Bürgermeister)
 - Bereiten Sie eine kurze Darstellung Ihres Vorhabens vor
 - Fertigen Sie einen einfachen Lageplan an
 
-**Im Gespräch**:
+**Im Gespräch:**
 - Stellen Sie Ihr Vorhaben vor
 - Erfragen Sie die grundsätzliche Position der Gemeinde
 - Klären Sie offene Fragen (Ortslage, Erschließung, etc.)
 - Fragen Sie nach erforderlichen Unterlagen
 
-**Wichtig**: Dieses Gespräch ist rechtlich unverbindlich!
+**Wichtig:** Dieses Gespräch ist rechtlich unverbindlich! Es dient der Orientierung.
 
 ### Phase 2: Formaler Antrag
 
-**Zeitrahmen**: Vorbereitung 2-6 Wochen
-
-Nach positiver Vorabklärung stellen Sie einen formalen Antrag auf Zustimmung nach §246e BauGB.
+Nach positiver Vorabklärung stellen Sie einen formalen Antrag auf Zustimmung nach § 36a BauGB.
 
 **Erforderliche Unterlagen** (typischerweise):
 
 1. **Antragsschreiben**
-   - Formloser Antrag auf Zustimmung nach §246e BauGB
+   - Formloser Antrag auf Zustimmung nach § 36a BauGB i.V.m. § 246e BauGB
    - Kurze Beschreibung des Vorhabens
    
 2. **Lageplan**
@@ -94,21 +111,19 @@ Nach positiver Vorabklärung stellen Sie einen formalen Antrag auf Zustimmung na
    - Grundbuchauszug
    - Flurkarte
 
-**Tipp**: Fragen Sie die Gemeinde vorab, welche Unterlagen konkret erforderlich sind!
+**Tipp:** Fragen Sie die Gemeinde vorab, welche Unterlagen konkret erforderlich sind!
 
 ### Phase 3: Prüfung durch die Gemeinde
 
-**Zeitrahmen**: 1-3 Monate
-
 Nach Einreichung prüft die Gemeinde Ihren Antrag:
 
-**Geprüft wird**:
-- Liegen die formalen Voraussetzungen vor (100m-Regel, etc.)?
+**Geprüft wird:**
+- Liegen die formalen Voraussetzungen vor (räumlicher Zusammenhang, etc.)?
 - Widerspricht das Vorhaben öffentlichen Belangen?
 - Passt das Vorhaben zur städtebaulichen Entwicklung?
 - Gibt es Bedenken von Nachbarn oder Behörden?
 
-**In dieser Phase**:
+**In dieser Phase:**
 - Seien Sie erreichbar für Rückfragen
 - Reagieren Sie schnell auf Nachforderungen
 - Halten Sie Kontakt zum Bauamt
@@ -117,19 +132,21 @@ Nach Einreichung prüft die Gemeinde Ihren Antrag:
 
 Die Gemeinde entscheidet über Ihren Antrag. Mögliche Ergebnisse:
 
-**Zustimmung**
+**Zustimmung:**
 - Sie erhalten einen schriftlichen Bescheid
 - Die Zustimmung kann mit Auflagen verbunden sein
 - Sie können nun die Baugenehmigung beantragen
 
-**Ablehnung**
+**Ablehnung:**
 - Die Gemeinde teilt die Gründe schriftlich mit
 - Sie haben das Recht auf Widerspruch
 - Ggf. können Sie den Antrag überarbeiten und erneut einreichen
 
-**Rückfragen/Modifikation**
+**Rückfragen/Modifikation:**
 - Die Gemeinde fordert Änderungen oder zusätzliche Informationen
 - Sie können den Antrag nachbessern
+
+---
 
 ## Was prüft die Gemeinde konkret?
 
@@ -157,37 +174,43 @@ Die Gemeinde entscheidet über Ihren Antrag. Mögliche Ergebnisse:
 - Entstehen Folgekosten für die Gemeinde?
 - Ist eine spätere Erschließung durch die Gemeinde zu erwarten?
 
+---
+
 ## Häufige Gründe für eine Ablehnung
 
 ### 1. Fehlender räumlicher Zusammenhang
 
-Die 100m-Regel ist nicht erfüllt oder die Ortslage ist anders abgegrenzt als vom Antragsteller angenommen.
+**Problem:** Die Leitplanke aus der Gesetzesbegründung (100 m, BT-Drs. 21/781, S. 28) ist nicht erfüllt oder funktionale Kriterien (Erschließung, Sichtbeziehung) sprechen gegen einen Zusammenhang.
 
-**Lösung**: Vermessungsnachweis, ggf. Argumentation mit besonderen örtlichen Gegebenheiten
+**Lösung:** Vermessungsnachweis, ggf. Argumentation mit besonderen örtlichen Gegebenheiten (Erschließung, Sichtbeziehung).
+
+➡️ **Vertiefung:** [100-m-Leitplanke & räumlicher Zusammenhang](/100m-regel-raeumlicher-zusammenhang/)
 
 ### 2. Beeinträchtigung öffentlicher Belange
 
-Naturschutz, Landschaftsschutz oder andere Schutzgüter werden beeinträchtigt.
+**Problem:** Naturschutz, Landschaftsschutz oder andere Schutzgüter werden beeinträchtigt.
 
-**Lösung**: Anpassung der Planung, Ausgleichsmaßnahmen, Gutachten
+**Lösung:** Anpassung der Planung, Ausgleichsmaßnahmen, Gutachten einholen.
 
 ### 3. Städtebauliche Bedenken
 
-Das Vorhaben passt nicht zur örtlichen Bebauung oder widerspricht Planungsabsichten.
+**Problem:** Das Vorhaben passt nicht zur örtlichen Bebauung oder widerspricht Planungsabsichten.
 
-**Lösung**: Anpassung der Gebäudegröße/-form, Gespräch über Planungsabsichten
+**Lösung:** Anpassung der Gebäudegröße/-form, Gespräch über Planungsabsichten der Gemeinde.
 
 ### 4. Unzureichende Erschließung
 
-Die Erschließung ist nicht gesichert oder würde Kosten für die Gemeinde verursachen.
+**Problem:** Die Erschließung ist nicht gesichert oder würde Kosten für die Gemeinde verursachen.
 
-**Lösung**: Nachweis der privaten Erschließung, Kostenübernahme zusichern
+**Lösung:** Nachweis der privaten Erschließung, Kostenübernahme zusichern.
 
 ### 5. Nachbarschaftliche Konflikte
 
-Nachbarn haben erhebliche Bedenken geäußert.
+**Problem:** Nachbarn haben erhebliche Bedenken geäußert.
 
-**Lösung**: Gespräche mit Nachbarn, ggf. Anpassung der Planung
+**Lösung:** Gespräche mit Nachbarn, ggf. Anpassung der Planung, Kompromisse suchen.
+
+---
 
 ## Praktische Tipps für einen erfolgreichen Antrag
 
@@ -217,7 +240,7 @@ Nachbarn haben erhebliche Bedenken geäußert.
 
 ### Tipp 5: Geduld und Ausdauer
 
-- Bauverfahren dauern oft länger als gedacht
+- Bauverfahren können Zeit in Anspruch nehmen
 - Bleiben Sie dran, aber setzen Sie nicht unter Druck
 - Nutzen Sie Wartezeiten für weitere Planungen
 
@@ -227,24 +250,26 @@ Nachbarn haben erhebliche Bedenken geäußert.
 - Klären Sie mögliche Konflikte vorab
 - Unterstützung von Nachbarn hilft!
 
+---
+
 ## Was tun bei Ablehnung?
 
 ### Option 1: Widerspruch
 
 Sie können **innerhalb eines Monats** Widerspruch gegen die Ablehnung einlegen.
 
-**Voraussetzungen**:
+**Voraussetzungen:**
 - Die Ablehnung ist fehlerhaft
 - Die Gemeinde hat ihr Ermessen falsch ausgeübt
 - Relevante Aspekte wurden nicht berücksichtigt
 
-**Tipp**: Lassen Sie sich von einem Fachanwalt für Baurecht beraten!
+**Tipp:** Lassen Sie sich von einem Fachanwalt für Baurecht beraten!
 
 ### Option 2: Überarbeiteter Antrag
 
 Sie überarbeiten Ihren Antrag und berücksichtigen die Ablehnungsgründe.
 
-**Sinnvoll, wenn**:
+**Sinnvoll, wenn:**
 - Die Ablehnungsgründe nachvollziehbar sind
 - Anpassungen möglich und zumutbar sind
 - Die Gemeinde signalisiert Gesprächsbereitschaft
@@ -253,15 +278,19 @@ Sie überarbeiten Ihren Antrag und berücksichtigen die Ablehnungsgründe.
 
 Wenn die Ablehnung endgültig ist, kann ein anderes Grundstück die Lösung sein.
 
-## Häufige Fragen (FAQ)
+---
+
+## Häufige Fragen
+
+<div class="faq">
 
 ### Wie lange dauert das Verfahren?
 
-Rechnen Sie mit 2-6 Monaten von der Antragstellung bis zur Entscheidung. In komplexen Fällen auch länger.
+Die Dauer des Verfahrens kann variieren. Es gibt keine gesetzliche Frist für die Gemeinde. Planen Sie ausreichend Zeit ein und fragen Sie bei der Gemeinde nach den üblichen Bearbeitungszeiten.
 
 ### Kostet die Gemeinde-Zustimmung Gebühren?
 
-Ja, die Gemeinde erhebt eine Verwaltungsgebühr. Diese liegt typischerweise zwischen 100 und 500 Euro.
+Ja, die Gemeinde erhebt eine Verwaltungsgebühr. Die Höhe richtet sich nach der Gebührensatzung der jeweiligen Gemeinde. Fragen Sie bei Antragstellung nach den konkreten Kosten.
 
 ### Kann die Gemeinde nachträglich ihre Zustimmung widerrufen?
 
@@ -269,7 +298,7 @@ Nur in Ausnahmefällen, wenn falsche Angaben gemacht wurden oder sich die Sachla
 
 ### Gilt die Zustimmung unbefristet?
 
-Die Zustimmung sollte zeitnah (innerhalb von 1-2 Jahren) genutzt werden. Danach kann eine erneute Prüfung erforderlich sein.
+Die Zustimmung sollte zeitnah genutzt werden. Nach längerer Zeit kann eine erneute Prüfung erforderlich sein. Klären Sie bei der Gemeinde, wie lange die Zustimmung gilt.
 
 ### Kann ich gegen eine Ablehnung klagen?
 
@@ -277,11 +306,15 @@ Ja, nach erfolglosem Widerspruch können Sie vor dem Verwaltungsgericht klagen. 
 
 ### Was ist, wenn die Gemeinde nicht reagiert?
 
-Nach Ablauf einer angemessenen Frist (ca. 3 Monate) können Sie eine Untätigkeitsklage erwägen. Zunächst sollten Sie aber nachhaken und schriftlich um Beschleunigung bitten.
+Nach Ablauf einer angemessenen Frist können Sie eine Untätigkeitsklage erwägen. Zunächst sollten Sie aber nachhaken und schriftlich um Beschleunigung bitten.
+
+</div>
+
+---
 
 ## Zusammenfassung
 
-Die Gemeinde-Zustimmung ist das Herzstück des Verfahrens nach §246e BauGB. Für einen Erfolg wichtig sind:
+Die Gemeindezustimmung (§ 36a BauGB) ist das Herzstück des Verfahrens nach § 246e BauGB. Für einen Erfolg wichtig sind:
 
 - Gründliche Vorbereitung und vollständige Unterlagen
 - Frühzeitiger und konstruktiver Dialog mit der Gemeinde
@@ -290,13 +323,47 @@ Die Gemeinde-Zustimmung ist das Herzstück des Verfahrens nach §246e BauGB. Fü
 - Geduld und Ausdauer
 - Bei Problemen: fachliche Beratung nutzen
 
-## Weitere Informationen
+---
 
-Für ein vollständiges Bild zu §246e BauGB empfehlen wir auch:
+## Weiterführende Pillars
 
-- [§246e BauGB Brandenburg – Grundlagen](/246e-baugb-brandenburg)
-- [100m-Regel & räumlicher Zusammenhang](/100m-regel-raeumlicher-zusammenhang)
-- [Außenbereich in Brandenburg](/aussenbereich-brandenburg-246e)
-- [Aktuelle Artikel im Blog](/blog)
+- **Brandenburg-Überblick:** [§ 246e BauGB in Brandenburg](/246e-baugb-brandenburg/)
+- **Räumlicher Zusammenhang & 100-m-Leitplanke:** [100m-Regel im Detail](/100m-regel-raeumlicher-zusammenhang/)
+- **Außenbereich – Check & Stolpersteine:** [Außenbereich Brandenburg](/aussenbereich-brandenburg-246e/)
 
-<Disclaimer />
+---
+
+<SourcesBox primarySources={primarySources} secondarySources={secondarySources} />
+
+<div id="disclaimer">
+  <Disclaimer />
+</div>
+
+</div>
+
+<style>{`
+  .pillar-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    line-height: 1.7;
+  }
+
+  .faq > div {
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  ul, ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  ul li, ol li {
+    margin-bottom: 0.5rem;
+  }
+`}</style>
