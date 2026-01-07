@@ -1,0 +1,61 @@
+---
+export interface Props {
+  sources: Array<{
+    label: string;
+    url: string;
+  }>;
+}
+
+const { sources } = Astro.props;
+---
+
+{sources && sources.length > 0 && (
+  <aside class="sources-box">
+    <h3>Quellen & weiterführende Links</h3>
+    <ul>
+      {sources.map((source) => (
+        <li>
+          <a href={source.url} target="_blank" rel="noopener noreferrer">
+            {source.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}
+
+<style>
+  .sources-box {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .sources-box h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #495057;
+  }
+
+  .sources-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sources-box li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sources-box a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  .sources-box a:hover {
+    text-decoration: underline;
+  }
+</style>

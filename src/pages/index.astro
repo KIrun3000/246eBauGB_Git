@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="§246e BauGB Brandenburg – Bauen im Außenbereich für private Grundstückseigentümer"
+  description="Alle Informationen zu §246e BauGB für private Grundstückseigentümer in Brandenburg. 100m-Regel, Außenbereich, Gemeinde-Zustimmung und mehr."
+>
+  <div class="container">
+    <section class="hero">
+      <h1>§246e BauGB Brandenburg</h1>
+      <p class="lead">
+        Verständliche Informationen für private Grundstückseigentümer zum befristeten 
+        Baurecht im Außenbereich nach §246e BauGB – speziell für Brandenburg.
+      </p>
+    </section>
+
+    <section class="pillars">
+      <h2>Hauptthemen</h2>
+      <div class="pillar-grid">
+        <a href="/246e-baugb-brandenburg" class="pillar-card">
+          <h3>Grundlagen §246e BauGB</h3>
+          <p>Was ist §246e BauGB und wie funktioniert die Regelung in Brandenburg?</p>
+        </a>
+        <a href="/100m-regel-raeumlicher-zusammenhang" class="pillar-card">
+          <h3>100m-Regel & räumlicher Zusammenhang</h3>
+          <p>Wie wird die 100-Meter-Regel ausgelegt und was bedeutet sie für Ihr Grundstück?</p>
+        </a>
+        <a href="/aussenbereich-brandenburg-246e" class="pillar-card">
+          <h3>Außenbereich in Brandenburg</h3>
+          <p>Besonderheiten beim Bauen im Außenbereich nach Brandenburger Landesrecht.</p>
+        </a>
+        <a href="/zustimmung-gemeinde-246e" class="pillar-card">
+          <h3>Gemeinde-Zustimmung</h3>
+          <p>Wie läuft das Verfahren mit der Gemeinde und was müssen Sie beachten?</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <h2>Ist Ihr Grundstück geeignet?</h2>
+      <p>
+        Prüfen Sie schnell und einfach, ob Ihr Grundstück in Brandenburg die grundlegenden 
+        Voraussetzungen für ein Bauvorhaben nach §246e BauGB erfüllt.
+      </p>
+      <a href="/check" class="btn-primary">Zum Check (Coming Soon)</a>
+    </section>
+
+    <section class="blog-preview">
+      <h2>Aktuelle Blog-Beiträge</h2>
+      <p>Weitere Informationen und Praxisbeispiele finden Sie in unserem Blog.</p>
+      <a href="/blog" class="btn-secondary">Zum Blog</a>
+    </section>
+
+    <section class="disclaimer-home">
+      <p>
+        <strong>Wichtiger Hinweis:</strong> Diese Website bietet keine Rechtsberatung. 
+        Für verbindliche Auskünfte zu Ihrem Bauvorhaben wenden Sie sich bitte an einen 
+        Fachanwalt für Baurecht oder Ihre zuständige Baubehörde.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .pillars {
+    margin-bottom: 4rem;
+  }
+
+  .pillars h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .pillar-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .pillar-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+  }
+
+  .pillar-card p {
+    margin: 0;
+    color: var(--color-text-light);
+  }
+
+  .cta-section {
+    text-align: center;
+    background: var(--color-bg-alt);
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 4rem;
+  }
+
+  .cta-section h2 {
+    margin-top: 0;
+  }
+
+  .cta-section p {
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    color: var(--color-text-light);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #0052a3;
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-bg-alt);
+  }
+
+  .blog-preview {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .blog-preview p {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .disclaimer-home {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    margin-top: 4rem;
+  }
+
+  .disclaimer-home strong {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+    }
+
+    .pillar-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

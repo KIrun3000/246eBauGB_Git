@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Check – §246e BauGB Brandenburg"
+  description="Prüfen Sie, ob Ihr Grundstück für ein Bauvorhaben nach §246e BauGB in Brandenburg geeignet ist."
+>
+  <div class="container">
+    <div class="check-placeholder">
+      <h1>Grundstücks-Check</h1>
+      <p class="lead">
+        Prüfen Sie schnell und einfach, ob Ihr Grundstück die grundlegenden Voraussetzungen 
+        für ein Bauvorhaben nach §246e BauGB in Brandenburg erfüllt.
+      </p>
+      
+      <div class="coming-soon-box">
+        <h2>🚧 Coming Soon</h2>
+        <p>
+          Wir arbeiten an einem interaktiven Tool, mit dem Sie eine erste Einschätzung 
+          zu Ihrem Grundstück erhalten können. Das Tool wird folgende Aspekte prüfen:
+        </p>
+        
+        <ul>
+          <li>Lage im Außenbereich</li>
+          <li>Entfernung zur nächsten Ortslage (100m-Regel)</li>
+          <li>Schutzgebiete (Naturschutz, Landschaftsschutz, Denkmalschutz)</li>
+          <li>Grundsätzliche Erschließungssituation</li>
+        </ul>
+        
+        <p>
+          <strong>Wichtig:</strong> Das Tool wird nur eine erste, unverbindliche Einschätzung bieten. 
+          Für eine rechtsverbindliche Auskunft müssen Sie sich an Ihre Gemeinde oder einen 
+          Fachanwalt für Baurecht wenden.
+        </p>
+      </div>
+      
+      <div class="info-box">
+        <h3>Bis dahin:</h3>
+        <p>Informieren Sie sich in unseren ausführlichen Artikeln:</p>
+        <div class="links">
+          <a href="/246e-baugb-brandenburg" class="btn-link">Grundlagen §246e BauGB</a>
+          <a href="/100m-regel-raeumlicher-zusammenhang" class="btn-link">100m-Regel</a>
+          <a href="/aussenbereich-brandenburg-246e" class="btn-link">Außenbereich Brandenburg</a>
+          <a href="/zustimmung-gemeinde-246e" class="btn-link">Gemeinde-Zustimmung</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .check-placeholder {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+
+  .coming-soon-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .coming-soon-box h2 {
+    margin-top: 0;
+    font-size: 2rem;
+  }
+
+  .coming-soon-box ul {
+    margin: 1.5rem 0;
+  }
+
+  .coming-soon-box li {
+    margin-bottom: 0.75rem;
+  }
+
+  .info-box {
+    background: var(--color-bg-alt);
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  .info-box h3 {
+    margin-top: 0;
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .btn-link {
+    display: block;
+    background: white;
+    color: var(--color-primary);
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    border: 2px solid var(--color-primary);
+    transition: all 0.2s;
+  }
+
+  .btn-link:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .links {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

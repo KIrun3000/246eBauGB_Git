@@ -1,0 +1,240 @@
+---
+import SEO from '../components/SEO.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO title={title} description={description} canonical={canonical} />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="/" class="logo">§246e BauGB Brandenburg</a>
+        <nav>
+          <a href="/">Start</a>
+          <a href="/246e-baugb-brandenburg">Grundlagen</a>
+          <a href="/100m-regel-raeumlicher-zusammenhang">100m-Regel</a>
+          <a href="/aussenbereich-brandenburg-246e">Außenbereich</a>
+          <a href="/zustimmung-gemeinde-246e">Gemeinde-Zustimmung</a>
+          <a href="/blog">Blog</a>
+          <a href="/check" class="cta">Check</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>§246e BauGB Brandenburg</h4>
+            <p>Informationen für private Grundstückseigentümer</p>
+          </div>
+          <div class="footer-section">
+            <h4>Navigation</h4>
+            <a href="/blog">Blog</a>
+            <a href="/rss.xml">RSS Feed</a>
+          </div>
+          <div class="footer-section">
+            <h4>Rechtliches</h4>
+            <a href="/impressum">Impressum</a>
+            <a href="/datenschutz">Datenschutz</a>
+          </div>
+        </div>
+        <p class="copyright">&copy; {new Date().getFullYear()} §246e BauGB Brandenburg</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-primary: #0066cc;
+    --color-text: #212529;
+    --color-text-light: #6c757d;
+    --color-border: #dee2e6;
+    --color-bg: #ffffff;
+    --color-bg-alt: #f8f9fa;
+    --max-width: 1200px;
+    --spacing: 1rem;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing);
+  }
+
+  header {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  nav a:hover {
+    color: var(--color-primary);
+  }
+
+  nav a.cta {
+    background: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+
+  nav a.cta:hover {
+    background: #0052a3;
+    color: white;
+  }
+
+  main {
+    flex: 1;
+    padding: 2rem 0;
+  }
+
+  footer {
+    background: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 0 1rem;
+    margin-top: 4rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-section h4 {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .footer-section a {
+    display: block;
+    color: var(--color-text-light);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .footer-section a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-section p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+
+  .copyright {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.85rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; margin-top: 2rem; }
+  h3 { font-size: 1.5rem; margin-top: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--color-primary);
+  }
+
+  ul, ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      width: 100%;
+    }
+    
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+  }
+</style>

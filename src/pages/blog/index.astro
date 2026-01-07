@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout 
+  title="Blog – §246e BauGB Brandenburg"
+  description="Aktuelle Artikel, Praxisbeispiele und detaillierte Informationen zu §246e BauGB für private Grundstückseigentümer in Brandenburg."
+>
+  <div class="container">
+    <header class="blog-header">
+      <h1>Blog</h1>
+      <p>
+        Aktuelle Artikel, Praxisbeispiele und detaillierte Informationen zu §246e BauGB 
+        für private Grundstückseigentümer in Brandenburg.
+      </p>
+    </header>
+
+    {sortedPosts.length === 0 ? (
+      <div class="no-posts">
+        <p>Momentan sind noch keine Blog-Beiträge verfügbar. Schauen Sie bald wieder vorbei!</p>
+      </div>
+    ) : (
+      <div class="posts-grid">
+        {sortedPosts.map((post) => (
+          <article class="post-card">
+            <a href={`/blog/${post.id}/`} class="post-link">
+              <header>
+                <h2>{post.data.title}</h2>
+                <div class="post-meta">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('de-DE', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}
+                  </time>
+                  <span class="category">{post.data.category}</span>
+                </div>
+              </header>
+              <p class="post-description">{post.data.description}</p>
+              {post.data.tags && post.data.tags.length > 0 && (
+                <div class="tags">
+                  {post.data.tags.slice(0, 3).map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </a>
+          </article>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .blog-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .blog-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+  }
+
+  .no-posts {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--color-text-light);
+  }
+
+  .posts-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .post-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-card h2 {
+    margin: 0 0 1rem 0;
+    color: var(--color-primary);
+    font-size: 1.75rem;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .category {
+    background: var(--color-bg-alt);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .post-description {
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background: var(--color-primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    .post-card {
+      padding: 1.5rem;
+    }
+
+    .post-card h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
