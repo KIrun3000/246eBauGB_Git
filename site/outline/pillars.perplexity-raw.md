@@ -121,7 +121,7 @@ Selbst innerhalb 100 m ist räumlicher Zusammenhang ausgeschlossen bei:
 |-------|----------|--------|
 | **Erforderlich?** | **Ja, zwingend** – auch wenn Gemeinde Bauaufsichtsbehörde ist[^2] | § 36a Abs. 1 S. 1 BauGB[^2] |
 | **Prüfkriterium** | Vereinbarkeit mit **städtebaulichen Vorstellungen der Gemeinde** (weites Ermessen, wie bei Planung)[^2] | § 36a Abs. 1 S. 2 BauGB[^2] |
-| **Bedingungen** | Zustimmung kann an Bedingungen geknüpft werden (z. B. ein Teil geförderte Wohnungen, Barrierefreiheit, Infrastrukturbeitrag)[^2] | § 36a Abs. 1 S. 3 BauGB[^2] |
+| **Bedingungen** | Zustimmung kann an Bedingungen geknüpft werden (z. B. Sozialwohnungsquote, Barrierefreiheit, Infrastrukturbeitrag)[^2] | § 36a Abs. 1 S. 3 BauGB[^2] |
 | **Frist** | 3 Monate; Fiktion bei Untätigkeit (gilt als erteilt)[^2] | § 36a Abs. 1 S. 4, § 36 Abs. 2 S. 2 BauGB[^2] |
 | **Verlängerung** | +1 Monat bei freiwilliger Öffentlichkeitsbeteiligung[^2] | § 36a Abs. 2 BauGB[^2] |
 | **Versagung einklagbar?** | **Nein** – Zustimmungsentscheidung nur im Rechtsbehelf gegen Baugenehmigung prüfbar[^2] | § 36a Abs. 3 BauGB[^2] |

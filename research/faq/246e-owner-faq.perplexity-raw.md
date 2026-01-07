@@ -19,7 +19,7 @@
 
 #### **H2: Was ist § 246e BauGB und wie gilt er in Brandenburg?**
 - **Bundesrechtliche Grundlage:** § 246e BauGB gilt **bundesweit einheitlich** (keine Brandenburg-spezifischen Abweichungen im Gesetzestext)[1][2]
-- **Geltungsbereich:** Alle 14 Landkreise + 4 kreisfreie Städte (Potsdam, Brandenburg/Havel, Cottbus, Frankfurt/Oder)
+- **Geltungsbereich:** Alle 18 Landkreise + 4 kreisfreie Städte (Potsdam, Brandenburg/Havel, Cottbus, Frankfurt/Oder)
 - **Inkrafttreten:** 30.10.2025; Befristung bis 31.12.2030[2][1]
 - **Wichtig:** Keine Bindung an § 201a BauGB (angespannter Wohnungsmarkt) – auch in ländlichen Regionen anwendbar[3][4]
 - **Quellen:** § 246e BauGB ([Link](https://www.gesetze-im-internet.de/bbaug/__246e.html)); BT-Drs. 21/781 ([Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf)); BMWSB FAQ ([Link](https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html))
@@ -27,7 +27,7 @@
 #### **H2: Brandenburg-spezifische Rahmenbedingungen**
 
 ##### **H3: Angespannte Wohnungsmärkte in Brandenburg (§ 201a BauGB)**
-- Brandenburg weist Gemeinden in der **Mietpreisbegrenzungsverordnung (MietbegrenzV) vom 03.12.2025** aus (gültig ab 01.01.2026). **36 Gemeinden** sind aktuell ausgewiesen; Liste/Stand stets in der aktuellen Verordnung prüfen.[4][5]
+- **19 Gemeinden** mit Mietpreisbremse (Stand 2020; Verlängerung bis 2029 geplant):[4][5]
   - **Potsdam** (kreisfreie Stadt)
   - **Landkreis Potsdam-Mittelmark:** Werder (Havel), Kleinmachnow, Stahnsdorf, Teltow, Nuthetal, Schwielowsee
   - **Landkreis Dahme-Spreewald:** Schönefeld, Wildau, Königs Wusterhausen
@@ -35,7 +35,6 @@
   - **Landkreis Oberhavel:** Mühlenbecker Land, Glienicke/Nordbahn, Hohen Neuendorf
   - **Landkreis Oder-Spree:** Erkner
   - **Landkreis Barnim:** Panketal, Wandlitz, Bernau bei Berlin
-- **Hinweis:** Diese Liste stammt aus der Mietpreisbremse-VO 2020. Brandenburg weist Gemeinden in der Mietpreisbegrenzungsverordnung (MietbegrenzV vom 03.12.2025, Anlage; gültig ab 01.01.2026) aus; Stand immer per aktueller Verordnung prüfen.
 - **Bedeutung für § 246e:** Keine direkte Voraussetzung; relevant für § 250 BauGB (Umwandlungsschutz) und § 31 Abs. 3 / § 34 Abs. 3b BauGB[6][7][4]
 - **Quellen:** MIL Brandenburg Mietpreisbremse-VO ([Link](https://mil.brandenburg.de/sixcms/media.php/9/Mietpreisbegrenzungsverordnung-V2-Stand_141220%20(002).pdf)); Vogelsänger Pressemeldung Juli 2025 ([Link](https://www.joergvogelsaenger.de/meldungen/brandenburg-mietpreisbremse-bis-2029/))
 
@@ -69,7 +68,7 @@
 ### **FAQ Brandenburg Überblick:**
 
 **FAQ 1: Gilt § 246e BauGB in ganz Brandenburg?**
-- Ja, **bundesweit einheitlich** in allen 14 Landkreisen + 4 kreisfreien Städten. Keine regionalen Ausnahmen.[1][2]
+- Ja, **bundesweit einheitlich** in allen 18 Landkreisen + 4 kreisfreien Städten. Keine regionalen Ausnahmen.[1][2]
 
 **FAQ 2: Brauche ich § 201a BauGB (angespannter Markt) in Brandenburg?**
 - **Nein**, § 246e ist **nicht an § 201a gebunden**. Auch in ländlichen Regionen (z. B. Uckermark, Prignitz) anwendbar.[3][4]
@@ -146,7 +145,7 @@
 **Hinweis:** **Allgemein beschreibend**; keine Spekulation über Verwaltungspraxis ohne Quelle.
 
 ##### **H3: Angespannter Wohnungsmarkt (§ 201a BauGB) – Status in [Landkreis/Kommune]**
-- **Falls zutreffend:** „[Gemeinde XY] ist in der Mietpreisbegrenzungsverordnung Brandenburg ausgewiesen (MietbegrenzV vom 03.12.2025, gültig ab 01.01.2026). Stand stets in aktueller Verordnung prüfen."[4]
+- **Falls zutreffend (19 Gemeinden):** „[Gemeinde XY] ist als Gebiet mit angespanntem Wohnungsmarkt nach § 201a BauGB ausgewiesen (MIL Brandenburg Mietpreisbremse-VO 2020)."[4]
   - **Bedeutung für § 246e:** Keine Voraussetzung; relevant für § 250 BauGB (Umwandlungsschutz) und § 31 Abs. 3 / § 34 Abs. 3b BauGB[7][6][4]
 - **Falls nicht zutreffend:** „[Landkreis/Kommune] ist **nicht** als Gebiet mit angespanntem Wohnungsmarkt ausgewiesen. § 246e BauGB gilt dennoch bundesweit ohne Markterfordernis."[3][4]
 - **Quellen:** MIL Brandenburg Mietpreisbremse-VO ([Link](https://mil.brandenburg.de/sixcms/media.php/9/Mietpreisbegrenzungsverordnung-V2-Stand_141220%20(002).pdf)); Städtetag Deutschland ([Link](https://www.staedtetag.de/files/dst/docs/Dezernat-5/2025/2025-11-03-bauturbo.pdf))
@@ -204,7 +203,7 @@
 ##### **H3: Gesetzliche Grundlage (bundesrechtlich)**
 - **§ 36a BauGB:** Gemeinde muss Vorhaben zustimmen; weites Ermessen bei Vereinbarkeit mit städtebaulichen Vorstellungen[1][2]
 - **Frist:** 3 Monate; bei Untätigkeit gilt Zustimmung als erteilt (Verlängerung +1 Monat bei Öffentlichkeitsbeteiligung)[1][2]
-- **Bedingungen möglich:** Ein Teil geförderte Wohnungen, Barrierefreiheit, Infrastrukturbeitrag, städtebaulicher Vertrag[14][1]
+- **Bedingungen möglich:** Sozialwohnungsquote, Barrierefreiheit, Infrastrukturbeitrag, städtebaulicher Vertrag[14][1]
 - **Quellen:** § 36a BauGB ([Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf)); BMWSB FAQ ([Link](https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html))
 
 ##### **H3: Lokale Praxis in [Landkreis/Kommune] (nur mit Quellenbeleg)**
