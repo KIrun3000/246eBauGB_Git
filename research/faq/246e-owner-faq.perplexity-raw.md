@@ -19,7 +19,7 @@
 
 #### **H2: Was ist § 246e BauGB und wie gilt er in Brandenburg?**
 - **Bundesrechtliche Grundlage:** § 246e BauGB gilt **bundesweit einheitlich** (keine Brandenburg-spezifischen Abweichungen im Gesetzestext)[1][2]
-- **Geltungsbereich:** Alle 14 Landkreise + 4 kreisfreie Städte (Potsdam, Cottbus, Frankfurt (Oder), Brandenburg an der Havel)
+- **Geltungsbereich:** Alle 18 Landkreise + 4 kreisfreie Städte (Potsdam, Brandenburg/Havel, Cottbus, Frankfurt/Oder)
 - **Inkrafttreten:** 30.10.2025; Befristung bis 31.12.2030[2][1]
 - **Wichtig:** Keine Bindung an § 201a BauGB (angespannter Wohnungsmarkt) – auch in ländlichen Regionen anwendbar[3][4]
 - **Quellen:** § 246e BauGB ([Link](https://www.gesetze-im-internet.de/bbaug/__246e.html)); BT-Drs. 21/781 ([Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf)); BMWSB FAQ ([Link](https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html))
@@ -27,16 +27,22 @@
 #### **H2: Brandenburg-spezifische Rahmenbedingungen**
 
 ##### **H3: Angespannte Wohnungsmärkte in Brandenburg (§ 201a BauGB)**
-- Brandenburg weist Gemeinden in der **Mietpreisbegrenzungsverordnung (MietbegrenzV) vom 03.12.2025** aus (gültig ab 01.01.2026). **36 Gemeinden** sind aktuell ausgewiesen; Liste/Stand stets in der aktuellen Verordnung prüfen.[4][5]
-- **Hinweis:** Diese Ausweisung betrifft die Mietpreisbremse und § 250 BauGB (Umwandlungsschutz), **nicht die Anwendbarkeit von § 246e BauGB** (gilt bundesweit ohne Markterfordernis).
+- **19 Gemeinden** mit Mietpreisbremse (Stand 2020; Verlängerung bis 2029 geplant):[4][5]
+  - **Potsdam** (kreisfreie Stadt)
+  - **Landkreis Potsdam-Mittelmark:** Werder (Havel), Kleinmachnow, Stahnsdorf, Teltow, Nuthetal, Schwielowsee
+  - **Landkreis Dahme-Spreewald:** Schönefeld, Wildau, Königs Wusterhausen
+  - **Landkreis Havelland:** Dallgow-Döberitz, Falkensee
+  - **Landkreis Oberhavel:** Mühlenbecker Land, Glienicke/Nordbahn, Hohen Neuendorf
+  - **Landkreis Oder-Spree:** Erkner
+  - **Landkreis Barnim:** Panketal, Wandlitz, Bernau bei Berlin
 - **Bedeutung für § 246e:** Keine direkte Voraussetzung; relevant für § 250 BauGB (Umwandlungsschutz) und § 31 Abs. 3 / § 34 Abs. 3b BauGB[6][7][4]
 - **Quellen:** MIL Brandenburg Mietpreisbremse-VO ([Link](https://mil.brandenburg.de/sixcms/media.php/9/Mietpreisbegrenzungsverordnung-V2-Stand_141220%20(002).pdf)); Vogelsänger Pressemeldung Juli 2025 ([Link](https://www.joergvogelsaenger.de/meldungen/brandenburg-mietpreisbremse-bis-2029/))
 
 ##### **H3: Besonderheiten in Außenbereichen Brandenburg**
 - **Strukturprägung:** Ländliche Räume + Stadt-Umland Berlin (Metropolregion)[8]
 - **100-m-Regel** (BT-Drs. 21/781, S. 28) besonders relevant für **Streusiedlungen, Ortsrandlagen**[9][1]
-- **Trennwirkungen:** Flüsse, ausgedehnte Wälder und Biosphärenreservate können räumlichen Zusammenhang ausschließen[1][9]
-- **Naturschutz:** Großflächige Schutzgebiete (Biosphärenreservate, Naturparks) → erhöhte naturschutzrechtliche Anforderungen § 18 BNatSchG[10][1]
+- **Trennwirkungen:** Spree, Havel, ausgedehnte Wälder (z. B. Schorfheide, Spreewald) können räumlichen Zusammenhang ausschließen[1][9]
+- **Naturschutz:** Großflächige Schutzgebiete (Biosphärenreservate Spreewald, Schorfheide-Chorin) → erhöhte naturschutzrechtliche Anforderungen § 18 BNatSchG[10][1]
 - **Hinweis:** **Bundesrechtlich geregelt**; Brandenburg hat keine eigenen Landesverordnungen zu § 246e BauGB erlassen (Stand Januar 2026)
 - **Quellen:** BT-Drs. 21/781, S. 28 ([Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf)); MIL Brandenburg Gutachten angespannter Markt ([Link](https://bravors.brandenburg.de/fm/68/Anlage_Gutachten.pdf))
 
@@ -62,7 +68,7 @@
 ### **FAQ Brandenburg Überblick:**
 
 **FAQ 1: Gilt § 246e BauGB in ganz Brandenburg?**
-- Ja, **bundesweit einheitlich** in allen 14 Landkreisen + 4 kreisfreien Städten. Keine regionalen Ausnahmen.[1][2]
+- Ja, **bundesweit einheitlich** in allen 18 Landkreisen + 4 kreisfreien Städten. Keine regionalen Ausnahmen.[1][2]
 
 **FAQ 2: Brauche ich § 201a BauGB (angespannter Markt) in Brandenburg?**
 - **Nein**, § 246e ist **nicht an § 201a gebunden**. Auch in ländlichen Regionen (z. B. Uckermark, Prignitz) anwendbar.[3][4]
@@ -81,13 +87,13 @@
 ***
 
 ### **Interne Linkziele (Brandenburg Überblick):**
-- → Seite „Landkreis Potsdam-Mittelmark"
+- → Seite „Landkreis Potsdam-Mittelmark" (Werder, Kleinmachnow, Teltow etc.)
 - → Seite „Potsdam Stadt" (kreisfreie Stadt, Milieuschutz)
-- → Seite „Landkreis Barnim"
-- → Seite „Landkreis Oder-Spree"
-- → Seite „Landkreis Oberhavel"
-- → Seite „Landkreis Dahme-Spreewald"
-- → Seite „Landkreis Havelland"
+- → Seite „Landkreis Barnim" (Bernau, Panketal, Wandlitz)
+- → Seite „Landkreis Oder-Spree" (Erkner)
+- → Seite „Landkreis Oberhavel" (Hohen Neuendorf, Glienicke)
+- → Seite „Landkreis Dahme-Spreewald" (Schönefeld, Wildau, Königs Wusterhausen)
+- → Seite „Landkreis Havelland" (Falkensee, Dallgow-Döberitz)
 - → Seite „Ländliche Landkreise Brandenburg" (Uckermark, Prignitz, Elbe-Elster etc.)
 - → FAQ „100-Meter-Regel Außenbereich"
 - → FAQ „Gemeindezustimmung Brandenburg"
@@ -134,12 +140,12 @@
 - **Bevölkerung:** [ca. Zahl] Einwohner (Stand 2023/2024; Quelle: Amt für Statistik Berlin-Brandenburg wenn verfügbar)
 - **Lage:** [z. B. „Stadt-Umland Berlin 1. Reihe" / „ländlicher Raum Nordwest-Brandenburg"]
 - **Siedlungstypen:** [z. B. „Verdichtungsraum + Einfamilienhausgebiete" / „Streusiedlungen + Dorfkerne"]
-- **Besonderheiten:** [z. B. „Naturpark Nuthe-Nieplitz", „Biosphärenreservat", „Seen-Landschaft"]
+- **Besonderheiten:** [z. B. „Naturpark Nuthe-Nieplitz", „Spreewald Biosphärenreservat", „Seen-Landschaft"]
 
 **Hinweis:** **Allgemein beschreibend**; keine Spekulation über Verwaltungspraxis ohne Quelle.
 
 ##### **H3: Angespannter Wohnungsmarkt (§ 201a BauGB) – Status in [Landkreis/Kommune]**
-- **Falls zutreffend:** „[Gemeinde XY] ist in der Mietpreisbegrenzungsverordnung Brandenburg ausgewiesen (MietbegrenzV vom 03.12.2025, gültig ab 01.01.2026). Stand stets in aktueller Verordnung prüfen."[4]
+- **Falls zutreffend (19 Gemeinden):** „[Gemeinde XY] ist als Gebiet mit angespanntem Wohnungsmarkt nach § 201a BauGB ausgewiesen (MIL Brandenburg Mietpreisbremse-VO 2020)."[4]
   - **Bedeutung für § 246e:** Keine Voraussetzung; relevant für § 250 BauGB (Umwandlungsschutz) und § 31 Abs. 3 / § 34 Abs. 3b BauGB[7][6][4]
 - **Falls nicht zutreffend:** „[Landkreis/Kommune] ist **nicht** als Gebiet mit angespanntem Wohnungsmarkt ausgewiesen. § 246e BauGB gilt dennoch bundesweit ohne Markterfordernis."[3][4]
 - **Quellen:** MIL Brandenburg Mietpreisbremse-VO ([Link](https://mil.brandenburg.de/sixcms/media.php/9/Mietpreisbegrenzungsverordnung-V2-Stand_141220%20(002).pdf)); Städtetag Deutschland ([Link](https://www.staedtetag.de/files/dst/docs/Dezernat-5/2025/2025-11-03-bauturbo.pdf))
@@ -174,7 +180,7 @@
 ##### **H3: Außenbereich (§ 35 BauGB) – Ortsrandlagen und räumlicher Zusammenhang**
 - **Relevanz in [Landkreis/Kommune]:** [z. B. „Zahlreiche Ortsrandlagen + Streusiedlungen" / „Wenige Außenbereichslagen, überwiegend Innenbereich"]
 - **100-m-Regel:** Entfernung zum Siedlungsbereich >100 m schließt räumlichen Zusammenhang aus (BT-Drs. 21/781, S. 28)[9][1]
-- **Trennwirkungen in [Landkreis/Kommune]:** [z. B. „Flüsse, ausgedehnte Waldgebiete, Bahntrassen" / „Wenige natürliche Barrieren"]
+- **Trennwirkungen in [Landkreis/Kommune]:** [z. B. „Spree, ausgedehnte Waldgebiete, Bahntrassen" / „Wenige natürliche Barrieren"]
 - **Naturschutzrechtliche Anforderungen:** [Falls zutreffend: „Biosphärenreservat [Name]" / „Landschaftsschutzgebiete"] → erhöhte Anforderungen § 18 BNatSchG + Benehmen Naturschutzbehörde[10][1]
 - **Beispiel (hypothetisch, bundesrechtlich):** „Neubau Einfamilienhaus 80 m entfernt von geschlossenem Ortsteil, gleiche Erschließungsstraße, Sichtbeziehung → räumlicher Zusammenhang grundsätzlich möglich; Einzelfallprüfung durch Bauaufsicht + Naturschutzbehörde."[9][1]
 - **Quellen:** BT-Drs. 21/781, S. 28 ([Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf)); Bayern FAQ ([Link](https://www.bauen.bayern.de/assets/stmi/buw/baurechtundtechnik/25_bauturbo_faq_.pdf))
@@ -197,7 +203,7 @@
 ##### **H3: Gesetzliche Grundlage (bundesrechtlich)**
 - **§ 36a BauGB:** Gemeinde muss Vorhaben zustimmen; weites Ermessen bei Vereinbarkeit mit städtebaulichen Vorstellungen[1][2]
 - **Frist:** 3 Monate; bei Untätigkeit gilt Zustimmung als erteilt (Verlängerung +1 Monat bei Öffentlichkeitsbeteiligung)[1][2]
-- **Bedingungen möglich:** Ein Teil geförderte Wohnungen, Barrierefreiheit, Infrastrukturbeitrag, städtebaulicher Vertrag[14][1]
+- **Bedingungen möglich:** Sozialwohnungsquote, Barrierefreiheit, Infrastrukturbeitrag, städtebaulicher Vertrag[14][1]
 - **Quellen:** § 36a BauGB ([Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf)); BMWSB FAQ ([Link](https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html))
 
 ##### **H3: Lokale Praxis in [Landkreis/Kommune] (nur mit Quellenbeleg)**
@@ -262,7 +268,7 @@
 
 **FAQ 5: Wie ist § 246e im Außenbereich von [Landkreis/Kommune] anzuwenden?**
 - **100-m-Regel** gilt (BT-Drs. 21/781, S. 28)[9][1]
-- **Trennwirkungen:** [z. B. „Flüsse, Waldgebiete" / „Wenige natürliche Barrieren"]
+- **Trennwirkungen:** [z. B. „Spree, Waldgebiete" / „Wenige natürliche Barrieren"]
 - **Naturschutz:** [Falls zutreffend: „Biosphärenreservat [Name] → erhöhte Anforderungen"][10]
 
 **FAQ 6: Kann ich in [Landkreis/Kommune] mit § 246e aufstocken?**
@@ -278,7 +284,7 @@
 - ← Zurück zu „Brandenburg Überblick"
 - → FAQ „100-Meter-Regel Außenbereich"
 - → FAQ „Gemeindezustimmung § 36a BauGB"
-- → Seite „[Nachbarlandkreis]" (falls relevant)
+- → Seite „[Nachbarlandkreis]" (falls relevant, z. B. Potsdam-Mittelmark ↔ Havelland)
 - → Kontaktseite „Ansprechpartner Brandenburg"
 
 ***
@@ -294,12 +300,12 @@
 
 1. **Brandenburg Überblick** (siehe Seite 1)
 2. **Potsdam Stadt** (kreisfreie Stadt; § 201a; Milieuschutz § 172 BauGB; Zweckentfremdungsverbot; Quelle: Wohnraumschutzbericht 2025)[15]
-3. **Landkreis Potsdam-Mittelmark** (Stadt-Umland Berlin; verdichteter Raum)[4]
-4. **Landkreis Barnim** (Naturpark Barnim; Außenbereichslagen)[4]
+3. **Landkreis Potsdam-Mittelmark** (7 Gemeinden § 201a; Werder, Kleinmachnow, Teltow, Stahnsdorf, Nuthetal, Schwielowsee, Großbeeren)[4]
+4. **Landkreis Barnim** (3 Gemeinden § 201a; Bernau, Panketal, Wandlitz; Naturpark Barnim; Außenbereichslagen)[4]
 5. **Landkreis Oberhavel** (3 Gemeinden § 201a; Hohen Neuendorf, Glienicke/Nordbahn, Mühlenbecker Land; Stadt-Umland Berlin Nord)[4]
-6. **Landkreis Dahme-Spreewald** (Stadt-Umland Berlin; Flughafen BER-Umland)[4]
-7. **Landkreis Havelland** (Stadt-Umland Berlin West)[4]
-8. **Landkreis Oder-Spree** (Seenlandschaft)[4]
+6. **Landkreis Dahme-Spreewald** (3 Gemeinden § 201a; Schönefeld, Wildau, Königs Wusterhausen; Flughafen BER-Umland)[4]
+7. **Landkreis Havelland** (2 Gemeinden § 201a; Falkensee, Dallgow-Döberitz; Stadt-Umland Berlin West)[4]
+8. **Landkreis Oder-Spree** (1 Gemeinde § 201a; Erkner; Seenlandschaft)[4]
 9. **Landkreis Uckermark** (kein § 201a; ländlicher Raum Nordost-Brandenburg; Streusiedlungen; 100-m-Regel hochrelevant)
 10. **Ländliche Landkreise Brandenburg** (Sammelseite: Prignitz, Elbe-Elster, Oberspreewald-Lausitz, Spree-Neiße, Märkisch-Oderland, Teltow-Fläming, Ostprignitz-Ruppin; kein § 201a; geringe Verdichtung)
 

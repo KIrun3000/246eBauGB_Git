@@ -68,7 +68,14 @@ updated_at: "2026-01-07"
 
 **Kurz:** § 246e ist **nicht an § 201a gebunden**[^5]. Gilt bundesweit ohne Markterfordernis[^5].
 
-**Hinweis Mietpreisbegrenzung:** Brandenburg weist Gemeinden in der **Mietpreisbegrenzungsverordnung (MietbegrenzV) vom 03.12.2025** aus (gültig ab 01.01.2026). Dies ist eine landesrechtliche Regelung für Mietpreisbremse und betrifft **nicht die Anwendbarkeit von § 246e BauGB** (gilt bundesweit ohne Markterfordernis). Aktuelle Liste: 36 Gemeinden (Stand 01.01.2026); stets in der Verordnung prüfen[^6].
+**Aber:** 19 Brandenburg-Gemeinden sind § 201a-ausgewiesen (Mietpreisbremse 2020, Verlängerung bis 2029 geplant)[^6]:
+- Potsdam (kreisfreie Stadt)
+- Werder (Havel), Kleinmachnow, Teltow, Stahnsdorf, Schwielowsee, Nuthetal, Großbeeren (Potsdam-Mittelmark)
+- Schönefeld, Wildau, Königs Wusterhausen (Dahme-Spreewald)
+- Falkensee, Dallgow-Döberitz (Havelland)
+- Hohen Neuendorf, Glienicke/Nordbahn, Mühlenbecker Land (Oberhavel)
+- Bernau bei Berlin, Panketal, Wandlitz (Barnim)
+- Erkner (Oder-Spree)
 
 **Relevanz:** § 201a betrifft **§ 250 BauGB** (Umwandlungsschutz) und **§ 31 Abs. 3 / § 34 Abs. 3b BauGB** (Befreiung/Abweichung), nicht § 246e[^6].
 
@@ -114,7 +121,7 @@ Selbst innerhalb 100 m ist räumlicher Zusammenhang ausgeschlossen bei:
 |-------|----------|--------|
 | **Erforderlich?** | **Ja, zwingend** – auch wenn Gemeinde Bauaufsichtsbehörde ist[^2] | § 36a Abs. 1 S. 1 BauGB[^2] |
 | **Prüfkriterium** | Vereinbarkeit mit **städtebaulichen Vorstellungen der Gemeinde** (weites Ermessen, wie bei Planung)[^2] | § 36a Abs. 1 S. 2 BauGB[^2] |
-| **Bedingungen** | Zustimmung kann an Bedingungen geknüpft werden (z. B. ein Teil geförderte Wohnungen, Barrierefreiheit, Infrastrukturbeitrag)[^2] | § 36a Abs. 1 S. 3 BauGB[^2] |
+| **Bedingungen** | Zustimmung kann an Bedingungen geknüpft werden (z. B. Sozialwohnungsquote, Barrierefreiheit, Infrastrukturbeitrag)[^2] | § 36a Abs. 1 S. 3 BauGB[^2] |
 | **Frist** | 3 Monate; Fiktion bei Untätigkeit (gilt als erteilt)[^2] | § 36a Abs. 1 S. 4, § 36 Abs. 2 S. 2 BauGB[^2] |
 | **Verlängerung** | +1 Monat bei freiwilliger Öffentlichkeitsbeteiligung[^2] | § 36a Abs. 2 BauGB[^2] |
 | **Versagung einklagbar?** | **Nein** – Zustimmungsentscheidung nur im Rechtsbehelf gegen Baugenehmigung prüfbar[^2] | § 36a Abs. 3 BauGB[^2] |
@@ -142,7 +149,7 @@ Bei § 246e-Vorhaben im Außenbereich:
 2. **Benehmen** mit Naturschutzbehörde erforderlich[^1]
 3. **Umweltprüfung** läuft parallel[^1]
 
-**Brandenburg besonders:** Biosphärenreservate, Naturparks und FFH-Gebiete → erhöhte Anforderungen[^1]
+**Brandenburg besonders:** Biosphärenreservate (Spreewald, Schorfheide-Chorin), Naturparks, FFH-Gebiete → erhöhte Anforderungen[^1]
 
 **Quelle:**[^1]
 
@@ -285,9 +292,11 @@ Diese müssen **alle erfüllt** werden[^4]
 
 ### FAQ 7: Was kosten die Einsparungen durch § 246e?
 
-**Keine Planung** = keine Bebauungsplankosten (Planungsaufwand entfällt laut Gesetzesbegründung)[^1].
+**Keine Planung** = keine Bebauungsplankosten (HOAI § 21)[^1].
 
-**Orientierungswerte (nicht rechtsverbindlich):** Pro eingespartem Planverfahren laut Gesetzesbegründung Einsparungen möglich (Innenbereich niedriger, Außenbereich höher). Die Gesetzesbegründung schätzt bundesweit erhebliche Entlastungen (BT-Drs. 21/781, S. 2, S. 12–14)[^1].
+**Orientierungswerte (BT-Drs. 21/781, S. 14):**
+- Innenbereich: bis ~10.863 € gespart[^1]
+- Außenbereich: bis ~64.100 € gespart[^1]
 
 **Aber:** Baugenehmigungsverfahren + ggf. SUP + Naturschutzausgleich kosten trotzdem[^1]
 

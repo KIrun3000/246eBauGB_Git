@@ -1,143 +1,158 @@
 ---
-layout: ../layouts/ArticleLayout.astro
-title: "§246e BauGB Brandenburg – Grundlagen und Voraussetzungen"
-description: "Alle wichtigen Grundlagen zu §246e BauGB für private Grundstückseigentümer in Brandenburg. Was Sie wissen müssen, um im Außenbereich bauen zu können."
+layout: ../layouts/BaseLayout.astro
+title: "§ 246e BauGB in Brandenburg – Überblick, Voraussetzungen, Ablauf (Stand 2026)"
+description: "§ 246e BauGB (Bau-Turbo) in Brandenburg: Voraussetzungen, Außenbereich (räumlicher Zusammenhang / 100-m-Leitplanke aus der Begründung), Gemeindezustimmung (§ 36a), Naturschutz & Ablauf."
 ---
 
+import SourcesBox from '../components/SourcesBox.astro';
 import Disclaimer from '../components/Disclaimer.astro';
 
-## Einleitung
+export const primarySources = [
+  { label: 'BT-Drs. 21/781 (neu) – Gesetzesbegründung zu § 246e (u. a. 100-m-Leitplanke; Befristung bis 31.12.2030)', url: 'https://dserver.bundestag.de/btd/21/007/2100781.pdf' },
+  { label: '§ 246e BauGB – Gesetzestext', url: 'https://www.gesetze-im-internet.de/bbaug/__246e.html' },
+  { label: '§ 36a BauGB – Zustimmung der Gemeinde', url: 'https://www.gesetze-im-internet.de/bbaug/__36a.html' },
+  { label: '§ 35 BauGB – Außenbereich', url: 'https://www.gesetze-im-internet.de/bbaug/__35.html' },
+  { label: '§ 34 BauGB – Innenbereich', url: 'https://www.gesetze-im-internet.de/bbaug/__34.html' },
+];
 
-Der Paragraf 246e im Baugesetzbuch (BauGB) ist eine befristete Sonderregelung, die privaten Grundstückseigentümern in Brandenburg unter bestimmten Voraussetzungen ermöglicht, im Außenbereich Wohngebäude zu errichten. Diese Seite bietet Ihnen einen umfassenden Überblick über die rechtlichen Grundlagen und praktischen Aspekte.
+export const secondarySources = [
+  { label: 'BMWSB – Bau-Turbo: Informationen für Privatpersonen (Bauherren/Baufrauen)', url: 'https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html' },
+  { label: 'Baukammer Berlin – Überblick/Einordnung zum Bau-Turbo (Kontext)', url: 'https://www.baukammerberlin.de/aktuelles/baurecht/der-bau-turbo-ist-da-das-gibt-es-dazu-zu-wissen.html' },
+  { label: 'Hauptstadtregion Berlin-Brandenburg – Verwaltungsstruktur (14 Landkreise, 4 kreisfreie Städte) (Kontext)', url: 'https://www.berlin-brandenburg.de/kommunalfinanzen/' },
+  { label: 'MIL Brandenburg – Presseinfo zur Mietpreisbegrenzung (Kontext, nicht Voraussetzung für § 246e)', url: 'https://mil.brandenburg.de/mil/de/presse/detail/~03-12-2025-mietpreisbremse' },
+];
 
-## Was ist §246e BauGB?
+<div class="pillar-page">
 
-§246e BauGB wurde als zeitlich befristete Regelung eingeführt, um den Wohnungsbau in ländlichen Regionen zu fördern und bestehende Außenbereichsgrundstücke einer sinnvollen Nutzung zuzuführen.
+# § 246e BauGB in Brandenburg
 
-### Zentrale Merkmale
+**Überblick, Voraussetzungen und Ablauf (Stand: Januar 2026)**
 
-- **Befristung**: Die Regelung gilt nur bis zu einem festgelegten Datum
-- **Außenbereich**: Betrifft Grundstücke außerhalb zusammenhängend bebauter Ortsteile
-- **Wohnnutzung**: Ausschließlich für Wohnbebauung, keine gewerbliche Nutzung
-- **Gemeinde-Zustimmung**: Zwingende Voraussetzung für jedes Bauvorhaben
+*Rechtshinweis: Keine Rechtsberatung; siehe [Disclaimer](#disclaimer) am Ende.*
 
-## Gesetzliche Voraussetzungen
+---
 
-### 1. Räumlicher Zusammenhang (100m-Regel)
+## Worum geht es bei § 246e?
 
-Das Grundstück muss im räumlichen Zusammenhang zu einem im Zusammenhang bebauten Ortsteil stehen. In der Regel bedeutet dies eine maximale Entfernung von 100 Metern.
+§ 246e BauGB ist eine **befristete Sonderregelung** („Bau-Turbo") zur **Erleichterung von Wohnraumvorhaben**. In der Gesetzesbegründung wird die Vorschrift als **bis 31. Dezember 2030 befristet** eingeordnet.
 
-**Mehr Details**: [100m-Regel & räumlicher Zusammenhang](/100m-regel-raeumlicher-zusammenhang)
+---
 
-### 2. Keine Beeinträchtigung öffentlicher Belange
+<div class="highlight-box">
 
-Das Bauvorhaben darf keine öffentlichen Belange beeinträchtigen, insbesondere:
+## Die zwei wichtigsten Gatekeeper
 
-- Naturschutz und Landschaftspflege
-- Belange des Umweltschutzes
-- Belange der Raumordnung
-- Belange der Denkmalpflege
+1) **Gemeindezustimmung (§ 36a BauGB)**: Ohne Zustimmung der Gemeinde geht es nicht.
 
-### 3. Gemeindliche Zustimmung
+2) **Außenbereich nur mit „räumlichem Zusammenhang" (§ 246e Abs. 3 BauGB)**: Für Außenbereichsvorhaben brauchst du zusätzlich den räumlichen Zusammenhang. Die Begründung enthält dafür die **100-m-Leitplanke**.
 
-Die Gemeinde muss dem Bauvorhaben ausdrücklich zustimmen. Diese Zustimmung ist eine eigenständige Entscheidung und Teil des Baugenehmigungsverfahrens.
+</div>
 
-**Mehr zum Verfahren**: [Gemeinde-Zustimmung](/zustimmung-gemeinde-246e)
+---
 
-## Besonderheiten in Brandenburg
+## Zuständigkeiten in Brandenburg (kurz)
 
-Brandenburg als Flächenland weist einige Besonderheiten auf:
+Brandenburg hat **14 Landkreise und 4 kreisfreie Städte**. In der Praxis laufen Bauanträge und Vorabklärungen typischerweise über die **untere Bauaufsichtsbehörde** (Landkreis bzw. kreisfreie Stadt). Parallel ist die **Gemeinde** wegen § 36a zwingend eingebunden.
 
-- Viele kleine Ortschaften mit lockerer Bebauungsstruktur
-- Unterschiedliche Handhabung der Regelung je nach Landkreis und Gemeinde
-- Besondere Anforderungen durch Natur- und Landschaftsschutz
-- Brandenburger Landesbauordnung zusätzlich zu beachten
+---
 
-**Mehr Details**: [Außenbereich in Brandenburg](/aussenbereich-brandenburg-246e)
+## Innenbereich vs. Außenbereich
 
-## Ablauf eines Bauvorhabens
+### Innenbereich (typisch § 34 / § 30 BauGB)
+- § 246e kann eine Rolle spielen, wenn planungsrechtliche Hürden für Wohnraumvorhaben adressiert werden.
+- Andere Anforderungen (Bauordnungsrecht, Erschließung, Nachbarrechte etc.) bleiben grundsätzlich bestehen.
 
-### Phase 1: Vorabklärung
+### Außenbereich (§ 35 BauGB) – nur unter zusätzlichen Voraussetzungen
+Kernpunkt: **„räumlicher Zusammenhang"** zu einem Bereich nach § 30 Abs. 1/2 BauGB oder § 34 BauGB.
 
-- Prüfen Sie, ob Ihr Grundstück im Außenbereich liegt
-- Messen Sie die Entfernung zur Ortslage
-- Recherchieren Sie potenzielle öffentliche Belange (Naturschutz, etc.)
+➡️ Vertiefung: **[100-m-Leitplanke & räumlicher Zusammenhang](/100m-regel-raeumlicher-zusammenhang/)**
 
-### Phase 2: Erstkontakt mit der Gemeinde
+---
 
-- Kontaktieren Sie die Gemeinde für ein informelles Vorgespräch
-- Legen Sie Ihre Pläne dar
-- Erfragen Sie die Position der Gemeinde
+## 100-m-Leitplanke (korrekt framed)
 
-### Phase 3: Formaler Antrag
+Die **100 Meter** stehen **nicht** im Gesetzestext, sondern in der **Gesetzesbegründung (BT-Drs. 21/781, S. 28)**.
 
-- Stellen Sie einen formalen Antrag auf Zustimmung nach §246e BauGB
-- Reichen Sie erforderliche Unterlagen ein (Lageplan, Bauzeichnungen, etc.)
+> „Ab einer Entfernung von mehr als 100 Metern vom bestehenden Siedlungsbereich wird man aber in jedem Fall nicht mehr vom Vorliegen eines räumlichen Zusammenhangs ausgehen können."
+>
+> *— BT-Drs. 21/781, S. 28*
 
-### Phase 4: Baugenehmigungsverfahren
+**Praktische Bedeutung:**
+- **0–100 m:** keine Automatik – **Einzelfallprüfung** erforderlich
+- **>100 m:** nach der Gesetzesbegründung **„in jedem Fall"** kein räumlicher Zusammenhang
 
-- Nach Zustimmung der Gemeinde: reguläres Baugenehmigungsverfahren
-- Prüfung durch die Bauaufsichtsbehörde
-- Bei positiver Entscheidung: Erteilung der Baugenehmigung
+---
 
-## Was Sie beachten sollten
+## Gemeindezustimmung (§ 36a) – was du planen solltest
 
-### Erschließung
+Die Gemeinde hat ein eigenes Prüf- und Entscheidungselement. Selbst wenn die Bauaufsicht das Vorhaben grundsätzlich für möglich hält, kann die Gemeinde die Zustimmung versagen.
 
-Die Erschließung muss gesichert sein:
+➡️ Vertiefung: **[Gemeindezustimmung & Vorgehen](/zustimmung-gemeinde-246e/)**
 
-- **Verkehrsanbindung**: Zufahrt zum Grundstück
-- **Wasserversorgung**: Trinkwasseranschluss oder Brunnen
-- **Abwasserentsorgung**: Kanalanschluss oder Kleinkläranlage
-- **Energieversorgung**: Strom, ggf. Gas
+---
 
-### Kosten
+## Naturschutz & Kompensation (Außenbereich)
 
-Berücksichtigen Sie alle Kosten:
+Bei Außenbereichsvorhaben kommen typischerweise zusätzliche Punkte dazu:
+- Einbindung der Naturschutzbehörde (je nach Konstellation)
+- Anforderungen aus Naturschutzrecht (z. B. Eingriffsregelung)
 
-- Grundstückskauf (falls noch nicht vorhanden)
-- Erschließungskosten (können erheblich sein!)
-- Planungskosten (Architekt, Statiker, etc.)
-- Antragsgebühren
-- Baukosten
-- Anwalts- und Beratungskosten
+---
 
-### Zeitplanung
+## Ablauf in der Praxis (robuste Schrittfolge)
 
-- Vorabklärung: 2-4 Wochen
-- Gemeinde-Zustimmung: 2-6 Monate
-- Baugenehmigung: 3-6 Monate
-- **Gesamt**: Rechnen Sie mit mindestens 6-12 Monaten vor Baubeginn
+1) **Lage klären**: Innen-/Außenbereich? Planungsrechtliche Einordnung.
+2) **Kurz-Dossier**: Lageplan, Bezug zur Bebauung, Erschließung, kurze Fotodoku.
+3) **Frühgespräch Gemeinde** (wegen § 36a).
+4) **Vorab-Klärung Bauaufsicht** (Außenbereich: räumlicher Zusammenhang + Erschließung).
+5) **Naturschutz-Screening** (Außenbereich): Schutzkulissen/Eingriffsregelung grob vorprüfen.
+6) **Erst dann** Antrag/Verfahren.
 
-## Häufige Fragen (FAQ)
+---
 
-### Gilt §246e BauGB für alle Außenbereichsgrundstücke in Brandenburg?
+## Häufige Missverständnisse
 
-Nein. Das Grundstück muss im räumlichen Zusammenhang zur Ortslage stehen und darf keine öffentlichen Belange beeinträchtigen.
+- **„100 m = automatisch ok"** → Nein. Unter 100 m bleibt es Einzelfall.
+- **„Ohne Gemeinde geht trotzdem"** → Nein. § 36a ist zwingend.
+- **„Mietpreisbremse/§ 201a entscheidet § 246e"** → § 246e enthält im Gesetzestext keinen Tatbestandsverweis auf „angespannte Wohnungsmärkte". Solche Infos höchstens als Kontext verwenden – sauber trennen.
 
-### Kann ich ein bestehendes Gebäude erweitern?
+---
 
-§246e BauGB regelt primär Neubauten. Für Erweiterungen bestehender Gebäude gelten andere Regelungen.
+## Weiterführende Pillars
 
-### Wie verbindlich ist eine positive Vorabauskunft der Gemeinde?
+- **Räumlicher Zusammenhang & 100-m-Leitplanke:** /100m-regel-raeumlicher-zusammenhang/
+- **Außenbereich – Check & Stolpersteine:** /aussenbereich-brandenburg-246e/
+- **Gemeindezustimmung – Vorgehen & Argumentation:** /zustimmung-gemeinde-246e/
 
-Eine informelle Auskunft ist nicht rechtsverbindlich. Erst die formale Zustimmung nach §246e BauGB ist maßgeblich.
+---
 
-### Was passiert nach Ablauf der Befristung?
+<SourcesBox primarySources={primarySources} secondarySources={secondarySources} />
 
-Nach Ablauf der Befristung gilt wieder das reguläre Baurecht. Bereits erteilte Baugenehmigungen behalten ihre Gültigkeit.
+<div id="disclaimer">
+  <Disclaimer />
+</div>
 
-### Brauche ich einen Anwalt?
+</div>
 
-Rechtlich nicht zwingend, aber dringend empfohlen. Ein Fachanwalt für Baurecht kann Ihre Erfolgschancen erheblich verbessern.
-
-## Weitere Informationen
-
-Vertiefen Sie Ihr Wissen mit unseren spezialisierten Artikeln:
-
-- [100m-Regel & räumlicher Zusammenhang](/100m-regel-raeumlicher-zusammenhang)
-- [Außenbereich in Brandenburg](/aussenbereich-brandenburg-246e)
-- [Gemeinde-Zustimmung](/zustimmung-gemeinde-246e)
-- [Blog mit aktuellen Artikeln](/blog)
-
-<Disclaimer />
+<style>{`
+  .pillar-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    line-height: 1.7;
+  }
+  .highlight-box {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  blockquote {
+    margin: 1.5rem 0;
+    padding: 1.25rem 1.5rem;
+    background-color: #e7f3ff;
+    border-left: 4px solid #0066cc;
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+`}</style>

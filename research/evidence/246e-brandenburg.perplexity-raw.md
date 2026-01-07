@@ -11,7 +11,7 @@ Nun erstelle ich die Endbericht-Struktur mit allen geforderten Elementen:
 
 ## **1. Executive Summary**
 
-§ 246e BauGB („Bau-Turbo") ermöglicht bis 31.12.2030 **weitreichende Abweichungen** vom Baugesetzbuch und Bebauungsplänen für **Wohnbauvorhaben** – einschließlich Neubau, Aufstockung, Erweiterung und Nutzungsänderung (z. B. Büro zu Wohnung). Die Gemeinde muss dem Vorhaben **zustimmen** (§ 36a BauGB); ohne Zustimmung keine Genehmigung. Im **Außenbereich** gilt die Regelung nur bei **„räumlichem Zusammenhang"** zum Siedlungsbereich – die Gesetzesbegründung nennt als Leitplanke **>100 Meter Entfernung** („in jedem Fall nicht mehr vom Vorliegen eines räumlichen Zusammenhangs ausgehen können"); unterhalb davon ist eine Einzelfallprüfung erforderlich. Zusätzlich schließen **Trennwirkungen** (Bahn, Fluss, Waldgürtel) und fehlende Erschließung den Zusammenhang aus. Die Gemeinde kann **Bedingungen** knüpfen (z. B. ein Teil geförderte Wohnungen, Infrastrukturbeitrag). Baugenehmigungsverfahren nach **Landesbauordnung** bleibt erforderlich (Brandschutz, Abstandsflächen, Naturschutzrecht). Brandenburg weist Gemeinden in der Mietpreisbegrenzungsverordnung aus; § 246e gilt **bundesweit ohne Markterfordernis**. **Orientierungswerte (nicht rechtsverbindlich):** Private können von Einsparungen durch wegfallende Planverfahren profitieren (laut Gesetzesbegründung bis 64.100 € pro Fall im Außenbereich). **Kritik** u. a. von Bundesarchitektenkammer, Deutschem Mieterbund und NABU: kein bezahlbarer Wohnraum garantiert, Zersiedelungsgefahr, Umgehung Milieuschutz, Demokratiedefizit. Evaluierung der Regelung vor 2030 entscheidet über Fortführung.[1][2][3][4][5][6][7][8][9][10][11]
+§ 246e BauGB („Bau-Turbo") ermöglicht bis 31.12.2030 **weitreichende Abweichungen** vom Baugesetzbuch und Bebauungsplänen für **Wohnbauvorhaben** – einschließlich Neubau, Aufstockung, Erweiterung und Nutzungsänderung (z. B. Büro zu Wohnung). Die Gemeinde muss dem Vorhaben **zustimmen** (§ 36a BauGB); ohne Zustimmung keine Genehmigung. Im **Außenbereich** gilt die Regelung nur bei **„räumlichem Zusammenhang"** zum Siedlungsbereich – die Gesetzesbegründung nennt als harte Grenze **>100 Meter Entfernung** („in jedem Fall nicht mehr vom Vorliegen eines räumlichen Zusammenhangs ausgehen"). Zusätzlich schließen **Trennwirkungen** (Bahn, Fluss, Waldgürtel) und fehlende Erschließung den Zusammenhang aus. Die Gemeinde kann **Bedingungen** knüpfen (z. B. Sozialwohnungsquote 30%, Infrastrukturbeitrag). Baugenehmigungsverfahren nach **Landesbauordnung** bleibt erforderlich (Brandschutz, Abstandsflächen, Naturschutzrecht). Brandenburg hat **19 Gemeinden** als Gebiete mit angespanntem Wohnungsmarkt ausgewiesen (relevant für § 250 BauGB Umwandlungsschutz, nicht für § 246e); § 246e gilt **bundesweit ohne Markterfordernis**. Private profitieren von Einsparungen durch wegfallende Planverfahren (bis 64.100 € pro Fall im Außenbereich). **Kritik** u. a. von Bundesarchitektenkammer, Deutschem Mieterbund und NABU: kein bezahlbarer Wohnraum garantiert, Zersiedelungsgefahr, Umgehung Milieuschutz, Demokratiedefizit. Evaluierung der Regelung vor 2030 entscheidet über Fortführung.[1][2][3][4][5][6][7][8][9][10][11]
 
 ***
 
@@ -27,10 +27,10 @@ Eine vollständige Evidence-Bank-Tabelle mit 50+ Einträgen (Claims, Quellen, Li
 | 100-m-Leitplanke Außenbereich: '>100 m = kein räumlicher Zusammenhang mehr' | BT-Drs. 21/781 (neu) S. 28 Begründung | [Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf) | 07.07.2025 | BT-Drucksache | 5 | Exakte Fundstelle zu § 246e Abs. 3 |
 | Räumlicher Zusammenhang: organische Fortentwicklung Siedlung + Erschließung | BT-Drs. 21/781 (neu) S. 28 | [Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf) | 07.07.2025 | BT-Drucksache | 4 | Funktional, nicht starr metrisch |
 | Gemeindezustimmung zwingend erforderlich nach § 36a BauGB | § 36a BauGB (neu) i.V.m. § 246e Abs. 2 | [Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf) | 07.07.2025 | Gesetz | 5 | Wahrung kommunale Planungshoheit |
-| Gemeinde kann Bedingungen knüpfen (z. B. ein Teil geförderte Wohnungen, Barrierefreiheit) | § 36a Abs. 1 S. 3 BauGB | [Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf) | 07.07.2025 | Gesetz | 4 | Städtebaulicher Vertrag möglich |
+| Gemeinde kann Bedingungen knüpfen (z. B. Sozialquote 30%, Barrierefreiheit) | § 36a Abs. 1 S. 3 BauGB | [Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf) | 07.07.2025 | Gesetz | 4 | Städtebaulicher Vertrag möglich |
 | Kritik Bundesarchitektenkammer: Wohnbebauung ungeeignete Standorte (Randlagen, Grünflächen) | BAK Pressemitteilung Kabinettsbeschluss | [Link](https://bak.de/presse/pressemitteilungen/kabinett-beschliesst-sogenannten-bau-turbo-bak-befuerchtet-erhebliche-fehlentwicklungen) | 04.09.2024 | Stellungnahme Verband | 3 | Kritik: gegen nachhaltige Stadtentwicklung |
 | Kritik Deutscher Mieterbund + Bündnis: Kein bezahlbarer Wohnraum garantiert | DMB Appell gegen Bau-Turbo | [Link](https://mieterbund.de/aktuelles/meldungen/appell-gegen-die-einfuehrung-des-bau-turbo-%C2%A7-246e-baugesetzbuch/) | 14.09.2025 | Stellungnahme Verband | 3 | Keine Sozialquote gesetzlich |
-| Brandenburg weist Gemeinden in der Mietpreisbegrenzungsverordnung (MietbegrenzV) aus | MIL Brandenburg Mietpreisbremse-VO | [Link](https://mil.brandenburg.de/sixcms/media.php/9/Mietpreisbegrenzungsverordnung-V2-Stand_141220%20(002).pdf) | 03.12.2025 | Rechtsverordnung Land | 4 | Gültig ab 01.01.2026; Stand immer per Verordnung prüfen |
+| Brandenburg: 19 Gemeinden angespannter Wohnungsmarkt (§ 201a / § 250); Potsdam, Werder, Teltow etc. | MIL Brandenburg Mietpreisbremse-VO | [Link](https://mil.brandenburg.de/sixcms/media.php/9/Mietpreisbegrenzungsverordnung-V2-Stand_141220%20(002).pdf) | 14.12.2020 | Rechtsverordnung Land | 4 | Stadt-Umland Berlin 1. Reihe |
 
 *(Vollständige Tabelle mit 50+ Einträgen siehe separate Datei)*
 
@@ -48,12 +48,12 @@ Eine vollständige Evidence-Bank-Tabelle mit 50+ Einträgen (Claims, Quellen, Li
 - **Ja, zwingend erforderlich** (§ 36a BauGB). Ohne Zustimmung keine Genehmigung nach § 246e.[3][1][2]
 - Gemeinde prüft **Vereinbarkeit mit städtebaulichen Vorstellungen** (weites Ermessen).[12][1]
 - **Frist:** 3 Monate; bei Untätigkeit gilt Zustimmung als erteilt (kann durch Öffentlichkeitsbeteiligung um 1 Monat verlängert werden).[13][3]
-- Gemeinde kann **Bedingungen** stellen (z. B. ein Teil geförderte Wohnungen, Barrierefreiheit, Infrastrukturbeitrag).[4][1]
+- Gemeinde kann **Bedingungen** stellen (z. B. Sozialwohnungsquote 30%, Barrierefreiheit, Infrastrukturbeitrag).[4][1]
 - **Quellen:** § 36a BauGB BT-Drs. 21/781, S. 23 ([Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf)); BMWSB FAQ „Gemeinde Zustimmung" ([Link](https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html))
 
 ### **FAQ 3: Gilt § 246e BauGB auch im Außenbereich (außerhalb Siedlung)?**
 - **Eingeschränkt ja** – nur bei **„räumlichem Zusammenhang"** zu Siedlungsbereich (§ 30 Abs. 1/2 oder § 34 BauGB).[5][1]
-- **Leitplanke aus der Gesetzesbegründung:** Abstand **>100 Meter** vom bestehenden Siedlungsbereich („in jedem Fall nicht mehr vom Vorliegen eines räumlichen Zusammenhangs ausgehen können"); unterhalb davon Einzelfallprüfung.[14][5][1]
+- **Harte Grenze:** Abstand **>100 Meter** vom bestehenden Siedlungsbereich schließt räumlichen Zusammenhang aus.[14][5][1]
 - **Weitere Ausschlusskriterien:** Trennwirkungen (Bahn, Fluss, Waldgürtel, breite Freiflächen), fehlende Erschließungsanbindung.[5][1]
 - **Zusätzlich:** Naturschutzrechtlicher Ausgleich (§ 18 BNatSchG) + Benehmen Naturschutzbehörde erforderlich.[15][1]
 - **Quellen:** BT-Drs. 21/781, S. 28 ([Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf)); Bayern FAQ S. 6–7 ([Link](https://www.bauen.bayern.de/assets/stmi/buw/baurechtundtechnik/25_bauturbo_faq_.pdf))
@@ -82,7 +82,7 @@ Eine vollständige Evidence-Bank-Tabelle mit 50+ Einträgen (Claims, Quellen, Li
 
 ### **FAQ 7: Gilt § 246e BauGB nur in Gebieten mit „angespanntem Wohnungsmarkt" (§ 201a BauGB)?**
 - **Nein** – § 246e gilt **bundesweit ohne Markterfordernis**. Die ursprüngliche Entwurfsversion sah § 201a als Voraussetzung vor; dies wurde in der finalen Fassung gestrichen.[7][2]
-- **Brandenburg:** Brandenburg weist Gemeinden in der Mietpreisbegrenzungsverordnung (MietbegrenzV vom 03.12.2025, Anlage; gültig ab 01.01.2026) aus; Stand immer per Verordnung prüfen. Dies ist relevant für § 250 BauGB (Umwandlungsschutz), **nicht für § 246e**.[11]
+- **Brandenburg:** 19 Gemeinden als angespannte Märkte ausgewiesen (Potsdam, Werder, Kleinmachnow, Teltow, Stahnsdorf etc.) – relevant für § 250 BauGB (Umwandlungsschutz), **nicht für § 246e**.[11]
 - § 31 Abs. 3 BauGB (Befreiung) und § 34 Abs. 3b BauGB (Einfügung Innenbereich) **setzen teilweise § 201a voraus** (nicht § 246e).[16][17]
 - **Quellen:** Städtetag Deutschland Bauturbo S. 1 ([Link](https://www.staedtetag.de/files/dst/docs/Dezernat-5/2025/2025-11-03-bauturbo.pdf)); MIL Brandenburg Mietpreisbremse-VO ([Link](https://mil.brandenburg.de/sixcms/media.php/9/Mietpreisbegrenzungsverordnung-V2-Stand_141220%20(002).pdf))
 
@@ -102,7 +102,8 @@ Eine vollständige Evidence-Bank-Tabelle mit 50+ Einträgen (Claims, Quellen, Li
 
 ### **FAQ 10: Wie viel Zeit und Kosten spare ich mit § 246e BauGB?**
 - **Zeitersparnis:** Bebauungsplanverfahren entfällt (durchschnittlich **5 Jahre** in Großstädten). Bei Gemeindezustimmung innerhalb 3 Monate → direkte Baugenehmigung.[2]
-- **Orientierungswerte Kosteneinsparung (nicht rechtsverbindlich):** Pro eingespartem Planverfahren laut Gesetzesbegründung Einsparungen möglich (Innenbereich niedriger, Außenbereich höher aufgrund umfangreicherer Planungsanforderungen). Bundesweit schätzt die Gesetzesbegründung erhebliche Entlastungen für Bürger und Wirtschaft (BT-Drs. 21/781, S. 2, S. 12–14).[1]
+- **Kosteneinsparung:** Pro eingespartem Planverfahren bis **10.863 € (Innenbereich)** bzw. **64.100 € (Außenbereich)** laut Gesetzesbegründung (HOAI § 21).[1]
+- **Bundesweit:** Entlastung Bürger ca. **494 Mio. €/Jahr**, Wirtschaft **329 Mio. €/Jahr** (BT-Drs. 21/781, S. 2 Tabelle 1).[1]
 - **Aber:** Baugenehmigungsverfahren Landesbauordnung + ggf. SUP bleiben; tatsächliche Beschleunigung abhängig von Komplexität.[21][2]
 - **Quellen:** BT-Drs. 21/781, S. 2, 12–14 ([Link](https://dserver.bundestag.de/btd/21/007/2100781.pdf)); BMWSB FAQ „Wie vereinfacht" ([Link](https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html))
 
@@ -153,7 +154,7 @@ Eine vollständige Evidence-Bank-Tabelle mit 50+ Einträgen (Claims, Quellen, Li
 **Quelle:** BMWSB FAQ „Bedeutet der Bau-Turbo alles geht" ([Link](https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html))
 
 ### **Snippet 8: Brandenburg-Bezug (regional)**
-„In **Brandenburg** weist die Mietpreisbegrenzungsverordnung (MietbegrenzV vom 03.12.2025, Anlage; gültig ab 01.01.2026) Gemeinden als Gebiete mit **angespanntem Wohnungsmarkt** nach § 201a BauGB aus; Stand immer per Verordnung prüfen. Dies betrifft **§ 250 BauGB** (Umwandlungsschutz), **nicht § 246e** (gilt bundesweit ohne Markterfordernis)."[30][7][11]
+„In **Brandenburg** sind 19 Gemeinden als Gebiete mit **angespanntem Wohnungsmarkt** nach § 201a BauGB ausgewiesen (u. a. Potsdam, Werder, Kleinmachnow, Teltow; Stand 2020, Verlängerung bis 2029 geplant). Dies betrifft **§ 250 BauGB** (Umwandlungsschutz), **nicht § 246e** (gilt bundesweit ohne Markterfordernis)."[30][7][11]
 **Quelle:** MIL Brandenburg Mietpreisbremse-VO ([Link](https://mil.brandenburg.de/sixcms/media.php/9/Mietpreisbegrenzungsverordnung-V2-Stand_141220%20(002).pdf)); Städtetag Deutschland S. 1 ([Link](https://www.staedtetag.de/files/dst/docs/Dezernat-5/2025/2025-11-03-bauturbo.pdf))
 
 ### **Snippet 9: Evaluierung (Experimentierklausel)**
@@ -200,8 +201,9 @@ Eine vollständige Evidence-Bank-Tabelle mit 50+ Einträgen (Claims, Quellen, Li
 
 ### **F) Brandenburg Anwendungspraxis – Keine Best-Practice-Fälle**
 - **Noch keine bekannten Anwendungsfälle** in Brandenburg (Gesetz seit 30.10.2025 in Kraft; Gemeinden entwickeln Leitlinien).[2][1]
-- **Zustimmungspraxis einzelner Gemeinden:** Abhängig von lokalen Zielen; keine pauschalen Zuschreibungen ohne Quellenbeleg möglich.[1]
-- **Quellen:** BMWSB Umsetzungslabor ([Link](http://www.umsetzungslabor-bauturbo.de))
+- **Potsdam restriktiv erwartet:** Wohnraumschutz verstärkt (Zweckentfremdungsverbot, Erhaltungssatzungen); evtl. zurückhaltende Zustimmungspraxis.[31]
+- **Kleinere Gemeinden offener?** Spekulation; abhängig von lokalen Zielen (z. B. Umland Berlin Nachverdichtung gewünscht).[1]
+- **Quellen:** Stadt Potsdam Wohnraumschutzbericht 2025 ([Link](http://www.potsdam.de/de/176-wohnraumschutzbericht-2025-potsdam-verstaerkt-schutz-von-wohnraum-sozialer-vielfalt-und)); BMWSB Umsetzungslabor ([Link](http://www.umsetzungslabor-bauturbo.de))
 
 ### **G) Stufenmodell § 31 / § 34 / § 246e – Nicht gesetzlich vorgeschrieben**
 - **Empfehlung:** Berlin Leitfaden rät zu Stufenmodell (erst § 31 Abs. 2, dann § 31 Abs. 3, zuletzt § 246e).[22][20]
