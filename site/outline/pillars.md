@@ -294,9 +294,7 @@ Diese müssen **alle erfüllt** werden[^4]
 
 **Keine Planung** = keine Bebauungsplankosten (Planungsaufwand entfällt laut Gesetzesbegründung)[^1].
 
-**Orientierungswerte (BT-Drs. 21/781, S. 14):**
-- Innenbereich: bis ~10.863 € gespart[^1]
-- Außenbereich: bis ~64.100 € gespart[^1]
+**Orientierungswerte (nicht rechtsverbindlich):** Pro eingespartem Planverfahren laut Gesetzesbegründung Einsparungen möglich (Innenbereich niedriger, Außenbereich höher). Die Gesetzesbegründung schätzt bundesweit erhebliche Entlastungen (BT-Drs. 21/781, S. 2, S. 12–14)[^1].
 
 **Aber:** Baugenehmigungsverfahren + ggf. SUP + Naturschutzausgleich kosten trotzdem[^1]
 
