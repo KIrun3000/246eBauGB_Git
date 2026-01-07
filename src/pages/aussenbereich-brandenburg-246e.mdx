@@ -1,225 +1,272 @@
 ---
-layout: ../layouts/ArticleLayout.astro
-title: "Außenbereich Brandenburg und §246e BauGB"
-description: "Was bedeutet Außenbereich in Brandenburg? Besonderheiten, Regelungen und Anforderungen für Bauvorhaben nach §246e BauGB im brandenburgischen Außenbereich."
+layout: ../layouts/BaseLayout.astro
+title: "Außenbereich Brandenburg – §246e BauGB Check & Stolpersteine"
+description: "Außenbereich nach § 35 BauGB in Brandenburg: Was ist erlaubt? Räumlicher Zusammenhang, Erschließung, Naturschutz und praktische Prüfschritte für § 246e BauGB."
 ---
 
+import SourcesBox from '../components/SourcesBox.astro';
 import Disclaimer from '../components/Disclaimer.astro';
 
-## Einleitung
+export const primarySources = [
+  { label: '§ 35 BauGB – Bauen im Außenbereich', url: 'https://www.gesetze-im-internet.de/bbaug/__35.html' },
+  { label: '§ 246e BauGB – Gesetzestext', url: 'https://www.gesetze-im-internet.de/bbaug/__246e.html' },
+  { label: 'BT-Drs. 21/781 – Gesetzesbegründung zu § 246e (u. a. 100-m-Leitplanke)', url: 'https://dserver.bundestag.de/btd/21/007/2100781.pdf' },
+  { label: '§ 36a BauGB – Zustimmung der Gemeinde', url: 'https://www.gesetze-im-internet.de/bbaug/__36a.html' },
+];
 
-Der Begriff "Außenbereich" ist im Baurecht zentral. Er bezeichnet alle Flächen, die nicht zum Innenbereich oder zu Gebieten mit Bebauungsplan gehören. In Brandenburg mit seiner dünn besiedelten Fläche und vielen kleinen Ortschaften ist die Abgrenzung des Außenbereichs oft komplex.
+export const secondarySources = [
+  { label: 'BMWSB – Bau-Turbo: Informationen für Privatpersonen', url: 'https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html' },
+];
 
-Dieser Artikel erklärt, was den Außenbereich in Brandenburg auszeichnet und welche Besonderheiten bei §246e BauGB zu beachten sind.
+<div class="pillar-page">
+
+# Außenbereich Brandenburg & § 246e BauGB
+
+**Check, Stolpersteine und Prüfschritte (Stand: Januar 2026)**
+
+*Rechtshinweis: Keine Rechtsberatung; siehe [Disclaimer](#disclaimer) am Ende.*
+
+---
 
 ## Was ist der Außenbereich?
 
-### Definition
+### Definition (§ 35 BauGB)
 
-Der Außenbereich umfasst nach §35 BauGB alle Grundstücke, die nicht im Geltungsbereich eines Bebauungsplans oder im Innenbereich (§34 BauGB) liegen.
+Der **Außenbereich** umfasst alle Grundstücke, die **nicht** im Geltungsbereich eines Bebauungsplans (§ 30 BauGB) oder im unbeplanten Innenbereich (§ 34 BauGB) liegen.
 
-**Typische Merkmale**:
+**Typische Merkmale:**
 
 - Landwirtschaftlich genutzte Flächen
 - Wald- und Naturgebiete
 - Einzelne, isoliert stehende Gebäude
 - Bereiche außerhalb geschlossener Ortschaften
 
-### Bauen im Außenbereich – normalerweise
+### Bauen im Außenbereich – Normalfall
 
-Im regulären Außenbereich ist das Bauen stark eingeschränkt. Grundsätzlich sind nur privilegierte Vorhaben zulässig:
+Im regulären Außenbereich (§ 35 BauGB) ist das Bauen stark eingeschränkt. Grundsätzlich sind nur **privilegierte Vorhaben** zulässig:
 
-- Land- und forstwirtschaftliche Betriebe
-- Öffentliche Versorgungsbetriebe (z.B. Windkraftanlagen)
+- Land- und forstwirtschaftliche Betriebe (§ 35 Abs. 1 Nr. 1 BauGB)
+- Öffentliche Versorgungsbetriebe (z. B. Windkraft, § 35 Abs. 1 Nr. 5 BauGB)
 - Bestimmte ortsgebundene Gewerbebetriebe
 
-Wohngebäude sind im Außenbereich normalerweise **nicht** zulässig – hier setzt §246e BauGB an.
+**Wohngebäude sind im Außenbereich normalerweise nicht zulässig** – hier setzt § 246e BauGB an.
 
-## Brandenburg: Ein Flächenland mit Besonderheiten
+---
 
-### Geografische Charakteristika
+## § 246e BauGB im Außenbereich
 
-Brandenburg ist mit ca. 30.000 km² das größte der neuen Bundesländer und sehr dünn besiedelt:
+### Wann greift § 246e BauGB?
 
-- Viele kleine Dörfer und Weiler
-- Große landwirtschaftliche Flächen
-- Ausgedehnte Wald- und Naturgebiete
-- Lockere Siedlungsstrukturen
+§ 246e Abs. 3 BauGB ermöglicht Wohnbebauung im Außenbereich unter folgenden Voraussetzungen:
 
-### Historisch gewachsene Strukturen
+1. **Räumlicher Zusammenhang** zu einem Bereich nach § 30 Abs. 1/2 BauGB oder § 34 BauGB
+2. **Keine Beeinträchtigung** öffentlicher Belange (§ 35 Abs. 3 BauGB)
+3. **Gemeindezustimmung** (§ 36a BauGB)
 
-Viele Siedlungen in Brandenburg sind historisch gewachsen und weisen besondere Merkmale auf:
+➡️ **Vertiefung:** [100-m-Leitplanke & räumlicher Zusammenhang](/100m-regel-raeumlicher-zusammenhang/)
 
-- **Angerdörfer**: Typische Dorfform mit zentralem Anger
-- **Straßendörfer**: Bebauung entlang einer Hauptstraße
-- **Streusiedlungen**: Verstreute Einzelgehöfte
+### 100-m-Leitplanke (aus der Gesetzesbegründung)
 
-Diese historischen Strukturen erschweren oft die klare Abgrenzung zwischen Innen- und Außenbereich.
+Die **100 Meter** stehen **nicht** im Gesetzestext, sondern in der **Gesetzesbegründung (BT-Drs. 21/781, S. 28)**:
 
-## Rechtliche Besonderheiten in Brandenburg
+> Ab einer Entfernung von mehr als 100 Metern vom bestehenden Siedlungsbereich wird man aber in jedem Fall nicht mehr vom Vorliegen eines räumlichen Zusammenhangs ausgehen können.
 
-### Landesbauordnung
+**Praktisch:**
 
-Zusätzlich zum Bundesbaurecht gilt in Brandenburg die Brandenburgische Bauordnung (BbgBO). Sie enthält zusätzliche Anforderungen:
+- **0–100 m:** Einzelfallprüfung (funktionale Kriterien: Erschließung, Sichtbeziehungen, Trennwirkungen)
+- **>100 m:** nach der Begründung „in jedem Fall" kein räumlicher Zusammenhang
 
-- Mindestabstände zu Nachbargrundstücken
-- Brandschutzvorschriften
-- Stellplatzanforderungen
-- Denkmalschutz
+---
 
-### Naturschutz
+## Prüfschritte für Ihr Grundstück
 
-Brandenburg hat einen hohen Anteil geschützter Gebiete:
+### Schritt 1: Lage klären (Innen-/Außenbereich?)
 
-- **Natura-2000-Gebiete**: EU-weiter Schutz
-- **Naturschutzgebiete**: Strengste Schutzform
-- **Landschaftsschutzgebiete**: Großflächiger Schutz
-- **Biotope**: Punktueller Schutz
+1. **Bebauungsplan vorhanden?** → Wenn ja, prüfen, ob Wohngebiet. Falls nicht: § 246e nicht relevant.
+2. **Unbeplanter Innenbereich (§ 34 BauGB)?** → Liegt das Grundstück innerhalb einer geschlossenen Bebauung? Falls ja: § 246e kann greifen, aber räumlicher Zusammenhang ist einfacher.
+3. **Außenbereich?** → Dann § 246e Abs. 3 (räumlicher Zusammenhang erforderlich).
 
-Diese Schutzgebiete können Bauvorhaben nach §246e BauGB einschränken oder unmöglich machen.
+**Tipp:** Fragen Sie bei der unteren Bauaufsichtsbehörde (Landkreis/kreisfreie Stadt) nach einer Bauvoranfrage.
 
-### Denkmalschutz
+### Schritt 2: Räumlicher Zusammenhang
 
-Brandenburg verfügt über zahlreiche Baudenkmale und Bodendenkmale. Prüfen Sie:
+**Funktionale Kriterien** (nicht starr metrisch):
 
-- Liegt Ihr Grundstück in einem Denkmalschutzgebiet?
-- Gibt es Bodendenkmale auf Ihrem Grundstück?
-- Beeinträchtigt Ihr Bauvorhaben denkmalgeschützte Gebäude in der Umgebung?
+- **Erschließung:** Gleiche Straße oder logische Fortführung?
+- **Bebauungsdichte:** Keine extreme Verdünnung?
+- **Optische Sichtbeziehung:** Vorhaben im Blickfeld der bestehenden Bebauung?
+- **Organische Fortentwicklung:** Siedlungsstruktur wird sinnvoll erweitert, nicht zerrissen?
 
-## §246e BauGB im Außenbereich Brandenburg
+**Ausschlussgründe auch unter 100 m:**
 
-### Wo greift §246e BauGB?
+- Trennwirkungen (Bahn, Fluss, Waldgürtel, breite Freiflächen)
+- Fehlende Erschließungsanbindung
+- Keine optischen/funktionalen Sichtbeziehungen
 
-§246e BauGB ermöglicht Wohnbebauung im Außenbereich, wenn bestimmte Voraussetzungen erfüllt sind:
-
-1. **Räumlicher Zusammenhang** zur Ortslage (meist 100m-Regel)
-2. **Keine Beeinträchtigung** öffentlicher Belange
-3. **Gemeindliche Zustimmung**
-
-**Mehr Details**: [§246e BauGB Brandenburg – Grundlagen](/246e-baugb-brandenburg)
-
-### Typische Grundstückstypen
-
-In Brandenburg kommen folgende Außenbereichs-Grundstücke häufig für §246e BauGB in Frage:
-
-**Typ 1: Ortsrandgrundstücke**
-- Direkt angrenzend an die Ortslage
-- Oft ehemalige landwirtschaftliche Flächen
-- Relativ unkompliziert, wenn 100m-Regel erfüllt
-
-**Typ 2: Baulücken in Streusiedlungen**
-- Zwischen bestehenden Gebäuden
-- Abgrenzung der Ortslage oft unklar
-- Erfordert detaillierte Prüfung
-
-**Typ 3: Ehemalige Wirtschaftsgrundstücke**
-- Früher land-/forstwirtschaftlich genutzt
-- Heute brach liegend
-- Oft gute Chancen, wenn Erschließung vorhanden
-
-## Erschließung im Außenbereich
+### Schritt 3: Erschließung sichern
 
 Die Erschließung ist im Außenbereich oft problematisch:
 
-### Verkehrsanbindung
+**Verkehrsanbindung:**
+- Befestigte Zufahrt vorhanden?
+- Ganzjährig befahrbar?
+- Wegerecht über Nachbargrundstücke?
 
-- Ist eine befestigte Zufahrt vorhanden?
-- Ist die Zufahrt ganzjährig befahrbar?
-- Gibt es ein Wegerecht über Nachbargrundstücke?
+**Ver-/Entsorgung:**
+- Trinkwasseranschluss oder Brunnen möglich?
+- Kanalanschluss oder Kleinkläranlage?
+- Stromanschluss in der Nähe?
 
-### Wasser
+**Hinweis:** Erschließungskosten können erheblich sein. Planen Sie sorgfältig und holen Sie konkrete Angebote ein.
 
-- Gibt es einen Trinkwasseranschluss?
-- Ist ein Brunnen möglich und genehmigungsfähig?
-- Welche Qualität hat das Grundwasser?
+### Schritt 4: Naturschutz prüfen
 
-### Abwasser
+Bei Außenbereichsvorhaben gelten zusätzlich naturschutzrechtliche Anforderungen (§ 246e Abs. 3 BauGB):
 
-- Gibt es einen Kanalanschluss?
-- Ist eine Kleinkläranlage erforderlich?
-- Ist der Untergrund für eine Versickerung geeignet?
+- **Ausgleich/Ersatz** nach § 18 Abs. 2 S. 2 oder Abs. 3 S. 1 BNatSchG erforderlich
+- **Benehmen der Naturschutzbehörde** einholen
+- Umweltprüfung läuft parallel
 
-### Energie
-
-- Gibt es einen Stromanschluss in der Nähe?
-- Wie teuer ist eine Neuverlegung?
-- Kommt eine autarke Lösung (Solar + Speicher) in Frage?
-
-## Öffentliche Belange im Außenbereich
-
-§246e BauGB setzt voraus, dass keine öffentlichen Belange beeinträchtigt werden:
-
-### Naturschutz
+**Prüfen Sie:**
 
 - Geschützte Biotope auf oder neben dem Grundstück?
-- Geschützte Arten (Vögel, Fledermäuse, etc.)?
-- Eingriff in Natur und Landschaft ausgleichbar?
+- Geschützte Arten (Vögel, Fledermäuse)?
+- Schutzgebiete (Naturschutzgebiet, Landschaftsschutzgebiet, FFH/Natura 2000)?
 
-### Landschaftsbild
+**Tipp:** Kontaktieren Sie frühzeitig die Naturschutzbehörde (Landkreis/kreisfreie Stadt).
 
-- Fügt sich das geplante Gebäude in die Landschaft ein?
-- Ist die Kubatur an die Umgebung angepasst?
-- Gibt es Sichtachsen, die geschützt werden sollen?
+### Schritt 5: Gemeindezustimmung vorbereiten
 
-### Landwirtschaft
+Die Gemeinde muss nach § 36a BauGB zustimmen. Bereiten Sie vor:
 
-- Wird landwirtschaftliche Nutzfläche in Anspruch genommen?
-- Gibt es Konflikte mit benachbarten landwirtschaftlichen Betrieben?
-- Sind Emissionen (Lärm, Geruch) zu erwarten?
+- Kurz-Dossier (Lageplan, Bezug zur Bebauung, Erschließung, Fotodoku)
+- Frühgespräch mit Gemeinde (Bauamt/Bürgermeister)
+- Klären Sie städtebauliche Entwicklungsabsichten
 
-## Häufige Fragen (FAQ)
+➡️ **Vertiefung:** [Gemeindezustimmung – Vorgehen & Argumentation](/zustimmung-gemeinde-246e/)
+
+---
+
+## Typische Stolpersteine im Außenbereich
+
+### Stolperstein 1: Fehlender räumlicher Zusammenhang
+
+**Problem:** Grundstück liegt >100 m von der Ortslage entfernt oder Trennwirkungen bestehen.
+
+**Lösung:** Vermessungsnachweis, ggf. Argumentation mit funktionalen Kriterien (Erschließung, Sichtbeziehung). Bei >100 m: nach Gesetzesbegründung in der Regel ausgeschlossen.
+
+### Stolperstein 2: Schutzgebiete
+
+**Problem:** Grundstück liegt in Naturschutzgebiet, FFH-Gebiet oder anderen Schutzkulissen.
+
+**Lösung:** Prüfen, ob Ausnahme/Befreiung möglich. In strengen Schutzgebieten (NSG) meist ausgeschlossen.
+
+### Stolperstein 3: Erschließung nicht gesichert
+
+**Problem:** Keine befestigte Zufahrt, kein Wasser-/Stromanschluss.
+
+**Lösung:** Erschließung privat sicherstellen. Kosten vorab kalkulieren. Gemeinde darf nicht belastet werden.
+
+### Stolperstein 4: Nachbarschaftskonflikte
+
+**Problem:** Nachbarn haben Bedenken (z. B. landwirtschaftlicher Betrieb, Sichtbeziehungen).
+
+**Lösung:** Frühzeitig Gespräche führen. Planungen ggf. anpassen.
+
+---
+
+## Häufige Fragen
+
+<div class="faq">
 
 ### Wie erkenne ich, ob mein Grundstück im Außenbereich liegt?
 
-Prüfen Sie zunächst, ob es einen Bebauungsplan gibt. Falls nicht: Liegt das Grundstück innerhalb einer geschlossen bebauten Ortslage? Wenn nein, liegt es wahrscheinlich im Außenbereich.
+Prüfen Sie zunächst, ob es einen Bebauungsplan gibt (Anfrage bei der Gemeinde oder online im Geoportal). Falls nicht: Liegt das Grundstück innerhalb einer geschlossen bebauten Ortslage (§ 34 BauGB)? Wenn nein, liegt es wahrscheinlich im Außenbereich.
 
 ### Kann ich im Außenbereich ein Fertighaus bauen?
 
-Grundsätzlich ja, sofern alle Voraussetzungen nach §246e BauGB erfüllt sind. Die Bauweise (Fertighaus, Massivhaus, etc.) ist dabei zweitrangig.
+Grundsätzlich ja, sofern alle Voraussetzungen nach § 246e BauGB erfüllt sind (räumlicher Zusammenhang, keine Beeinträchtigung öffentlicher Belange, Gemeindezustimmung). Die Bauweise ist dabei zweitrangig.
 
 ### Welche Grundstücksgröße ist erforderlich?
 
-Es gibt keine feste Mindestgröße. Wichtig ist, dass alle baulichen Anforderungen (Abstandsflächen, Stellplätze, ggf. Kleinkläranlage) erfüllt werden können.
+Es gibt keine feste Mindestgröße. Wichtig ist, dass alle baulichen Anforderungen (Abstandsflächen nach Landesbauordnung, Stellplätze, ggf. Kleinkläranlage) erfüllt werden können.
 
-### Sind in Schutzgebieten Bauvorhaben nach §246e BauGB möglich?
+### Sind in Schutzgebieten Bauvorhaben nach § 246e BauGB möglich?
 
-Das hängt vom konkreten Schutzstatus ab. In Naturschutzgebieten ist ein Bauvorhaben meist ausgeschlossen, in Landschaftsschutzgebieten kann eine Ausnahmegenehmigung möglich sein.
-
-### Was kostet die Erschließung eines Außenbereichs-Grundstücks?
-
-Das ist sehr unterschiedlich. Rechnen Sie mit:
-- Zufahrt: 5.000-20.000 €
-- Wasseranschluss: 3.000-15.000 €
-- Stromanschluss: 5.000-25.000 €
-- Kleinkläranlage: 5.000-15.000 €
-
-In extremen Fällen können die Erschließungskosten 50.000 € oder mehr betragen!
+Das hängt vom konkreten Schutzstatus ab. In Naturschutzgebieten ist ein Bauvorhaben meist ausgeschlossen. In Landschaftsschutzgebieten kann eine Ausnahme/Befreiung möglich sein – klären Sie dies frühzeitig mit der Naturschutzbehörde.
 
 ### Brauche ich eine Umweltverträglichkeitsprüfung?
 
-Für einzelne Wohngebäude nach §246e BauGB ist normalerweise keine UVP erforderlich. Bei besonderen Schutzgebieten kann aber eine artenschutzrechtliche Prüfung nötig sein.
+Für einzelne Wohngebäude nach § 246e BauGB ist normalerweise keine förmliche UVP erforderlich. Bei besonderen Schutzgebieten kann aber eine artenschutzrechtliche Prüfung (ASP) oder eine überschlägige Umweltprüfung nötig sein.
+
+</div>
+
+---
 
 ## Checkliste: Ist mein Außenbereichs-Grundstück geeignet?
 
 Prüfen Sie folgende Punkte:
 
-- [ ] Grundstück liegt im Außenbereich (nicht im Geltungsbereich eines B-Plans)
-- [ ] Entfernung zur Ortslage max. ca. 100 Meter
+- [ ] Grundstück liegt im Außenbereich (nicht im Geltungsbereich eines B-Plans, nicht § 34)
+- [ ] Entfernung zur Ortslage unter 100 Meter (Einzelfallprüfung bei funktionalen Kriterien)
 - [ ] Kein Naturschutzgebiet oder strenges Schutzgebiet
 - [ ] Keine geschützten Biotope auf dem Grundstück
-- [ ] Erschließung grundsätzlich möglich
-- [ ] Keine denkmalgeschützten Gebäude in unmittelbarer Nähe
+- [ ] Erschließung grundsätzlich möglich (Zufahrt, Wasser, Abwasser, Strom)
+- [ ] Keine denkmalgeschützten Gebäude in unmittelbarer Nähe (falls doch: Abstimmung erforderlich)
 - [ ] Gemeinde steht Bauvorhaben grundsätzlich offen gegenüber
 
-Wenn Sie alle oder die meisten Punkte mit Ja beantworten können, bestehen gute Chancen für ein Bauvorhaben nach §246e BauGB.
+Wenn Sie alle oder die meisten Punkte erfüllen, bestehen gute Chancen für ein Bauvorhaben nach § 246e BauGB.
 
-## Weitere Informationen
+---
 
-Vertiefen Sie Ihr Wissen mit unseren weiteren Artikeln:
+## Weiterführende Pillars
 
-- [§246e BauGB Brandenburg – Grundlagen](/246e-baugb-brandenburg)
-- [100m-Regel & räumlicher Zusammenhang](/100m-regel-raeumlicher-zusammenhang)
-- [Gemeinde-Zustimmung](/zustimmung-gemeinde-246e)
-- [Aktuelle Artikel im Blog](/blog)
+- **Brandenburg-Überblick:** [§ 246e BauGB in Brandenburg](/246e-baugb-brandenburg/)
+- **Räumlicher Zusammenhang & 100-m-Leitplanke:** [100m-Regel im Detail](/100m-regel-raeumlicher-zusammenhang/)
+- **Gemeindezustimmung – Vorgehen & Argumentation:** [Zustimmung Gemeinde](/zustimmung-gemeinde-246e/)
 
-<Disclaimer />
+---
+
+<SourcesBox primarySources={primarySources} secondarySources={secondarySources} />
+
+<div id="disclaimer">
+  <Disclaimer />
+</div>
+
+</div>
+
+<style>{`
+  .pillar-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    line-height: 1.7;
+  }
+
+  .faq > div {
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  ul, ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  ul li, ol li {
+    margin-bottom: 0.5rem;
+  }
+
+  blockquote {
+    margin: 1.5rem 0;
+    padding: 1.25rem 1.5rem;
+    background-color: #e7f3ff;
+    border-left: 4px solid #0066cc;
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+`}</style>
