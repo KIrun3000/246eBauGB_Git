@@ -57,6 +57,24 @@
       "maxReviewAgeDays": 180
     },
     {
+      "id": "bnatschg-13",
+      "url": "https://www.gesetze-im-internet.de/bnatschg_2009/__13.html",
+      "hashMode": "legal-text",
+      "sha256": "d18febc161bc794b00d47668b508300f6e99f3931f102632b474126b78ebb0c4",
+      "requiredMarkers": ["Allgemeiner Grundsatz", "vorrangig zu vermeiden", "Ausgleichs- oder Ersatzmaßnahmen"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 180
+    },
+    {
+      "id": "bnatschg-15",
+      "url": "https://www.gesetze-im-internet.de/bnatschg_2009/__15.html",
+      "hashMode": "legal-text",
+      "sha256": "d7276bd2d06ee46f8016778041b2aeaa1295d46328f8f659bf05288fb3fd5154",
+      "requiredMarkers": ["Verursacherpflichten", "vermeidbare Beeinträchtigungen", "auszugleichen oder zu ersetzen"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 180
+    },
+    {
       "id": "uvpg-anlage-1",
       "url": "https://www.gesetze-im-internet.de/uvpg/anlage_1.html",
       "hashMode": "legal-text",

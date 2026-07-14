@@ -13,7 +13,7 @@ Dieses Audit ist eine redaktionelle Qualitätssicherung und keine Rechtsberatung
 - **Hohes Risiko behoben:** die Gemeindezustimmung wird nicht mehr als separat anfechtbarer eigenständiger Verwaltungsakt beschrieben; Fristbeginn und Einbindung in das Genehmigungsverfahren wurden korrigiert.
 - **Hohes Risiko behoben:** die Befristung wird nicht mehr auf eine bloße Antragstellung bis 31.12.2030 verkürzt.
 - **Faktensammlungen gesperrt:** alte Evidence-/FAQ-Dateien sind wegen ungeprüfter und teils veralteter Aussagen für Publikation und NotebookLM quarantänisiert.
-- **Fortlaufende Kontrolle eingerichtet:** acht amtliche Quellen werden auf Erreichbarkeit, erwartete Kernaussagen, Prüffristen und – bei Normtexten – Inhaltsänderungen überwacht.
+- **Fortlaufende Kontrolle eingerichtet:** zehn amtliche Quellen werden auf Erreichbarkeit, erwartete Kernaussagen, Prüffristen und – bei Normtexten – Inhaltsänderungen überwacht.
 - **SEO-Basis erweitert:** Titel- und Description-Längen, amtliche Pflichtquellen, veraltete URL-Pfade sowie typische rechtliche Risikophrasen werden automatisiert geprüft.
 - **Technischer SEO-Fehler behoben:** MDX-Pillar-Seiten übergaben Titel und Description nicht an das Layout; leere Meta-Tags werden jetzt nach dem Build automatisch blockiert.
 
@@ -43,21 +43,25 @@ Dieses Audit ist eine redaktionelle Qualitätssicherung und keine Rechtsberatung
 | `src/pages/100m-regel-raeumlicher-zusammenhang.mdx` | § 30 Abs. 2 fälschlich als einfacher B-Plan; identische Länderpraxis behauptet | § 30-Systematik und Unsicherheit korrigiert |
 | `src/pages/aussenbereich-brandenburg-246e.mdx` | B-Plan könne § 246e ausschließen; pauschale UVP- und Erfolgsaussagen | Anwendungsbereich, Umweltprüfung und fehlende Erfolgsprognose korrigiert |
 | `src/content/blog/umweltpruefung-sup-erforderlich.mdx` | zwei nicht mehr erreichbare UVPG-URLs | amtliche aktuelle Pfade `/uvpg/` eingesetzt |
+| `src/content/blog/ablehnungsgruende-gemeindezustimmung.mdx` | Rechtsbehelf zu nah an einer isolierten Gemeindeentscheidung dargestellt | Überprüfung an die Genehmigungsentscheidung und § 36a Abs. 3 gekoppelt |
+| `src/content/blog/naturschutz-ausgleich-aussenbereich.mdx` | materielle Eingriffspflichten zu pauschal § 18 BNatSchG zugeordnet | §§ 13–15 und Verhältnis zum Baurecht nach § 18 getrennt; Benehmen präzisiert |
+| `src/content/blog/umweltpruefung-sup-erforderlich.mdx` | SUP nur als möglicherweise relevant dargestellt | Pflicht bei positiver Prognose nach § 246e Abs. 1 sowie UVPG Nr. 18.7/18.8 präzisiert |
+| fünf weitere Fachartikel | einzelne Anwendungsgrenzen zu Aufstockung, Erschließung, Nutzungsänderung und § 30 präzisierungsbedürftig | Claim-für-Claim-Erstreview durchgeführt und `updatedDate` gesetzt |
 
-### Noch nicht als vollständig legal-reviewed freigegeben
+### Erstreview abgeschlossen; zweite Freigabe weiterhin erforderlich
 
-Die folgenden Artikel haben die bisherige automatische Strukturprüfung bestanden und enthalten amtliche Quellen. Sie wurden in diesem Durchgang auf auffällige Risikophrasen gescreent, aber **nicht Claim für Claim fachlich freigegeben**:
+Alle elf Blogartikel wurden in diesem Durchgang einzeln gegen die einschlägigen amtlichen Ausgangsquellen geprüft. Die folgenden Artikel wurden zusätzlich zu den priorisierten Seiten präzisiert:
 
-- `ablehnungsgruende-gemeindezustimmung.mdx` – Rechtsbehelfspassagen anhand § 36a Abs. 3 nachprüfen
-- `aufstockung-anbau-innenbereich.mdx` – Abweichungsumfang und Verhältnis zu § 30/§ 34 prüfen
-- `erschliessung-sichern-anforderungen.mdx` – bundesrechtliche und landesrechtliche Erschließungsanforderungen trennen
-- `nachverdichtung-hinterlandbebauung.mdx` – Lagekategorien und Einzelfallbeispiele prüfen
-- `naturschutz-ausgleich-aussenbereich.mdx` – § 18 BNatSchG und Fachprüfungen Claim für Claim prüfen
-- `nutzungsaenderung-gewerbe-zu-wohnen.mdx` – Bauordnungs-/Immissionsschutz-Aussagen prüfen
-- `raeumlicher-zusammenhang-pruefen-grundstueck.mdx` – 100-m-Leitplanke und funktionale Kriterien nicht überdehnen
-- `umweltpruefung-sup-erforderlich.mdx` – SUP/UVP-Abgrenzung anhand UVPG vollständig fachprüfen
+- `ablehnungsgruende-gemeindezustimmung.mdx`
+- `aufstockung-anbau-innenbereich.mdx`
+- `erschliessung-sichern-anforderungen.mdx`
+- `nachverdichtung-hinterlandbebauung.mdx`
+- `naturschutz-ausgleich-aussenbereich.mdx`
+- `nutzungsaenderung-gewerbe-zu-wohnen.mdx`
+- `raeumlicher-zusammenhang-pruefen-grundstueck.mdx`
+- `umweltpruefung-sup-erforderlich.mdx`
 
-Bis dieses Review erfolgt, ist ein vorhandener Artikel kein zulässiger Beleg für einen neuen Artikel.
+Das ist die dokumentierte redaktionell-juristische Erstprüfung, nicht die zweite Freigabe. Der PR bleibt deshalb am Label `legal-review-required` hängen. Bis zur unabhängigen Zweitprüfung darf ein vorhandener Artikel nicht als Rechtsquelle für einen neuen Artikel dienen.
 
 ### Rechtstexte der Website separat prüfen
 
@@ -88,7 +92,7 @@ Beide Dateien sind deshalb quarantänisiert. Die `*.perplexity-raw.md`-Dateien b
 2. `npm run sources:check` vergleicht normalisierte amtliche Normtexte mit geprüften Hashes.
 3. Bei Änderung oder überfälligem manuellen Review wird ein GitHub-Issue erzeugt bzw. aktualisiert und der Workflow schlägt fehl.
 4. Ein Mensch oder Legal-Agent prüft die Änderung, erstellt eine Betroffenheitsliste und aktualisiert die Inhalte.
-5. Erst nach zweitem Legal-Review werden Hash, Prüfdatum und `updatedDate` angepasst.
+5. Nach dokumentierter Erstprüfung werden Inhaltsänderung und `updatedDate` gesetzt; nach unabhängiger Zweitprüfung darf das PR-Label `legal-reviewed` vergeben werden. Geänderte Norm-Hashes werden erst nach diesem Review aktualisiert.
 
 ## Amtliche Ausgangsquellen
 
