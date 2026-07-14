@@ -2,6 +2,13 @@
 import BaseLayout from './BaseLayout.astro';
 import Disclaimer from '../components/Disclaimer.astro';
 import SourcesBox from '../components/SourcesBox.astro';
+import type { BlogVisual } from '../lib/blogVisuals';
+
+interface ArticleHeading {
+  depth: number;
+  slug: string;
+  text: string;
+}
 
 export interface Props {
   title: string;
@@ -14,6 +21,10 @@ export interface Props {
     label: string;
     url: string;
   }>;
+  headings?: ArticleHeading[];
+  readingMinutes?: number;
+  visual?: BlogVisual;
+  enhanced?: boolean;
 }
 
 const {
@@ -24,6 +35,10 @@ const {
   category,
   tags,
   sources = [],
+  headings = [],
+  readingMinutes = 1,
+  visual,
+  enhanced = false,
 } = Astro.props;
 
 const dateFormatter = new Intl.DateTimeFormat('de-DE', {
@@ -39,10 +54,38 @@ const categoryLabels: Record<string, string> = {
   ablauf: 'Verfahren',
   faq: 'Praxisfragen',
 };
+
+const tableOfContents = headings.filter((heading) => heading.depth === 2).slice(0, 9);
+const absoluteUrl = (path: string) =>
+  Astro.site ? new URL(path, Astro.site).toString() : path;
+const structuredData = pubDate
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description,
+      mainEntityOfPage: absoluteUrl(Astro.url.pathname),
+      datePublished: pubDate.toISOString(),
+      dateModified: (updatedDate ?? pubDate).toISOString(),
+      image: (visual?.schemaImages ?? (visual ? [visual.src] : [])).map(absoluteUrl),
+    }
+  : undefined;
 ---
 
-<BaseLayout title={title} description={description}>
-  <article class="article">
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={visual?.src}
+  ogType={pubDate ? 'article' : 'website'}
+  structuredData={structuredData}
+>
+  {enhanced && (
+    <div class="reading-progress" aria-hidden="true">
+      <span data-reading-progress></span>
+    </div>
+  )}
+
+  <article class:list={['article', { 'is-enhanced': enhanced }]} data-reading-article>
     <div class="container">
       <nav class="breadcrumb" aria-label="Brotkrümelnavigation">
         <a href="/">Start</a>
@@ -52,45 +95,95 @@ const categoryLabels: Record<string, string> = {
         {pubDate ? <a href="/blog/">Magazin</a> : <span>Ratgeber</span>}
       </nav>
 
-      <header class="article-header">
-        {category && (
-          <p class="article-header__category">
-            {categoryLabels[category] || category}
-          </p>
-        )}
-        <h1>{title}</h1>
-        <p class="article-header__description">{description}</p>
+      <header class:list={['article-header', { 'is-enhanced': enhanced && visual }]}>
+        <div class="article-header__intro">
+          {category && (
+            <p class="article-header__category">
+              {categoryLabels[category] || category}
+            </p>
+          )}
+          <h1>{title}</h1>
+          <p class="article-header__description">{description}</p>
 
-        {(pubDate || (tags && tags.length > 0)) && (
-          <div class="article-header__details">
-            {pubDate && (
-              <div class="article-dates">
-                <span>Veröffentlicht</span>
-                <time datetime={pubDate.toISOString()}>
-                  {dateFormatter.format(pubDate)}
-                </time>
-                {updatedDate && (
-                  <>
-                    <span>Aktualisiert</span>
-                    <time datetime={updatedDate.toISOString()}>
-                      {dateFormatter.format(updatedDate)}
-                    </time>
-                  </>
-                )}
-              </div>
-            )}
+          {(pubDate || (tags && tags.length > 0)) && (
+            <div class="article-header__details">
+              {pubDate && (
+                <div class="article-dates">
+                  <span>Veröffentlicht</span>
+                  <time datetime={pubDate.toISOString()}>
+                    {dateFormatter.format(pubDate)}
+                  </time>
+                  {updatedDate && (
+                    <>
+                      <span>Aktualisiert</span>
+                      <time datetime={updatedDate.toISOString()}>
+                        {dateFormatter.format(updatedDate)}
+                      </time>
+                    </>
+                  )}
+                </div>
+              )}
 
-            {tags && tags.length > 0 && (
-              <ul class="article-tags" aria-label="Schlagworte">
-                {tags.map((tag) => <li>{tag}</li>)}
-              </ul>
-            )}
-          </div>
+              {tags && tags.length > 0 && (
+                <ul class="article-tags" aria-label="Schlagworte">
+                  {tags.map((tag) => <li>{tag}</li>)}
+                </ul>
+              )}
+            </div>
+          )}
+        </div>
+
+        {enhanced && visual && (
+          <figure class="article-header__visual">
+            <img
+              src={visual.src}
+              srcset={visual.srcSet}
+              sizes="(max-width: 820px) 100vw, 42vw"
+              alt={visual.alt}
+              width={visual.width}
+              height={visual.height}
+              fetchpriority="high"
+              decoding="async"
+            />
+            <figcaption>{visual.caption}</figcaption>
+          </figure>
         )}
       </header>
 
       <div class="article-grid">
         <div class="article-main">
+          {enhanced && tableOfContents.length > 0 && (
+            <section class="article-overview" aria-labelledby="article-overview-title">
+              <div class="article-overview__intro">
+                <p class="article-overview__label">Schnelle Orientierung</p>
+                <h2 id="article-overview-title">In diesem Beitrag</h2>
+                <p>{readingMinutes} Minuten Lesezeit · direkt zum passenden Abschnitt springen</p>
+              </div>
+
+              <nav class="article-overview__nav" aria-label="Inhaltsübersicht">
+                <ol>
+                  {tableOfContents.map((heading) => (
+                    <li><a href={`#${heading.slug}`}>{heading.text}</a></li>
+                  ))}
+                </ol>
+              </nav>
+
+              <div class="article-overview__actions">
+                <a class="article-overview__primary" href="/check/">Grundstück prüfen</a>
+                <button type="button" data-share-article>Beitrag teilen</button>
+                <input
+                  class="article-overview__share-field"
+                  data-share-field
+                  aria-label="Beitragsadresse"
+                  value={absoluteUrl(Astro.url.pathname)}
+                  readonly
+                  hidden
+                />
+                <span class="article-overview__status" data-share-status aria-live="polite"></span>
+              </div>
+            </section>
+          )}
+
           <div class="article-content">
             <slot />
           </div>
@@ -150,6 +243,28 @@ const categoryLabels: Record<string, string> = {
     background-size: 42px 42px;
   }
 
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1100;
+    height: 4px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+  }
+
+  .reading-progress span {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: var(--brick-500);
+    transform: scaleX(0);
+    transform-origin: left center;
+    will-change: transform;
+  }
+
   .breadcrumb {
     display: flex;
     align-items: center;
@@ -183,6 +298,51 @@ const categoryLabels: Record<string, string> = {
     max-width: 900px;
     padding-bottom: clamp(2rem, 5vw, 3.5rem);
     border-bottom: 1px solid var(--line-dark);
+  }
+
+  .article-header.is-enhanced {
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.8fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  .article-header__intro {
+    min-width: 0;
+  }
+
+  .article-header__visual {
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    margin: 0;
+    background: var(--blue-050);
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .article-header__visual img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .article-header__visual figcaption {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    padding: 0.5rem 0.65rem;
+    color: var(--white);
+    background: rgba(16, 38, 49, 0.84);
+    border-radius: var(--radius-sm);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
   }
 
   .article-header__category {
@@ -264,6 +424,160 @@ const categoryLabels: Record<string, string> = {
 
   .article-main {
     min-width: 0;
+  }
+
+  .article-overview {
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--brick-500);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .article-overview__intro {
+    padding: clamp(1.3rem, 4vw, 2rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .article-overview__label {
+    margin: 0 0 0.45rem;
+    color: var(--brick-600);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .article-overview__intro h2 {
+    margin: 0;
+    font-size: clamp(1.55rem, 3vw, 2.15rem);
+  }
+
+  .article-overview__intro > p:last-child {
+    margin: 0.55rem 0 0;
+    color: var(--ink-600);
+    font-size: 0.84rem;
+  }
+
+  .article-overview__nav {
+    padding: 0.65rem clamp(1.3rem, 4vw, 2rem);
+  }
+
+  .article-overview__nav ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: overview;
+  }
+
+  .article-overview__nav li {
+    counter-increment: overview;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .article-overview__nav li:last-child {
+    border-bottom: 0;
+  }
+
+  .article-overview__nav a {
+    min-height: 48px;
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.65rem;
+    align-items: center;
+    padding: 0.7rem 0;
+    color: var(--ink-800);
+    text-decoration: none;
+    font-size: 0.84rem;
+    font-weight: 800;
+  }
+
+  .article-overview__nav a::before {
+    content: counter(overview, decimal-leading-zero);
+    color: var(--brick-600);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.65rem;
+  }
+
+  .article-overview__nav a:hover {
+    color: var(--brick-600);
+  }
+
+  .article-overview__actions {
+    min-height: 68px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem clamp(1.3rem, 4vw, 2rem);
+    background: var(--blue-050);
+  }
+
+  .article-overview__actions a,
+  .article-overview__actions button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 0.9rem;
+    color: var(--blue-900);
+    background: var(--white);
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-sm);
+    font: inherit;
+    font-size: 0.76rem;
+    font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .article-overview__actions .article-overview__primary {
+    color: var(--white);
+    background: var(--blue-900);
+    border-color: var(--blue-900);
+  }
+
+  .article-overview__actions a:hover,
+  .article-overview__actions button:hover {
+    color: var(--white);
+    background: var(--brick-600);
+    border-color: var(--brick-600);
+  }
+
+  .article-overview__actions a:focus-visible,
+  .article-overview__actions button:focus-visible {
+    outline: 3px solid var(--brick-500);
+    outline-offset: 3px;
+  }
+
+  .article-overview__status {
+    min-height: 1.3em;
+    color: var(--ink-600);
+    font-size: 0.72rem;
+  }
+
+  .article-overview__share-field {
+    min-width: min(100%, 18rem);
+    min-height: 44px;
+    padding: 0.65rem 0.75rem;
+    color: var(--ink-800);
+    background: var(--white);
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-sm);
+    font: inherit;
+    font-size: 0.75rem;
+  }
+
+  .article-overview__share-field:focus-visible {
+    outline: 3px solid var(--brick-500);
+    outline-offset: 2px;
+  }
+
+  .is-enhanced .article-content :global(h2) {
+    scroll-margin-top: 8rem;
   }
 
   .article-content {
@@ -457,6 +771,15 @@ const categoryLabels: Record<string, string> = {
   }
 
   @media (max-width: 920px) {
+    .article-header.is-enhanced {
+      grid-template-columns: 1fr;
+    }
+
+    .article-header__visual {
+      max-width: 720px;
+      aspect-ratio: 16 / 9;
+    }
+
     .article-grid {
       grid-template-columns: minmax(0, var(--text-width));
     }
@@ -481,8 +804,60 @@ const categoryLabels: Record<string, string> = {
       gap: 2.5rem;
     }
 
+    .article-overview__actions {
+      align-items: stretch;
+    }
+
+    .article-overview__actions a,
+    .article-overview__actions button {
+      flex: 1 1 10rem;
+    }
+
     .article-rail {
       grid-template-columns: 1fr;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reading-progress span {
+      will-change: auto;
+    }
+  }
 </style>
+
+<script>
+  const article = document.querySelector('[data-reading-article]');
+  const progress = document.querySelector<HTMLElement>('[data-reading-progress]');
+
+  if (article && progress) {
+    let scheduled = false;
+    const updateProgress = () => {
+      const start = article.getBoundingClientRect().top + window.scrollY;
+      const distance = Math.max(1, article.scrollHeight - window.innerHeight);
+      const value = Math.min(1, Math.max(0, (window.scrollY - start) / distance));
+      progress.style.transform = `scaleX(${value})`;
+      scheduled = false;
+    };
+
+    const scheduleProgress = () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', scheduleProgress, { passive: true });
+    window.addEventListener('resize', scheduleProgress);
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-share-article]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const status = button.parentElement?.querySelector<HTMLElement>('[data-share-status]');
+      const fallbackField = button.parentElement?.querySelector<HTMLInputElement>('[data-share-field]');
+      if (!fallbackField) return;
+      fallbackField.hidden = false;
+      fallbackField.select();
+      if (status) status.textContent = 'Adresse ist zum Kopieren markiert.';
+    });
+  });
+</script>

@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { getBlogVisual } from '../../lib/blogVisuals';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -11,7 +12,15 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const visual = getBlogVisual(entry.id, entry.data.category);
+const enhanced = entry.id === 'raeumlicher-zusammenhang-pruefen-grundstueck';
+const wordCount = entry.body
+  .replace(/---[\s\S]*?---/, '')
+  .replace(/<[^>]+>|[#*_`>[\]()!-]/g, ' ')
+  .split(/\s+/)
+  .filter(Boolean).length;
+const readingMinutes = Math.max(1, Math.ceil(wordCount / 180));
 ---
 
 <ArticleLayout
@@ -22,6 +31,10 @@ const { Content } = await render(entry);
   category={entry.data.category}
   tags={entry.data.tags}
   sources={entry.data.sources}
+  headings={headings}
+  readingMinutes={readingMinutes}
+  visual={visual}
+  enhanced={enhanced}
 >
   <Content />
 </ArticleLayout>

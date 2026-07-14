@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { getBlogVisual } from '../../lib/blogVisuals';
 
 const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort(
@@ -8,6 +9,9 @@ const sortedPosts = allPosts.sort(
 );
 const featuredPost = sortedPosts[0];
 const remainingPosts = sortedPosts.slice(1);
+const featuredVisual = featuredPost
+  ? getBlogVisual(featuredPost.id, featuredPost.data.category)
+  : undefined;
 const dateFormatter = new Intl.DateTimeFormat('de-DE', {
   day: '2-digit',
   month: 'long',
@@ -58,22 +62,22 @@ const categoryLabels: Record<string, string> = {
         <>
           {featuredPost && (
             <section class="featured" aria-labelledby="featured-title">
-              <div class="featured__visual" aria-hidden="true">
+              <figure class="featured__visual">
+                {featuredVisual && (
+                  <img
+                    src={featuredVisual.src}
+                    srcset={featuredVisual.srcSet}
+                    sizes="(max-width: 980px) 100vw, 54vw"
+                    alt={featuredVisual.alt}
+                    width={featuredVisual.width}
+                    height={featuredVisual.height}
+                    fetchpriority="high"
+                    decoding="async"
+                  />
+                )}
                 <span class="featured__stamp">Neu im Magazin</span>
-                <svg viewBox="0 0 680 430">
-                  <defs>
-                    <pattern id="blog-grid" width="28" height="28" patternUnits="userSpaceOnUse">
-                      <path d="M28 0H0V28" fill="none" />
-                    </pattern>
-                  </defs>
-                  <rect width="680" height="430" fill="url(#blog-grid)" />
-                  <path d="M-20 360 138 310l126 31 128-98 132 38 190-124" />
-                  <path d="M46 76 242 31l55 166-199 49ZM242 31l304 59-42 178-207-71Z" />
-                  <circle cx="250" cy="197" r="132" />
-                  <line x1="250" y1="197" x2="380" y2="163" />
-                  <rect x="127" y="132" width="88" height="64" />
-                </svg>
-              </div>
+                {featuredVisual && <figcaption>{featuredVisual.caption}</figcaption>}
+              </figure>
               <article class="featured__body">
                 <div class="post-meta">
                   <span>{categoryLabels[featuredPost.data.category] || featuredPost.data.category}</span>
@@ -109,15 +113,24 @@ const categoryLabels: Record<string, string> = {
               </header>
 
               <div class="post-grid">
-                {remainingPosts.map((post, index) => (
+                {remainingPosts.map((post, index) => {
+                  const visual = getBlogVisual(post.id, post.data.category);
+                  return (
                   <article class="post-card">
-                    <div class:list={['post-card__folio', `is-${post.data.category}`]} aria-hidden="true">
+                    <figure class="post-card__visual">
+                      <img
+                        src={visual.src}
+                        srcset={visual.srcSet}
+                        sizes="(max-width: 980px) 100vw, 50vw"
+                        alt={visual.alt}
+                        width={visual.width}
+                        height={visual.height}
+                        loading="lazy"
+                        decoding="async"
+                      />
                       <span>{String(index + 2).padStart(2, '0')}</span>
-                      <svg viewBox="0 0 260 130">
-                        <path d="M-20 112 64 78l76 18 72-58 68 17" />
-                        <path d="M18 14 112 28 91 96 4 78ZM112 28l122 14-22 74-121-20Z" />
-                      </svg>
-                    </div>
+                      <figcaption>{visual.caption}</figcaption>
+                    </figure>
                     <div class="post-card__body">
                       <div class="post-meta">
                         <span>{categoryLabels[post.data.category] || post.data.category}</span>
@@ -135,7 +148,8 @@ const categoryLabels: Record<string, string> = {
                       </a>
                     </div>
                   </article>
-                ))}
+                  );
+                })}
               </div>
             </section>
           )}
@@ -240,38 +254,42 @@ const categoryLabels: Record<string, string> = {
     background: var(--blue-050);
   }
 
-  .featured__visual svg {
+  .featured__visual::after {
+    content: "";
     width: 100%;
     height: 100%;
     position: absolute;
     inset: 0;
-    fill: rgba(7, 59, 92, 0.08);
-    stroke: var(--blue-900);
-    stroke-width: 2;
+    background: linear-gradient(180deg, rgba(16, 38, 49, 0.02) 50%, rgba(16, 38, 49, 0.56));
+    pointer-events: none;
   }
 
-  .featured__visual svg rect:first-of-type {
-    fill: url(#blog-grid);
-    stroke: none;
+  .featured__visual img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
   }
 
-  .featured__visual svg path:first-of-type {
-    fill: none;
-    stroke: rgba(7, 59, 92, 0.19);
-    stroke-width: 20;
-  }
-
-  .featured__visual circle {
-    fill: rgba(212, 93, 66, 0.08);
-    stroke: var(--brick-500);
-    stroke-dasharray: 8 8;
+  .featured__visual figcaption,
+  .post-card__visual figcaption {
+    position: absolute;
+    right: 0.85rem;
+    bottom: 0.75rem;
+    left: 0.85rem;
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-shadow: 0 1px 10px rgba(16, 38, 49, 0.8);
   }
 
   .featured__stamp {
     position: absolute;
     top: 1.2rem;
     left: 1.2rem;
-    z-index: 2;
+    z-index: 3;
     padding: 0.45rem 0.6rem;
     color: var(--white);
     background: var(--brick-600);
@@ -412,56 +430,55 @@ const categoryLabels: Record<string, string> = {
   .post-card {
     min-width: 0;
     display: grid;
-    grid-template-columns: 150px minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
     background: var(--white);
   }
 
-  .post-card__folio {
-    min-height: 100%;
+  .post-card__visual {
+    min-width: 0;
     position: relative;
     overflow: hidden;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 1rem;
+    aspect-ratio: 16 / 9;
+    margin: 0;
     background: var(--blue-050);
   }
 
-  .post-card__folio.is-aussenbereich {
-    background: #e8f0eb;
+  .post-card__visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(16, 38, 49, 0.64));
+    pointer-events: none;
   }
 
-  .post-card__folio.is-ablauf {
-    background: #edf1f5;
+  .post-card__visual img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 260ms ease;
   }
 
-  .post-card__folio.is-faq {
-    background: #f8eee8;
+  .post-card:hover .post-card__visual img {
+    transform: scale(1.025);
   }
 
-  .post-card__folio > span {
-    position: relative;
-    z-index: 1;
-    color: var(--blue-900);
+  .post-card__visual > span {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    z-index: 2;
+    min-width: 2rem;
+    min-height: 2rem;
+    display: grid;
+    place-items: center;
+    color: var(--white);
+    background: rgba(7, 59, 92, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
     font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
     font-size: 0.7rem;
     font-weight: 900;
-  }
-
-  .post-card__folio svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    fill: rgba(7, 59, 92, 0.08);
-    stroke: rgba(7, 59, 92, 0.45);
-    stroke-width: 1.5;
-  }
-
-  .post-card__folio svg path:first-child {
-    fill: none;
-    stroke: rgba(7, 59, 92, 0.18);
-    stroke-width: 12;
   }
 
   .post-card__body {
@@ -531,12 +548,18 @@ const categoryLabels: Record<string, string> = {
       min-height: 240px;
     }
 
-    .post-card {
-      grid-template-columns: 92px minmax(0, 1fr);
-    }
-
     .post-card__body {
       padding: 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .post-card__visual img {
+      transition: none;
+    }
+
+    .post-card:hover .post-card__visual img {
+      transform: none;
     }
   }
 </style>
