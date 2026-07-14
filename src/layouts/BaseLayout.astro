@@ -5,9 +5,19 @@ export interface Props {
   title: string;
   description: string;
   canonical?: string;
+  frontmatter?: {
+    title?: string;
+    description?: string;
+    canonical?: string;
+  };
 }
 
-const { title, description, canonical } = Astro.props;
+const frontmatter = Astro.props.frontmatter ?? {};
+const {
+  title = frontmatter.title,
+  description = frontmatter.description,
+  canonical = frontmatter.canonical,
+} = Astro.props;
 const currentPath = Astro.url.pathname;
 const navItems = [
   { href: '/246e-baugb-brandenburg/', label: 'Grundlagen' },

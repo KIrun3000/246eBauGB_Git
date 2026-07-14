@@ -1,0 +1,80 @@
+name: Legal content freshness
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Use Node 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Check content and official legal sources
+        id: freshness
+        continue-on-error: true
+        run: npm run content:freshness
+
+      - name: Open or update review issue
+        if: steps.freshness.outcome == 'failure'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const title = 'Legal-Content-Review erforderlich: Quelle geändert oder Review überfällig';
+            const openIssues = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              state: 'open',
+              per_page: 100,
+            });
+            const existing = openIssues.find((issue) => issue.title === title && !issue.pull_request);
+            const body = [
+              'Die wöchentliche Frischeprüfung ist fehlgeschlagen.',
+              '',
+              `Workflow: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`,
+              '',
+              'Bitte amtliche Quelle und betroffene Inhalte fachlich vergleichen. Hash oder Prüfdatum erst nach dokumentiertem Legal-Review aktualisieren.',
+            ].join('\n');
+
+            try {
+              await github.rest.issues.getLabel({ owner, repo, name: 'legal-review-required' });
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              await github.rest.issues.createLabel({
+                owner,
+                repo,
+                name: 'legal-review-required',
+                color: 'B42318',
+                description: 'Amtliche Quellen und Rechtsstand müssen geprüft werden.',
+              });
+            }
+
+            if (existing) {
+              await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body });
+            } else {
+              await github.rest.issues.create({ owner, repo, title, body, labels: ['legal-review-required'] });
+            }
+
+      - name: Fail workflow after notification
+        if: steps.freshness.outcome == 'failure'
+        run: exit 1

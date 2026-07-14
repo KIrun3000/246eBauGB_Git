@@ -12,6 +12,16 @@ const files = (await readdir(blogDirectory))
 const errors = [];
 const warnings = [];
 
+const currentLawSources = {
+  '§ 246e': 'https://www.gesetze-im-internet.de/bbaug/__246e.html',
+  '§ 36a': 'https://www.gesetze-im-internet.de/bbaug/__36a.html',
+};
+
+const readScalar = (frontmatter, key) => {
+  const match = frontmatter.match(new RegExp(`^${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'));
+  return match?.[1]?.replace(/["']$/, '').trim() ?? '';
+};
+
 for (const file of files) {
   const relativePath = path.join('src', 'content', 'blog', file);
   const content = await readFile(path.join(blogDirectory, file), 'utf8');
@@ -35,6 +45,19 @@ for (const file of files) {
     (match) => match[1],
   );
 
+  const title = readScalar(frontmatter, 'title');
+  const description = readScalar(frontmatter, 'description');
+
+  if (title.length < 35 || title.length > 70) {
+    warnings.push(`${relativePath}: SEO-Titel hat ${title.length} Zeichen (Zielkorridor: 35–70).`);
+  }
+
+  if (description.length < 120 || description.length > 165) {
+    warnings.push(
+      `${relativePath}: Meta-Description hat ${description.length} Zeichen (Zielkorridor: 120–165).`,
+    );
+  }
+
   if (sourceUrls.length < 2) {
     errors.push(`${relativePath}: Mindestens zwei Quellen-URLs sind erforderlich.`);
   }
@@ -47,6 +70,20 @@ for (const file of files) {
       }
     } catch {
       errors.push(`${relativePath}: Ungültige Quellen-URL: ${sourceUrl}`);
+    }
+  }
+
+  if (sourceUrls.some((url) => url.includes('gesetze-im-internet.de/baugb/'))) {
+    errors.push(`${relativePath}: Veralteter/falscher BauGB-Pfad; erforderlich ist /bbaug/.`);
+  }
+
+  if (sourceUrls.some((url) => url.includes('gesetze-im-internet.de/uvpg_1990/'))) {
+    errors.push(`${relativePath}: Veralteter/falscher UVPG-Pfad; erforderlich ist /uvpg/.`);
+  }
+
+  for (const [norm, officialUrl] of Object.entries(currentLawSources)) {
+    if (content.includes(norm) && !sourceUrls.includes(officialUrl)) {
+      errors.push(`${relativePath}: Aktuelle amtliche Quelle für ${norm} fehlt: ${officialUrl}`);
     }
   }
 
@@ -67,6 +104,19 @@ for (const file of files) {
 
   if (!/^updatedDate:/m.test(frontmatter)) {
     warnings.push(`${relativePath}: updatedDate fehlt; beim nächsten fachlichen Review ergänzen.`);
+  }
+
+  const legalRiskPatterns = [
+    [/eigenständiger Verwaltungsakt/i, 'Gemeindezustimmung nicht als eigenständigen Verwaltungsakt darstellen'],
+    [/Antrag(?:stellung|sfrist)?[^\n]{0,45}(?:31\.12\.2030|31\. Dezember 2030)/i, '§ 246e Abs. 4 nicht auf eine bloße Antragstellung verkürzen'],
+    [/(?:maximal|höchstens)\s*100\s*(?:m|Meter)|100\s*(?:m|Meter)[^\n]{0,25}(?:starre Voraussetzung|zwingende Voraussetzung)/i, '100-m-Angabe nur als Leitplanke der Gesetzesbegründung darstellen'],
+    [/gute Chancen/i, 'keine Erfolgsprognose für einen rechtlichen Einzelfall geben'],
+  ];
+
+  for (const [pattern, message] of legalRiskPatterns) {
+    if (pattern.test(body)) {
+      warnings.push(`${relativePath}: Legal-Risiko: ${message}.`);
+    }
   }
 }
 

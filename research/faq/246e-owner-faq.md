@@ -1,5 +1,7 @@
 # Brandenburg Landingpages-Struktur: § 246e BauGB für private Eigentümer
 
+> **QUARANTÄNE – nicht publizieren und nicht in NotebookLM importieren.** Die Templates beruhen auf einem Stand aus Januar 2026 und enthalten teilweise zu starre oder veraltete Kurzformeln. Vor Wiederverwendung ist ein vollständiges Claim-für-Claim-Review anhand amtlicher Quellen erforderlich; siehe [Legal-Content-Audit vom 14.07.2026](../LEGAL_CONTENT_AUDIT_2026-07-14.md).
+
 **Hinweis zur Methodik:** Alle Templates basieren auf **bundesrechtlichen Primärquellen** (§ 246e BauGB, BT-Drs. 21/781, BMWSB FAQ). Aussagen zu konkreten Verwaltungspraktiken einzelner Kommunen **nur mit Quellenbeleg**. Keine Spekulationen.
 
 ***

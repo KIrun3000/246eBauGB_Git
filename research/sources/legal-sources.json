@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Automatischer Änderungsalarm für amtliche Rechtsquellen; Hashes werden nur nach dokumentiertem Legal-Review aktualisiert.",
+  "sources": [
+    {
+      "id": "baugb-246e",
+      "url": "https://www.gesetze-im-internet.de/bbaug/__246e.html",
+      "hashMode": "legal-text",
+      "sha256": "970b15ceccdc717544403db8c5b7fb7630a630344f648cf45abb7f91d66268d4",
+      "requiredMarkers": ["Befristete Sonderregelung für den Wohnungsbau", "31. Dezember 2030", "§ 36a entsprechend"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 90
+    },
+    {
+      "id": "baugb-36a",
+      "url": "https://www.gesetze-im-internet.de/bbaug/__36a.html",
+      "hashMode": "legal-text",
+      "sha256": "bf68ab8ac3f201648acf042ffe5bfda90011ba8f63754cb6a7c426ae961c3b63",
+      "requiredMarkers": ["Zustimmung der Gemeinde", "drei Monaten", "Genehmigungsbehörde"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 90
+    },
+    {
+      "id": "baugb-30",
+      "url": "https://www.gesetze-im-internet.de/bbaug/__30.html",
+      "hashMode": "legal-text",
+      "sha256": "c85c9fea60da363a4c261f4ac1aea636f339883abce789b795771548cdadf6ae",
+      "requiredMarkers": ["Zulässigkeit von Vorhaben im Geltungsbereich eines Bebauungsplans", "vorhabenbezogenen Bebauungsplans"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 180
+    },
+    {
+      "id": "baugb-34",
+      "url": "https://www.gesetze-im-internet.de/bbaug/__34.html",
+      "hashMode": "legal-text",
+      "sha256": "f9c396b006a43e79f6e028e690e8dce8fc57785d83168dce40ffc4b64010fed9",
+      "requiredMarkers": ["innerhalb der im Zusammenhang bebauten Ortsteile", "gesichert ist"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 180
+    },
+    {
+      "id": "baugb-35",
+      "url": "https://www.gesetze-im-internet.de/bbaug/__35.html",
+      "hashMode": "legal-text",
+      "sha256": "3531b0c37c71ef8fbf7168cd33e5948f2f0f51597329caa1afc12dffe7304b56",
+      "requiredMarkers": ["Bauen im Außenbereich", "ausreichende Erschließung gesichert ist"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 180
+    },
+    {
+      "id": "bnatschg-18",
+      "url": "https://www.gesetze-im-internet.de/bnatschg_2009/__18.html",
+      "hashMode": "legal-text",
+      "sha256": "45fd80161f7e3ebde66a53947d55f21cc68b292eba3aedb5185c9702a012b04d",
+      "requiredMarkers": ["Verhältnis zum Baurecht", "im Benehmen mit der für Naturschutz und Landschaftspflege zuständigen Behörde"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 180
+    },
+    {
+      "id": "uvpg-anlage-1",
+      "url": "https://www.gesetze-im-internet.de/uvpg/anlage_1.html",
+      "hashMode": "legal-text",
+      "sha256": "01a68d86804f7b8f18f4cdb639a155e141fb7418c29c900c83fe92db70eb6a03",
+      "requiredMarkers": ["18.7", "18.8", "Städtebauprojektes"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 180
+    },
+    {
+      "id": "bmwsb-bau-turbo-faq",
+      "url": "https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html",
+      "hashMode": "reachability",
+      "requiredMarkers": ["Bau-Turbo"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 30
+    }
+  ]
+}

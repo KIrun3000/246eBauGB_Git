@@ -8,6 +8,12 @@
 
 ### 1. Sourcing & Accuracy
 
+- [ ] **Amtliche Quellen auf Änderungen geprüft**
+  - `npm run sources:check` ist erfolgreich
+  - Bei Hash-Änderung keine automatische Textfreigabe: Claim-für-Claim-Review durchführen
+  - NotebookLM und andere LLM-Ausgaben niemals als Rechtsquelle behandeln
+  - Dateien mit `QUARANTÄNE` sowie `*.perplexity-raw.md` nicht für neue Inhalte verwenden
+
 - [ ] **Jede harte Behauptung hat eine Quelle**
   - Primärquellen (Gesetz, BT-Drs., amtliche Begründung) zuerst
   - Sekundärquellen (BMWSB FAQ, Behörden-FAQs) klar als solche gekennzeichnet
@@ -103,4 +109,4 @@
 
 ---
 
-**Letzte Aktualisierung:** Januar 2026 (A2)
+**Letzte Aktualisierung:** 14. Juli 2026 (A3 – Frischeprüfung und NotebookLM-Quellenhygiene)

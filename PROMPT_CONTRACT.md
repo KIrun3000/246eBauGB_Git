@@ -3,6 +3,8 @@
 ## Zweck
 Dieses Dokument definiert die exakte Struktur und Anforderungen für KI-Agents, die automatisiert Blog-Content für diese Website erstellen.
 
+**Verbindlicher Quellenhinweis (Stand 14.07.2026):** Inhalte dürfen nicht aus den quarantänisierten Dateien unter `research/evidence/` oder `research/faq/` übernommen werden. Vor jedem Entwurf sind der aktuelle amtliche Normtext und `research/sources/legal-sources.json` zu prüfen. NotebookLM-Ausgaben sind Recherchehinweise, keine Rechtsquelle und keine Freigabe.
+
 ## Content-Typ: Blog-Post (MDX)
 
 ### Output-Spezifikation
@@ -17,15 +19,16 @@ Dieses Dokument definiert die exakte Struktur und Anforderungen für KI-Agents, 
 title: "Präziser, SEO-optimierter Titel (50-60 Zeichen)"
 description: "Meta-Description, prägnant, handlungsaufrufend (140-160 Zeichen)"
 pubDate: 2025-01-15  # Format: YYYY-MM-DD
+updatedDate: 2026-07-14  # Pflicht nach jedem fachlichen Review
 category: "grundlagen" | "100m" | "aussenbereich" | "ablauf" | "faq"
 tags: ["Tag1", "Tag2", "Tag3"]  # 3-5 Tags, spezifisch
 region: "Brandenburg"  # Immer "Brandenburg"
 intent: "owner"  # Immer "owner" (private Eigentümer)
 sources:
-  - label: "Beschreibung der Quelle"
-    url: "https://example.com/quelle"
-  - label: "Weitere Quelle"
-    url: "https://example.com/quelle2"
+  - label: "§ 246e BauGB – aktueller Gesetzestext"
+    url: "https://www.gesetze-im-internet.de/bbaug/__246e.html"
+  - label: "§ 36a BauGB – Zustimmung der Gemeinde"
+    url: "https://www.gesetze-im-internet.de/bbaug/__36a.html"
 ---
 ```
 
@@ -92,27 +95,30 @@ sources:
 Jeder Artikel MUSS klar kommunizieren: **"Diese Informationen ersetzen keine Rechtsberatung."**
 Dies geschieht automatisch über die ArticleLayout-Komponente.
 
-## Beispiel: Vollständiger Artikel
+## Beispiel: Artikelgerüst
+
+Das frühere Kostenbeispiel wurde entfernt: nicht amtlich belegte Kostenkorridore sind kein geeignetes Muster für automatisierten Rechts- und Ratgebercontent.
 
 ```mdx
 ---
-title: "Erschließungskosten im Außenbereich Brandenburg – Was Sie wissen müssen"
-description: "Was kosten Zufahrt, Wasser, Abwasser und Strom im Außenbereich? Ein praxisnaher Überblick für Brandenburg."
+title: "Erschließung bei § 246e: Prüfpunkte im Überblick"
+description: "Welche Fragen zu Zufahrt, Wasser, Abwasser und Strom bei einem §-246e-Vorhaben früh mit Behörden und Versorgungsträgern geklärt werden sollten."
 pubDate: 2025-01-15
+updatedDate: 2026-07-14
 category: "aussenbereich"
 tags: ["Erschließung", "Kosten", "Außenbereich", "Infrastruktur"]
 region: "Brandenburg"
 intent: "owner"
 sources:
-  - label: "Erschließungsbeitragsrecht Brandenburg"
-    url: "https://bravors.brandenburg.de/..."
-  - label: "Kommunale Gebührensätze"
-    url: "https://example.com"
+  - label: "§ 246e BauGB – aktueller Gesetzestext"
+    url: "https://www.gesetze-im-internet.de/bbaug/__246e.html"
+  - label: "§ 35 BauGB – Außenbereich"
+    url: "https://www.gesetze-im-internet.de/bbaug/__35.html"
 ---
 
 ## Einleitung
 
-Die Erschließung eines Grundstücks im [Außenbereich Brandenburg](/aussenbereich-brandenburg-246e) ist oft teurer als gedacht. Wasser, Abwasser, Strom und Zufahrt müssen häufig auf eigene Kosten hergestellt werden. In diesem Artikel erklären wir, mit welchen Kosten Sie rechnen müssen und worauf Sie achten sollten.
+Bei einem Vorhaben im [Außenbereich Brandenburg](/aussenbereich-brandenburg-246e) müssen Zufahrt sowie Ver- und Entsorgung früh geklärt werden. Dieser Artikel beschreibt die Prüfpunkte, ohne unbelegte Kosten- oder Genehmigungsprognosen zu verwenden.
 
 ## Was bedeutet Erschließung?
 
@@ -129,11 +135,11 @@ Erschließung umfasst alle infrastrukturellen Anbindungen:
 
 ### Was kostet ein Wasseranschluss im Außenbereich?
 
-Die Kosten variieren stark je nach Entfernung. Rechnen Sie mit 3.000-15.000 Euro.
+Eine belastbare Summe lässt sich ohne Angaben des zuständigen Versorgungsträgers, Lage und Leitungsweg nicht nennen. Holen Sie eine aktuelle, grundstücksbezogene Auskunft ein.
 
 ### Brauche ich eine Kleinkläranlage?
 
-Wenn kein Kanalanschluss vorhanden ist, ja. Kosten: 5.000-15.000 Euro.
+Das hängt von Anschlussmöglichkeit, örtlicher Satzung, wasserrechtlichen Anforderungen und der Entscheidung der zuständigen Stellen ab.
 
 [... weitere FAQs ...]
 
@@ -204,4 +210,3 @@ Ein Agent-generierter Artikel ist erfolgreich, wenn:
 ## Kontakt bei Fragen
 
 Dieser Contract ist "living document" und kann angepasst werden, wenn Agents auf Probleme stoßen.
-

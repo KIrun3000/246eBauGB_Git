@@ -1,3 +1,5 @@
+> **QUARANTÄNE – nicht als Wissensquelle oder NotebookLM-Quelle verwenden.** Dieses Dokument enthält einen Recherchestand aus Januar 2026 und mehrere noch nicht abschließend geprüfte bzw. inzwischen korrigierte Aussagen. Maßgeblich sind der aktuelle Gesetzestext, das [Legal-Content-Audit vom 14.07.2026](../LEGAL_CONTENT_AUDIT_2026-07-14.md) und die freigegebenen Quellen in [`sources/legal-sources.json`](../sources/legal-sources.json).
+
 Nun erstelle ich die Endbericht-Struktur mit allen geforderten Elementen:
 
 ***
