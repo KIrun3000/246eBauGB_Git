@@ -1,0 +1,134 @@
+:root {
+  --editorial-measure: 70ch;
+  --editorial-body-size: clamp(1.0625rem, 0.35vw + 1rem, 1.125rem);
+  --editorial-body-leading: 1.65;
+  --editorial-title-size: clamp(2.5rem, 5vw, 4rem);
+  --editorial-title-leading: 1.06;
+  --editorial-h2-size: clamp(2rem, 2.3vw, 2.25rem);
+  --editorial-h2-leading: 1.15;
+  --editorial-h3-size: clamp(1.4375rem, 1.6vw, 1.625rem);
+  --editorial-h3-leading: 1.2;
+  --editorial-paragraph-space: 1.15rem;
+  --editorial-list-item-space: 0.55rem;
+  --editorial-h2-space-before: 3.5rem;
+  --editorial-h2-space-after: 1.15rem;
+  --editorial-h3-space-before: 2.25rem;
+  --editorial-h3-space-after: 0.75rem;
+}
+
+.pillar-page {
+  width: 100%;
+  max-width: var(--editorial-measure);
+  margin: 0 auto;
+  padding: clamp(2.75rem, 6vw, 5rem) 1rem clamp(4rem, 8vw, 7rem);
+  color: var(--ink-800);
+  font-size: var(--editorial-body-size);
+  line-height: var(--editorial-body-leading);
+}
+
+.pillar-page > h1 {
+  max-width: 20ch;
+  margin: 0;
+  color: var(--ink-950);
+  font-size: var(--editorial-title-size);
+  line-height: var(--editorial-title-leading);
+}
+
+.pillar-page > h1 + p {
+  max-width: 62ch;
+  margin: 1.35rem 0 0.75rem;
+  color: var(--ink-600);
+  font-size: clamp(1.125rem, 1vw + 0.9rem, 1.25rem);
+  line-height: 1.6;
+}
+
+.pillar-page > h1 + p strong {
+  color: inherit;
+  font-weight: 700;
+}
+
+.pillar-page > h1 + p + p {
+  margin-bottom: 0;
+  color: var(--ink-600);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.pillar-page > h2,
+.pillar-page > .highlight-box > h2 {
+  margin: var(--editorial-h2-space-before) 0 var(--editorial-h2-space-after);
+  color: var(--ink-950);
+  font-size: var(--editorial-h2-size);
+  line-height: var(--editorial-h2-leading);
+}
+
+.pillar-page > h3,
+.pillar-page > .faq h3 {
+  margin: var(--editorial-h3-space-before) 0 var(--editorial-h3-space-after);
+  color: var(--ink-950);
+  font-size: var(--editorial-h3-size);
+  line-height: var(--editorial-h3-leading);
+}
+
+.pillar-page > p,
+.pillar-page > ul,
+.pillar-page > ol,
+.pillar-page > .highlight-box p,
+.pillar-page > .highlight-box ul,
+.pillar-page > .highlight-box ol,
+.pillar-page > .faq p,
+.pillar-page > .faq ul,
+.pillar-page > .faq ol {
+  margin-bottom: var(--editorial-paragraph-space);
+}
+
+.pillar-page > ul,
+.pillar-page > ol,
+.pillar-page > .highlight-box ul,
+.pillar-page > .highlight-box ol,
+.pillar-page > .faq ul,
+.pillar-page > .faq ol {
+  padding-left: 1.55rem;
+}
+
+.pillar-page > ul li,
+.pillar-page > ol li,
+.pillar-page > .highlight-box li,
+.pillar-page > .faq li {
+  margin-bottom: var(--editorial-list-item-space);
+  padding-left: 0.15rem;
+}
+
+.pillar-page > hr {
+  margin: 2.75rem 0 1.75rem;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.pillar-page > hr + h2,
+.pillar-page > hr + .highlight-box,
+.pillar-page > .highlight-box > h2:first-child {
+  margin-top: 0;
+}
+
+.pillar-page > blockquote,
+.pillar-page > table,
+.pillar-page > details {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 640px) {
+  .pillar-page {
+    padding-top: 2.5rem;
+  }
+
+  .pillar-page > h1 {
+    max-width: none;
+  }
+
+  .pillar-page > hr {
+    margin-top: 2.25rem;
+    margin-bottom: 1.5rem;
+  }
+}
