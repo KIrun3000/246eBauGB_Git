@@ -5,6 +5,14 @@ Dieses Dokument definiert die exakte Struktur und Anforderungen für KI-Agents, 
 
 **Verbindlicher Quellenhinweis (Stand 14.07.2026):** Inhalte dürfen nicht aus den quarantänisierten Dateien unter `research/evidence/` oder `research/faq/` übernommen werden. Vor jedem Entwurf sind der aktuelle amtliche Normtext und `research/sources/legal-sources.json` zu prüfen. NotebookLM-Ausgaben sind Recherchehinweise, keine Rechtsquelle und keine Freigabe.
 
+## Verbindliche Sprachregel: klares Deutsch
+
+- Veröffentlichte Texte und sichtbare Bedienelemente verwenden keine unnötigen englischen Begriffe oder Mischformen.
+- Begriffe wie „Gatekeeper“, „framed“, „Pillar“, „Screening“, „Claim“ oder „Check“ sind durch verständliche deutsche Formulierungen zu ersetzen.
+- Bevorzugte Begriffe sind zum Beispiel „entscheidende Voraussetzung“, „eingeordnet“, „Grundlagenseite“, „Vorprüfung“, „Aussage“, „Prüfung“ und „Prüfliste“.
+- Amtliche Abkürzungen, Eigennamen und notwendige technische Bezeichner bleiben zulässig, zum Beispiel BauGB, UVP, SUP, SEO, FAQ, NotebookLM sowie Dateinamen, Routen und Quellcode-Bezeichner.
+- Vor Veröffentlichung muss `npm run language:check` erfolgreich sein.
+
 ## Content-Typ: Blog-Post (MDX)
 
 ### Output-Spezifikation

@@ -6,6 +6,14 @@
 
 ## ✅ Pre-Publish Checklist
 
+### Verbindliche Sprachregel
+
+- [ ] **Klares Deutsch ohne unnötige englische Begriffe oder Mischformen**
+  - Begriffe wie „Gatekeeper“, „framed“, „Pillar“, „Screening“, „Claim“ oder „Check“ werden durch verständliche deutsche Formulierungen ersetzt.
+  - Bevorzugte Begriffe sind zum Beispiel „entscheidende Voraussetzung“, „eingeordnet“, „Grundlagenseite“, „Vorprüfung“, „Aussage“, „Prüfung“ und „Prüfliste“.
+  - Amtliche Abkürzungen, Eigennamen und notwendige technische Bezeichner bleiben zulässig, zum Beispiel BauGB, UVP, SUP, SEO, FAQ, NotebookLM sowie Dateinamen, Routen und Quellcode-Bezeichner.
+  - `npm run language:check` ist erfolgreich.
+
 ### 1. Sourcing & Accuracy
 
 - [ ] **Amtliche Quellen auf Änderungen geprüft**
