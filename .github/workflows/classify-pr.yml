@@ -1,0 +1,73 @@
+name: Classify pull request
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Apply review-gate labels
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pullNumber = context.payload.pull_request.number;
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner,
+              repo,
+              pull_number: pullNumber,
+              per_page: 100,
+            });
+            const names = files.map((file) => file.filename);
+
+            const legal = names.some((name) =>
+              name.startsWith('src/content/') ||
+              name.startsWith('research/') ||
+              name.endsWith('.mdx') ||
+              name === 'CONTENT_DOD.md' ||
+              name === 'PROMPT_CONTRACT.md' ||
+              name.includes('Disclaimer') ||
+              name.startsWith('.agents/skills/246e')
+            );
+
+            const infrastructure = names.some((name) =>
+              name.startsWith('.github/') ||
+              name.startsWith('.codex/') ||
+              name === 'AGENTS.md' ||
+              name === 'package.json' ||
+              name === 'package-lock.json' ||
+              name === 'vercel.json'
+            );
+
+            const gates = [
+              ['legal-review-required', legal, 'B42318', 'Amtliche Quellen und Rechtsstand müssen geprüft werden.'],
+              ['infrastructure-review-required', infrastructure, 'B42318', 'Berechtigungen, Trigger und Deploy-Auswirkungen müssen geprüft werden.'],
+            ];
+
+            for (const [label, required, color, description] of gates) {
+              try {
+                await github.rest.issues.getLabel({ owner, repo, name: label });
+              } catch (error) {
+                if (error.status !== 404) throw error;
+                await github.rest.issues.createLabel({ owner, repo, name: label, color, description });
+              }
+
+              if (required) {
+                await github.rest.issues.addLabels({ owner, repo, issue_number: pullNumber, labels: [label] });
+              } else {
+                try {
+                  await github.rest.issues.removeLabel({ owner, repo, issue_number: pullNumber, name: label });
+                } catch (error) {
+                  if (error.status !== 404) throw error;
+                }
+              }
+            }

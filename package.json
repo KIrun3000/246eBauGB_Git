@@ -5,8 +5,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "content:check": "node scripts/content-check.mjs",
+    "check": "npm run content:check && npm run build",
     "preview": "astro preview",
     "astro": "astro"
+  },
+  "engines": {
+    "node": "22.x"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
