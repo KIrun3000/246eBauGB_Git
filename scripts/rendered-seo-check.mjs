@@ -23,18 +23,29 @@ function attribute(html, tagName, attributeName, attributeValue, wanted) {
   return tag?.match(new RegExp(`${wanted}=["']([^"']*)["']`, 'i'))?.[1]?.trim() ?? '';
 }
 
+const isBlogArticle = (relative) =>
+  relative.includes(`${path.sep}blog${path.sep}`) && !relative.endsWith(`${path.sep}blog${path.sep}index.html`);
+
 for (const file of await htmlFiles(distDirectory)) {
   const relative = path.relative(projectRoot, file);
   const html = await readFile(file, 'utf8');
   const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() ?? '';
   const description = attribute(html, 'meta', 'name', 'description', 'content');
   const canonical = attribute(html, 'link', 'rel', 'canonical', 'href');
+  const ogImage = attribute(html, 'meta', 'property', 'og:image', 'content');
   const h1Count = html.match(/<h1\b/gi)?.length ?? 0;
 
   if (!title) errors.push(`${relative}: <title> ist leer.`);
   if (!description) errors.push(`${relative}: Meta-Description ist leer.`);
   if (!canonical) errors.push(`${relative}: Canonical fehlt.`);
   if (h1Count !== 1) errors.push(`${relative}: genau eine H1 erwartet, gefunden: ${h1Count}.`);
+
+  if (isBlogArticle(relative)) {
+    if (!ogImage) errors.push(`${relative}: repräsentatives Open-Graph-Bild fehlt.`);
+    if (!html.includes('"@type":"BlogPosting"')) {
+      errors.push(`${relative}: strukturierte Daten vom Typ BlogPosting fehlen.`);
+    }
+  }
 
   if (title.length > 70) warnings.push(`${relative}: Seitentitel hat ${title.length} Zeichen.`);
   if (description.length > 165) warnings.push(`${relative}: Meta-Description hat ${description.length} Zeichen.`);

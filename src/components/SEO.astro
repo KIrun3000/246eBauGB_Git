@@ -4,9 +4,18 @@ export interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
+  ogType?: 'website' | 'article';
+  structuredData?: Record<string, unknown>;
 }
 
-const { title, description, canonical, ogImage } = Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  ogType = 'website',
+  structuredData,
+} = Astro.props;
 
 // Canonical: Always absolute, based on Astro.site + pathname
 const canonicalURL = Astro.site 
@@ -28,7 +37,7 @@ const ogImageURL = Astro.site ? new URL(ogImage || '/og-image.png', Astro.site).
 {canonicalURL && <link rel="canonical" href={canonicalURL} />}
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 {canonicalURL && <meta property="og:url" content={canonicalURL} />}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -40,6 +49,10 @@ const ogImageURL = Astro.site ? new URL(ogImage || '/og-image.png', Astro.site).
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 {ogImageURL && <meta property="twitter:image" content={ogImageURL} />}
+
+{structuredData && (
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+)}
 
 <!-- RSS Feed -->
 <link rel="alternate" type="application/rss+xml" title="§246e BauGB Brandenburg Blog" href="/rss.xml" />

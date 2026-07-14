@@ -6,6 +6,9 @@ export interface Props {
   title: string;
   description: string;
   canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  structuredData?: Record<string, unknown>;
   frontmatter?: {
     title?: string;
     description?: string;
@@ -18,6 +21,9 @@ const {
   title = frontmatter.title,
   description = frontmatter.description,
   canonical = frontmatter.canonical,
+  ogImage,
+  ogType,
+  structuredData,
 } = Astro.props;
 const currentPath = Astro.url.pathname;
 const navItems = [
@@ -39,7 +45,14 @@ const isActive = (href: string) => currentPath.startsWith(href);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#073b5c" />
-    <SEO title={title} description={description} canonical={canonical} />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      ogType={ogType}
+      structuredData={structuredData}
+    />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
