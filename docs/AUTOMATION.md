@@ -31,6 +31,8 @@ Die zusätzlichen Reviews führt Codex aus und dokumentiert sie im Pull Request.
 
 Preview-Deployments dürfen automatisiert laufen. Das automatische Produktionsdeployment ist in `vercel.json` vorübergehend für `main` deaktiviert, weil der Inhaltsaudit bekannte juristische Altstände festgestellt hat und `246ebaugb.de` noch nicht eingerichtet ist.
 
+Die Vorschauen sind derzeit durch die Vercel-Anmeldung geschützt. Die Produktionsadresse bleibt absichtlich ohne aktive Bereitstellung, bis das Release-Gate freigegeben wird.
+
 Nach Korrektur der fachlichen Basis und der öffentlichen Pflichtangaben wird `main` in einem gesondert geprüften Infrastruktur-Pull-Request für automatische Produktionsdeployments freigeschaltet.
 
 ## Parallel arbeiten
