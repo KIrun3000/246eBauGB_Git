@@ -17,6 +17,14 @@ Der Projektinhaber muss für normale Arbeiten keine Terminal-, GitHub- oder Verc
 7. Unkritische Änderungen können nach grünen Checks automatisch zusammengeführt werden.
 8. Ein freigegebener Merge nach `main` löst später automatisch das Produktionsdeployment aus.
 
+## NotebookLM: sichtbare Arbeit und Automatisierung
+
+- Der integrierte Codex-Browser eignet sich für sichtbare NotebookLM-Arbeiten und die Kontrolle erzeugter Infografiken, Videos oder Präsentationen.
+- Die NotebookLM-MCP-/CLI-Anbindung auf dem Mac mini übernimmt wiederholbare Abfragen, Quellenverwaltung und automatische Prüfungen.
+- Das Alias `246e-amtlich` enthält ausschließlich die im Projektmanifest erfassten amtlichen Quellen. Das breitere Alias `246e` bleibt von der Veröffentlichungsprüfung getrennt.
+- Vor juristischen Inhaltsarbeiten führt Codex `npm run sources:check` und anschließend `npm run notebooklm:check` aus.
+- NotebookLM liefert Recherchehinweise. Eine Freigabe erfolgt erst nach Abgleich mit der konkreten amtlichen Fundstelle und dem Legal-Review-Gate.
+
 ## Drei Sicherheitsstufen
 
 | Änderung | Ablauf |

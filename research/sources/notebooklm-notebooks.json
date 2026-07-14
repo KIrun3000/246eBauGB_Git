@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "lastVerified": "2026-07-14",
+  "profile": "246ebaugb",
+  "researchNotebook": {
+    "alias": "246e",
+    "id": "34da4942-0684-499d-99fc-0a2cd2ab351b",
+    "title": "Projekt §246e BauGB",
+    "policy": "research-only",
+    "note": "Breiter Recherchebestand mit amtlichen, sekundären und teilweise thematisch schwachen Quellen. Nicht als alleinige Grundlage für Veröffentlichungen verwenden."
+  },
+  "officialReviewNotebook": {
+    "alias": "246e-amtlich",
+    "id": "ada002c2-dcf9-408f-83a2-c4c6de2193d9",
+    "title": "§246e BauGB – amtliche Quellen – Qualitätsprüfung",
+    "policy": "exact-allowlist",
+    "sources": [
+      {
+        "legalSourceId": "baugb-246e",
+        "notebookSourceId": "f49e52c8-b8e0-4ec5-97c7-937bb471f54c",
+        "expectedTitle": "§ 246e BauGB - Einzelnorm"
+      },
+      {
+        "legalSourceId": "baugb-36a",
+        "notebookSourceId": "8d41658a-ecb0-4b0e-8e4b-e541d2e54748",
+        "expectedTitle": "§ 36a BauGB - Einzelnorm"
+      },
+      {
+        "legalSourceId": "baugb-30",
+        "notebookSourceId": "5706bbc8-ad7b-430c-9efa-14e468bc4292",
+        "expectedTitle": "§ 30 BauGB - Einzelnorm"
+      },
+      {
+        "legalSourceId": "baugb-34",
+        "notebookSourceId": "456aaafe-d38f-40f6-a759-56fccf3a331f",
+        "expectedTitle": "§ 34 BauGB - Einzelnorm"
+      },
+      {
+        "legalSourceId": "baugb-35",
+        "notebookSourceId": "69136b52-bd09-4790-8599-d4624573ce1e",
+        "expectedTitle": "§ 35 BauGB - Einzelnorm"
+      },
+      {
+        "legalSourceId": "bnatschg-18",
+        "notebookSourceId": "230fa362-124a-433b-9902-0ef117b39567",
+        "expectedTitle": "§ 18 BNatSchG - Einzelnorm"
+      },
+      {
+        "legalSourceId": "bnatschg-13",
+        "notebookSourceId": "0e3ff616-e867-4313-a24c-73ef59e456f8",
+        "expectedTitle": "§ 13 BNatSchG - Einzelnorm"
+      },
+      {
+        "legalSourceId": "bnatschg-15",
+        "notebookSourceId": "e2661e0f-4852-42e6-8101-0c401a3fd72d",
+        "expectedTitle": "§ 15 BNatSchG - Einzelnorm"
+      },
+      {
+        "legalSourceId": "uvpg-anlage-1",
+        "notebookSourceId": "aa72fd0b-f75b-40e0-8bd7-6dafdf3afdb2",
+        "expectedTitle": "Anlage 1 UVPG - Einzelnorm"
+      },
+      {
+        "legalSourceId": "bmwsb-bau-turbo-faq",
+        "notebookSourceId": "3646ab0e-822e-4399-bb71-8d973f00132b",
+        "expectedTitle": "BMWSB Homepage - Privatpersonen - BMWSB"
+      },
+      {
+        "legalSourceId": "mil-brandenburg-bau-turbo",
+        "notebookSourceId": "75af6a02-ead4-437c-ad55-24c2208b973d",
+        "expectedTitle": "Bau-Turbo | Ministerium für Infrastruktur und Landesplanung Brandenburg"
+      },
+      {
+        "legalSourceId": "mil-brandenburg-faq-block-e",
+        "notebookSourceId": "d55aa297-7ba7-4fbf-93fb-736a9e3d1038",
+        "expectedTitle": "https://mil.brandenburg.de/sixcms/media.php/9/FAQ_Bau-Turbo_E_Juli_2026.pdf"
+      },
+      {
+        "legalSourceId": "mil-brandenburg-faq-block-f",
+        "notebookSourceId": "61e6446e-392c-439e-b52e-906a29d9f265",
+        "expectedTitle": "https://mil.brandenburg.de/sixcms/media.php/9/FAQ_Bau-Turbo_F_Juli_2026.pdf"
+      }
+    ]
+  }
+}
