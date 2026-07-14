@@ -195,16 +195,17 @@ const categoryLabels: Record<string, string> = {
   }
 
   .article-header h1 {
-    max-width: 880px;
-    font-size: clamp(2.5rem, 6.5vw, 5rem);
+    max-width: 22ch;
+    font-size: var(--editorial-title-size);
+    line-height: var(--editorial-title-leading);
   }
 
   .article-header__description {
-    max-width: 760px;
-    margin: 1.4rem 0 0;
+    max-width: 62ch;
+    margin: 1.35rem 0 0;
     color: var(--ink-600);
-    font-size: clamp(1.05rem, 2vw, 1.28rem);
-    line-height: 1.65;
+    font-size: clamp(1.125rem, 1vw + 0.9rem, 1.25rem);
+    line-height: 1.6;
   }
 
   .article-header__details {
@@ -255,7 +256,7 @@ const categoryLabels: Record<string, string> = {
 
   .article-grid {
     display: grid;
-    grid-template-columns: minmax(0, var(--text-width)) minmax(220px, 1fr);
+    grid-template-columns: minmax(0, 700px) minmax(220px, 1fr);
     gap: clamp(3rem, 8vw, 7rem);
     align-items: start;
     padding-top: clamp(2.5rem, 6vw, 5rem);
@@ -266,16 +267,18 @@ const categoryLabels: Record<string, string> = {
   }
 
   .article-content {
+    max-width: var(--editorial-measure);
     color: var(--ink-800);
-    font-size: clamp(1rem, 1.7vw, 1.1rem);
-    line-height: 1.82;
+    font-size: var(--editorial-body-size);
+    line-height: var(--editorial-body-leading);
   }
 
   .article-content :global(h2) {
-    margin: 3.2rem 0 1.1rem;
+    margin: var(--editorial-h2-space-before) 0 var(--editorial-h2-space-after);
     padding-top: 0.3rem;
     color: var(--ink-950);
-    font-size: clamp(1.75rem, 3.5vw, 2.45rem);
+    font-size: var(--editorial-h2-size);
+    line-height: var(--editorial-h2-leading);
   }
 
   .article-content :global(h2)::before {
@@ -288,18 +291,20 @@ const categoryLabels: Record<string, string> = {
   }
 
   .article-content :global(h3) {
-    margin: 2.3rem 0 0.8rem;
+    margin: var(--editorial-h3-space-before) 0 var(--editorial-h3-space-after);
     color: var(--ink-950);
-    font-size: clamp(1.3rem, 2.5vw, 1.65rem);
+    font-size: var(--editorial-h3-size);
+    line-height: var(--editorial-h3-leading);
   }
 
   .article-content :global(p),
   .article-content :global(ul),
   .article-content :global(ol) {
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--editorial-paragraph-space);
   }
 
   .article-content :global(li) {
+    margin-bottom: var(--editorial-list-item-space);
     padding-left: 0.2rem;
   }
 
