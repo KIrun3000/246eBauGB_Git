@@ -2,124 +2,650 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout 
-  title="Check – §246e BauGB Brandenburg"
-  description="Prüfen Sie, ob Ihr Grundstück für ein Bauvorhaben nach §246e BauGB in Brandenburg geeignet ist."
+<BaseLayout
+  title="Grundstücks-Check – § 246e BauGB Brandenburg"
+  description="Strukturierte Vorprüfung für Grundstücke in Brandenburg: Lage, räumlicher Zusammenhang, Schutzbelange und Erschließung einordnen."
 >
-  <div class="container">
-    <div class="check-placeholder">
-      <h1>Grundstücks-Check</h1>
-      <p class="lead">
-        Prüfen Sie schnell und einfach, ob Ihr Grundstück die grundlegenden Voraussetzungen 
-        für ein Bauvorhaben nach §246e BauGB in Brandenburg erfüllt.
-      </p>
-      
-      <div class="coming-soon-box">
-        <h2>🚧 Coming Soon</h2>
-        <p>
-          Wir arbeiten an einem interaktiven Tool, mit dem Sie eine erste Einschätzung 
-          zu Ihrem Grundstück erhalten können. Das Tool wird folgende Aspekte prüfen:
-        </p>
-        
-        <ul>
-          <li>Lage im Außenbereich</li>
-          <li>Entfernung zur nächsten Ortslage (100m-Regel)</li>
-          <li>Schutzgebiete (Naturschutz, Landschaftsschutz, Denkmalschutz)</li>
-          <li>Grundsätzliche Erschließungssituation</li>
-        </ul>
-        
-        <p>
-          <strong>Wichtig:</strong> Das Tool wird nur eine erste, unverbindliche Einschätzung bieten. 
-          Für eine rechtsverbindliche Auskunft müssen Sie sich an Ihre Gemeinde oder einen 
-          Fachanwalt für Baurecht wenden.
+  <header class="check-hero">
+    <div class="container check-hero__grid">
+      <div>
+        <p class="eyebrow">Geo-Tool in Vorbereitung</p>
+        <h1>Grundstück Schritt für Schritt einordnen</h1>
+        <p class="check-hero__lead">
+          Der künftige Check verbindet Ihre Angaben mit öffentlich verfügbaren
+          Geodaten. Bis zur Datenanbindung zeigt diese Seite transparent,
+          welche Fragen die Vorprüfung abdecken wird.
         </p>
       </div>
-      
-      <div class="info-box">
-        <h3>Bis dahin:</h3>
-        <p>Informieren Sie sich in unseren ausführlichen Artikeln:</p>
-        <div class="links">
-          <a href="/246e-baugb-brandenburg" class="btn-link">Grundlagen §246e BauGB</a>
-          <a href="/100m-regel-raeumlicher-zusammenhang" class="btn-link">100m-Regel</a>
-          <a href="/aussenbereich-brandenburg-246e" class="btn-link">Außenbereich Brandenburg</a>
-          <a href="/zustimmung-gemeinde-246e" class="btn-link">Gemeinde-Zustimmung</a>
+      <div class="check-status">
+        <span class="check-status__signal" aria-hidden="true"></span>
+        <div>
+          <strong>Konzeptphase</strong>
+          <p>Kriterien und Datenquellen werden vorbereitet.</p>
         </div>
       </div>
+    </div>
+  </header>
+
+  <div class="check-content">
+    <div class="container">
+      <section class="check-preview" aria-labelledby="preview-title">
+        <div class="check-preview__map" aria-hidden="true">
+          <div class="map-toolbar">
+            <span>Brandenburg</span>
+            <span>Grundstücksansicht</span>
+          </div>
+          <div class="map-canvas">
+            <i></i><i></i><i></i><i></i>
+            <span class="map-canvas__road"></span>
+            <span class="map-canvas__radius"></span>
+            <span class="map-canvas__marker"></span>
+            <span class="map-canvas__scale">100 m</span>
+          </div>
+          <div class="map-legend">
+            <span><i class="is-brick"></i> Messbezug</span>
+            <span><i class="is-blue"></i> Flurstück</span>
+            <span>Schematische Darstellung</span>
+          </div>
+        </div>
+
+        <div class="check-preview__steps">
+          <p class="eyebrow">Vorgesehener Ablauf</p>
+          <h2 id="preview-title">Vier Prüfschritte, ein verständliches Ergebnis</h2>
+          <ol>
+            <li class="is-active">
+              <span>01</span>
+              <div>
+                <h3>Lage bestimmen</h3>
+                <p>Adresse oder Flurstück eindeutig zuordnen.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <h3>Zusammenhang prüfen</h3>
+                <p>Bebauung und räumliche Nähe zunächst einordnen.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <h3>Fachbelange überblicken</h3>
+                <p>Schutzgebiete und Erschließung als Hinweise erfassen.</p>
+              </div>
+            </li>
+            <li>
+              <span>04</span>
+              <div>
+                <h3>Ergebnis mitnehmen</h3>
+                <p>Offene Fragen für das Gespräch mit der Gemeinde sammeln.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="criteria" aria-labelledby="criteria-title">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">Was der Check abdecken soll</p>
+            <h2 id="criteria-title">Die wichtigsten Prüffelder</h2>
+          </div>
+          <p>
+            Der Check wird eine erste Orientierung geben. Er ersetzt weder
+            amtliche Auskünfte noch die rechtliche Prüfung des Einzelfalls.
+          </p>
+        </header>
+
+        <div class="criteria__grid">
+          <article>
+            <span aria-hidden="true">L</span>
+            <h3>Planungsrechtliche Lage</h3>
+            <p>Innenbereich, Außenbereich oder Bebauungsplan als Ausgangspunkt.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">R</span>
+            <h3>Räumlicher Zusammenhang</h3>
+            <p>Entfernung und tatsächliche Beziehung zur vorhandenen Bebauung.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">F</span>
+            <h3>Fachliche Hinweise</h3>
+            <p>Natur-, Landschafts- und Denkmalschutz als mögliche Prüfthemen.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">E</span>
+            <h3>Erschließung</h3>
+            <p>Zufahrt, Wasser, Abwasser und Energie strukturiert vorbereiten.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="interim" aria-labelledby="interim-title">
+        <div class="interim__content">
+          <p class="eyebrow">Schon jetzt weiterarbeiten</p>
+          <h2 id="interim-title">Bis das Geo-Tool bereitsteht</h2>
+          <p>
+            Nutzen Sie die vorhandenen Ratgeber, um Ihre Ausgangslage zu
+            sortieren und die richtigen Unterlagen zusammenzustellen.
+          </p>
+        </div>
+        <nav class="interim__links" aria-label="Ratgeber zum Grundstücks-Check">
+          <a href="/246e-baugb-brandenburg/">
+            <span>Grundlagen § 246e BauGB</span>
+            <svg aria-hidden="true" viewBox="0 0 18 18">
+              <path d="M3 9h11M9.5 3.5 15 9l-5.5 5.5" />
+            </svg>
+          </a>
+          <a href="/100m-regel-raeumlicher-zusammenhang/">
+            <span>100-m-Leitplanke</span>
+            <svg aria-hidden="true" viewBox="0 0 18 18">
+              <path d="M3 9h11M9.5 3.5 15 9l-5.5 5.5" />
+            </svg>
+          </a>
+          <a href="/aussenbereich-brandenburg-246e/">
+            <span>Außenbereich Brandenburg</span>
+            <svg aria-hidden="true" viewBox="0 0 18 18">
+              <path d="M3 9h11M9.5 3.5 15 9l-5.5 5.5" />
+            </svg>
+          </a>
+          <a href="/zustimmung-gemeinde-246e/">
+            <span>Gemeinde-Zustimmung</span>
+            <svg aria-hidden="true" viewBox="0 0 18 18">
+              <path d="M3 9h11M9.5 3.5 15 9l-5.5 5.5" />
+            </svg>
+          </a>
+        </nav>
+      </section>
+
+      <aside class="check-disclaimer">
+        <span aria-hidden="true">§</span>
+        <p>
+          <strong>Unverbindliche Orientierung:</strong>
+          Auch der künftige Check wird keine Baugenehmigung, Bauvoranfrage oder
+          Rechtsberatung ersetzen. Verbindliche Auskünfte erteilen die
+          zuständigen Stellen im konkreten Verfahren.
+        </p>
+      </aside>
     </div>
   </div>
 </BaseLayout>
 
 <style>
-  .check-placeholder {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 0;
+  .check-hero {
+    padding: clamp(3.5rem, 8vw, 7rem) 0;
+    color: var(--white);
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      var(--blue-900);
+    background-size: 38px 38px;
   }
 
-  .lead {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    margin-bottom: 2rem;
-  }
-
-  .coming-soon-box {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-  }
-
-  .coming-soon-box h2 {
-    margin-top: 0;
-    font-size: 2rem;
-  }
-
-  .coming-soon-box ul {
-    margin: 1.5rem 0;
-  }
-
-  .coming-soon-box li {
-    margin-bottom: 0.75rem;
-  }
-
-  .info-box {
-    background: var(--color-bg-alt);
-    padding: 2rem;
-    border-radius: 8px;
-  }
-
-  .info-box h3 {
-    margin-top: 0;
-  }
-
-  .links {
+  .check-hero__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.55fr);
+    gap: clamp(3rem, 8vw, 7rem);
+    align-items: end;
   }
 
-  .btn-link {
+  .eyebrow {
+    margin: 0 0 1rem;
+    color: var(--brick-600);
+    font-size: 0.73rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .check-hero .eyebrow {
+    color: #f0a28f;
+  }
+
+  .check-hero h1 {
+    max-width: 820px;
+    color: var(--white);
+  }
+
+  .check-hero__lead {
+    max-width: 720px;
+    margin: 1.5rem 0 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(1.05rem, 2vw, 1.22rem);
+    line-height: 1.65;
+  }
+
+  .check-status {
+    padding: 1.2rem;
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1fr);
+    gap: 0.8rem;
+    color: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .check-status__signal {
+    width: 12px;
+    height: 12px;
+    margin-top: 0.25rem;
+    border: 3px solid var(--blue-900);
+    border-radius: 50%;
+    background: #f0a28f;
+    box-shadow: 0 0 0 1px #f0a28f;
+  }
+
+  .check-status strong {
     display: block;
-    background: white;
-    color: var(--color-primary);
-    padding: 0.75rem 1rem;
-    border-radius: 4px;
+    margin-bottom: 0.25rem;
+    color: var(--white);
+  }
+
+  .check-status p {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
+  .check-content {
+    padding: clamp(4rem, 9vw, 8rem) 0;
+  }
+
+  .check-preview {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .check-preview__map {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--line);
+  }
+
+  .map-toolbar,
+  .map-legend {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 1rem;
+    color: var(--ink-600);
+    background: var(--white);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .map-toolbar {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .map-canvas {
+    min-height: 430px;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(90deg, rgba(7, 59, 92, 0.08) 0 1px, transparent 1px 38px),
+      repeating-linear-gradient(rgba(7, 59, 92, 0.08) 0 1px, transparent 1px 38px),
+      #e7f0ed;
+  }
+
+  .map-canvas > i {
+    position: absolute;
+    display: block;
+    border: 2px solid rgba(7, 59, 92, 0.62);
+    transform: rotate(-7deg);
+  }
+
+  .map-canvas > i:nth-child(1) {
+    width: 42%;
+    height: 34%;
+    top: 8%;
+    left: 7%;
+  }
+
+  .map-canvas > i:nth-child(2) {
+    width: 52%;
+    height: 38%;
+    top: 15%;
+    right: -4%;
+  }
+
+  .map-canvas > i:nth-child(3) {
+    width: 45%;
+    height: 42%;
+    bottom: 2%;
+    left: 11%;
+  }
+
+  .map-canvas > i:nth-child(4) {
+    width: 48%;
+    height: 39%;
+    right: -3%;
+    bottom: 0;
+  }
+
+  .map-canvas__road {
+    position: absolute;
+    width: 130%;
+    height: 28px;
+    left: -15%;
+    bottom: 25%;
+    background: rgba(7, 59, 92, 0.13);
+    transform: rotate(-8deg);
+  }
+
+  .map-canvas__radius {
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    top: calc(48% - 110px);
+    left: calc(46% - 110px);
+    border: 2px dashed var(--brick-600);
+    border-radius: 50%;
+    background: rgba(212, 93, 66, 0.08);
+  }
+
+  .map-canvas__marker {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: calc(48% - 12px);
+    left: calc(46% - 12px);
+    border: 6px solid var(--white);
+    border-radius: 50%;
+    background: var(--brick-600);
+    box-shadow: 0 6px 18px rgba(16, 38, 49, 0.25);
+  }
+
+  .map-canvas__scale {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.35rem 0.55rem;
+    color: var(--white);
+    background: var(--blue-900);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.66rem;
+    font-weight: 800;
+  }
+
+  .map-legend {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+  }
+
+  .map-legend > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .map-legend > span:last-child {
+    margin-left: auto;
+  }
+
+  .map-legend i {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+  }
+
+  .map-legend i.is-brick {
+    background: var(--brick-600);
+  }
+
+  .map-legend i.is-blue {
+    background: var(--blue-900);
+  }
+
+  .check-preview__steps {
+    padding: clamp(1.8rem, 5vw, 3rem);
+    align-self: center;
+  }
+
+  .check-preview__steps h2 {
+    margin-bottom: 2rem;
+    font-size: clamp(1.9rem, 3.5vw, 2.65rem);
+  }
+
+  .check-preview__steps ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .check-preview__steps li {
+    margin: 0;
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 0.9rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .check-preview__steps li > span {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    color: var(--ink-600);
+    border: 1px solid var(--line-dark);
+    border-radius: 50%;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.63rem;
+    font-weight: 800;
+  }
+
+  .check-preview__steps li.is-active > span {
+    color: var(--white);
+    background: var(--brick-600);
+    border-color: var(--brick-600);
+  }
+
+  .check-preview__steps h3 {
+    margin: 0 0 0.3rem;
+    font-size: 1.05rem;
+  }
+
+  .check-preview__steps li p {
+    margin: 0;
+    color: var(--ink-600);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .criteria {
+    padding-top: clamp(5rem, 10vw, 9rem);
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.6fr);
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-head > p {
+    margin: 0;
+    color: var(--ink-600);
+    line-height: 1.65;
+  }
+
+  .criteria__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    overflow: hidden;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+
+  .criteria article {
+    min-width: 0;
+    min-height: 250px;
+    padding: 1.5rem;
+    background: var(--white);
+  }
+
+  .criteria article > span {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 2.5rem;
+    color: var(--white);
+    background: var(--blue-900);
+    border-radius: 50%;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
+
+  .criteria h3 {
+    margin-bottom: 0.65rem;
+    font-size: 1.25rem;
+  }
+
+  .criteria p {
+    margin: 0;
+    color: var(--ink-600);
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  .interim {
+    margin-top: clamp(5rem, 10vw, 9rem);
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(360px, 1.2fr);
+    gap: clamp(2.5rem, 7vw, 6rem);
+    padding: clamp(2rem, 6vw, 4rem);
+    color: var(--white);
+    background: var(--ink-950);
+    border-radius: var(--radius-md);
+  }
+
+  .interim h2 {
+    color: var(--white);
+  }
+
+  .interim__content > p:last-child {
+    margin: 1rem 0 0;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.65;
+  }
+
+  .interim__links {
+    display: grid;
+  }
+
+  .interim__links a {
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--white);
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
     text-decoration: none;
-    text-align: center;
-    border: 2px solid var(--color-primary);
-    transition: all 0.2s;
+    font-size: 0.84rem;
+    font-weight: 800;
   }
 
-  .btn-link:hover {
-    background: var(--color-primary);
-    color: white;
+  .interim__links a:hover {
+    color: #f0a28f;
   }
 
-  @media (max-width: 768px) {
-    .links {
+  .interim__links svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+  }
+
+  .check-disclaimer {
+    margin-top: 2rem;
+    padding: 1.3rem 1.5rem;
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 1rem;
+    color: var(--ink-800);
+    background: var(--warning-bg);
+    border-left: 4px solid var(--warning-line);
+  }
+
+  .check-disclaimer > span {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    color: var(--warning-line);
+    border: 1px solid var(--warning-line);
+    border-radius: 50%;
+    font-weight: 900;
+  }
+
+  .check-disclaimer p {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 980px) {
+    .check-hero__grid,
+    .check-preview,
+    .interim {
       grid-template-columns: 1fr;
+    }
+
+    .check-status {
+      max-width: 500px;
+    }
+
+    .check-preview__map {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .criteria__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 680px) {
+    .map-canvas {
+      min-height: 300px;
+    }
+
+    .map-legend > span:last-child {
+      display: none;
+    }
+
+    .section-head {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .criteria__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .criteria article {
+      min-height: 210px;
     }
   }
 </style>

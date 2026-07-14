@@ -1,208 +1,1349 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const featuredPost = sortedPosts[0];
+const latestPosts = sortedPosts.slice(1, 5);
+const dateFormatter = new Intl.DateTimeFormat('de-DE', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+});
+
+const categoryLabels: Record<string, string> = {
+  grundlagen: 'Grundlagen',
+  '100m': '100-m-Leitplanke',
+  aussenbereich: 'Außenbereich',
+  ablauf: 'Verfahren',
+  faq: 'Praxisfragen',
+};
 ---
 
-<BaseLayout 
-  title="§246e BauGB Brandenburg – Bauen im Außenbereich für private Grundstückseigentümer"
-  description="Alle Informationen zu §246e BauGB für private Grundstückseigentümer in Brandenburg. 100m-Regel, Außenbereich, Gemeinde-Zustimmung und mehr."
+<BaseLayout
+  title="§ 246e BauGB Brandenburg – Orientierung für Grundstückseigentümer"
+  description="§ 246e BauGB verständlich erklärt: Grundstück, 100-m-Leitplanke, Außenbereich und Gemeinde-Zustimmung für private Eigentümer in Brandenburg."
 >
-  <div class="container">
-    <section class="hero">
-      <h1>§246e BauGB Brandenburg</h1>
-      <p class="lead">
-        Verständliche Informationen für private Grundstückseigentümer zum befristeten 
-        Baurecht im Außenbereich nach §246e BauGB – speziell für Brandenburg.
-      </p>
-    </section>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <p class="eyebrow">Bau-Turbo · Brandenburg · Private Eigentümer</p>
+        <h1 id="hero-title">
+          Bauen, wo es bisher <span>schwierig</span> war?
+        </h1>
+        <p class="hero__lead">
+          § 246e BauGB eröffnet befristete Spielräume für neuen Wohnraum.
+          Hier ordnen Sie Grundstück, räumlichen Zusammenhang und Verfahren
+          verständlich ein – bevor Sie die nächsten Schritte planen.
+        </p>
+        <div class="hero__actions">
+          <a href="/check/" class="button button--primary">
+            Grundstück vorprüfen
+            <svg aria-hidden="true" viewBox="0 0 18 18">
+              <path d="M3 9h11M9.5 3.5 15 9l-5.5 5.5" />
+            </svg>
+          </a>
+          <a href="/246e-baugb-brandenburg/" class="button button--secondary">
+            Regelung verstehen
+          </a>
+        </div>
+        <ul class="hero__assurances" aria-label="Wichtige Einordnung">
+          <li>
+            <svg aria-hidden="true" viewBox="0 0 18 18">
+              <path d="m4 9 3 3 7-7" />
+            </svg>
+            Ohne Juristendeutsch
+          </li>
+          <li>
+            <svg aria-hidden="true" viewBox="0 0 18 18">
+              <path d="m4 9 3 3 7-7" />
+            </svg>
+            Mit Primärquellen
+          </li>
+          <li>
+            <svg aria-hidden="true" viewBox="0 0 18 18">
+              <path d="m4 9 3 3 7-7" />
+            </svg>
+            Keine Rechtsberatung
+          </li>
+        </ul>
+      </div>
 
-    <section class="pillars">
-      <h2>Hauptthemen</h2>
-      <div class="pillar-grid">
-        <a href="/246e-baugb-brandenburg" class="pillar-card">
-          <h3>Grundlagen §246e BauGB</h3>
-          <p>Was ist §246e BauGB und wie funktioniert die Regelung in Brandenburg?</p>
+      <figure class="parcel-plan">
+        <div class="parcel-plan__head">
+          <span>Schematische Vorprüfung</span>
+          <span translate="no">BB · Flurstück 246e</span>
+        </div>
+        <svg
+          class="parcel-plan__drawing"
+          viewBox="0 0 560 410"
+          role="img"
+          aria-labelledby="parcel-title parcel-desc"
+        >
+          <title id="parcel-title">Schematischer Lageplan eines Grundstücks</title>
+          <desc id="parcel-desc">
+            Grundstücksgrenzen, vorhandene Bebauung und eine gestrichelte
+            100-Meter-Leitplanke zur ersten Orientierung.
+          </desc>
+          <defs>
+            <pattern id="parcel-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path d="M24 0H0V24" fill="none" stroke="#9bb0ba" stroke-width="0.6" opacity="0.5" />
+            </pattern>
+            <pattern id="parcel-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="8" stroke="#66806d" stroke-width="2" opacity="0.45" />
+            </pattern>
+          </defs>
+          <rect width="560" height="410" fill="url(#parcel-grid)" />
+          <path d="M-20 315 148 276 287 301 404 251 590 275" fill="none" stroke="#073b5c" stroke-width="18" opacity="0.11" />
+          <path d="M35 62 218 30 253 178 78 212Z" fill="#fff" stroke="#073b5c" stroke-width="2" />
+          <path d="M218 30 482 75 445 221 253 178Z" fill="url(#parcel-hatch)" stroke="#073b5c" stroke-width="2" />
+          <path d="M78 212 253 178 287 301 118 346Z" fill="#dcecf1" stroke="#073b5c" stroke-width="2" />
+          <path d="M253 178 445 221 404 350 287 301Z" fill="#fff" stroke="#073b5c" stroke-width="2" />
+          <rect x="122" y="112" width="76" height="48" rx="2" fill="#073b5c" />
+          <path d="m115 112 45-30 45 30" fill="#be4f37" stroke="#be4f37" stroke-width="8" stroke-linejoin="round" />
+          <circle cx="160" cy="136" r="112" fill="none" stroke="#be4f37" stroke-width="2.5" stroke-dasharray="8 7" />
+          <line x1="160" y1="136" x2="267" y2="102" stroke="#be4f37" stroke-width="2.5" />
+          <circle cx="160" cy="136" r="6" fill="#be4f37" />
+          <circle cx="267" cy="102" r="6" fill="#be4f37" />
+          <g transform="translate(328 42)">
+            <rect width="168" height="58" rx="4" fill="#073b5c" />
+            <text x="16" y="24" fill="#fff" font-size="12" font-family="sans-serif" font-weight="700">100-m-Leitplanke</text>
+            <text x="16" y="43" fill="#dcecf1" font-size="10" font-family="sans-serif">aus der Gesetzesbegründung</text>
+          </g>
+          <g transform="translate(315 310)">
+            <line x1="0" y1="0" x2="92" y2="0" stroke="#073b5c" stroke-width="2" />
+            <line x1="0" y1="-6" x2="0" y2="6" stroke="#073b5c" stroke-width="2" />
+            <line x1="92" y1="-6" x2="92" y2="6" stroke="#073b5c" stroke-width="2" />
+            <text x="29" y="-10" fill="#073b5c" font-size="11" font-family="sans-serif">100 m</text>
+          </g>
+          <text x="91" y="241" fill="#073b5c" font-size="11" font-family="sans-serif" font-weight="700">FLUR 03</text>
+          <text x="315" y="247" fill="#073b5c" font-size="11" font-family="sans-serif" font-weight="700">FLUR 04</text>
+        </svg>
+        <figcaption>
+          <span class="parcel-plan__legend">
+            <i class="legend-dot legend-dot--brick"></i>
+            Messbezug
+          </span>
+          <span class="parcel-plan__legend">
+            <i class="legend-dot legend-dot--land"></i>
+            möglicher Zusammenhang
+          </span>
+          <span>Keine amtliche Karte</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="Drei zentrale Voraussetzungen">
+    <div class="container facts__grid">
+      <article>
+        <span class="facts__label">Zeitrahmen</span>
+        <strong>Bis Ende 2030 befristet</strong>
+        <a href="https://www.gesetze-im-internet.de/bbaug/__246e.html" target="_blank" rel="noopener noreferrer">
+          § 246e Abs. 4 BauGB
         </a>
-        <a href="/100m-regel-raeumlicher-zusammenhang" class="pillar-card">
-          <h3>100m-Regel & räumlicher Zusammenhang</h3>
-          <p>Wie wird die 100-Meter-Regel ausgelegt und was bedeutet sie für Ihr Grundstück?</p>
+      </article>
+      <article>
+        <span class="facts__label">Gemeinde</span>
+        <strong>Zustimmung erforderlich</strong>
+        <a href="/zustimmung-gemeinde-246e/">Verfahren einordnen</a>
+      </article>
+      <article>
+        <span class="facts__label">Außenbereich</span>
+        <strong>Immer Einzelfallprüfung</strong>
+        <a href="/100m-regel-raeumlicher-zusammenhang/">Leitplanke verstehen</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="topics">
+    <div class="container">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">Einstieg nach Ihrer Frage</p>
+          <h2>Was möchten Sie klären?</h2>
+        </div>
+        <p>
+          Vier Themen führen von der ersten rechtlichen Einordnung bis zum
+          Gespräch mit Gemeinde und Bauaufsicht.
+        </p>
+      </header>
+
+      <div class="topics__grid">
+        <a href="/246e-baugb-brandenburg/" class="topic-card topic-card--feature">
+          <span class="topic-card__meta">Rechtslage · Überblick</span>
+          <div>
+            <h3>Was § 246e ermöglicht – und wo die Grenzen liegen</h3>
+            <p>
+              Voraussetzungen, Anwendungsfälle und Befristung kompakt erklärt.
+            </p>
+          </div>
+          <span class="topic-card__link">
+            Grundlagen lesen
+            <svg aria-hidden="true" viewBox="0 0 18 18">
+              <path d="M3 9h11M9.5 3.5 15 9l-5.5 5.5" />
+            </svg>
+          </span>
+          <svg class="topic-card__plan" aria-hidden="true" viewBox="0 0 240 210">
+            <path d="M-20 180 84 118l76 25 100-73" />
+            <path d="M20 12 112 32 86 112 6 92ZM112 32l108 20-20 88-114-28Z" />
+            <circle cx="84" cy="98" r="56" />
+            <path d="M84 98h56" />
+          </svg>
         </a>
-        <a href="/aussenbereich-brandenburg-246e" class="pillar-card">
-          <h3>Außenbereich in Brandenburg</h3>
-          <p>Besonderheiten beim Bauen im Außenbereich nach Brandenburger Landesrecht.</p>
+
+        <a href="/100m-regel-raeumlicher-zusammenhang/" class="topic-card">
+          <span class="topic-card__meta">Grundstück · Lage</span>
+          <h3>100-m-Leitplanke & räumlicher Zusammenhang</h3>
+          <p>
+            Warum 100 Meter keine starre Regel sind und welche Kriterien zählen.
+          </p>
+          <span class="topic-card__link">Grundstück einordnen</span>
         </a>
-        <a href="/zustimmung-gemeinde-246e" class="pillar-card">
-          <h3>Gemeinde-Zustimmung</h3>
-          <p>Wie läuft das Verfahren mit der Gemeinde und was müssen Sie beachten?</p>
+
+        <a href="/aussenbereich-brandenburg-246e/" class="topic-card">
+          <span class="topic-card__meta">Fachrecht · Brandenburg</span>
+          <h3>Außenbereich, Natur & Erschließung</h3>
+          <p>
+            Welche Belange trotz planungsrechtlicher Erleichterung weiter gelten.
+          </p>
+          <span class="topic-card__link">Prüfpunkte ansehen</span>
+        </a>
+
+        <a href="/zustimmung-gemeinde-246e/" class="topic-card">
+          <span class="topic-card__meta">Verfahren · Gemeinde</span>
+          <h3>Vom Vorhaben zur Gemeinde-Zustimmung</h3>
+          <p>
+            Unterlagen vorbereiten, Rollen verstehen und sachlich ins Gespräch gehen.
+          </p>
+          <span class="topic-card__link">Ablauf verstehen</span>
         </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="cta-section">
-      <h2>Ist Ihr Grundstück geeignet?</h2>
+  <section class="pathway">
+    <div class="container">
+      <header class="pathway__head">
+        <p class="eyebrow eyebrow--light">Orientierung in vier Schritten</p>
+        <h2>Vom Grundstück zur belastbaren Anfrage</h2>
+      </header>
+      <ol class="pathway__steps">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>Ausgangslage klären</h3>
+            <p>Innenbereich, Außenbereich oder Bebauungsplan unterscheiden.</p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>Grundstück prüfen</h3>
+            <p>Lage, Zusammenhang, Erschließung und Schutzbelange sammeln.</p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>Vorhaben schärfen</h3>
+            <p>Wohnraumnutzen und städtebauliche Einordnung nachvollziehbar machen.</p>
+          </div>
+        </li>
+        <li>
+          <span>04</span>
+          <div>
+            <h3>Gemeinde ansprechen</h3>
+            <p>Mit geordneten Unterlagen eine erste Einschätzung einholen.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  {featuredPost && (
+    <section class="magazine">
+      <div class="container">
+        <header class="section-head section-head--magazine">
+          <div>
+            <p class="eyebrow">Aktuelle Einordnungen</p>
+            <h2>Aus dem Magazin</h2>
+          </div>
+          <a href="/blog/" class="section-link">
+            Alle Beiträge
+            <svg aria-hidden="true" viewBox="0 0 18 18">
+              <path d="M3 9h11M9.5 3.5 15 9l-5.5 5.5" />
+            </svg>
+          </a>
+        </header>
+
+        <div class="magazine__grid">
+          <article class="lead-story">
+            <div class="lead-story__visual" aria-hidden="true">
+              <span>{categoryLabels[featuredPost.data.category] || featuredPost.data.category}</span>
+              <svg viewBox="0 0 640 300">
+                <path d="M-40 248 92 204l105 18 120-72 108 34 142-98 120 24" />
+                <path d="M40 50 226 20l62 114-154 58ZM226 20l242 34-43 130-137-50Z" />
+                <circle cx="246" cy="152" r="104" />
+                <path d="M246 152h104" />
+                <rect x="102" y="116" width="76" height="52" />
+              </svg>
+            </div>
+            <div class="lead-story__body">
+              <div class="story-meta">
+                <span>{categoryLabels[featuredPost.data.category] || featuredPost.data.category}</span>
+                <time datetime={featuredPost.data.pubDate.toISOString()}>
+                  {dateFormatter.format(featuredPost.data.pubDate)}
+                </time>
+              </div>
+              <h3>
+                <a href={`/blog/${featuredPost.id}/`}>{featuredPost.data.title}</a>
+              </h3>
+              <p>{featuredPost.data.description}</p>
+              <a href={`/blog/${featuredPost.id}/`} class="story-link">Beitrag lesen</a>
+            </div>
+          </article>
+
+          <div class="story-list">
+            {latestPosts.map((post) => (
+              <article class="story-list__item">
+                <div class="story-list__folio" aria-hidden="true">
+                  {String(sortedPosts.indexOf(post) + 1).padStart(2, '0')}
+                </div>
+                <div>
+                  <div class="story-meta">
+                    <span>{categoryLabels[post.data.category] || post.data.category}</span>
+                    <time datetime={post.data.pubDate.toISOString()}>
+                      {dateFormatter.format(post.data.pubDate)}
+                    </time>
+                  </div>
+                  <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+                  <p>{post.data.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="check-teaser">
+    <div class="container check-teaser__grid">
+      <div class="check-teaser__content">
+        <p class="eyebrow">Geo-Check in Vorbereitung</p>
+        <h2>Passt Ihr Grundstück grundsätzlich ins Bild?</h2>
+        <p>
+          Der geplante Grundstücks-Check führt Sie durch Lage, Abstand,
+          Erschließung und Schutzbelange. Bis die Kartendaten angebunden sind,
+          erhalten Sie bereits eine strukturierte Checkliste.
+        </p>
+        <a href="/check/" class="button button--primary">
+          Check ansehen
+          <svg aria-hidden="true" viewBox="0 0 18 18">
+            <path d="M3 9h11M9.5 3.5 15 9l-5.5 5.5" />
+          </svg>
+        </a>
+      </div>
+      <div class="check-teaser__panel">
+        <div class="check-teaser__map" aria-hidden="true">
+          <i></i><i></i><i></i>
+          <span class="map-marker"></span>
+          <span class="map-radius"></span>
+        </div>
+        <ol>
+          <li class="is-current"><span>1</span>Lage bestimmen</li>
+          <li><span>2</span>Räumlichen Zusammenhang prüfen</li>
+          <li><span>3</span>Fachbelange einordnen</li>
+          <li><span>4</span>Ergebnis zusammenfassen</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="legal-note">
+    <div class="container legal-note__inner">
+      <span class="legal-note__icon" aria-hidden="true">§</span>
       <p>
-        Prüfen Sie schnell und einfach, ob Ihr Grundstück in Brandenburg die grundlegenden 
-        Voraussetzungen für ein Bauvorhaben nach §246e BauGB erfüllt.
+        <strong>Wichtige Einordnung:</strong>
+        Diese Website bietet allgemeine Informationen und keine Rechtsberatung.
+        Für eine verbindliche Einschätzung wenden Sie sich an Ihre Gemeinde,
+        die zuständige Bauaufsicht oder einen Fachanwalt für Baurecht.
       </p>
-      <a href="/check" class="btn-primary">Zum Check (Coming Soon)</a>
-    </section>
-
-    <section class="blog-preview">
-      <h2>Aktuelle Blog-Beiträge</h2>
-      <p>Weitere Informationen und Praxisbeispiele finden Sie in unserem Blog.</p>
-      <a href="/blog" class="btn-secondary">Zum Blog</a>
-    </section>
-
-    <section class="disclaimer-home">
-      <p>
-        <strong>Wichtiger Hinweis:</strong> Diese Website bietet keine Rechtsberatung. 
-        Für verbindliche Auskünfte zu Ihrem Bauvorhaben wenden Sie sich bitte an einen 
-        Fachanwalt für Baurecht oder Ihre zuständige Baubehörde.
-      </p>
-    </section>
-  </div>
+    </div>
+  </aside>
 </BaseLayout>
 
 <style>
   .hero {
-    text-align: center;
-    padding: 3rem 0;
-    margin-bottom: 3rem;
+    position: relative;
+    padding: clamp(3.5rem, 8vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, rgba(7, 59, 92, 0.035) 1px, transparent 1px),
+      linear-gradient(rgba(7, 59, 92, 0.035) 1px, transparent 1px),
+      var(--paper);
+    background-size: 36px 36px;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: min(40vw, 560px);
+    aspect-ratio: 1;
+    top: -28%;
+    right: -8%;
+    border: 1px solid rgba(7, 59, 92, 0.12);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 70px rgba(7, 59, 92, 0.025),
+      0 0 0 140px rgba(7, 59, 92, 0.02);
+    pointer-events: none;
+  }
+
+  .hero__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(420px, 0.98fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .hero__content {
+    animation: hero-enter 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .eyebrow {
+    margin: 0 0 1rem;
+    color: var(--brick-600);
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow--light {
+    color: #f0a28f;
   }
 
   .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    max-width: 680px;
   }
 
-  .lead {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    max-width: 800px;
-    margin: 0 auto;
+  .hero h1 span {
+    color: var(--blue-800);
+    text-decoration: underline;
+    text-decoration-color: var(--brick-500);
+    text-decoration-thickness: 0.11em;
+    text-underline-offset: 0.09em;
   }
 
-  .pillars {
-    margin-bottom: 4rem;
+  .hero__lead {
+    max-width: 650px;
+    margin: 1.6rem 0 0;
+    color: var(--ink-600);
+    font-size: clamp(1.05rem, 2vw, 1.26rem);
+    line-height: 1.62;
   }
 
-  .pillars h2 {
-    text-align: center;
-    margin-bottom: 2rem;
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
   }
 
-  .pillar-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-
-  .pillar-card {
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 1.5rem;
+  .button {
+    min-height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 0.8rem 1.15rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    color: var(--color-text);
-    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 0.9rem;
+    font-weight: 800;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
   }
 
-  .pillar-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  .button svg,
+  .section-link svg,
+  .topic-card__link svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
   }
 
-  .pillar-card h3 {
-    color: var(--color-primary);
-    margin-bottom: 0.75rem;
-    margin-top: 0;
+  .button--primary {
+    color: var(--white);
+    background: var(--brick-600);
   }
 
-  .pillar-card p {
+  .button--primary:hover {
+    color: var(--white);
+    background: var(--blue-900);
+    transform: translateY(-2px);
+  }
+
+  .button--secondary {
+    color: var(--blue-900);
+    background: transparent;
+    border-color: var(--line-dark);
+  }
+
+  .button--secondary:hover {
+    color: var(--blue-900);
+    background: var(--white);
+    border-color: var(--blue-900);
+    transform: translateY(-2px);
+  }
+
+  .hero__assurances {
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.2rem;
+    list-style: none;
+    color: var(--ink-600);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .hero__assurances li {
     margin: 0;
-    color: var(--color-text-light);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
-  .cta-section {
-    text-align: center;
-    background: var(--color-bg-alt);
-    padding: 3rem 2rem;
-    border-radius: 8px;
-    margin-bottom: 4rem;
+  .hero__assurances svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: var(--land-600);
+    stroke-width: 2.2;
   }
 
-  .cta-section h2 {
-    margin-top: 0;
+  .parcel-plan {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    animation: plan-enter 720ms 100ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  .cta-section p {
-    max-width: 600px;
-    margin: 0 auto 1.5rem;
-    color: var(--color-text-light);
+  .parcel-plan::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 5px solid var(--white);
+    border-radius: inherit;
+    pointer-events: none;
   }
 
-  .btn-primary,
-  .btn-secondary {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background 0.2s;
+  .parcel-plan__head,
+  .parcel-plan figcaption {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    color: var(--ink-600);
+    background: var(--white);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
-  .btn-primary {
-    background: var(--color-primary);
-    color: white;
+  .parcel-plan__head {
+    border-bottom: 1px solid var(--line);
   }
 
-  .btn-primary:hover {
-    background: #0052a3;
+  .parcel-plan__drawing {
+    width: 100%;
+    height: auto;
   }
 
-  .btn-secondary {
-    background: white;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
+  .parcel-plan figcaption {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border-top: 1px solid var(--line);
   }
 
-  .btn-secondary:hover {
-    background: var(--color-bg-alt);
+  .parcel-plan figcaption > span:last-child {
+    margin-left: auto;
   }
 
-  .blog-preview {
-    text-align: center;
-    margin-bottom: 4rem;
+  .parcel-plan__legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
-  .blog-preview p {
-    color: var(--color-text-light);
-    margin-bottom: 1.5rem;
+  .legend-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
   }
 
-  .disclaimer-home {
-    background: #fff3cd;
-    border-left: 4px solid #ffc107;
-    padding: 1rem 1.5rem;
-    border-radius: 4px;
-    margin-top: 4rem;
+  .legend-dot--brick {
+    background: var(--brick-600);
   }
 
-  .disclaimer-home strong {
+  .legend-dot--land {
+    background: var(--land-600);
+  }
+
+  .facts {
+    color: var(--white);
+    background: var(--blue-900);
+  }
+
+  .facts__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .facts article {
+    min-width: 0;
+    padding: 1.55rem clamp(1rem, 3vw, 2rem);
+    border-left: 1px solid rgba(255, 255, 255, 0.17);
+  }
+
+  .facts article:last-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.17);
+  }
+
+  .facts__label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
+    color: #93bbc9;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
-  @media (max-width: 768px) {
-    .hero h1 {
-      font-size: 2rem;
-    }
+  .facts strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--white);
+    font-size: 1.02rem;
+  }
 
-    .lead {
-      font-size: 1.1rem;
-    }
+  .facts a {
+    color: rgba(255, 255, 255, 0.67);
+    font-size: 0.75rem;
+    text-underline-offset: 0.22em;
+  }
 
-    .pillar-grid {
+  .facts a:hover {
+    color: var(--white);
+  }
+
+  .topics,
+  .magazine {
+    padding: clamp(4.5rem, 9vw, 8rem) 0;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.6fr);
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .section-head h2 {
+    max-width: 660px;
+  }
+
+  .section-head > p {
+    margin: 0;
+    color: var(--ink-600);
+    line-height: 1.65;
+  }
+
+  .topics__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    overflow: hidden;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+
+  .topic-card {
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.5rem, 4vw, 2.4rem);
+    color: var(--ink-950);
+    background: var(--white);
+    text-decoration: none;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  .topic-card:hover {
+    color: var(--ink-950);
+    background: var(--blue-050);
+  }
+
+  .topic-card--feature {
+    position: relative;
+    min-height: 360px;
+    color: var(--white);
+    background: var(--blue-900);
+    overflow: hidden;
+  }
+
+  .topic-card--feature:hover {
+    color: var(--white);
+    background: var(--blue-800);
+  }
+
+  .topic-card__meta {
+    position: relative;
+    z-index: 1;
+    margin-bottom: auto;
+    color: var(--brick-600);
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .topic-card--feature .topic-card__meta {
+    color: #f0a28f;
+  }
+
+  .topic-card h3 {
+    position: relative;
+    z-index: 1;
+    max-width: 450px;
+    margin: 1.25rem 0 0.75rem;
+  }
+
+  .topic-card--feature h3 {
+    color: var(--white);
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+  }
+
+  .topic-card p {
+    position: relative;
+    z-index: 1;
+    max-width: 460px;
+    margin: 0;
+    color: var(--ink-600);
+    line-height: 1.6;
+  }
+
+  .topic-card--feature p {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .topic-card__link {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--blue-800);
+    font-size: 0.82rem;
+    font-weight: 800;
+  }
+
+  .topic-card--feature .topic-card__link {
+    color: var(--white);
+  }
+
+  .topic-card__plan {
+    position: absolute;
+    right: -2rem;
+    bottom: -2rem;
+    width: min(52%, 260px);
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.17);
+    stroke-width: 1.5;
+  }
+
+  .topic-card__plan circle {
+    stroke: rgba(240, 162, 143, 0.55);
+    stroke-dasharray: 6 6;
+  }
+
+  .pathway {
+    padding: clamp(4.5rem, 9vw, 7rem) 0;
+    color: var(--white);
+    background: var(--ink-950);
+  }
+
+  .pathway__head {
+    max-width: 700px;
+    margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .pathway__head h2 {
+    color: var(--white);
+  }
+
+  .pathway__steps {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style: none;
+    counter-reset: none;
+  }
+
+  .pathway__steps li {
+    position: relative;
+    margin: 0;
+    padding: 1.4rem clamp(1rem, 3vw, 2rem) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .pathway__steps li::before {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    top: -6px;
+    left: 0;
+    border: 3px solid var(--ink-950);
+    border-radius: 50%;
+    background: var(--brick-500);
+    box-shadow: 0 0 0 1px var(--brick-500);
+  }
+
+  .pathway__steps > li > span {
+    display: block;
+    margin-bottom: 2.5rem;
+    color: #f0a28f;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .pathway__steps h3 {
+    margin: 0 0 0.7rem;
+    color: var(--white);
+    font-size: 1.2rem;
+  }
+
+  .pathway__steps p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.87rem;
+  }
+
+  .magazine {
+    background: var(--white);
+  }
+
+  .section-head--magazine {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--blue-900);
+    font-size: 0.84rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .section-link:hover {
+    color: var(--brick-600);
+  }
+
+  .magazine__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+
+  .lead-story {
+    min-width: 0;
+  }
+
+  .lead-story__visual {
+    min-height: 300px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background: var(--blue-050);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+
+  .lead-story__visual > span {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    padding: 0.45rem 0.6rem;
+    color: var(--white);
+    background: var(--brick-600);
+    border-radius: var(--radius-sm);
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lead-story__visual svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: rgba(7, 59, 92, 0.09);
+    stroke: var(--blue-900);
+    stroke-width: 2;
+    transition: transform 300ms ease;
+  }
+
+  .lead-story__visual circle {
+    fill: none;
+    stroke: var(--brick-500);
+    stroke-dasharray: 8 8;
+  }
+
+  .lead-story__visual:hover svg {
+    transform: scale(1.025);
+  }
+
+  .lead-story__body {
+    padding-top: 1.5rem;
+  }
+
+  .story-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+    color: var(--ink-600);
+    font-size: 0.69rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .story-meta span {
+    color: var(--brick-600);
+  }
+
+  .lead-story h3 {
+    margin: 0.85rem 0;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+  }
+
+  .lead-story h3 a,
+  .story-list h3 a {
+    color: var(--ink-950);
+    text-decoration: none;
+  }
+
+  .lead-story h3 a:hover,
+  .story-list h3 a:hover {
+    color: var(--blue-800);
+  }
+
+  .lead-story p {
+    color: var(--ink-600);
+  }
+
+  .story-link {
+    color: var(--blue-900);
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-underline-offset: 0.22em;
+  }
+
+  .story-list {
+    border-top: 1px solid var(--ink-950);
+  }
+
+  .story-list__item {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .story-list__folio {
+    color: var(--line-dark);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.82rem;
+    font-weight: 800;
+  }
+
+  .story-list h3 {
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+  }
+
+  .story-list p {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    color: var(--ink-600);
+    font-size: 0.83rem;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .check-teaser {
+    padding: clamp(4.5rem, 9vw, 8rem) 0;
+    background: var(--blue-050);
+    border-top: 1px solid var(--line);
+  }
+
+  .check-teaser__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(430px, 1.12fr);
+    gap: clamp(2.5rem, 7vw, 6rem);
+    align-items: center;
+  }
+
+  .check-teaser__content h2 {
+    max-width: 560px;
+  }
+
+  .check-teaser__content > p:not(.eyebrow) {
+    max-width: 600px;
+    margin: 1.3rem 0 1.8rem;
+    color: var(--ink-600);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  .check-teaser__panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(190px, 0.9fr);
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .check-teaser__map {
+    position: relative;
+    min-height: 360px;
+    overflow: hidden;
+    background:
+      linear-gradient(32deg, transparent 47%, rgba(7, 59, 92, 0.15) 48% 52%, transparent 53%),
+      linear-gradient(122deg, transparent 47%, rgba(7, 59, 92, 0.1) 48% 52%, transparent 53%),
+      repeating-linear-gradient(90deg, rgba(7, 59, 92, 0.08) 0 1px, transparent 1px 42px),
+      repeating-linear-gradient(rgba(7, 59, 92, 0.08) 0 1px, transparent 1px 42px),
+      #e7f0ed;
+  }
+
+  .check-teaser__map i {
+    position: absolute;
+    display: block;
+    border: 2px solid rgba(7, 59, 92, 0.5);
+    transform: rotate(-8deg);
+  }
+
+  .check-teaser__map i:nth-child(1) {
+    width: 46%;
+    height: 36%;
+    top: 10%;
+    left: 8%;
+  }
+
+  .check-teaser__map i:nth-child(2) {
+    width: 52%;
+    height: 42%;
+    right: -4%;
+    bottom: 7%;
+  }
+
+  .check-teaser__map i:nth-child(3) {
+    width: 38%;
+    height: 32%;
+    left: 14%;
+    bottom: 5%;
+  }
+
+  .map-marker {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    top: 46%;
+    left: 46%;
+    z-index: 2;
+    border: 6px solid var(--white);
+    border-radius: 50%;
+    background: var(--brick-600);
+    box-shadow: 0 6px 18px rgba(16, 38, 49, 0.25);
+  }
+
+  .map-radius {
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    top: calc(46% - 84px);
+    left: calc(46% - 84px);
+    border: 2px dashed var(--brick-600);
+    border-radius: 50%;
+    background: rgba(212, 93, 66, 0.08);
+  }
+
+  .check-teaser__panel ol {
+    margin: 0;
+    padding: 1.2rem;
+    align-self: center;
+    list-style: none;
+  }
+
+  .check-teaser__panel li {
+    min-height: 54px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0.65rem;
+    align-items: center;
+    color: var(--ink-600);
+    border-bottom: 1px solid var(--line);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .check-teaser__panel li:last-child {
+    border-bottom: 0;
+  }
+
+  .check-teaser__panel li span {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line-dark);
+    border-radius: 50%;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.65rem;
+  }
+
+  .check-teaser__panel li.is-current {
+    color: var(--blue-900);
+  }
+
+  .check-teaser__panel li.is-current span {
+    color: var(--white);
+    background: var(--brick-600);
+    border-color: var(--brick-600);
+  }
+
+  .legal-note {
+    color: var(--ink-800);
+    background: var(--warning-bg);
+    border-top: 1px solid #ead49d;
+  }
+
+  .legal-note__inner {
+    min-height: 110px;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .legal-note__icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    color: var(--warning-line);
+    border: 1px solid var(--warning-line);
+    border-radius: 50%;
+    font-weight: 900;
+  }
+
+  .legal-note p {
+    margin: 0;
+    font-size: 0.86rem;
+    line-height: 1.65;
+  }
+
+  @keyframes hero-enter {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes plan-enter {
+    from {
+      opacity: 0;
+      transform: translateY(24px) rotate(1deg);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) rotate(0);
+    }
+  }
+
+  @media (max-width: 980px) {
+    .hero__grid,
+    .check-teaser__grid {
       grid-template-columns: 1fr;
+    }
+
+    .parcel-plan {
+      max-width: 680px;
+    }
+
+    .facts__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .facts article,
+    .facts article:last-child {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 1rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.17);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.17);
+    }
+
+    .facts__label,
+    .facts strong {
+      margin: 0;
+    }
+
+    .pathway__steps {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem 0;
+    }
+
+    .magazine__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .check-teaser__panel {
+      max-width: 760px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .hero {
+      padding-top: 3.5rem;
+    }
+
+    .hero__grid {
+      gap: 2.5rem;
+    }
+
+    .hero__assurances {
+      display: grid;
+    }
+
+    .parcel-plan__head span:last-child,
+    .parcel-plan figcaption > span:last-child {
+      display: none;
+    }
+
+    .section-head,
+    .section-head--magazine {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 1rem;
+    }
+
+    .topics__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .topic-card,
+    .topic-card--feature {
+      min-height: 280px;
+    }
+
+    .pathway__steps {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .pathway__steps li {
+      min-height: auto;
+      padding: 1.25rem 0 1.25rem 2.5rem;
+      border-top: 0;
+      border-left: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .pathway__steps li::before {
+      top: 1.65rem;
+      left: -6px;
+    }
+
+    .pathway__steps > li > span {
+      margin-bottom: 0.6rem;
+    }
+
+    .lead-story__visual {
+      min-height: 220px;
+    }
+
+    .check-teaser__panel {
+      grid-template-columns: 1fr;
+    }
+
+    .check-teaser__map {
+      min-height: 270px;
+    }
+
+    .legal-note__inner {
+      align-items: flex-start;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero__actions {
+      display: grid;
+    }
+
+    .facts article,
+    .facts article:last-child {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+
+    .story-list__item {
+      grid-template-columns: 32px minmax(0, 1fr);
     }
   }
 </style>

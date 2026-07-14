@@ -1,27 +1,52 @@
----
-// Disclaimer Komponente für Rechtshinweise
----
-
-<aside class="disclaimer">
-  <p>
-    <strong>Wichtiger Hinweis:</strong> Die Informationen auf dieser Seite stellen keine Rechtsberatung dar. 
-    Für eine verbindliche Einschätzung zu Ihrem Bauvorhaben wenden Sie sich bitte an einen Fachanwalt für 
-    Baurecht oder Ihre zuständige Baubehörde in Brandenburg.
-  </p>
+<aside class="disclaimer" aria-label="Rechtlicher Hinweis">
+  <span class="disclaimer__mark" aria-hidden="true">§</span>
+  <div>
+    <h2>Hinweis zur Einordnung</h2>
+    <p>
+      Die Informationen auf dieser Seite stellen keine Rechtsberatung dar.
+      Für eine verbindliche Einschätzung zu Ihrem Vorhaben wenden Sie sich
+      bitte an einen Fachanwalt für Baurecht, Ihre Gemeinde oder die
+      zuständige Bauaufsichtsbehörde in Brandenburg.
+    </p>
+  </div>
 </aside>
 
 <style>
   .disclaimer {
-    background-color: #fff3cd;
-    border-left: 4px solid #ffc107;
-    padding: 1rem 1.25rem;
-    margin: 2rem 0;
-    font-size: 0.9rem;
-    line-height: 1.6;
+    margin: 2.5rem 0 0;
+    padding: 1.35rem 1.5rem;
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 1rem;
+    color: var(--ink-800);
+    background: var(--warning-bg);
+    border-left: 4px solid var(--warning-line);
   }
 
-  .disclaimer strong {
-    display: block;
-    margin-bottom: 0.5rem;
+  .disclaimer__mark {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    color: var(--warning-line);
+    border: 1px solid var(--warning-line);
+    border-radius: 50%;
+    font-weight: 900;
+  }
+
+  .disclaimer h2 {
+    margin: 0 0 0.35rem;
+    color: var(--ink-950);
+    font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+    font-size: 0.83rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .disclaimer p {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.65;
   }
 </style>
