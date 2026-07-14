@@ -90,6 +90,30 @@
       "requiredMarkers": ["Bau-Turbo"],
       "lastReviewed": "2026-07-14",
       "maxReviewAgeDays": 30
+    },
+    {
+      "id": "mil-brandenburg-bau-turbo",
+      "url": "https://mil.brandenburg.de/mil/de/themen/planen-bauen/bau-turbo/",
+      "hashMode": "reachability",
+      "requiredMarkers": ["FAQ Bau-Turbo Block E", "FAQ Bau-Turbo Block F", "fortlaufend ergänzt und aktualisiert"],
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 30
+    },
+    {
+      "id": "mil-brandenburg-faq-block-e",
+      "url": "https://mil.brandenburg.de/sixcms/media.php/9/FAQ_Bau-Turbo_E_Juli_2026.pdf",
+      "hashMode": "binary",
+      "sha256": "1e88ec83e973c692b8c6f2280ab7e798b65c81df0789326b73a8fada36a507d3",
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 30
+    },
+    {
+      "id": "mil-brandenburg-faq-block-f",
+      "url": "https://mil.brandenburg.de/sixcms/media.php/9/FAQ_Bau-Turbo_F_Juli_2026.pdf",
+      "hashMode": "binary",
+      "sha256": "02003fb7737a7582bb22e1ffb7896da0ce8ae5f12d7f922119fe2be428cc3333",
+      "lastReviewed": "2026-07-14",
+      "maxReviewAgeDays": 30
     }
   ]
 }

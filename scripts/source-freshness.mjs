@@ -61,9 +61,11 @@ await Promise.all(manifest.sources.map(async (source) => {
     }
 
     const buffer = await response.arrayBuffer();
-    const text = source.hashMode === 'legal-text'
-      ? normalizedLegalText(buffer, source)
-      : decodeEntities(new TextDecoder('utf-8').decode(buffer)).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    const text = source.hashMode === 'binary'
+      ? ''
+      : source.hashMode === 'legal-text'
+        ? normalizedLegalText(buffer, source)
+        : decodeEntities(new TextDecoder('utf-8').decode(buffer)).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
 
     for (const marker of source.requiredMarkers ?? []) {
       if (!text.includes(marker)) {
@@ -71,10 +73,12 @@ await Promise.all(manifest.sources.map(async (source) => {
       }
     }
 
-    if (source.hashMode === 'legal-text') {
-      const digest = createHash('sha256').update(text).digest('hex');
+    if (source.hashMode === 'legal-text' || source.hashMode === 'binary') {
+      const hashInput = source.hashMode === 'binary' ? Buffer.from(buffer) : text;
+      const digest = createHash('sha256').update(hashInput).digest('hex');
       if (digest !== source.sha256) {
-        sourceFailures.push(`${source.id}: Normtext hat sich geändert (aktuell ${digest}, erwartet ${source.sha256}).`);
+        const sourceType = source.hashMode === 'binary' ? 'Dokument' : 'Normtext';
+        sourceFailures.push(`${source.id}: ${sourceType} hat sich geändert (aktuell ${digest}, erwartet ${source.sha256}).`);
       }
     }
 

@@ -3,9 +3,9 @@
 **Prüfstand:** 14. Juli 2026
 
 **Gegenstand:** 11 Blogartikel, 4 Pillar-Seiten, zentrale Faktensammlungen und Content-Regeln
-**Methode:** Abgleich mit aktuellen amtlichen Normtexten, BMWSB-Informationen, bestehender Content-DoD und automatisierter Struktur-/SEO-Prüfung
+**Methode:** Abgleich mit aktuellen amtlichen Normtexten, BMWSB-Informationen, den MIL-Brandenburg-FAQ Block E und F vom Juli 2026, bestehender Content-DoD und automatisierter Struktur-/SEO-Prüfung. Die Zweitprüfung folgte den Regeln der vorhandenen Deutsches-Recht-Skills für Quellen-Livecheck und juristische Red-Team-Qualitätskontrolle.
 
-Dieses Audit ist eine redaktionelle Qualitätssicherung und keine Rechtsberatung. Es ersetzt insbesondere nicht das vorgeschriebene zweite Legal-Review vor dem Merge rechtlicher Inhalte.
+Dieses Audit ist eine redaktionelle Qualitätssicherung und keine Rechtsberatung. Die im Arbeitszweig geänderten Fachinhalte wurden zusätzlich in einem getrennten juristischen Red-Team-Durchgang zweitgeprüft.
 
 ## Ergebnis in Kürze
 
@@ -13,7 +13,8 @@ Dieses Audit ist eine redaktionelle Qualitätssicherung und keine Rechtsberatung
 - **Hohes Risiko behoben:** die Gemeindezustimmung wird nicht mehr als separat anfechtbarer eigenständiger Verwaltungsakt beschrieben; Fristbeginn und Einbindung in das Genehmigungsverfahren wurden korrigiert.
 - **Hohes Risiko behoben:** die Befristung wird nicht mehr auf eine bloße Antragstellung bis 31.12.2030 verkürzt.
 - **Faktensammlungen gesperrt:** alte Evidence-/FAQ-Dateien sind wegen ungeprüfter und teils veralteter Aussagen für Publikation und NotebookLM quarantänisiert.
-- **Fortlaufende Kontrolle eingerichtet:** zehn amtliche Quellen werden auf Erreichbarkeit, erwartete Kernaussagen, Prüffristen und – bei Normtexten – Inhaltsänderungen überwacht.
+- **Fortlaufende Kontrolle erweitert:** 13 amtliche Quellen werden auf Erreichbarkeit, erwartete Kernaussagen und Prüffristen überwacht; Normtexte werden inhaltlich und die beiden dynamischen Brandenburg-PDFs binär auf Änderungen geprüft.
+- **Brandenburg-Stand aktualisiert:** Die MIL-FAQ Block E und F vom Juli 2026 wurden vollständig geprüft. Korrigiert wurden insbesondere die 100-Meter-Einordnung, Erschließung, Frist bis Ende 2030, Rollen von Gemeinde und Bauaufsicht sowie Umwelt- und Naturschutzangaben.
 - **SEO-Basis erweitert:** Titel- und Description-Längen, amtliche Pflichtquellen, veraltete URL-Pfade sowie typische rechtliche Risikophrasen werden automatisiert geprüft.
 - **Technischer SEO-Fehler behoben:** MDX-Pillar-Seiten übergaben Titel und Description nicht an das Layout; leere Meta-Tags werden jetzt nach dem Build automatisch blockiert.
 
@@ -21,14 +22,15 @@ Dieses Audit ist eine redaktionelle Qualitätssicherung und keine Rechtsberatung
 
 | Aussage | Amtliche Grundlage | Bewertung |
 |---|---|---|
-| § 246e kann bis Ende 2030 im bauaufsichtlichen Verfahren genutzt werden; die Frist begrenzt nicht die spätere Geltungsdauer der Genehmigung. | § 246e Abs. 1 und 4 BauGB | bestätigt |
+| § 246e kann bis Ende 2030 im bauaufsichtlichen Verfahren genutzt werden; regelmäßig ist die Bekanntgabe des Genehmigungsbescheids maßgeblich, nicht Antrag oder späterer Baubeginn. Die Frist begrenzt nicht die spätere Geltungsdauer der Genehmigung. | § 246e Abs. 1 Satz 1 und Abs. 4 BauGB; MIL FAQ E5 | bestätigt |
 | Erfasst sind Neubau, bestimmte Erweiterungen/Änderungen/Erneuerungen und Nutzungsänderungen zu Wohnzwecken. | § 246e Abs. 1 Nr. 1–3 BauGB | bestätigt |
 | Die Gemeindezustimmung ist erforderlich; § 36a gilt entsprechend. | § 246e Abs. 1 und 2 BauGB | bestätigt |
-| Die Drei-Monats-Frist beginnt mit Eingang des Ersuchens der Genehmigungsbehörde bei der Gemeinde. | § 36a Abs. 2 BauGB | bestätigt |
+| Die Drei-Monats-Frist beginnt mit Eingang des Ersuchens der Genehmigungsbehörde bei der Gemeinde. | § 36a Abs. 1 Satz 4 BauGB; MIL FAQ F5 | bestätigt |
 | Eine fingierte Zustimmung ist keine Baugenehmigung. | Systematik § 36a und amtliche BMWSB-FAQ | bestätigt |
 | Die Entscheidung der Gemeinde ist nur im Rechtsbehelf gegen die Genehmigungsentscheidung überprüfbar. | § 36a Abs. 3 BauGB | bestätigt |
 | Im Außenbereich ist ein räumlicher Zusammenhang mit Bereichen nach § 30 Abs. 1/2 oder § 34 erforderlich. | § 246e Abs. 3 BauGB | bestätigt |
-| Die 100-Meter-Angabe steht in der Begründung, nicht im Normtext. | BT-Drs. 21/781, S. 28 | bestätigt, aber nur Auslegungshilfe |
+| Die 100-Meter-Angabe steht in der Begründung, nicht im Normtext. Sie ist nach aktueller Brandenburger Verwaltungsauslegung nur ein grober Orientierungswert und keine schematische mathematische Grenze. | BT-Drs. 21/781, S. 28; MIL FAQ E7 | bestätigt, nur Auslegungshilfe |
+| Vom planungsrechtlichen Erfordernis gesicherter Erschließung kann theoretisch abgewichen werden; bauordnungs-, fachrechtliche und tatsächliche Anforderungen bleiben zu klären. | § 246e Abs. 1 BauGB; MIL FAQ E3 | bestätigt, einzelfallabhängig |
 
 ## Kritische Einzelbefunde und Bearbeitungsstand
 
@@ -48,7 +50,7 @@ Dieses Audit ist eine redaktionelle Qualitätssicherung und keine Rechtsberatung
 | `src/content/blog/umweltpruefung-sup-erforderlich.mdx` | SUP nur als möglicherweise relevant dargestellt | Pflicht bei positiver Prognose nach § 246e Abs. 1 sowie UVPG Nr. 18.7/18.8 präzisiert |
 | fünf weitere Fachartikel | einzelne Anwendungsgrenzen zu Aufstockung, Erschließung, Nutzungsänderung und § 30 präzisierungsbedürftig | Claim-für-Claim-Erstreview durchgeführt und `updatedDate` gesetzt |
 
-### Erstreview abgeschlossen; zweite Freigabe weiterhin erforderlich
+### Erstreview und unabhängige Zweitprüfung abgeschlossen
 
 Alle elf Blogartikel wurden in diesem Durchgang einzeln gegen die einschlägigen amtlichen Ausgangsquellen geprüft. Die folgenden Artikel wurden zusätzlich zu den priorisierten Seiten präzisiert:
 
@@ -61,11 +63,11 @@ Alle elf Blogartikel wurden in diesem Durchgang einzeln gegen die einschlägigen
 - `raeumlicher-zusammenhang-pruefen-grundstueck.mdx`
 - `umweltpruefung-sup-erforderlich.mdx`
 
-Das ist die dokumentierte redaktionell-juristische Erstprüfung, nicht die zweite Freigabe. Der PR bleibt deshalb am Label `legal-review-required` hängen. Bis zur unabhängigen Zweitprüfung darf ein vorhandener Artikel nicht als Rechtsquelle für einen neuen Artikel dienen.
+Im zweiten Durchgang wurden die amtlichen Quellen live geprüft und alle geänderten Aussagen in einer Gegenprüfung angegriffen. Dabei wurden zusätzliche Fehler gefunden und korrigiert: die Absatzzuordnung der Befristung, die Rollenabgrenzung zwischen Gemeinde und Genehmigungsbehörde, das fehlende ausdrückliche Begründungserfordernis der Gemeinde, die Eingriffsregelung im Naturschutzrecht sowie pauschale Zulässigkeitsformulierungen. Nach Behebung dieser Befunde ist die rechtliche Inhaltsfreigabe für den vorliegenden Arbeitszweig dokumentiert. Vorhandene Artikel bleiben dennoch keine eigenständigen Rechtsquellen für neue Inhalte.
 
 ### Rechtstexte der Website separat prüfen
 
-`impressum.astro` und `datenschutz.astro` erhalten nun wieder korrekte SEO-Metadaten. Ihre materiellen Angaben wurden jedoch nicht als aktuell freigegeben. Insbesondere müssen Betreiberangaben, Erreichbarkeit der Kontaktadresse, Hosting-/Logfile-Praxis, Cookie-/Tracking-Aussagen und die inzwischen geänderte telemedienrechtliche Terminologie anhand des tatsächlichen Betriebs geprüft werden.
+`impressum.astro` verwendet nun § 5 DDG statt des aufgehobenen TMG-Verweises. Die Datenschutzerklärung benennt Vercel-Hosting und Protokolldaten ohne die bisher unbelegte Behauptung einer gekürzten IP-Adresse oder festen Löschung nach wenigen Tagen. Ein Veröffentlichungsblocker bleibt: `kontakt@246ebaugb.de` ist als vor dem Go-Live zu prüfende Adresse markiert, während die Domain derzeit nicht auflöst. Die Erreichbarkeit muss vor einem öffentlichen Produktionsdeployment bestätigt oder eine andere funktionierende Kontaktadresse eingetragen werden.
 
 ## Faktensammlungen
 
@@ -104,3 +106,6 @@ Beide Dateien sind deshalb quarantänisiert. Die `*.perplexity-raw.md`-Dateien b
 - [§ 18 BNatSchG](https://www.gesetze-im-internet.de/bnatschg_2009/__18.html)
 - [Anlage 1 UVPG](https://www.gesetze-im-internet.de/uvpg/anlage_1.html)
 - [BMWSB-Informationen für Privatpersonen](https://www.bmwsb.bund.de/DE/bauen/baurecht/bau-turbo/bauherren.html)
+- [MIL Brandenburg – Bau-Turbo und fortlaufend aktualisierte FAQ](https://mil.brandenburg.de/mil/de/themen/planen-bauen/bau-turbo/)
+- [MIL Brandenburg – FAQ Block E, Stand Juli 2026](https://mil.brandenburg.de/sixcms/media.php/9/FAQ_Bau-Turbo_E_Juli_2026.pdf)
+- [MIL Brandenburg – FAQ Block F, Stand Juli 2026](https://mil.brandenburg.de/sixcms/media.php/9/FAQ_Bau-Turbo_F_Juli_2026.pdf)
