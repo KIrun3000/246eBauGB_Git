@@ -1,0 +1,82 @@
+name: Auto merge low-risk changes
+
+on:
+  workflow_run:
+    workflows: [Project quality]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Merge eligible Codex pull requests
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const run = context.payload.workflow_run;
+            const pulls = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner,
+              repo,
+              commit_sha: run.head_sha,
+            });
+
+            const legalPath = (name) =>
+              name.startsWith('src/content/') ||
+              name.startsWith('research/') ||
+              name.endsWith('.mdx') ||
+              name === 'CONTENT_DOD.md' ||
+              name === 'PROMPT_CONTRACT.md' ||
+              name.includes('Disclaimer') ||
+              name.startsWith('.agents/skills/246e');
+
+            const infrastructurePath = (name) =>
+              name.startsWith('.github/') ||
+              name.startsWith('.codex/') ||
+              name === 'AGENTS.md' ||
+              name === 'package.json' ||
+              name === 'package-lock.json' ||
+              name === 'vercel.json';
+
+            for (const pull of pulls.data) {
+              if (pull.state !== 'open' || pull.draft) continue;
+              if (!pull.head.ref.startsWith('codex/')) continue;
+              if (pull.user.login !== owner) continue;
+
+              const files = await github.paginate(github.rest.pulls.listFiles, {
+                owner,
+                repo,
+                pull_number: pull.number,
+                per_page: 100,
+              });
+              const names = files.map((file) => file.filename);
+              const labels = new Set((pull.labels ?? []).map((label) => label.name));
+
+              if (names.some(legalPath) && !labels.has('legal-reviewed')) {
+                core.notice(`PR #${pull.number} wartet auf das Legal-Review-Gate.`);
+                continue;
+              }
+              if (names.some(infrastructurePath) && !labels.has('infrastructure-reviewed')) {
+                core.notice(`PR #${pull.number} wartet auf das Infrastruktur-Review-Gate.`);
+                continue;
+              }
+
+              const result = await github.rest.pulls.merge({
+                owner,
+                repo,
+                pull_number: pull.number,
+                merge_method: 'squash',
+                commit_title: `${pull.title} (#${pull.number})`,
+              });
+
+              if (!result.data.merged) {
+                core.setFailed(`PR #${pull.number} konnte nicht automatisch gemergt werden: ${result.data.message}`);
+              }
+            }

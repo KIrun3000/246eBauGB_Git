@@ -149,7 +149,15 @@ git push -u origin main
 
 ### Automatische Deployments
 
-Nach dem Setup: Jeder Push zu `main` triggert automatisch ein neues Deployment auf Vercel.
+GitHub und Vercel verwenden einen geschützten Ablauf:
+
+- `codex/*`-Branches erhalten nach der Vercel-Verknüpfung automatisch eine Vorschau.
+- GitHub prüft jeden Pull Request mit `npm run check`.
+- Unkritische Technik- und Designänderungen können nach erfolgreichen Prüfungen automatisch zusammengeführt werden.
+- Juristische Inhalte und Automationsdateien erhalten ein zusätzliches Review-Gate.
+- Produktion wird ausschließlich aus dem geschützten `main`-Branch bereitgestellt.
+
+Bis die bereits festgestellten fachlichen Altstände und die öffentlichen Pflichtangaben bereinigt sind, bleibt das automatische Produktionsdeployment bewusst deaktiviert. Der genaue Ablauf steht in `docs/AUTOMATION.md`.
 
 ### Environment Variables (falls benötigt)
 

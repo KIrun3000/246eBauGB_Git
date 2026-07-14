@@ -20,7 +20,7 @@ node --version
 npm --version
 ```
 
-The expected major Node version is 22. If a different version is active, use the existing Node-22 login-shell environment; do not repair it with a global configuration change.
+The required major Node version is 22. It is declared in `.nvmrc`, `.node-version` and `package.json`. If a different version is active, use the existing Node-22 login-shell environment; do not repair it with a global configuration change.
 
 ## Install and build
 
@@ -28,13 +28,13 @@ From the central project directory:
 
 ```bash
 npm ci
-npm run build
+npm run check
 git diff --check
 ```
 
 `npm ci` is the supported installation command. It must use `package-lock.json` without updating it. Astro writes the static build to `dist/`; `node_modules/`, `dist/`, and `.astro/` are ignored generated paths.
 
-The repository currently defines `dev`, `build`, `preview`, and `astro` scripts. It does not define a separate automated test, lint, or type-check script. Content changes must also follow the checks in `CONTENT_DOD.md`.
+`npm run check` performs the deterministic content-structure checks and a production build. Content changes must also pass the legal publication gate in `AGENTS.md` and follow the applicable parts of `CONTENT_DOD.md`.
 
 ## Development server
 
@@ -60,16 +60,16 @@ Open `http://127.0.0.1:4321` locally. Stop the tunnel and development server aft
 
 1. Confirm the worktree is clean and `main` tracks `origin/main`.
 2. Update only by a normal fetch and fast-forward workflow; never force-push or rewrite `main`.
-3. Create or reuse a task branch following the repository's established naming convention. Do not work directly on `main`.
-4. Run at least `npm run build` and `git diff --check`, plus applicable content checks.
-5. Review the complete diff, commit only intended files, and push the task branch to GitHub for backup.
-6. Merge to `main` only through the separately approved repository workflow.
+3. Create or reuse a `codex/<task>` branch. Parallel tasks require separate worktrees and separate branches. Do not work directly on `main`.
+4. Run `npm run check` and `git diff --check`.
+5. Review the complete diff, commit only intended files, push the task branch and create a pull request.
+6. GitHub classifies sensitive changes, runs the required quality check and automatically merges eligible low-risk pull requests. Codex completes additional legal or infrastructure reviews when required.
 
 Do not commit dependencies, build outputs, logs, environment files, credentials, private keys, personal audit data, or untracked files copied from another clone.
 
 ## Project-local Codex safety
 
-`.codex/config.toml` deliberately limits this repository to on-request approvals and workspace-write sandboxing. Do not weaken these settings or change the global Codex configuration as part of project work.
+`.codex/config.toml` allows unattended project work with `approval_policy = "never"`, while retaining the `workspace-write` sandbox. Network access is enabled only for project tasks such as source verification, GitHub and deployments. Do not switch this project to `danger-full-access` or change the global Codex configuration as part of project work.
 
 ## Backup and rollback
 
