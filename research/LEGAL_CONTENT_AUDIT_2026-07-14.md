@@ -1,7 +1,8 @@
 # Legal-Content- und SEO-Audit
 
-**Prüfstand:** 14. Juli 2026  
-**Gegenstand:** 11 Blogartikel, 4 Pillar-Seiten, zentrale Faktensammlungen und Content-Regeln  
+**Prüfstand:** 14. Juli 2026
+
+**Gegenstand:** 11 Blogartikel, 4 Pillar-Seiten, zentrale Faktensammlungen und Content-Regeln
 **Methode:** Abgleich mit aktuellen amtlichen Normtexten, BMWSB-Informationen, bestehender Content-DoD und automatisierter Struktur-/SEO-Prüfung
 
 Dieses Audit ist eine redaktionelle Qualitätssicherung und keine Rechtsberatung. Es ersetzt insbesondere nicht das vorgeschriebene zweite Legal-Review vor dem Merge rechtlicher Inhalte.
