@@ -18,6 +18,8 @@
 
 - [ ] **Amtliche Quellen auf Änderungen geprüft**
   - `npm run sources:check` ist erfolgreich
+  - Vor rechtlicher Recherche auf dem Mac mini ist `npm run notebooklm:check` erfolgreich
+  - Für die Rechtsprüfung ausschließlich das Notebook-Alias `246e-amtlich` verwenden; `246e` bleibt ein breites Recherche-Notebook
   - Bei Hash-Änderung keine automatische Textfreigabe: Claim-für-Claim-Review durchführen
   - NotebookLM und andere LLM-Ausgaben niemals als Rechtsquelle behandeln
   - Dateien mit `QUARANTÄNE` sowie `*.perplexity-raw.md` nicht für neue Inhalte verwenden
@@ -117,4 +119,4 @@
 
 ---
 
-**Letzte Aktualisierung:** 14. Juli 2026 (A3 – Frischeprüfung und NotebookLM-Quellenhygiene)
+**Letzte Aktualisierung:** 14. Juli 2026 (A3 – Frischeprüfung und maschinell geprüfte NotebookLM-Quellentrennung)

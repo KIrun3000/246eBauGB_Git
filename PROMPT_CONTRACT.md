@@ -3,7 +3,7 @@
 ## Zweck
 Dieses Dokument definiert die exakte Struktur und Anforderungen für KI-Agents, die automatisiert Blog-Content für diese Website erstellen.
 
-**Verbindlicher Quellenhinweis (Stand 14.07.2026):** Inhalte dürfen nicht aus den quarantänisierten Dateien unter `research/evidence/` oder `research/faq/` übernommen werden. Vor jedem Entwurf sind der aktuelle amtliche Normtext und `research/sources/legal-sources.json` zu prüfen. NotebookLM-Ausgaben sind Recherchehinweise, keine Rechtsquelle und keine Freigabe.
+**Verbindlicher Quellenhinweis (Stand 14.07.2026):** Inhalte dürfen nicht aus den quarantänisierten Dateien unter `research/evidence/` oder `research/faq/` übernommen werden. Vor jedem Entwurf sind der aktuelle amtliche Normtext und `research/sources/legal-sources.json` zu prüfen. NotebookLM-Ausgaben sind Recherchehinweise, keine Rechtsquelle und keine Freigabe. Für juristische Prüfungen ist ausschließlich das maschinell kontrollierte Notebook-Alias `246e-amtlich` zulässig; das Alias `246e` dient nur der offenen Recherche.
 
 ## Verbindliche Sprachregel: klares Deutsch
 

@@ -8,6 +8,7 @@
     "content:check": "node scripts/content-check.mjs",
     "language:check": "node scripts/language-check.mjs",
     "sources:check": "node scripts/source-freshness.mjs",
+    "notebooklm:check": "node scripts/notebooklm-source-check.mjs",
     "seo:check": "node scripts/rendered-seo-check.mjs",
     "content:freshness": "npm run content:check && npm run sources:check",
     "check": "npm run content:check && npm run language:check && npm run build && npm run seo:check",
