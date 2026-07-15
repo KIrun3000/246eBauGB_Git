@@ -6,7 +6,7 @@
 
 ## Technical structure
 
-- Astro 5 with MDX, RSS, and sitemap integrations.
+- Astro 6 with MDX, RSS, and sitemap integrations.
 - Static output generated in `dist/` by `npm run build`.
 - Canonical site URL `https://246ebaugb.de`, with trailing slashes enabled.
 - The sitemap excludes `/check/`.

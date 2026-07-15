@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { SITE, absoluteSiteUrl } from '../lib/site';
 
 const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort(
@@ -21,11 +22,25 @@ const categoryLabels: Record<string, string> = {
   ablauf: 'Verfahren',
   faq: 'Praxisfragen',
 };
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  alternateName: SITE.shortName,
+  url: SITE.url,
+  inLanguage: 'de-DE',
+  publisher: {
+    '@type': 'Person',
+    name: SITE.publisher.name,
+    url: absoluteSiteUrl(SITE.publisher.page),
+  },
+};
 ---
 
 <BaseLayout
   title="§ 246e BauGB Brandenburg – Orientierung für Grundstückseigentümer"
   description="§ 246e BauGB verständlich erklärt: Grundstück, 100-m-Leitplanke, Außenbereich und Gemeinde-Zustimmung für private Eigentümer in Brandenburg."
+  structuredData={structuredData}
 >
   <section class="hero" aria-labelledby="hero-title">
     <div class="container hero__grid">
@@ -40,8 +55,8 @@ const categoryLabels: Record<string, string> = {
           verständlich ein – bevor Sie die nächsten Schritte planen.
         </p>
         <div class="hero__actions">
-          <a href="/check/" class="button button--primary">
-            Grundstück vorprüfen
+          <a href="/grundstueckspotenzial-brandenburg/" class="button button--primary">
+            Grundstück einordnen
             <svg aria-hidden="true" viewBox="0 0 18 18">
               <path d="M3 9h11M9.5 3.5 15 9l-5.5 5.5" />
             </svg>

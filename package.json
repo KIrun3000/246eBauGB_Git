@@ -6,12 +6,19 @@
     "dev": "astro dev",
     "build": "astro build",
     "content:check": "node scripts/content-check.mjs",
+    "content:rules:test": "node --test scripts/content-rules.test.mjs",
     "language:check": "node scripts/language-check.mjs",
     "sources:check": "node scripts/source-freshness.mjs",
     "notebooklm:check": "node scripts/notebooklm-source-check.mjs",
+    "legal:check": "npm run sources:check && npm run notebooklm:check",
+    "seo:overlap": "node scripts/content-overlap-check.mjs",
+    "seo:overlap:strict": "node scripts/content-overlap-check.mjs --strict",
+    "seo:overlap:test": "node --test scripts/content-overlap-check.test.mjs",
     "seo:check": "node scripts/rendered-seo-check.mjs",
+    "seo:live": "node scripts/live-seo-check.mjs",
+    "seo:live:test": "node --test scripts/live-seo-check.test.mjs",
     "content:freshness": "npm run content:check && npm run sources:check",
-    "check": "npm run content:check && npm run language:check && npm run build && npm run seo:check",
+    "check": "npm run content:check && npm run content:rules:test && npm run language:check && npm run seo:overlap:strict && npm run seo:overlap:test && npm run build && npm run seo:check && npm run seo:live:test",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -23,5 +30,8 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^6.4.8"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.3.0"
   }
 }

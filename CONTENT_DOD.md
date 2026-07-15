@@ -1,10 +1,27 @@
 # Content Definition of Done (DoD)
 
-**Ziel:** Sicherstellen, dass jeder publizierte Content (Pillars, Blog, FAQ) den Qualitäts- und Sourcing-Standards entspricht.
+**Ziel:** Sicherstellen, dass jede veröffentlichte Grundlagenseite, jeder Magazinbeitrag und jede Fragen-und-Antworten-Seite den Qualitäts- und Quellenstandards entspricht.
 
 ---
 
 ## ✅ Pre-Publish Checklist
+
+### Inhaltsarchitektur und Überschneidungen
+
+- [ ] **Eindeutige Leseraufgabe festgelegt**
+  - Inhaltsart, Thema, Leseraufgabe, Hauptfrage, Zielgruppe und übergeordnete Seite sind vollständig.
+  - `primaryIntent` und `primaryQuery` überschneiden sich nicht mit einer vorhandenen Seite.
+  - Bei gleichem Thema ist die Abgrenzung in Titel, Beschreibung, Einleitung und internen Verweisen sichtbar.
+  - Keine zweite Fassung nur für Google, ChatGPT oder ein anderes KI-System.
+  - `npm run seo:overlap` und `npm run seo:overlap:test` sind erfolgreich.
+
+- [ ] **Inhaltsart richtig belegt**
+  - Nachricht: konkretes Ereignis, Nachrichtenart, Datum, Geltungsbereich, amtliche Ereignisquelle mit Quellenrolle und zugehöriger Ratgeber.
+  - Laufendes amtliches Verfahren: nächster Prüftermin ist mit `reviewAfter` hinterlegt.
+  - Projekt: eindeutige Vorgangskennung, Gemeinde, Projektart, aktueller Stand und konkrete öffentliche Projektquelle mit Quellenrolle.
+  - Entscheidung: zugeordnetes Projekt, Entscheidungsebene, Ergebnis, Datum, Fundstelle, belegte Kurzbegründung und veröffentlichte Entscheidung als Primärquelle.
+  - Gemeindezustimmung wird nicht als Baugenehmigung dargestellt.
+  - Ähnlichkeitsfunde wurden redaktionell geprüft; eine Ausnahme ist begründet und befristet hinterlegt; keine automatische Zusammenführung oder Weiterleitung.
 
 ### Verbindliche Sprachregel
 
@@ -46,7 +63,7 @@
 
 ### 2. Content Quality
 
-- [ ] **Disclaimer vorhanden**
+- [ ] **Rechtshinweis vorhanden**
   - "Keine Rechtsberatung" prominent platziert
   - Verweis auf Fachanwalt/Bauaufsicht für verbindliche Auskünfte
 
@@ -56,7 +73,7 @@
   - Links funktional und erreichbar
 
 - [ ] **Interne Verlinkung**
-  - Links zu relevanten Pillar-Pages gesetzt
+  - Links zu relevanten Grundlagenseiten gesetzt
   - Konsistente URL-Struktur (trailing slash)
   - Keine toten Links
 
@@ -66,6 +83,7 @@
   - `title` aussagekräftig und SEO-optimiert
   - `description` prägnant (150-160 Zeichen)
   - Canonical URL korrekt (absolut, basierend auf Astro.site)
+  - Ratgeber verwenden passende `BlogPosting`-Daten; Nachrichten passende `NewsArticle`-Daten
 
 - [ ] **Struktur sauber**
   - H1 einmalig pro Seite
@@ -119,4 +137,4 @@
 
 ---
 
-**Letzte Aktualisierung:** 14. Juli 2026 (A3 – Frischeprüfung und maschinell geprüfte NotebookLM-Quellentrennung)
+**Letzte Aktualisierung:** 15. Juli 2026 (A4 – Inhaltsarchitektur, Überschneidungsprüfung und getrennte KI-Messspur)

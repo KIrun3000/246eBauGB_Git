@@ -1,0 +1,323 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, absoluteSiteUrl } from '../lib/site';
+
+const title = 'Grundstückspotenzial in Brandenburg einordnen – § 246e BauGB';
+const description = 'Erste Orientierung für Grundstückseigentümer und Makler: Ausgangslage sortieren, Zusammenarbeit anfragen und verbindliche Prüfung klar abgrenzen.';
+const ownerSubject = encodeURIComponent('Grundstück zur ersten Einordnung vorschlagen');
+const brokerSubject = encodeURIComponent('Maklerkooperation zu einem Grundstück anfragen');
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: absoluteSiteUrl('/grundstueckspotenzial-brandenburg/'),
+  inLanguage: 'de-DE',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.url,
+  },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={structuredData}>
+  <header class="potential-hero">
+    <div class="container potential-hero__grid">
+      <div>
+        <p class="eyebrow">Erste Orientierung · keine Genehmigungszusage</p>
+        <h1>Welcher nächste Schritt passt zu Ihrem Grundstück?</h1>
+        <p>
+          Ob Gartenland, Hinterland, Wiese oder ein schwer einzuordnendes Angebot:
+          Zunächst geht es darum, die Ausgangslage sauber zu beschreiben. Danach lässt
+          sich entscheiden, ob eine unverbindliche Sichtung der Ausgangslage oder eine Zusammenarbeit sinnvoll ist.
+        </p>
+      </div>
+      <div class="potential-hero__note">
+        <strong>Wichtig</strong>
+        <p>Eine erste Einordnung ersetzt weder Bauvorbescheid noch Baugenehmigung oder Rechtsberatung.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="potential-content">
+    <div class="container">
+      <section class="routes" aria-labelledby="routes-title">
+        <header>
+          <p class="eyebrow">Zwei klare Wege</p>
+          <h2 id="routes-title">Wählen Sie Ihre Ausgangslage</h2>
+        </header>
+
+        <div class="routes__grid">
+          <article>
+            <span class="route-number" aria-hidden="true">E</span>
+            <p class="route-label">Für Eigentümer</p>
+            <h3>Ich besitze ein Grundstück</h3>
+            <p>
+              Sie möchten wissen, welche Informationen für eine erste sachliche
+              Einordnung fehlen und an wen Sie sich anschließend wenden können.
+            </p>
+            <ul>
+              <li>Gemeinde und ungefähre Lage</li>
+              <li>ungefähre Grundstücksgröße</li>
+              <li>heutige Nutzung, etwa Gartenland oder Wiese</li>
+              <li>Ihre wichtigste offene Frage</li>
+            </ul>
+            <a href={`mailto:${SITE.publicEmail}?subject=${ownerSubject}`}>Grundstück unverbindlich vorschlagen</a>
+            <small>Hinweise zur Verarbeitung Ihrer Angaben finden Sie im <a href="/datenschutz/">Datenschutz</a>.</small>
+          </article>
+
+          <article>
+            <span class="route-number" aria-hidden="true">M</span>
+            <p class="route-label">Für Makler</p>
+            <h3>Ich vermittle ein Grundstück</h3>
+            <p>
+              Sie haben ein Angebot ohne eindeutig belegte Baulandqualität und möchten
+              eine mögliche Kooperation besprechen, ohne gegenüber Beteiligten zu viel zu versprechen.
+            </p>
+            <ul>
+              <li>öffentlicher Link zum Angebot</li>
+              <li>Gemeinde, Fläche und derzeitige Nutzung</li>
+              <li>bereits vorhandene Unterlagen</li>
+              <li>gewünschte Form der Zusammenarbeit</li>
+            </ul>
+            <a href={`mailto:${SITE.publicEmail}?subject=${brokerSubject}`}>Maklerkooperation anfragen</a>
+            <small>Hinweise zur Verarbeitung Ihrer Angaben finden Sie im <a href="/datenschutz/">Datenschutz</a>.</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="boundaries" aria-labelledby="boundaries-title">
+        <div>
+          <p class="eyebrow">Datensparsam beginnen</p>
+          <h2 id="boundaries-title">Was Sie zunächst nicht senden sollten</h2>
+        </div>
+        <ul>
+          <li>keine Ausweis-, Bank- oder Steuerdaten</li>
+          <li>keine Kontaktdaten Dritter ohne deren Einwilligung</li>
+          <li>keine vertraulichen Vollmachten oder vollständigen Vertragsunterlagen</li>
+          <li>keine Unterlagen, die für die erste Anfrage nicht erforderlich sind</li>
+        </ul>
+      </section>
+
+      <section class="next-reading" aria-labelledby="next-reading-title">
+        <header>
+          <p class="eyebrow">Vor der Anfrage weiterlesen</p>
+          <h2 id="next-reading-title">Die Ausgangslage selbst besser verstehen</h2>
+        </header>
+        <div>
+          <a href="/246e-baugb-brandenburg/">§ 246e BauGB im Überblick</a>
+          <a href="/aussenbereich-brandenburg-246e/">Grundstücke im Außenbereich</a>
+          <a href="/100m-regel-raeumlicher-zusammenhang/">Räumlicher Zusammenhang und 100-m-Leitplanke</a>
+          <a href="/check/">Kartenwerkzeug in Vorbereitung ansehen</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .potential-hero {
+    padding: clamp(3.5rem, 8vw, 7rem) 0;
+    color: var(--white);
+    background: var(--blue-900);
+  }
+
+  .potential-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.55fr);
+    gap: clamp(3rem, 8vw, 7rem);
+    align-items: end;
+  }
+
+  .eyebrow {
+    margin: 0 0 0.8rem;
+    color: var(--brick-600);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .potential-hero .eyebrow {
+    color: #f0a28f;
+  }
+
+  .potential-hero h1 {
+    max-width: 20ch;
+    color: var(--white);
+  }
+
+  .potential-hero__grid > div:first-child > p:last-child {
+    max-width: 68ch;
+    margin: 1.35rem 0 0;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: clamp(1.05rem, 2vw, 1.22rem);
+    line-height: 1.65;
+  }
+
+  .potential-hero__note {
+    padding: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .potential-hero__note strong {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #f0a28f;
+  }
+
+  .potential-hero__note p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .potential-content {
+    padding: clamp(4rem, 9vw, 8rem) 0;
+  }
+
+  .routes > header,
+  .next-reading > header {
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+
+  .routes__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .routes__grid article {
+    padding: clamp(1.5rem, 4vw, 2.3rem);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--brick-500);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .route-number {
+    color: var(--line-dark);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 900;
+  }
+
+  .route-label {
+    margin: 1.4rem 0 0.45rem;
+    color: var(--brick-600);
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .routes__grid h3 {
+    margin-bottom: 0.8rem;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+  }
+
+  .routes__grid article > p:not(.route-label),
+  .routes__grid li {
+    color: var(--ink-800);
+    line-height: 1.65;
+  }
+
+  .routes__grid ul {
+    margin: 1.2rem 0 1.5rem;
+    padding-left: 1.2rem;
+  }
+
+  .routes__grid li {
+    margin-bottom: 0.45rem;
+  }
+
+  .routes__grid article > a {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.72rem 1rem;
+    color: var(--white);
+    background: var(--blue-900);
+    border-radius: var(--radius-sm);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .routes__grid article > a:hover {
+    background: var(--brick-600);
+  }
+
+  .routes__grid small {
+    margin-top: 0.85rem;
+    display: block;
+    color: var(--ink-600);
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .routes__grid small a {
+    color: var(--blue-800);
+    text-underline-offset: 0.18em;
+  }
+
+  .boundaries {
+    margin-top: clamp(3rem, 7vw, 5rem);
+    padding: clamp(1.5rem, 4vw, 2.2rem);
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem;
+    background: var(--warning-bg);
+    border-left: 4px solid var(--warning-line);
+  }
+
+  .boundaries ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .boundaries li {
+    margin-bottom: 0.65rem;
+    color: var(--ink-800);
+  }
+
+  .next-reading {
+    margin-top: clamp(4rem, 9vw, 7rem);
+    padding-top: 2rem;
+    border-top: 1px solid var(--line-dark);
+  }
+
+  .next-reading > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .next-reading a {
+    padding: 1rem;
+    color: var(--blue-900);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .next-reading a:hover {
+    border-color: var(--brick-500);
+  }
+
+  @media (max-width: 780px) {
+    .potential-hero__grid,
+    .routes__grid,
+    .boundaries,
+    .next-reading > div {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

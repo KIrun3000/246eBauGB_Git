@@ -1,0 +1,84 @@
+name: SEO-Liveprüfung
+
+on:
+  schedule:
+    - cron: '37 6 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  live:
+    name: Öffentliche Auffindbarkeit
+    if: vars.SEO_LIVE_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Quellstand laden
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Node 22 einrichten
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Abhängigkeiten unverändert installieren
+        run: npm ci
+
+      - name: Öffentliche Website prüfen
+        id: live
+        continue-on-error: true
+        env:
+          SITE_URL: https://246ebaugb.de
+        run: npm run seo:live
+
+      - name: Befund als GitHub-Aufgabe erfassen
+        if: steps.live.outcome == 'failure'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const title = 'SEO-Liveprüfung: öffentliche Auffindbarkeit gestört';
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              state: 'open',
+              per_page: 100,
+            });
+            const existing = issues.find((issue) => issue.title === title && !issue.pull_request);
+            const body = [
+              'Die wöchentliche Prüfung von Domain, Robots, Sitemap, Canonicals oder Indexierbarkeit ist fehlgeschlagen.',
+              '',
+              `Prüflauf: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`,
+              '',
+              'Bitte zuerst den konkreten Befund im Prüflauf lesen und keine pauschale Inhaltsänderung vornehmen.',
+            ].join('\n');
+
+            try {
+              await github.rest.issues.getLabel({ owner, repo, name: 'seo-live' });
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              await github.rest.issues.createLabel({
+                owner,
+                repo,
+                name: 'seo-live',
+                color: '0A4A70',
+                description: 'Technischer Befund an der öffentlich erreichbaren Website.',
+              });
+            }
+
+            if (existing) {
+              await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body });
+            } else {
+              await github.rest.issues.create({ owner, repo, title, body, labels: ['seo-live'] });
+            }
+
+      - name: Prüflauf nach Benachrichtigung fehlschlagen lassen
+        if: steps.live.outcome == 'failure'
+        run: exit 1

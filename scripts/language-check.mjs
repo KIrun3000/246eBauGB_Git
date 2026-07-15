@@ -21,6 +21,7 @@ const prohibitedTerms = [
   /\bChecklisten?\b/gi,
   /\bSelbst[‑-]Check\b/gi,
   /\bTracking[‑-]Tools?\b/gi,
+  /\[Disclaimer\]/gi,
 ];
 
 const collectFiles = async (directory) => {
