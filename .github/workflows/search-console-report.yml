@@ -1,0 +1,88 @@
+name: Search-Console-Wochenbericht
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '42 6 * * 3'
+
+permissions:
+  contents: read
+  id-token: write
+  issues: write
+
+concurrency:
+  group: search-console-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    if: vars.SEARCH_CONSOLE_REPORT_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Projekt laden
+        uses: actions/checkout@v7
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Kurzlebigen Google-Zugang beziehen
+        id: google-auth
+        uses: google-github-actions/auth@v3
+        with:
+          token_format: access_token
+          workload_identity_provider: ${{ secrets.GOOGLE_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT }}
+          access_token_scopes: https://www.googleapis.com/auth/webmasters.readonly
+
+      - name: Search-Console-Bericht erstellen
+        env:
+          GSC_ACCESS_TOKEN: ${{ steps.google-auth.outputs.access_token }}
+          GSC_SITE_URL: sc-domain:246ebaugb.de
+        run: npm run search-console:report
+
+      - name: Bericht als Prüfnachweis speichern
+        uses: actions/upload-artifact@v6
+        with:
+          name: search-console-bericht
+          path: artifacts/search-console/
+          retention-days: 90
+
+      - name: Feste GitHub-Aufgabe aktualisieren
+        uses: actions/github-script@v9
+        env:
+          REPORT_PATH: artifacts/search-console/report.md
+        with:
+          script: |
+            const fs = require('fs');
+            const title = 'SEO-Wochenbericht: Search Console';
+            const report = fs.readFileSync(process.env.REPORT_PATH, 'utf8');
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = `${report}\n\n[Prüflauf öffnen](${runUrl})`;
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100,
+            });
+            const existing = issues.find((issue) => !issue.pull_request && issue.title === title);
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+              });
+            }
