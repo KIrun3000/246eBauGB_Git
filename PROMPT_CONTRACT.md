@@ -15,6 +15,8 @@ Dieses Dokument definiert die exakte Struktur und Anforderungen für KI-Agents, 
 
 ## Content-Typ: Blog-Post (MDX)
 
+Vor jedem Entwurf sind `docs/INHALTSARCHITEKTUR.md` und die vorhandene Inhaltskarte zu prüfen. KI-Sichtbarkeit ist keine eigene Inhaltsart. Eine nahezu gleiche Fassung eines vorhandenen Artikels nur für Google, ChatGPT oder ein anderes Antwortsystem ist unzulässig.
+
 ### Output-Spezifikation
 - **Format**: MDX-Datei (Markdown mit optionalen React-Komponenten)
 - **Speicherort**: `src/content/blog/`
@@ -28,10 +30,20 @@ title: "Präziser, SEO-optimierter Titel (50-60 Zeichen)"
 description: "Meta-Description, prägnant, handlungsaufrufend (140-160 Zeichen)"
 pubDate: 2025-01-15  # Format: YYYY-MM-DD
 updatedDate: 2026-07-14  # Pflicht nach jedem fachlichen Review
+updateReason: "Was fachlich oder redaktionell erheblich geändert wurde"
+legalAsOf: 2026-07-14  # Stand der geprüften Rechtsquellen
 category: "grundlagen" | "100m" | "aussenbereich" | "ablauf" | "faq"
 tags: ["Tag1", "Tag2", "Tag3"]  # 3-5 Tags, spezifisch
 region: "Brandenburg"  # Immer "Brandenburg"
-intent: "owner" | "broker" | "builder"  # Hauptzielgruppe passend zum Beitrag wählen
+intent: "owner" | "broker" | "builder" | "municipality"  # Hauptzielgruppe passend zum Beitrag wählen
+contentType: "ratgeber" | "nachricht" | "projekt" | "entscheidung"
+guideRole: "vertiefung"  # bei Ratgebern; Themenzentren stehen in src/data/editorial-hubs.json
+topic: "raeumlicher-zusammenhang"  # kontrolliertes Fachthema aus src/content.config.ts
+searchTask: "verstehen" | "vorpruefen" | "vorbereiten" | "reagieren" | "aenderung-verfolgen" | "fall-recherchieren"
+primaryIntent: "eindeutiger-technischer-schluessel"
+primaryQuery: "Eine natürliche, eindeutige Hauptfrage des Lesers"
+parentHub: "/100m-regel-raeumlicher-zusammenhang/"
+lifecycleStatus: "aktuell" | "historisch" | "ueberarbeiten" | "zusammenfuehren"
 sources:
   - label: "§ 246e BauGB – aktueller Gesetzestext"
     url: "https://www.gesetze-im-internet.de/bbaug/__246e.html"
@@ -42,7 +54,11 @@ sources:
 ---
 ```
 
-### Content-Struktur (REQUIRED)
+Für Nachrichten sind zusätzlich `eventId`, `eventDate` und `sourceStatus` Pflicht. Projekt- und Entscheidungsprofile benötigen die in `docs/INHALTSARCHITEKTUR.md` beschriebenen Vorgangs-, Gemeinde- und Entscheidungsangaben. Vor dem ersten solchen Beitrag muss die vorgesehene Übersichts- und Routenstruktur im Projekt vorhanden sein.
+
+Nachrichten benötigen außerdem `newsKind` und `jurisdiction`; bei laufenden amtlichen Verfahren ist `reviewAfter` Pflicht. Nicht-Ratgeber müssen mindestens eine konkrete Ereignis- oder Projektquelle mit passender `role` und `evidence` angeben. Entscheidungsprofile benötigen eine veröffentlichte Entscheidung mit `role: "decision"` oder `role: "court-decision"` sowie `evidence: "event"`.
+
+### Inhaltsstruktur für Ratgeber (VERBINDLICH)
 
 #### 1. Einleitung (100-120 Wörter)
 - Problem/Frage des Lesers aufgreifen
@@ -86,13 +102,20 @@ sources:
 - Offizielle Quellen bevorzugen (Gesetze, Ministerien, Behörden)
 - Jede Quelle ausdrücklich als `primary` (Gesetz oder Gesetzesmaterial) oder `secondary` (amtliche FAQ und Verwaltungshinweise) einordnen
 
+### Inhaltsstruktur für Nachrichten, Projekte und Entscheidungen
+
+- **Nachricht:** konkretes Ereignis zuerst, danach belegter Stand, Bedeutung für den zugeordneten Ratgeber, offene Entwicklung und Quellen. Keine künstliche Fragen-und-Antworten-Sektion.
+- **Projekt:** eindeutig belegte Stammdaten, zeitlicher Verlauf, aktueller Verfahrensstand, Entscheidungsstufen und Quellen. Mutmaßungen und nicht öffentliche personenbezogene Angaben entfallen.
+- **Entscheidung:** Entscheidungsebene, Datum, Ergebnis, tragende öffentlich belegte Gründe, späterer Verfahrensstand und klare Abgrenzung zwischen Gemeindezustimmung und Baugenehmigung.
+- Formatabhängige Pflichtfelder aus `docs/INHALTSARCHITEKTUR.md` gelten zusätzlich.
+
 ### Tone of Voice
 
 **DO**:
 - Sachlich, aber verständlich
 - Direkte Ansprache ("Sie")
 - Kurze, klare Sätze
-- Konkrete Beispiele aus Brandenburg
+- Öffentlich belegte Beispiele aus Brandenburg
 - Praktische Tipps und Checklisten
 
 **DON'T**:
@@ -120,11 +143,23 @@ category: "aussenbereich"
 tags: ["Erschließung", "Kosten", "Außenbereich", "Infrastruktur"]
 region: "Brandenburg"
 intent: "owner"
+contentType: "ratgeber"
+guideRole: "vertiefung"
+topic: "erschliessung"
+searchTask: "vorbereiten"
+primaryIntent: "erschliessung-vorhaben-pruefen"
+primaryQuery: "Erschließung für ein §-246e-Vorhaben vorbereiten"
+parentHub: "/aussenbereich-brandenburg-246e/"
+lifecycleStatus: "aktuell"
+legalAsOf: 2026-07-14
+updateReason: "Fachliche Aktualisierung anhand der amtlichen Quellen."
 sources:
   - label: "§ 246e BauGB – aktueller Gesetzestext"
     url: "https://www.gesetze-im-internet.de/bbaug/__246e.html"
+    type: "primary"
   - label: "§ 35 BauGB – Außenbereich"
     url: "https://www.gesetze-im-internet.de/bbaug/__35.html"
+    type: "primary"
 ---
 
 ## Einleitung
@@ -161,29 +196,38 @@ Die Erschließung im Außenbereich kann erhebliche Kosten verursachen. Klären S
 Mehr Informationen zu [§246e BauGB in Brandenburg](/246e-baugb-brandenburg) und zur [Gemeinde-Zustimmung](/zustimmung-gemeinde-246e) finden Sie in unseren Artikeln.
 ```
 
-## Batch-Erstellung
+## Erstellung mehrerer Beiträge
 
-Bei Batch-Erstellung mehrerer Artikel:
+Bei der Erstellung mehrerer Artikel:
 
 1. Erstelle einen Index mit geplanten Titeln
 2. Erzeuge jeden Artikel als separate MDX-Datei
 3. Vermeide inhaltliche Überschneidungen
 4. Verlinke sinnvoll zwischen den Artikeln
+5. Führe vor jedem weiteren Entwurf `npm run seo:overlap:strict` aus
+6. Bei einem Fund zuerst vorhandenen Inhalt aktualisieren oder die Abgrenzung dokumentieren; nie automatisch zusammenführen
 
 ## Qualitätskriterien
 
-Ein Agent-generierter Artikel ist erfolgreich, wenn:
+Für alle Inhaltsarten gilt:
 
 - [ ] Frontmatter vollständig und korrekt
-- [ ] Einleitung 100-120 Wörter
-- [ ] 3-6 strukturierte H2-Abschnitte
-- [ ] FAQ mit 5-8 Fragen
-- [ ] Mindestens 2 interne Links zu Pillars
-- [ ] Mindestens 2 Quellen
 - [ ] Keine Rechtschreibfehler
 - [ ] Verständlicher Ton (keine Fachsprache ohne Erklärung)
 - [ ] Brandenburg-Fokus erkennbar
-- [ ] Zielgruppe: private Eigentümer
+- [ ] Gewählte Hauptzielgruppe wird konsequent angesprochen
+- [ ] Inhaltsabsicht und Hauptfrage im Bestand eindeutig
+- [ ] Keine gesonderte, doppelte KI-Fassung
+
+Für Ratgeber gilt zusätzlich:
+
+- [ ] Einleitung 100-120 Wörter
+- [ ] 3-6 strukturierte H2-Abschnitte
+- [ ] FAQ mit 5-8 Fragen
+- [ ] Mindestens 2 interne Links zu Grundlagenseiten
+- [ ] Mindestens 2 Quellen
+
+Für Nachrichten, Projekte und Entscheidungen gilt stattdessen die jeweilige Struktur und Quellenbindung aus `docs/INHALTSARCHITEKTUR.md`; mindestens ein Textlink muss auf das zugehörige Themenzentrum führen.
 
 ## Technische Hinweise
 
@@ -207,7 +251,8 @@ Ein Agent-generierter Artikel ist erfolgreich, wenn:
 ### ✅ Technical SEO
 - Title/Description gesetzt, Canonical vorhanden
 - SourcesBox verwendet (Primär → Sekundär)
-- Interne Links zu Pillars gesetzt
+- Interne Links zu Grundlagenseiten gesetzt
+- `npm run seo:overlap:strict` und `npm run seo:overlap:test` erfolgreich
 
 ### ✅ Build & Preview
 - `npm run build` → Exit Code 0
@@ -218,6 +263,6 @@ Ein Agent-generierter Artikel ist erfolgreich, wenn:
 
 ---
 
-## Kontakt bei Fragen
+## Pflegehinweis
 
-Dieser Contract ist "living document" und kann angepasst werden, wenn Agents auf Probleme stoßen.
+Diese Vereinbarung wird angepasst, wenn bei der Anwendung neue belegte Probleme oder Anforderungen auftreten.

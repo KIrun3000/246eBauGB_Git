@@ -3,6 +3,14 @@
   "framework": "astro",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/blog/ueberblick-246e-baugb-brandenburg/",
+      "destination": "/246e-baugb-brandenburg/",
+      "permanent": true
+    }
+  ],
   "git": {
     "deploymentEnabled": {
       "main": false

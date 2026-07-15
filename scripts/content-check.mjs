@@ -2,12 +2,23 @@ import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
+import { load as parseYaml } from 'js-yaml';
+import { reviewAfterIssue } from './lib/content-rules.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const blogDirectory = path.join(projectRoot, 'src', 'content', 'blog');
-const files = (await readdir(blogDirectory))
-  .filter((file) => file.endsWith('.md') || file.endsWith('.mdx'))
-  .sort();
+
+async function contentFiles(directory, prefix = '') {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const nested = await Promise.all(entries.map(async (entry) => {
+    const relative = prefix ? path.posix.join(prefix, entry.name) : entry.name;
+    if (entry.isDirectory()) return contentFiles(path.join(directory, entry.name), relative);
+    return /\.(?:md|mdx)$/.test(entry.name) ? [relative] : [];
+  }));
+  return nested.flat();
+}
+
+const files = (await contentFiles(blogDirectory)).sort();
 
 const errors = [];
 const warnings = [];
@@ -15,11 +26,6 @@ const warnings = [];
 const currentLawSources = {
   '§ 246e': 'https://www.gesetze-im-internet.de/bbaug/__246e.html',
   '§ 36a': 'https://www.gesetze-im-internet.de/bbaug/__36a.html',
-};
-
-const readScalar = (frontmatter, key) => {
-  const match = frontmatter.match(new RegExp(`^${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'));
-  return match?.[1]?.replace(/["']$/, '').trim() ?? '';
 };
 
 for (const file of files) {
@@ -33,27 +39,58 @@ for (const file of files) {
   }
 
   const frontmatter = frontmatterMatch[1];
+  let data;
+  try {
+    data = parseYaml(frontmatter);
+  } catch (error) {
+    errors.push(`${relativePath}: Frontmatter ist kein gültiges YAML (${error.message}).`);
+    continue;
+  }
+  if (!data || typeof data !== 'object' || Array.isArray(data)) {
+    errors.push(`${relativePath}: Frontmatter ist kein YAML-Objekt.`);
+    continue;
+  }
   const body = content.slice(frontmatterMatch[0].length);
 
-  for (const key of ['title', 'description', 'pubDate', 'category', 'sources']) {
-    if (!new RegExp(`^${key}:`, 'm').test(frontmatter)) {
+  const contentType = String(data.contentType ?? '');
+  const requiredKeys = [
+    'title',
+    'description',
+    'pubDate',
+    'legalAsOf',
+    'category',
+    'contentType',
+    'topic',
+    'searchTask',
+    'primaryIntent',
+    'primaryQuery',
+    'parentHub',
+    'lifecycleStatus',
+    'sources',
+  ];
+  if (contentType === 'ratgeber') requiredKeys.push('guideRole');
+  for (const key of requiredKeys) {
+    if (data[key] === undefined || data[key] === null || data[key] === '') {
       errors.push(`${relativePath}: Pflichtfeld "${key}" fehlt.`);
     }
   }
 
-  const sourceUrls = [...frontmatter.matchAll(/^\s+url:\s*["']?([^\s"']+)/gm)].map(
-    (match) => match[1],
-  );
-  const sourceRecords = [...frontmatter.matchAll(
-    /^\s+url:\s*["']?([^\s"']+)["']?\s*$\r?\n^\s+type:\s*["']?([^\s"']+)["']?\s*$/gm,
-  )].map((match) => ({ url: match[1], type: match[2] }));
+  const sources = Array.isArray(data.sources) ? data.sources : [];
+  const sourceRecords = sources.map((source) => ({
+    url: String(source?.url ?? ''),
+    type: String(source?.type ?? ''),
+  }));
+  const sourceUrls = sourceRecords.map((source) => source.url).filter(Boolean);
 
-  const title = readScalar(frontmatter, 'title');
-  const description = readScalar(frontmatter, 'description');
-  const intent = readScalar(frontmatter, 'intent');
+  const title = String(data.title ?? '');
+  const description = String(data.description ?? '');
+  const intent = String(data.intent ?? '');
+  const parentHub = String(data.parentHub ?? '');
+  const reviewIssue = reviewAfterIssue(data);
+  if (reviewIssue) errors.push(`${relativePath}: ${reviewIssue}`);
 
-  if (!['owner', 'broker', 'builder'].includes(intent)) {
-    errors.push(`${relativePath}: Zielgruppe muss owner, broker oder builder sein.`);
+  if (!['owner', 'broker', 'builder', 'municipality'].includes(intent)) {
+    errors.push(`${relativePath}: Zielgruppe muss owner, broker, builder oder municipality sein.`);
   }
 
   if (title.length < 35 || title.length > 70) {
@@ -66,12 +103,13 @@ for (const file of files) {
     );
   }
 
-  if (sourceUrls.length < 2) {
-    errors.push(`${relativePath}: Mindestens zwei Quellen-URLs sind erforderlich.`);
+  const minimumSources = contentType === 'ratgeber' ? 2 : 1;
+  if (sourceUrls.length < minimumSources) {
+    errors.push(`${relativePath}: Mindestens ${minimumSources} Quellen-URL${minimumSources === 1 ? '' : 's'} ${minimumSources === 1 ? 'ist' : 'sind'} erforderlich.`);
   }
 
-  if (sourceRecords.length !== sourceUrls.length) {
-    errors.push(`${relativePath}: Jede Quelle benötigt direkt nach der URL den Typ primary oder secondary.`);
+  if (sourceRecords.some((source) => !source.url || !source.type)) {
+    errors.push(`${relativePath}: Jede Quelle benötigt URL und Typ primary oder secondary.`);
   }
 
   for (const source of sourceRecords) {
@@ -112,21 +150,26 @@ for (const file of files) {
   }
 
   const internalLinks = body.match(/(?:\]\(\/|href=["']\/)/g)?.length ?? 0;
-  if (internalLinks < 2) {
-    errors.push(`${relativePath}: Mindestens zwei interne Links sind erforderlich.`);
+  const minimumInternalLinks = contentType === 'ratgeber' ? 2 : 1;
+  if (internalLinks < minimumInternalLinks) {
+    errors.push(`${relativePath}: Mindestens ${minimumInternalLinks} interne Verknüpfung${minimumInternalLinks === 1 ? '' : 'en'} ${minimumInternalLinks === 1 ? 'ist' : 'sind'} erforderlich.`);
+  }
+  if (contentType !== 'ratgeber' && parentHub && !body.includes(`](${parentHub}`) && !body.includes(`href="${parentHub}`) && !body.includes(`href='${parentHub}`)) {
+    errors.push(`${relativePath}: ${contentType} muss im Text auf parentHub ${parentHub} verweisen.`);
   }
 
+
   const faqStart = body.indexOf('## Häufige Fragen (FAQ)');
-  if (faqStart === -1) {
+  if (contentType === 'ratgeber' && faqStart === -1) {
     errors.push(`${relativePath}: Abschnitt "Häufige Fragen (FAQ)" fehlt.`);
-  } else {
+  } else if (contentType === 'ratgeber') {
     const faqCount = body.slice(faqStart).match(/^###\s+/gm)?.length ?? 0;
     if (faqCount < 5 || faqCount > 8) {
       errors.push(`${relativePath}: Der FAQ-Abschnitt benötigt 5 bis 8 Fragen (gefunden: ${faqCount}).`);
     }
   }
 
-  if (!/^updatedDate:/m.test(frontmatter)) {
+  if (contentType === 'ratgeber' && !data.updatedDate) {
     warnings.push(`${relativePath}: updatedDate fehlt; beim nächsten fachlichen Review ergänzen.`);
   }
 

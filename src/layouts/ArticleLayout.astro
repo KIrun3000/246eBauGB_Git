@@ -18,6 +18,7 @@ export interface Props {
   pubDate?: Date;
   updatedDate?: Date;
   category?: string;
+  contentType?: 'ratgeber' | 'nachricht' | 'projekt' | 'entscheidung';
   intent?: Audience;
   tags?: string[];
   sources?: Array<{
@@ -42,6 +43,7 @@ const {
   pubDate,
   updatedDate,
   category,
+  contentType = 'ratgeber',
   intent = 'owner',
   tags,
   sources = [],
@@ -72,7 +74,11 @@ const absoluteUrl = (path: string) =>
 const structuredData = pubDate
   ? {
       '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
+      '@type': contentType === 'nachricht'
+        ? 'NewsArticle'
+        : contentType === 'ratgeber'
+          ? 'BlogPosting'
+          : 'Article',
       headline: title,
       description,
       mainEntityOfPage: absoluteUrl(Astro.url.pathname),
@@ -108,7 +114,11 @@ const structuredData = pubDate
     </div>
   )}
 
-  <article class:list={['article', { 'is-enhanced': enhanced }]} data-reading-article>
+  <article
+    class:list={['article', { 'is-enhanced': enhanced }]}
+    data-reading-article
+    data-content-type={contentType}
+  >
     <div class="container">
       <nav class="breadcrumb" aria-label="Brotkrümelnavigation">
         <a href="/">Start</a>

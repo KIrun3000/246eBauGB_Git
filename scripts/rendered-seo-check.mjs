@@ -130,9 +130,18 @@ for (const file of htmlFiles) {
 
   const isBlogArticle = route.startsWith('/blog/') && route !== '/blog/';
   if (isBlogArticle) {
-    const posting = structuredData.find((entry) => entry?.['@type'] === 'BlogPosting');
+    const contentType = html.match(/<article\b[^>]*data-content-type=["']([^"']+)["']/i)?.[1] ?? '';
+    const expectedSchemaType = contentType === 'nachricht'
+      ? 'NewsArticle'
+      : contentType === 'ratgeber'
+        ? 'BlogPosting'
+        : ['projekt', 'entscheidung'].includes(contentType)
+          ? 'Article'
+          : '';
+    if (!expectedSchemaType) errors.push(`${relative}: unbekannte oder fehlende Inhaltsart am Artikel.`);
+    const posting = structuredData.find((entry) => entry?.['@type'] === expectedSchemaType);
     if (!posting) {
-      errors.push(`${relative}: strukturierte Daten vom Typ BlogPosting fehlen.`);
+      errors.push(`${relative}: strukturierte Daten vom erwarteten Typ ${expectedSchemaType || '(unbekannt)'} fehlen.`);
     } else {
       if (!posting.publisher?.name || !posting.publisher?.url) errors.push(`${relative}: BlogPosting ohne Herausgeber.`);
       if (!posting.datePublished || !posting.dateModified) errors.push(`${relative}: BlogPosting ohne Veröffentlichungs-/Änderungsdatum.`);

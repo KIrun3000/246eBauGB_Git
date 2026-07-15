@@ -59,12 +59,16 @@ Die vier Grundlagenseiten bilden die Themenzentren:
 
 Jeder Magazinbeitrag soll mindestens auf ein Themenzentrum und zwei passende Vertiefungen verweisen. Die Beitragsseite ergänzt diese Verweise automatisch anhand von Kategorie und Schlagworten.
 
+Inhaltsart, Thema, Leseraufgabe und Zielgruppe werden getrennt erfasst. Dadurch kann dasselbe Thema als dauerhafter Ratgeber, konkrete Nachricht oder belegter Projektfall erscheinen, ohne dieselbe Leserfrage mehrfach zu beantworten. Die verbindlichen Regeln stehen in [INHALTSARCHITEKTUR.md](./INHALTSARCHITEKTUR.md); die ausführliche Herleitung in `research/SEO_KANNIBALISIERUNG_KI_SICHTBARKEIT_2026-07-15.md`.
+
 ## KI- und Suchmaschinenregeln
 
 - KI unterstützt Recherche, Gliederung, Gegenprüfung und Verständlichkeit; sie ist keine Rechtsquelle und keine automatische Freigabe.
 - Es werden keine massenhaft erzeugten Orts- oder Schlagwortvarianten veröffentlicht.
 - Kurze direkte Antworten, klare Überschriften, sichtbare Quellen und nachvollziehbare Aktualisierungsdaten dienen zuerst den Lesern.
 - Eine eigene Datei wie `llms.txt` ist für Google nicht erforderlich und wird nicht als Ranking-Abkürzung behandelt.
+- KI-Sichtbarkeit wird als eigene Messspur geführt, aber nicht durch doppelte Fassungen vorhandener Artikel erzeugt.
+- Suchcrawler und Trainingscrawler sind getrennte Entscheidungen. Eine Änderung der Trainingsfreigabe erfolgt nur nach ausdrücklicher geschäftlicher Entscheidung.
 - Strukturierte Daten dürfen nur Angaben wiedergeben, die auch sichtbar auf der Seite stehen.
 - Neue rechtliche Aussagen durchlaufen Quellenprüfung, NotebookLM-Gegenprüfung und unabhängige Zweitprüfung gemäß `PROMPT_CONTRACT.md` und `CONTENT_DOD.md`.
 
@@ -89,6 +93,10 @@ Offizielle Google-Dokumentation zu diesen Regeln:
 - strukturierte Beitrags- und WebSite-Daten,
 - Sitemap-Inhalt und Ausschluss unfertiger Seiten,
 - doppelte Titel und Beschreibungstexte.
+- eindeutige Inhaltsabsichten, Hauptfragen und Themenzentren,
+- Ähnlichkeit zu vorhandenen Grundlagenseiten und Beiträgen,
+- Pflichtangaben für Nachrichten, Projekte und Entscheidungen,
+- Aktualisierungsgrund und fachlichen Stand.
 
 ### Bei Änderungen an Rechtsinhalten
 
@@ -115,3 +123,12 @@ Ausgewertet werden später in einem rollierenden Zeitraum von 28 Tagen:
 - Seiten mit vielen Impressionen, aber unklarer Suchintention oder schwacher Klickrate.
 
 Erst diese Daten entscheiden über neue Beiträge, Zusammenführungen oder neue Seitenschwerpunkte. Google Analytics oder ein anderes besucherbasiertes Analysewerkzeug ist nicht Bestandteil dieses ersten Pakets.
+
+Nach dem Produktivstart werden klassische und generative Sichtbarkeit getrennt erfasst, aber derselben kanonischen Seite zugeordnet:
+
+- Google-Suche und der verfügbare Bericht zu generativen Suchfunktionen,
+- Bing-Suche und Bing/Copilot-Zitate,
+- ChatGPT-Besuche erst nach datenschutzrechtlich freigegebener Auswertung,
+- ergänzende Beobachtung weiterer Antwortsysteme ohne behauptete Ranggarantie.
+
+Die spätere Search-Console-Prüfung meldet Suchanfragen, für die mehrere Seiten derselben gepflegten Leseraufgabe sichtbar werden. Sie erzeugt Prüfaufgaben und ändert niemals automatisch Inhalte oder Weiterleitungen.

@@ -21,8 +21,10 @@ const relatedPosts = (await getCollection('blog'))
     title: candidate.data.title,
     description: candidate.data.description,
     score:
-      (candidate.data.category === entry.data.category ? 4 : 0)
-      + (candidate.data.intent === entry.data.intent ? 2 : 0)
+      (candidate.data.parentHub === entry.data.parentHub ? 5 : 0)
+      + (candidate.data.topic === entry.data.topic ? 4 : 0)
+      + (candidate.data.searchTask !== entry.data.searchTask ? 2 : 0)
+      + (candidate.data.intent === entry.data.intent ? 1 : 0)
       + candidate.data.tags.filter((tag) => entry.data.tags.includes(tag)).length,
   }))
   .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, 'de'))
@@ -41,6 +43,7 @@ const readingMinutes = Math.max(1, Math.ceil(wordCount / 180));
   pubDate={entry.data.pubDate}
   updatedDate={entry.data.updatedDate}
   category={entry.data.category}
+  contentType={entry.data.contentType}
   intent={entry.data.intent}
   tags={entry.data.tags}
   sources={entry.data.sources}
