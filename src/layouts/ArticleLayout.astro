@@ -15,6 +15,8 @@ interface ArticleHeading {
 export interface Props {
   title: string;
   description: string;
+  quickAnswer?: string;
+  keyPoints?: string[];
   pubDate?: Date;
   updatedDate?: Date;
   category?: string;
@@ -40,6 +42,8 @@ export interface Props {
 const {
   title,
   description,
+  quickAnswer,
+  keyPoints = [],
   pubDate,
   updatedDate,
   category,
@@ -190,6 +194,22 @@ const structuredData = pubDate
 
       <div class="article-grid">
         <div class="article-main">
+          {enhanced && quickAnswer && keyPoints.length > 0 && (
+            <section class="article-summary" aria-labelledby="article-summary-title">
+              <div class="article-summary__answer">
+                <p class="article-summary__label">Kurzantwort</p>
+                <h2 id="article-summary-title">Das Wichtigste zuerst</h2>
+                <p>{quickAnswer}</p>
+              </div>
+              <div class="article-summary__points">
+                <p>Darauf kommt es an</p>
+                <ul>
+                  {keyPoints.map((point) => <li>{point}</li>)}
+                </ul>
+              </div>
+            </section>
+          )}
+
           {enhanced && tableOfContents.length > 0 && (
             <section class="article-overview" aria-labelledby="article-overview-title">
               <div class="article-overview__intro">
@@ -381,7 +401,7 @@ const structuredData = pubDate
     min-width: 0;
     position: relative;
     overflow: hidden;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
     margin: 0;
     background: var(--blue-050);
     border: 1px solid var(--line-dark);
@@ -423,6 +443,7 @@ const structuredData = pubDate
     max-width: 22ch;
     font-size: var(--editorial-title-size);
     line-height: var(--editorial-title-leading);
+    text-wrap: balance;
   }
 
   .article-header__description {
@@ -504,6 +525,85 @@ const structuredData = pubDate
 
   .article-main {
     min-width: 0;
+  }
+
+  .article-summary {
+    margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(230px, 0.88fr);
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--line-dark);
+    border-left: 5px solid var(--brick-500);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .article-summary__answer {
+    padding: clamp(1.4rem, 4vw, 2rem);
+  }
+
+  .article-summary__label,
+  .article-summary__points > p {
+    margin: 0 0 0.5rem;
+    color: var(--brick-600);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .article-summary__answer h2 {
+    margin: 0;
+    font-size: clamp(1.55rem, 3vw, 2.15rem);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .article-summary__answer > p:last-child {
+    margin: 0.85rem 0 0;
+    color: var(--ink-800);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .article-summary__points {
+    padding: clamp(1.4rem, 4vw, 2rem);
+    background: var(--blue-050);
+    border-left: 1px solid var(--line);
+  }
+
+  .article-summary__points > p {
+    color: var(--blue-800);
+  }
+
+  .article-summary__points ul {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+    list-style: none;
+  }
+
+  .article-summary__points li {
+    margin: 0;
+    padding-left: 1.35rem;
+    position: relative;
+    color: var(--ink-800);
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  .article-summary__points li::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    position: absolute;
+    top: 0.38rem;
+    left: 0;
+    background: var(--brick-500);
+    border-radius: 50%;
   }
 
   .article-overview {
@@ -673,6 +773,7 @@ const structuredData = pubDate
     color: var(--ink-950);
     font-size: var(--editorial-h2-size);
     line-height: var(--editorial-h2-leading);
+    text-wrap: balance;
   }
 
   .article-content :global(h2)::before {
@@ -689,12 +790,14 @@ const structuredData = pubDate
     color: var(--ink-950);
     font-size: var(--editorial-h3-size);
     line-height: var(--editorial-h3-leading);
+    text-wrap: balance;
   }
 
   .article-content :global(p),
   .article-content :global(ul),
   .article-content :global(ol) {
     margin-bottom: var(--editorial-paragraph-space);
+    text-wrap: pretty;
   }
 
   .article-content :global(li) {
@@ -756,6 +859,71 @@ const structuredData = pubDate
     overflow-x: auto;
     border-collapse: collapse;
     font-size: 0.9rem;
+  }
+
+  .article-content :global(h2[id^="prüfliste"] + ul) {
+    margin: 1.25rem 0 2.25rem;
+    padding: clamp(1rem, 3vw, 1.4rem);
+    display: grid;
+    gap: 0;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--blue-800);
+    border-radius: var(--radius-sm);
+    list-style: none;
+  }
+
+  .article-content :global(h2[id^="prüfliste"] + ul li) {
+    margin: 0;
+    padding: 0.75rem 0 0.75rem 2rem;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .article-content :global(h2[id^="prüfliste"] + ul li:last-child) {
+    border-bottom: 0;
+  }
+
+  .article-content :global(h2[id^="prüfliste"] + ul li::before) {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    top: 1rem;
+    left: 0.15rem;
+    background: var(--paper);
+    border: 2px solid var(--brick-500);
+    border-radius: 2px;
+  }
+
+  .article-content :global(h2[id^="häufige-fragen"] ~ h3) {
+    margin: 0;
+    padding: 1.35rem 2.4rem 0.65rem 0;
+    position: relative;
+    border-top: 1px solid var(--line);
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+  }
+
+  .article-content :global(h2[id^="häufige-fragen"] ~ h3::after) {
+    content: "?";
+    width: 1.65rem;
+    height: 1.65rem;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 1.2rem;
+    right: 0;
+    color: var(--brick-600);
+    border: 1px solid var(--brick-500);
+    border-radius: 50%;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.72rem;
+  }
+
+  .article-content :global(h2[id^="häufige-fragen"] ~ h3 + p) {
+    margin-top: 0;
+    margin-bottom: 1.35rem;
+    color: var(--ink-600);
   }
 
   .article-content :global(th),
@@ -934,6 +1102,15 @@ const structuredData = pubDate
       gap: 2.5rem;
     }
 
+    .article-summary {
+      grid-template-columns: 1fr;
+    }
+
+    .article-summary__points {
+      border-top: 1px solid var(--line);
+      border-left: 0;
+    }
+
     .article-overview__actions {
       align-items: stretch;
     }
@@ -989,5 +1166,12 @@ const structuredData = pubDate
       fallbackField.select();
       if (status) status.textContent = 'Adresse ist zum Kopieren markiert.';
     });
+  });
+
+  document.querySelectorAll<HTMLLIElement>('.article-content h2[id^="prüfliste"] + ul li').forEach((item) => {
+    const firstTextNode = Array.from(item.childNodes).find((node) => node.nodeType === Node.TEXT_NODE);
+    if (firstTextNode?.textContent?.trimStart().startsWith('[ ]')) {
+      firstTextNode.textContent = firstTextNode.textContent.replace(/^\s*\[ \]\s*/, '');
+    }
   });
 </script>
