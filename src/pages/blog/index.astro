@@ -10,7 +10,7 @@ const sortedPosts = allPosts.sort(
 const featuredPost = sortedPosts[0];
 const remainingPosts = sortedPosts.slice(1);
 const featuredVisual = featuredPost
-  ? getBlogVisual(featuredPost.id, featuredPost.data.category)
+  ? getBlogVisual(featuredPost.data.image)
   : undefined;
 const dateFormatter = new Intl.DateTimeFormat('de-DE', {
   day: '2-digit',
@@ -114,7 +114,7 @@ const categoryLabels: Record<string, string> = {
 
               <div class="post-grid">
                 {remainingPosts.map((post, index) => {
-                  const visual = getBlogVisual(post.id, post.data.category);
+                  const visual = getBlogVisual(post.data.image);
                   return (
                   <article class="post-card">
                     <figure class="post-card__visual">

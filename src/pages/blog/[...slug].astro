@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
-const visual = getBlogVisual(entry.id, entry.data.category);
+const visual = getBlogVisual(entry.data.image);
 const relatedPosts = (await getCollection('blog'))
   .filter((candidate) => candidate.id !== entry.id)
   .map((candidate) => ({

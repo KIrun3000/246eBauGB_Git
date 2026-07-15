@@ -2,11 +2,102 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const imageKindLabels = {
+  fotografie: 'Fotografie',
+  'amtliche-darstellung': 'Amtliche Darstellung',
+  'redaktionelle-grafik': 'Redaktionelle Grafik',
+  'ki-symbolbild': 'KI-generiertes Symbolbild',
+};
+
+const blogImage = z.object({
+  fileName: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  alt: z.string().min(20).max(180),
+  caption: z.string().min(20).max(180),
+  kind: z.enum(['fotografie', 'amtliche-darstellung', 'redaktionelle-grafik', 'ki-symbolbild']),
+  origin: z.enum(['eigenaufnahme', 'lizenziert', 'amtlich', 'intern-erzeugt']),
+  creator: z.string().min(3),
+  rightsBasis: z.string().min(10),
+  sourceLabel: z.string().min(3).optional(),
+  sourceUrl: z.string().url().optional(),
+  schemaImages: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)).min(1).max(3).optional(),
+  createdAt: z.coerce.date().optional(),
+  provenanceStatus: z.enum(['vollstaendig', 'bestand-unvollstaendig']),
+  provenanceNote: z.string().min(30).optional(),
+  purpose: z.string().min(30),
+  reviewStatus: z.enum(['geprueft', 'ueberarbeiten']),
+  reviewedAt: z.coerce.date(),
+  reviewedBy: z.string().min(3),
+  checks: z.object({
+    topicFit: z.literal(true),
+    mobileCrop: z.literal(true),
+    noMisleadingDetails: z.literal(true),
+    rightsVerified: z.literal(true),
+  }),
+}).superRefine((image, context) => {
+  const expectedLabel = imageKindLabels[image.kind];
+  if (!image.caption.startsWith(expectedLabel)) {
+    context.addIssue({
+      code: 'custom',
+      path: ['caption'],
+      message: `Die Bildunterschrift muss mit „${expectedLabel}“ beginnen.`,
+    });
+  }
+
+  if (['amtlich', 'lizenziert'].includes(image.origin) && (!image.sourceLabel || !image.sourceUrl)) {
+    context.addIssue({
+      code: 'custom',
+      path: ['sourceUrl'],
+      message: 'Amtliche und lizenzierte Bilder benötigen Quellenbezeichnung und Quellenadresse.',
+    });
+  }
+
+  if (image.kind === 'amtliche-darstellung' && image.origin !== 'amtlich') {
+    context.addIssue({
+      code: 'custom',
+      path: ['origin'],
+      message: 'Amtliche Darstellungen müssen als amtliche Herkunft ausgewiesen sein.',
+    });
+  }
+
+  if (image.kind === 'fotografie' && !['eigenaufnahme', 'lizenziert'].includes(image.origin)) {
+    context.addIssue({
+      code: 'custom',
+      path: ['origin'],
+      message: 'Fotografien benötigen eine Eigenaufnahme oder eine lizenzierte Herkunft.',
+    });
+  }
+
+  if (image.provenanceStatus === 'vollstaendig' && !image.createdAt) {
+    context.addIssue({
+      code: 'custom',
+      path: ['createdAt'],
+      message: 'Ein vollständiger Bildnachweis benötigt ein Erzeugungs- oder Aufnahmedatum.',
+    });
+  }
+
+  if (image.provenanceStatus === 'bestand-unvollstaendig' && !image.provenanceNote) {
+    context.addIssue({
+      code: 'custom',
+      path: ['provenanceNote'],
+      message: 'Ein unvollständiger Bestandsnachweis benötigt eine konkrete Erläuterung.',
+    });
+  }
+
+  if (image.createdAt && image.reviewedAt < image.createdAt) {
+    context.addIssue({
+      code: 'custom',
+      path: ['reviewedAt'],
+      message: 'Die Bildprüfung darf nicht vor der Erzeugung oder Aufnahme liegen.',
+    });
+  }
+});
+
 const blog = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    image: blogImage,
     quickAnswer: z.string().min(40),
     keyPoints: z.array(z.string().min(20)).min(3).max(5),
     pubDate: z.coerce.date(),
@@ -60,6 +151,22 @@ const blog = defineCollection({
       evidence: z.enum(['legal-context', 'event', 'project']).optional(),
     })).default([])
   }).superRefine((entry, context) => {
+    if (entry.image.reviewStatus !== 'geprueft') {
+      context.addIssue({
+        code: 'custom',
+        path: ['image', 'reviewStatus'],
+        message: 'Veröffentlichte Beiträge benötigen ein redaktionell geprüftes Bild.',
+      });
+    }
+
+    if (entry.contentType !== 'ratgeber' && entry.image.kind === 'ki-symbolbild') {
+      context.addIssue({
+        code: 'custom',
+        path: ['image', 'kind'],
+        message: 'Nachrichten, Projekte und Entscheidungen dürfen kein KI-Symbolbild verwenden.',
+      });
+    }
+
     if (entry.updatedDate && entry.updatedDate < entry.pubDate) {
       context.addIssue({
         code: 'custom',

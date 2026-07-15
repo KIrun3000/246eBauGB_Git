@@ -1,66 +1,28 @@
 import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { load } from 'js-yaml';
+import { validateImageMetadata } from './lib/blog-image-rules.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDir, '..');
 const contentDir = path.join(projectRoot, 'src', 'content', 'blog');
 const imageDir = path.join(projectRoot, 'public', 'images', 'blog');
-const visualFile = path.join(projectRoot, 'src', 'lib', 'blogVisuals.ts');
 
 const errors = [];
-const labels = [
-  'KI-generiertes Symbolbild',
-  'Amtliche Darstellung',
-  'Redaktionelle Grafik',
-  'Fotografie',
-];
+const seenFileNames = new Map();
+let legacyExceptions = 0;
 
 const files = (await readdir(contentDir))
   .filter((file) => file.endsWith('.md') || file.endsWith('.mdx'))
   .sort();
-const articleIds = files.map((file) => file.replace(/\.mdx?$/, ''));
-const visualSource = await readFile(visualFile, 'utf8');
-const postBlock = visualSource.match(
-  /const postVisuals: Record<string, BlogVisual> = \{([\s\S]*?)\n\};/,
-)?.[1];
 
-if (!postBlock) {
-  throw new Error('Die beitragsspezifische Bildzuordnung konnte nicht gelesen werden.');
-}
-
-const escaped = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-for (const id of articleIds) {
-  if (!new RegExp(`['"]${escaped(id)}['"]\\s*:`).test(postBlock)) {
-    errors.push(`${id}: kein eigenes Beitragsbild zugeordnet.`);
-  }
-}
-
-const imageAssignments = new Map();
-const assignmentPattern = /'([^']+)':\s*makeVisual\(\s*'([^']+)',\s*'[^']*',\s*'([^']+)'(?:,\s*(\d+),\s*(\d+))?/g;
-
-for (const match of postBlock.matchAll(assignmentPattern)) {
-  imageAssignments.set(match[1], {
-    fileName: match[2],
-    caption: match[3],
-    width: Number(match[4] ?? 1536),
-    height: Number(match[5] ?? 1024),
-  });
-}
-
-const parcelBlock = visualSource.match(/const parcelVisual: BlogVisual = \{([\s\S]*?)\n\};/)?.[1];
-if (parcelBlock) {
-  const fileName = parcelBlock.match(/src: '\/images\/blog\/([^']+)\.webp'/)?.[1];
-  const caption = parcelBlock.match(/caption: '([^']+)'/)?.[1];
-  const width = Number(parcelBlock.match(/width: (\d+)/)?.[1]);
-  const height = Number(parcelBlock.match(/height: (\d+)/)?.[1]);
-  if (fileName && caption) {
-    for (const match of postBlock.matchAll(/'([^']+)':\s*parcelVisual/g)) {
-      imageAssignments.set(match[1], { fileName, caption, width, height });
-    }
-  }
-}
+const readFrontmatter = async (file) => {
+  const source = await readFile(path.join(contentDir, file), 'utf8');
+  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!match) throw new Error('kein gültiger Kopfbereich');
+  return load(match[1]);
+};
 
 const readWebpSize = async (filePath) => {
   const buffer = await readFile(filePath);
@@ -75,9 +37,10 @@ const readWebpSize = async (filePath) => {
     const data = offset + 8;
 
     if (chunk === 'VP8X') {
-      const width = 1 + buffer[data + 4] + (buffer[data + 5] << 8) + (buffer[data + 6] << 16);
-      const height = 1 + buffer[data + 7] + (buffer[data + 8] << 8) + (buffer[data + 9] << 16);
-      return { width, height };
+      return {
+        width: 1 + buffer[data + 4] + (buffer[data + 5] << 8) + (buffer[data + 6] << 16),
+        height: 1 + buffer[data + 7] + (buffer[data + 8] << 8) + (buffer[data + 9] << 16),
+      };
     }
 
     if (chunk === 'VP8 ' && buffer[data + 3] === 0x9d && buffer[data + 4] === 0x01 && buffer[data + 5] === 0x2a) {
@@ -100,26 +63,33 @@ const readWebpSize = async (filePath) => {
   throw new Error('Bildgröße konnte nicht gelesen werden');
 };
 
-for (const id of articleIds) {
-  const visual = imageAssignments.get(id);
-  if (!visual) {
-    errors.push(`${id}: Bildzuordnung konnte nicht ausgewertet werden.`);
+for (const file of files) {
+  const id = file.replace(/\.mdx?$/, '');
+  let data;
+
+  try {
+    data = await readFrontmatter(file);
+  } catch (error) {
+    errors.push(`${id}: ${error.message}.`);
     continue;
   }
 
-  if (!labels.some((label) => visual.caption.startsWith(label))) {
-    errors.push(`${id}: Bildart fehlt in der Bildunterschrift.`);
-  }
+  const metadataErrors = validateImageMetadata({
+    id,
+    contentType: data?.contentType,
+    image: data?.image,
+    seenFileNames,
+  });
+  errors.push(...metadataErrors.map((error) => `${id}: ${error}`));
 
-  if (visual.width !== 1536 || visual.height !== 864) {
-    errors.push(`${id}: eingetragene Hauptgröße ist ${visual.width} × ${visual.height} statt 1536 × 864.`);
-  }
+  if (!data?.image?.fileName) continue;
+  if (data.image.provenanceStatus === 'bestand-unvollstaendig') legacyExceptions += 1;
 
   for (const [suffix, expected] of [
     ['', { width: 1536, height: 864 }],
     ['-768', { width: 768, height: 432 }],
   ]) {
-    const filePath = path.join(imageDir, `${visual.fileName}${suffix}.webp`);
+    const filePath = path.join(imageDir, `${data.image.fileName}${suffix}.webp`);
     try {
       const fileStat = await stat(filePath);
       if (fileStat.size === 0) throw new Error('Datei ist leer');
@@ -138,5 +108,10 @@ if (errors.length > 0) {
   for (const error of errors) console.error(`- ${error}`);
   process.exitCode = 1;
 } else {
-  console.log(`Bildprüfung erfolgreich: ${articleIds.length} Beiträge mit eigenem, gekennzeichnetem Bild und zwei Größen.`);
+  const legacyNote = legacyExceptions === 1
+    ? ' Eine dokumentierte Bestandsausnahme bleibt bestehen.'
+    : legacyExceptions > 1
+      ? ` ${legacyExceptions} dokumentierte Bestandsausnahmen bleiben bestehen.`
+      : '';
+  console.log(`Bildprüfung erfolgreich: ${files.length} Beiträge mit eigener Zuordnung, Nachweis, Freigabe und zwei Größen.${legacyNote}`);
 }
