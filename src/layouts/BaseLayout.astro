@@ -1,5 +1,6 @@
 ---
 import SEO from '../components/SEO.astro';
+import ConsentManager from '../components/ConsentManager.astro';
 import { SITE } from '../lib/site';
 import '../styles/editorial.css';
 
@@ -152,6 +153,9 @@ const isActive = (href: string) => currentPath.startsWith(href);
             <a href={SITE.publisher.page}>Redaktion und Methodik</a>
             <a href="/impressum/">Impressum</a>
             <a href="/datenschutz/">Datenschutz</a>
+            <button class="footer-privacy-settings" type="button" data-open-consent-settings>
+              Datenschutz-Einstellungen
+            </button>
             <p>Keine Rechtsberatung</p>
           </div>
         </div>
@@ -161,6 +165,7 @@ const isActive = (href: string) => currentPath.startsWith(href);
         </div>
       </div>
     </footer>
+    <ConsentManager />
   </body>
 </html>
 
@@ -504,7 +509,8 @@ const isActive = (href: string) => currentPath.startsWith(href);
   }
 
   .footer-column a,
-  .footer-column p {
+  .footer-column p,
+  .footer-privacy-settings {
     display: block;
     width: fit-content;
     margin-bottom: 0.65rem;
@@ -514,7 +520,17 @@ const isActive = (href: string) => currentPath.startsWith(href);
     transition: color 160ms ease;
   }
 
-  .footer-column a:hover {
+  .footer-privacy-settings {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .footer-column a:hover,
+  .footer-privacy-settings:hover {
     color: var(--white);
   }
 

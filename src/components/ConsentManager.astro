@@ -1,0 +1,351 @@
+---
+const gtmId = 'GTM-THB97PRN';
+---
+
+<section
+  class="privacy-choice"
+  data-consent-manager
+  data-gtm-id={gtmId}
+  aria-labelledby="privacy-choice-title"
+  hidden
+>
+  <div class="privacy-choice__status" aria-live="polite">
+    <span class="privacy-choice__status-mark" aria-hidden="true"></span>
+    Datenschutzwahl · Besuchsmessung ist aus
+  </div>
+  <div class="privacy-choice__body">
+    <div class="privacy-choice__copy">
+      <p class="privacy-choice__eyebrow">Ihre Entscheidung</p>
+      <h2 id="privacy-choice-title">Dürfen wir Besuche messen?</h2>
+      <p>
+        Mit Ihrer Erlaubnis hilft uns Google Analytics zu verstehen, welche Inhalte nützlich sind.
+        Ohne Ihre Erlaubnis laden wir keine Google-Messdienste. Mehr dazu in unserer
+        <a href="/datenschutz/#besuchsmessung">Datenschutzerklärung</a>.
+      </p>
+    </div>
+    <div class="privacy-choice__actions" aria-label="Datenschutzwahl">
+      <button class="privacy-choice__button privacy-choice__button--necessary" type="button" data-consent-reject>
+        Nur notwendige
+      </button>
+      <button class="privacy-choice__button privacy-choice__button--allow" type="button" data-consent-accept>
+        Besuchsmessung erlauben
+      </button>
+      <button class="privacy-choice__settings" type="button" data-open-consent-settings>
+        Auswahl anpassen
+      </button>
+    </div>
+  </div>
+</section>
+
+<dialog class="privacy-settings" data-consent-dialog aria-labelledby="privacy-settings-title">
+  <form method="dialog" class="privacy-settings__panel">
+    <div class="privacy-settings__heading">
+      <div>
+        <p class="privacy-settings__eyebrow">Datenschutzwahl</p>
+        <h2 id="privacy-settings-title">Besuchsmessung festlegen</h2>
+      </div>
+      <button class="privacy-settings__close" type="submit" value="cancel" aria-label="Einstellungen schließen">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+
+    <p class="privacy-settings__intro">
+      Notwendige Speicherungen sichern nur Ihre Auswahl. Google-Dienste bleiben ausgeschaltet,
+      bis Sie die freiwillige Besuchsmessung erlauben.
+    </p>
+
+    <div class="privacy-settings__row">
+      <div>
+        <h3>Notwendige Speicherung</h3>
+        <p>Berücksichtigt diese Entscheidung für 180 Tage auf Ihrem Gerät.</p>
+      </div>
+      <span class="privacy-settings__fixed" aria-label="Immer eingeschaltet">Immer an</span>
+    </div>
+
+    <label class="privacy-settings__row privacy-settings__row--selectable">
+      <span>
+        <strong>Freiwillige Besuchsmessung</strong>
+        <small>Google Analytics über Google Tag Manager; keine Werbemessung.</small>
+      </span>
+      <input type="checkbox" data-consent-analytics />
+    </label>
+
+    <div class="privacy-settings__actions">
+      <button class="privacy-settings__button privacy-settings__button--necessary" type="button" data-consent-reject>
+        Nur notwendige
+      </button>
+      <button class="privacy-settings__button privacy-settings__button--save" type="button" data-consent-save>
+        Auswahl speichern
+      </button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+  import { initConsentManager } from '../scripts/consent-manager.mjs';
+
+  const root = document.querySelector('[data-consent-manager]');
+  const gtmId = root instanceof HTMLElement ? root.dataset.gtmId : '';
+  initConsentManager({ root, gtmId });
+</script>
+
+<style>
+  .privacy-choice[hidden] {
+    display: none;
+  }
+
+  .privacy-choice {
+    position: fixed;
+    z-index: 900;
+    right: clamp(0.75rem, 3vw, 2rem);
+    bottom: clamp(0.75rem, 3vw, 2rem);
+    left: clamp(0.75rem, 3vw, 2rem);
+    width: min(56rem, calc(100% - clamp(1.5rem, 6vw, 4rem)));
+    margin-left: auto;
+    overflow: hidden;
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-md);
+    background: var(--white);
+    color: var(--ink-950);
+    box-shadow: 0 24px 80px rgba(16, 38, 49, 0.24);
+  }
+
+  .privacy-choice__status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem clamp(1rem, 3vw, 1.5rem);
+    background: var(--blue-050);
+    border-bottom: 1px solid var(--line);
+    color: var(--blue-900);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+  }
+
+  .privacy-choice__status-mark {
+    width: 0.55rem;
+    height: 0.55rem;
+    border: 2px solid var(--blue-800);
+    border-radius: 50%;
+    background: var(--white);
+  }
+
+  .privacy-choice__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 20rem);
+    gap: clamp(1rem, 3vw, 2rem);
+    align-items: end;
+    padding: clamp(1rem, 3vw, 1.6rem);
+  }
+
+  .privacy-choice__eyebrow,
+  .privacy-settings__eyebrow {
+    margin-bottom: 0.35rem;
+    color: var(--brick-600);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .privacy-choice h2,
+  .privacy-settings h2 {
+    margin-bottom: 0.55rem;
+    font-size: clamp(1.45rem, 3vw, 2rem);
+    letter-spacing: -0.025em;
+  }
+
+  .privacy-choice__copy > p:last-child {
+    max-width: 58ch;
+    margin: 0;
+    color: var(--ink-800);
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .privacy-choice__actions,
+  .privacy-settings__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .privacy-choice__button,
+  .privacy-settings__button {
+    min-height: 3rem;
+    padding: 0.72rem 0.9rem;
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--white);
+    font: inherit;
+    font-size: 0.83rem;
+    font-weight: 800;
+    line-height: 1.2;
+    cursor: pointer;
+  }
+
+  .privacy-choice__button--necessary,
+  .privacy-settings__button--necessary {
+    border-color: var(--blue-900);
+    background: var(--blue-900);
+  }
+
+  .privacy-choice__button--allow,
+  .privacy-settings__button--save {
+    border-color: var(--brick-600);
+    background: var(--brick-600);
+  }
+
+  .privacy-choice__button:hover,
+  .privacy-settings__button:hover {
+    filter: brightness(1.08);
+  }
+
+  .privacy-choice__settings {
+    grid-column: 1 / -1;
+    justify-self: start;
+    padding: 0.35rem 0;
+    border: 0;
+    background: transparent;
+    color: var(--blue-800);
+    font: inherit;
+    font-size: 0.83rem;
+    font-weight: 750;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+  }
+
+  .privacy-settings {
+    width: min(38rem, calc(100% - 1.5rem));
+    max-height: calc(100dvh - 1.5rem);
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-md);
+    background: var(--white);
+    color: var(--ink-950);
+    box-shadow: 0 26px 90px rgba(16, 38, 49, 0.3);
+  }
+
+  .privacy-settings::backdrop {
+    background: rgba(7, 59, 92, 0.58);
+  }
+
+  .privacy-settings__panel {
+    padding: clamp(1.15rem, 4vw, 2rem);
+  }
+
+  .privacy-settings__heading {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .privacy-settings__close {
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--blue-050);
+    color: var(--blue-900);
+    font: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .privacy-settings__intro {
+    color: var(--ink-800);
+    line-height: 1.6;
+  }
+
+  .privacy-settings__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0.8rem 0;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+  }
+
+  .privacy-settings__row h3,
+  .privacy-settings__row p,
+  .privacy-settings__row strong,
+  .privacy-settings__row small {
+    display: block;
+  }
+
+  .privacy-settings__row h3,
+  .privacy-settings__row strong {
+    margin-bottom: 0.25rem;
+    color: var(--ink-950);
+    font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0;
+  }
+
+  .privacy-settings__row p,
+  .privacy-settings__row small {
+    margin: 0;
+    color: var(--ink-600);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .privacy-settings__fixed {
+    flex: 0 0 auto;
+    padding: 0.35rem 0.55rem;
+    border-radius: 999px;
+    background: var(--blue-100);
+    color: var(--blue-900);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .privacy-settings__row--selectable {
+    cursor: pointer;
+  }
+
+  .privacy-settings__row input {
+    width: 1.4rem;
+    height: 1.4rem;
+    flex: 0 0 auto;
+    accent-color: var(--brick-600);
+  }
+
+  @media (max-width: 720px) {
+    .privacy-choice {
+      width: auto;
+      margin: 0;
+    }
+
+    .privacy-choice__body {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .privacy-choice__actions,
+    .privacy-settings__actions {
+      grid-template-columns: 1fr;
+    }
+
+    .privacy-choice__settings {
+      grid-column: auto;
+    }
+
+    .privacy-settings__row {
+      align-items: start;
+    }
+  }
+</style>

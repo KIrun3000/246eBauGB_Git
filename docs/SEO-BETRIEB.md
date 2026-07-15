@@ -8,7 +8,7 @@ Das Paket ist abgeschlossen, wenn:
 
 1. `https://246ebaugb.de` öffentlich und ohne Anmeldung erreichbar ist,
 2. die vier weiteren Domains dauerhaft auf die Hauptdomain weiterleiten,
-3. `kontakt@246ebaugb.de` funktioniert,
+3. die im Impressum und in der Datenschutzerklärung genannte Kontaktadresse funktioniert,
 4. Google Search Console die Domain bestätigt und die Sitemap verarbeitet,
 5. technische und redaktionelle Prüfungen automatisch laufen,
 6. Herausgeber, Quellenmethode und KI-Unterstützung transparent sind,
@@ -106,12 +106,19 @@ Offizielle Google-Dokumentation zu diesen Regeln:
 
 - `content-freshness.yml` überwacht amtliche Quellen und Prüffristen.
 - `seo-live-monitor.yml` ruft die öffentliche Domain, Robots, Sitemap und alle indexierbaren Seiten ab.
+- `search-console-report.yml` wertet nach gesonderter Freigabe die Search-Console-Daten der
+  vergangenen 28 Tage aus und aktualisiert eine feste GitHub-Aufgabe mit dem Wochenbericht.
 - Fehler erzeugen eine GitHub-Aufgabe; Inhalte oder Prüfdaten werden nicht automatisch umgeschrieben.
 - Der Prüflauf wird erst nach erfolgreichem Produktivstart mit der GitHub-Variablen `SEO_LIVE_ENABLED=true` freigeschaltet.
+- Der Search-Console-Bericht wird erst nach Einrichtung der Google-Arbeitslastidentität mit
+  `SEARCH_CONSOLE_REPORT_ENABLED=true` freigeschaltet. Zugangsschlüssel werden nicht im Projekt gespeichert.
 
 ## Messung und Optimierung
 
-Zum Start wird nur Google Search Console angebunden. Dadurch ist kein zusätzliches Analyseprogramm im Browser erforderlich und die bestehende Aussage, dass keine Reichweitenmessungs-Cookies eingesetzt werden, bleibt unverändert.
+Google Search Console ist für Suchanfragen und Indexierung angebunden. Zusätzlich kann eine
+freiwillige Besuchsmessung mit Google Analytics erfolgen. Google Tag Manager und Google Analytics
+werden erst nach einer ausdrücklichen Einwilligung geladen. Werbemessung und personalisierte
+Werbung bleiben ausgeschaltet; die Auswahl kann im Fußbereich jeder Seite widerrufen werden.
 
 Ausgewertet werden später in einem rollierenden Zeitraum von 28 Tagen:
 
@@ -122,13 +129,17 @@ Ausgewertet werden später in einem rollierenden Zeitraum von 28 Tagen:
 - Core Web Vitals,
 - Seiten mit vielen Impressionen, aber unklarer Suchintention oder schwacher Klickrate.
 
-Erst diese Daten entscheiden über neue Beiträge, Zusammenführungen oder neue Seitenschwerpunkte. Google Analytics oder ein anderes besucherbasiertes Analysewerkzeug ist nicht Bestandteil dieses ersten Pakets.
+Erst diese Daten entscheiden über neue Beiträge, Zusammenführungen oder neue Seitenschwerpunkte.
+Der Search-Console-Wochenbericht meldet Chancen, Rückgänge und mögliche Überschneidungen mehrerer
+Zielseiten. Er ändert weder Beiträge noch Weiterleitungen automatisch. Google-Analytics-Daten
+werden zunächst nur in der Benutzeroberfläche ausgewertet; eine spätere automatische Auswertung
+benötigt eine eigene, dokumentierte Freigabe.
 
 Nach dem Produktivstart werden klassische und generative Sichtbarkeit getrennt erfasst, aber derselben kanonischen Seite zugeordnet:
 
 - Google-Suche und der verfügbare Bericht zu generativen Suchfunktionen,
 - Bing-Suche und Bing/Copilot-Zitate,
-- ChatGPT-Besuche erst nach datenschutzrechtlich freigegebener Auswertung,
+- Verweise aus ChatGPT und anderen Antwortsystemen, soweit sie in der freiwilligen Besuchsmessung erkennbar sind,
 - ergänzende Beobachtung weiterer Antwortsysteme ohne behauptete Ranggarantie.
 
 Die spätere Search-Console-Prüfung meldet Suchanfragen, für die mehrere Seiten derselben gepflegten Leseraufgabe sichtbar werden. Sie erzeugt Prüfaufgaben und ändert niemals automatisch Inhalte oder Weiterleitungen.
