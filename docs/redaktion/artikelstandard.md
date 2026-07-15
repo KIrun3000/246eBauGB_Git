@@ -45,4 +45,4 @@ Jeder Beitrag beantwortet eine klar abgegrenzte Such- und Arbeitsfrage. Er soll 
 
 ## Bildzuordnung
 
-Die Bildauswahl folgt der separaten [Bildrichtlinie](./bildrichtlinie.md). Das Bild muss den konkreten Arbeitsgegenstand des Beitrags zeigen; reine Kategorienbilder sind nur eine Rückfallebene.
+Die Bildauswahl folgt der separaten [Bildrichtlinie](./bildrichtlinie.md). Das Bild muss den konkreten Arbeitsgegenstand des Beitrags zeigen; reine Kategorienbilder sind nur eine Rückfallebene. Vor der Veröffentlichung wird der verpflichtende [Bildnachweis](./bildnachweis-vorlage.md) direkt in den Artikeldaten ausgefüllt.

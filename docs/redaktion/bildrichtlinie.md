@@ -36,15 +36,30 @@ Bilder sollen den konkreten Prüfgegenstand eines Beitrags verständlich machen.
 
 ## Nachweis je Bild
 
-Für jedes künftig ergänzte Bild werden mindestens diese Angaben festgehalten:
+Der Bildnachweis ist keine getrennte Liste mehr, sondern ein verpflichtender Teil der Artikeldaten. Die vollständige [Vorlage für Bildnachweise](./bildnachweis-vorlage.md) wird bei jedem neuen Beitrag ausgefüllt.
 
-- Beitragsadresse
+Für jedes Bild werden mindestens diese Angaben festgehalten:
+
 - Dateiname
-- Bildart
-- Urheber oder erzeugendes System
-- Quelle oder Erzeugungsdatum
+- Alternativtext und Bildunterschrift
+- Bildart und Herkunft
+- Urheber, Fotografin, Fotograf oder erzeugendes System
+- Quelle und Fundstelle bei amtlichen oder lizenzierten Bildern
+- Aufnahme- oder Erzeugungsdatum
 - Lizenz oder Nutzungsgrundlage
-- redaktionelle Bildunterschrift
+- Zweck des Bildes im Beitrag
+- Prüfung von Themenbezug, kleinem Bildausschnitt, irreführenden Einzelheiten und Rechten
+- prüfende Person und Prüfdatum
+
+Ein Beitrag lässt sich nicht bauen, wenn diese Pflichtangaben fehlen. Eine unvollständige Herkunft ist nur für ausdrücklich dokumentierte Bestandsbilder zulässig; neue Ausnahmen sind technisch gesperrt.
+
+## Auswahl vor der Veröffentlichung
+
+1. Zuerst wird geklärt, welche Aussage das Bild für genau diesen Beitrag leisten soll.
+2. Für Nachrichten, Entscheidungen und reale Projekte wird eine belegte echte oder amtliche Darstellung gesucht. KI-Symbolbilder sind dort gesperrt.
+3. Bei allgemeinen Ratgebern wird eine eigene oder lizenzierte Fotografie bevorzugt. Ein KI-Symbolbild ist nur zulässig, wenn kein konkreter Ort, Fall oder amtlicher Eindruck behauptet wird.
+4. Der Ausschnitt wird sowohl im Format 1536 × 864 als auch in der kleinen Fassung 768 × 432 geprüft.
+5. Bildunterschrift, Alternativtext, Rechte und Herkunft werden vor der Freigabe eingetragen und bestätigt.
 
 ## Bestand nach der Prüfung
 
@@ -63,4 +78,4 @@ Für jedes künftig ergänzte Bild werden mindestens diese Angaben festgehalten:
 
 Die sieben neuen Motive wurden am 15. Juli 2026 mit der Codex-Bildgenerierung von OpenAI erzeugt. Sie bilden keine realen Standorte oder Verfahren ab.
 
-Die automatische Prüfung `npm run bilder:check` kontrolliert für jeden Beitrag die eigene Zuordnung, die Kennzeichnung und beide vorgeschriebenen Bildgrößen. Sie ist Teil der vollständigen Projektprüfung.
+Die automatische Prüfung `npm run bilder:check` kontrolliert für jeden Beitrag die eigene Zuordnung, Bildart, Herkunft, Rechte, Fundstelle, Freigabe und beide vorgeschriebenen Bildgrößen. `npm run bilder:rules:test` prüft zusätzlich, dass die Sperrregeln nicht versehentlich aufgeweicht werden. Beide Prüfungen sind Teil der vollständigen Projektprüfung.
