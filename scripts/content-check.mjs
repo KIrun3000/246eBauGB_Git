@@ -44,9 +44,17 @@ for (const file of files) {
   const sourceUrls = [...frontmatter.matchAll(/^\s+url:\s*["']?([^\s"']+)/gm)].map(
     (match) => match[1],
   );
+  const sourceRecords = [...frontmatter.matchAll(
+    /^\s+url:\s*["']?([^\s"']+)["']?\s*$\r?\n^\s+type:\s*["']?([^\s"']+)["']?\s*$/gm,
+  )].map((match) => ({ url: match[1], type: match[2] }));
 
   const title = readScalar(frontmatter, 'title');
   const description = readScalar(frontmatter, 'description');
+  const intent = readScalar(frontmatter, 'intent');
+
+  if (!['owner', 'broker', 'builder'].includes(intent)) {
+    errors.push(`${relativePath}: Zielgruppe muss owner, broker oder builder sein.`);
+  }
 
   if (title.length < 35 || title.length > 70) {
     warnings.push(`${relativePath}: SEO-Titel hat ${title.length} Zeichen (Zielkorridor: 35–70).`);
@@ -60,6 +68,22 @@ for (const file of files) {
 
   if (sourceUrls.length < 2) {
     errors.push(`${relativePath}: Mindestens zwei Quellen-URLs sind erforderlich.`);
+  }
+
+  if (sourceRecords.length !== sourceUrls.length) {
+    errors.push(`${relativePath}: Jede Quelle benötigt direkt nach der URL den Typ primary oder secondary.`);
+  }
+
+  for (const source of sourceRecords) {
+    if (!['primary', 'secondary'].includes(source.type)) {
+      errors.push(`${relativePath}: Unbekannter Quellentyp ${source.type}.`);
+    }
+    if (/(?:bmwsb\.bund\.de|mil\.brandenburg\.de)/.test(source.url) && source.type !== 'secondary') {
+      errors.push(`${relativePath}: Amtliche FAQ und Verwaltungshinweise müssen als secondary gekennzeichnet sein (${source.url}).`);
+    }
+    if (/(?:gesetze-im-internet\.de|dserver\.bundestag\.de)/.test(source.url) && source.type !== 'primary') {
+      errors.push(`${relativePath}: Gesetz und Gesetzesmaterial müssen als primary gekennzeichnet sein (${source.url}).`);
+    }
   }
 
   for (const sourceUrl of sourceUrls) {

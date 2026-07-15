@@ -4,8 +4,10 @@ export interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: 'website' | 'article';
-  structuredData?: Record<string, unknown>;
+  robots?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -13,7 +15,9 @@ const {
   description,
   canonical,
   ogImage,
+  ogImageAlt = '§246e BauGB Brandenburg – Orientierung zu Grundstücken und Verfahren',
   ogType = 'website',
+  robots = 'index,follow,max-image-preview:large',
   structuredData,
 } = Astro.props;
 
@@ -27,13 +31,19 @@ if (!Astro.site && import.meta.env.DEV) {
   console.warn('[SEO] Astro.site not configured - canonical URL cannot be generated');
 }
 
-const ogImageURL = Astro.site ? new URL(ogImage || '/og-image.png', Astro.site).toString() : undefined;
+const ogImageURL = Astro.site
+  ? new URL(ogImage || '/images/blog/raeumlicher-zusammenhang-flurstueck-16x9.webp', Astro.site).toString()
+  : undefined;
+const structuredDataEntries = structuredData
+  ? Array.isArray(structuredData) ? structuredData : [structuredData]
+  : [];
 ---
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="robots" content={robots} />
 {canonicalURL && <link rel="canonical" href={canonicalURL} />}
 
 <!-- Open Graph / Facebook -->
@@ -42,17 +52,19 @@ const ogImageURL = Astro.site ? new URL(ogImage || '/og-image.png', Astro.site).
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 {ogImageURL && <meta property="og:image" content={ogImageURL} />}
+{ogImageURL && <meta property="og:image:alt" content={ogImageAlt} />}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-{canonicalURL && <meta property="twitter:url" content={canonicalURL} />}
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-{ogImageURL && <meta property="twitter:image" content={ogImageURL} />}
+<meta name="twitter:card" content="summary_large_image" />
+{canonicalURL && <meta name="twitter:url" content={canonicalURL} />}
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
+{ogImageURL && <meta name="twitter:image:alt" content={ogImageAlt} />}
 
-{structuredData && (
-  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-)}
+{structuredDataEntries.map((entry) => (
+  <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+))}
 
 <!-- RSS Feed -->
 <link rel="alternate" type="application/rss+xml" title="§246e BauGB Brandenburg Blog" href="/rss.xml" />

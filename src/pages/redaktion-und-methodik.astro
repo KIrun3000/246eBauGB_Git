@@ -1,0 +1,315 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { SITE, absoluteSiteUrl } from '../lib/site';
+
+const title = 'Redaktion und Methodik – § 246e BauGB Brandenburg';
+const description = 'So entstehen und aktualisieren wir die Inhalte: amtliche Quellen, getrennte Gegenprüfungen, KI-Unterstützung und ein offener Korrekturweg.';
+const posts = await getCollection('blog');
+const commonReviewDate = new Date(Math.min(...posts.map((post) =>
+  (post.data.updatedDate ?? post.data.pubDate).getTime()
+)));
+const reviewDate = new Intl.DateTimeFormat('de-DE', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(commonReviewDate);
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: title,
+  description,
+  url: absoluteSiteUrl('/redaktion-und-methodik/'),
+  inLanguage: 'de-DE',
+  mainEntity: {
+    '@type': 'Person',
+    name: SITE.publisher.name,
+    email: SITE.publicEmail,
+  },
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={structuredData}>
+  <header class="method-hero">
+    <div class="container method-hero__inner">
+      <p class="eyebrow">Verantwortung und Nachvollziehbarkeit</p>
+      <h1>Redaktion und Methodik</h1>
+      <p>
+        Die Website erklärt ein rechtlich anspruchsvolles Thema verständlich,
+        ohne eine Rechtsberatung oder behördliche Entscheidung zu ersetzen.
+        Hier erfahren Sie, wer die Inhalte herausgibt und wie Aussagen geprüft werden.
+      </p>
+    </div>
+  </header>
+
+  <div class="method-content">
+    <div class="container method-grid">
+      <div class="method-main">
+        <section>
+          <p class="section-label">Herausgeber</p>
+          <h2>Wer für die Website verantwortlich ist</h2>
+          <p>
+            Herausgeber ist <strong>{SITE.publisher.name}</strong>. Die Anbieterangaben
+            finden Sie im <a href="/impressum/">Impressum</a>. Es wird keine
+            anwaltliche, behördliche oder sonstige amtliche Qualifikation behauptet.
+          </p>
+        </section>
+
+        <section>
+          <p class="section-label">Redaktioneller Ablauf</p>
+          <h2>Wie Aussagen geprüft werden</h2>
+          <ol class="method-steps">
+            <li>
+              <span>01</span>
+              <div>
+                <h3>Amtliche Ausgangsquellen bestimmen</h3>
+                <p>Maßgeblich sind aktuelle Gesetzestexte, amtliche Begründungen und veröffentlichte Hinweise der zuständigen Stellen.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <h3>Aussagen einzeln belegen</h3>
+                <p>Rechtsstand, Verwaltungshinweise und redaktionelle Einordnung werden getrennt. Unsicherheiten und Einzelfallabhängigkeit bleiben sichtbar.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <h3>Getrennte Gegenprüfungen durchführen</h3>
+                <p>Technische Prüfungen suchen nach veralteten Quellen und fehlenden Pflichtangaben. NotebookLM kontrolliert, ob der vollständige amtliche Prüfbestand im dafür vorgesehenen Notizbuch vorhanden ist. Eine vom Entwurf getrennte Zweitprüfung sucht zusätzlich nach Widersprüchen, überzogenen Formulierungen und fehlenden Grenzen. Keiner dieser Schritte ersetzt eine qualifizierte Rechtsprüfung.</p>
+              </div>
+            </li>
+            <li>
+              <span>04</span>
+              <div>
+                <h3>Den tatsächlichen Prüfstand angeben</h3>
+                <p>Ein Aktualisierungsdatum wird nur gesetzt, wenn ein Beitrag tatsächlich inhaltlich geprüft oder geändert wurde. Hinweise auf mögliche Fehler führen zunächst zu einer erneuten Prüfung.</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <p class="section-label">Automatisierung und KI</p>
+          <h2>Wofür KI eingesetzt wird – und wofür nicht</h2>
+          <p>
+            Sprachmodelle und NotebookLM können bei Recherche, Gliederung,
+            Widerspruchssuche und Verständlichkeit unterstützen. Sie sind keine
+            Rechtsquelle und geben keinen Beitrag automatisch frei. Wesentliche
+            Rechtsaussagen werden an der konkreten amtlichen Fundstelle geprüft.
+          </p>
+          <p>
+            Automatische Systeme überwachen außerdem, ob wichtige Quellen noch
+            erreichbar sind oder sich geprüfte Dokumente verändert haben. Ein
+            Änderungshinweis löst eine erneute Prüfung aus; er wird nicht automatisch
+            als neue Rechtslage übernommen.
+          </p>
+        </section>
+
+        <section>
+          <p class="section-label">Korrekturen</p>
+          <h2>Hinweise sind ausdrücklich willkommen</h2>
+          <p>
+            Wenn Ihnen ein Fehler, eine unklare Formulierung oder eine neue amtliche
+            Quelle auffällt, schreiben Sie bitte an
+            <a href={`mailto:${SITE.publicEmail}?subject=Hinweis%20zu%20246ebaugb.de`}>{SITE.publicEmail}</a>.
+            Bitte nennen Sie nach Möglichkeit die betroffene Seite und die konkrete Fundstelle.
+          </p>
+        </section>
+      </div>
+
+      <aside>
+        <div class="method-note">
+          <p>Gemeinsamer Prüfstand der Magazinbeiträge</p>
+          <strong>{reviewDate}</strong>
+          <span>{posts.length} veröffentlichungsreife Magazinbeiträge</span>
+        </div>
+        <div class="method-note method-note--plain">
+          <p>Wichtige Grenze</p>
+          <span>Die Inhalte sind allgemeine Informationen. Eine verbindliche Prüfung erfolgt durch die zuständigen Stellen oder eine entsprechend qualifizierte Beratung im Einzelfall.</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .method-hero {
+    padding: clamp(3.5rem, 8vw, 7rem) 0;
+    color: var(--white);
+    background: var(--blue-900);
+  }
+
+  .method-hero__inner {
+    max-width: 900px;
+  }
+
+  .eyebrow,
+  .section-label {
+    margin: 0 0 0.8rem;
+    color: #f0a28f;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .method-hero h1 {
+    color: var(--white);
+  }
+
+  .method-hero p:last-child {
+    max-width: 68ch;
+    margin: 1.35rem 0 0;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: clamp(1.05rem, 2vw, 1.22rem);
+    line-height: 1.65;
+  }
+
+  .method-content {
+    padding: clamp(4rem, 9vw, 8rem) 0;
+  }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 740px) minmax(240px, 1fr);
+    gap: clamp(3rem, 8vw, 7rem);
+    align-items: start;
+  }
+
+  .method-main {
+    display: grid;
+    gap: clamp(3.5rem, 8vw, 6rem);
+  }
+
+  section {
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line-dark);
+  }
+
+  .section-label {
+    color: var(--brick-600);
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  section > p:not(.section-label),
+  .method-steps p {
+    color: var(--ink-800);
+    font-size: 1.05rem;
+    line-height: 1.72;
+  }
+
+  section > p + p {
+    margin-top: 1rem;
+  }
+
+  a {
+    color: var(--blue-800);
+    text-underline-offset: 0.18em;
+  }
+
+  .method-steps {
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .method-steps li {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.1rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+  }
+
+  .method-steps li > span {
+    color: var(--brick-600);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 900;
+  }
+
+  .method-steps h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+  }
+
+  .method-steps p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  aside {
+    position: sticky;
+    top: 8.5rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .method-note {
+    padding: 1.25rem;
+    display: grid;
+    gap: 0.45rem;
+    color: var(--white);
+    background: var(--blue-900);
+    border-radius: var(--radius-md);
+  }
+
+  .method-note p {
+    margin: 0;
+    color: #93bbc9;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .method-note strong {
+    font-size: 1.35rem;
+  }
+
+  .method-note span {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.8rem;
+    line-height: 1.55;
+  }
+
+  .method-note--plain {
+    color: var(--ink-800);
+    background: var(--warning-bg);
+    border-left: 3px solid var(--warning-line);
+  }
+
+  .method-note--plain p {
+    color: var(--ink-800);
+  }
+
+  .method-note--plain span {
+    color: var(--ink-800);
+  }
+
+  @media (max-width: 860px) {
+    .method-grid {
+      grid-template-columns: 1fr;
+    }
+
+    aside {
+      position: static;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    aside {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

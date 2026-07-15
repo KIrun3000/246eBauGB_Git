@@ -2,6 +2,8 @@
 
 Eine minimalistische, SEO-optimierte Astro-Website mit Blog für private Grundstückseigentümer in Brandenburg. Fokus: §246e BauGB und Bauen im Außenbereich.
 
+Die redaktionelle Methode, Zielgruppen und automatischen Prüfungen sind in [`docs/SEO-BETRIEB.md`](docs/SEO-BETRIEB.md) dokumentiert.
+
 ## 🚀 Quick Start
 
 ### Lokale Entwicklung starten
@@ -165,7 +167,7 @@ Settings → Environment Variables in Vercel hinzufügen.
 
 ## 🔍 SEO-Features
 
-- ✅ Automatische Sitemap (`/sitemap.xml`)
+- ✅ Automatische Sitemap (`/sitemap-index.xml`)
 - ✅ RSS Feed (`/rss.xml`)
 - ✅ Meta-Tags (Title, Description, OG, Twitter)
 - ✅ Canonical URLs
@@ -203,14 +205,14 @@ Jeder Blog-Post sollte mindestens 2 Links zu Pillar-Seiten enthalten.
 
 Diese Website bietet **keine Rechtsberatung**. Alle Inhalte dienen ausschließlich der Information. Für verbindliche Auskünfte bitte Fachanwalt für Baurecht oder Baubehörde kontaktieren.
 
-**Vor Veröffentlichung zu ergänzen**:
-- Impressum mit echten Daten
-- Datenschutzerklärung vervollständigen
-- Ggf. Cookie-Banner (wenn Tracking eingebaut wird)
+**Vor Veröffentlichung zu bestätigen**:
+- Empfang der öffentlichen Kontaktadresse testen
+- Domain, Produktionsbereitstellung und Datenschutzangaben gemeinsam freigeben
+- Datenschutzerklärung vor jeder späteren Einbindung zusätzlicher Dienste erneut prüfen
 
 ## 🛠️ Technologie-Stack
 
-- **Framework**: [Astro](https://astro.build) 5.x
+- **Framework**: [Astro](https://astro.build) 6.x
 - **Content**: MDX (Markdown + React Components)
 - **Styling**: CSS (Custom Properties, kein Framework)
 - **Hosting**: Vercel (statisch)

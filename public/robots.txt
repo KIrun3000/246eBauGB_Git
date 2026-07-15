@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://246ebaugb.de/sitemap-index.xml

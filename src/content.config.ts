@@ -12,10 +12,11 @@ const blog = defineCollection({
     category: z.enum(['grundlagen', '100m', 'aussenbereich', 'ablauf', 'faq']),
     tags: z.array(z.string()),
     region: z.string().default('Brandenburg'),
-    intent: z.string().default('owner'),
+    intent: z.enum(['owner', 'broker', 'builder']).default('owner'),
     sources: z.array(z.object({
       label: z.string(),
-      url: z.string().url()
+      url: z.string().url(),
+      type: z.enum(['primary', 'secondary'])
     })).default([])
   })
 });

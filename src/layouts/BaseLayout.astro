@@ -1,5 +1,6 @@
 ---
 import SEO from '../components/SEO.astro';
+import { SITE } from '../lib/site';
 import '../styles/editorial.css';
 
 export interface Props {
@@ -7,8 +8,10 @@ export interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: 'website' | 'article';
-  structuredData?: Record<string, unknown>;
+  robots?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
   frontmatter?: {
     title?: string;
     description?: string;
@@ -22,7 +25,9 @@ const {
   description = frontmatter.description,
   canonical = frontmatter.canonical,
   ogImage,
+  ogImageAlt,
   ogType,
+  robots,
   structuredData,
 } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -50,7 +55,9 @@ const isActive = (href: string) => currentPath.startsWith(href);
       description={description}
       canonical={canonical}
       ogImage={ogImage}
+      ogImageAlt={ogImageAlt}
       ogType={ogType}
+      robots={robots}
       structuredData={structuredData}
     />
   </head>
@@ -59,8 +66,8 @@ const isActive = (href: string) => currentPath.startsWith(href);
 
     <div class="utility-bar">
       <div class="container utility-bar__inner">
-        <span>Praxisleitfaden für private Grundstückseigentümer</span>
-        <span class="utility-bar__region">Brandenburg · Stand Juli 2026</span>
+        <span>Praxisleitfaden für Eigentümer und Grundstücksmakler</span>
+        <a class="utility-bar__region" href={SITE.publisher.page}>Brandenburg · Quellen und Prüfmethode</a>
       </div>
     </div>
 
@@ -81,8 +88,8 @@ const isActive = (href: string) => currentPath.startsWith(href);
               {item.label}
             </a>
           ))}
-          <a href="/check/" class="nav-cta">
-            Grundstücksprüfung
+          <a href="/grundstueckspotenzial-brandenburg/" class="nav-cta">
+            Grundstück einordnen
             <svg aria-hidden="true" viewBox="0 0 16 16">
               <path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" />
             </svg>
@@ -105,7 +112,7 @@ const isActive = (href: string) => currentPath.startsWith(href);
                 {item.label}
               </a>
             ))}
-            <a href="/check/" class="mobile-menu__cta">Grundstücksprüfung</a>
+            <a href="/grundstueckspotenzial-brandenburg/" class="mobile-menu__cta">Grundstück einordnen</a>
           </nav>
         </details>
       </div>
@@ -135,11 +142,14 @@ const isActive = (href: string) => currentPath.startsWith(href);
           <div class="footer-column">
             <h2>Weiterlesen</h2>
             <a href="/blog/">Magazin</a>
-            <a href="/check/">Grundstücksprüfung</a>
+            <a href="/grundstueckspotenzial-brandenburg/">Grundstück einordnen</a>
+            <a href="/check/">Kartenwerkzeug in Vorbereitung</a>
             <a href="/rss.xml">RSS-Feed</a>
           </div>
           <div class="footer-column">
             <h2>Rechtliches</h2>
+            <a href={SITE.publisher.page}>Herausgeber: {SITE.publisher.name}</a>
+            <a href={SITE.publisher.page}>Redaktion und Methodik</a>
             <a href="/impressum/">Impressum</a>
             <a href="/datenschutz/">Datenschutz</a>
             <p>Keine Rechtsberatung</p>
@@ -147,7 +157,7 @@ const isActive = (href: string) => currentPath.startsWith(href);
         </div>
         <div class="site-footer__bottom">
           <p>&copy; {new Date().getFullYear()} §246e BauGB Brandenburg</p>
-          <p>Für Eigentümer in Brandenburg</p>
+          <p>Für Eigentümer, Bauwillige und Grundstücksmakler in Brandenburg</p>
         </div>
       </div>
     </footer>
@@ -256,6 +266,16 @@ const isActive = (href: string) => currentPath.startsWith(href);
     align-items: center;
     min-height: 34px;
     gap: 1.5rem;
+  }
+
+  .utility-bar__region {
+    color: inherit;
+    text-decoration-color: rgba(255, 255, 255, 0.35);
+    text-underline-offset: 0.18em;
+  }
+
+  .utility-bar__region:hover {
+    color: var(--white);
   }
 
   .site-header {

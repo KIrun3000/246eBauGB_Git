@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Seite nicht gefunden – § 246e BauGB Brandenburg"
+  description="Die aufgerufene Seite wurde nicht gefunden. Nutzen Sie die Themenübersicht oder das Magazin, um weiterzulesen."
+  robots="noindex,follow"
+>
+  <section class="not-found">
+    <div class="container not-found__inner">
+      <p class="code">404</p>
+      <h1>Diese Seite wurde nicht gefunden</h1>
+      <p>Die Adresse ist möglicherweise veraltet oder unvollständig.</p>
+      <div>
+        <a href="/">Zur Startseite</a>
+        <a href="/blog/">Zum Magazin</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 60vh;
+    padding: clamp(5rem, 12vw, 10rem) 0;
+    display: grid;
+    align-items: center;
+  }
+
+  .not-found__inner {
+    max-width: 760px;
+  }
+
+  .code {
+    margin: 0 0 0.8rem;
+    color: var(--brick-600);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+  }
+
+  .not-found__inner > p:not(.code) {
+    margin: 1rem 0 1.6rem;
+    color: var(--ink-600);
+    font-size: 1.1rem;
+  }
+
+  .not-found__inner > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .not-found__inner a {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.72rem 1rem;
+    color: var(--white);
+    background: var(--blue-900);
+    border-radius: var(--radius-sm);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .not-found__inner a + a {
+    color: var(--blue-900);
+    background: var(--white);
+    border: 1px solid var(--line-dark);
+  }
+</style>

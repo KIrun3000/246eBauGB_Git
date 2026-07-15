@@ -46,7 +46,7 @@
 
 ### 2. Content Quality
 
-- [ ] **Disclaimer vorhanden**
+- [ ] **Rechtshinweis vorhanden**
   - "Keine Rechtsberatung" prominent platziert
   - Verweis auf Fachanwalt/Bauaufsicht für verbindliche Auskünfte
 

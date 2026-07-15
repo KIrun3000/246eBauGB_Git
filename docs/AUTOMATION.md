@@ -17,6 +17,10 @@ Der Projektinhaber muss für normale Arbeiten keine Terminal-, GitHub- oder Verc
 7. Unkritische Änderungen können nach grünen Checks automatisch zusammengeführt werden.
 8. Ein freigegebener Merge nach `main` löst später automatisch das Produktionsdeployment aus.
 
+## Öffentliche SEO-Prüfung
+
+Nach dem Produktivstart prüft `.github/workflows/seo-live-monitor.yml` die öffentliche Hauptdomain wöchentlich. Kontrolliert werden Erreichbarkeit, Robots-Datei, Sitemap, Canonicals und versehentliche `noindex`-Angaben. Bei einem Fehler wird eine GitHub-Aufgabe mit Verweis auf den Prüflauf erstellt. Die Automatisierung verändert weder Inhalte noch DNS- oder Google-Einstellungen.
+
 ## NotebookLM: sichtbare Arbeit und Automatisierung
 
 - Der integrierte Codex-Browser eignet sich für sichtbare NotebookLM-Arbeiten und die Kontrolle erzeugter Infografiken, Videos oder Präsentationen.

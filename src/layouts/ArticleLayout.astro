@@ -3,6 +3,8 @@ import BaseLayout from './BaseLayout.astro';
 import Disclaimer from '../components/Disclaimer.astro';
 import SourcesBox from '../components/SourcesBox.astro';
 import type { BlogVisual } from '../lib/blogVisuals';
+import { audienceLabels, type Audience } from '../lib/audiences';
+import { SITE } from '../lib/site';
 
 interface ArticleHeading {
   depth: number;
@@ -16,15 +18,22 @@ export interface Props {
   pubDate?: Date;
   updatedDate?: Date;
   category?: string;
+  intent?: Audience;
   tags?: string[];
   sources?: Array<{
     label: string;
     url: string;
+    type?: 'primary' | 'secondary';
   }>;
   headings?: ArticleHeading[];
   readingMinutes?: number;
   visual?: BlogVisual;
   enhanced?: boolean;
+  relatedPosts?: Array<{
+    id: string;
+    title: string;
+    description: string;
+  }>;
 }
 
 const {
@@ -33,12 +42,14 @@ const {
   pubDate,
   updatedDate,
   category,
+  intent = 'owner',
   tags,
   sources = [],
   headings = [],
   readingMinutes = 1,
   visual,
   enhanced = false,
+  relatedPosts = [],
 } = Astro.props;
 
 const dateFormatter = new Intl.DateTimeFormat('de-DE', {
@@ -68,6 +79,17 @@ const structuredData = pubDate
       datePublished: pubDate.toISOString(),
       dateModified: (updatedDate ?? pubDate).toISOString(),
       image: (visual?.schemaImages ?? (visual ? [visual.src] : [])).map(absoluteUrl),
+      publisher: {
+        '@type': 'Person',
+        name: SITE.publisher.name,
+        url: absoluteUrl(SITE.publisher.page),
+      },
+      isPartOf: {
+        '@type': 'Blog',
+        name: `${SITE.name} – Magazin`,
+        url: absoluteUrl('/blog/'),
+      },
+      inLanguage: 'de-DE',
     }
   : undefined;
 ---
@@ -76,6 +98,7 @@ const structuredData = pubDate
   title={title}
   description={description}
   ogImage={visual?.src}
+  ogImageAlt={visual?.alt}
   ogType={pubDate ? 'article' : 'website'}
   structuredData={structuredData}
 >
@@ -99,11 +122,16 @@ const structuredData = pubDate
         <div class="article-header__intro">
           {category && (
             <p class="article-header__category">
-              {categoryLabels[category] || category}
+              {categoryLabels[category] || category} · {audienceLabels[intent]}
             </p>
           )}
           <h1>{title}</h1>
           <p class="article-header__description">{description}</p>
+          <p class="article-header__publisher">
+            Herausgegeben von <a href={SITE.publisher.page}>{SITE.publisher.name}</a>
+            <span aria-hidden="true">·</span>
+            <a href={SITE.publisher.page}>Quellen und Prüfmethode</a>
+          </p>
 
           {(pubDate || (tags && tags.length > 0)) && (
             <div class="article-header__details">
@@ -169,7 +197,7 @@ const structuredData = pubDate
               </nav>
 
               <div class="article-overview__actions">
-                <a class="article-overview__primary" href="/check/">Grundstück prüfen</a>
+                <a class="article-overview__primary" href="/grundstueckspotenzial-brandenburg/">Nächsten Schritt wählen</a>
                 <button type="button" data-share-article>Beitrag teilen</button>
                 <input
                   class="article-overview__share-field"
@@ -190,6 +218,21 @@ const structuredData = pubDate
 
           <SourcesBox sources={sources} />
           <Disclaimer />
+
+          {relatedPosts.length > 0 && (
+            <section class="related-posts" aria-labelledby="related-posts-title">
+              <p class="related-posts__label">Passende Vertiefungen</p>
+              <h2 id="related-posts-title">Damit können Sie weiterarbeiten</h2>
+              <div>
+                {relatedPosts.map((post) => (
+                  <a href={`/blog/${post.id}/`}>
+                    <strong>{post.title}</strong>
+                    <span>{post.description}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
 
         <aside class="article-rail" aria-label="Weiterführende Themen">
@@ -215,6 +258,18 @@ const structuredData = pubDate
             </a>
             <a href="/zustimmung-gemeinde-246e/">
               <span>Gemeinde-Zustimmung</span>
+              <svg aria-hidden="true" viewBox="0 0 16 16">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </a>
+            <a href="/grundstueckspotenzial-brandenburg/">
+              <span>Nächster Schritt</span>
+              <svg aria-hidden="true" viewBox="0 0 16 16">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </a>
+            <a href={SITE.publisher.page}>
+              <span>Redaktion und Methodik</span>
               <svg aria-hidden="true" viewBox="0 0 16 16">
                 <path d="M3 8h10M9 4l4 4-4 4" />
               </svg>
@@ -366,6 +421,21 @@ const structuredData = pubDate
     color: var(--ink-600);
     font-size: clamp(1.125rem, 1vw + 0.9rem, 1.25rem);
     line-height: 1.6;
+  }
+
+  .article-header__publisher {
+    margin: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    color: var(--ink-600);
+    font-size: 0.76rem;
+  }
+
+  .article-header__publisher a {
+    color: var(--blue-800);
+    font-weight: 800;
+    text-underline-offset: 0.18em;
   }
 
   .article-header__details {
@@ -698,6 +768,56 @@ const structuredData = pubDate
     top: 8.5rem;
     display: grid;
     gap: 1rem;
+  }
+
+  .related-posts {
+    max-width: var(--editorial-measure);
+    margin-top: clamp(3rem, 7vw, 5rem);
+    padding-top: 2rem;
+    border-top: 1px solid var(--line-dark);
+  }
+
+  .related-posts__label {
+    margin: 0 0 0.45rem;
+    color: var(--brick-600);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .related-posts h2 {
+    margin: 0 0 1.2rem;
+    font-size: clamp(1.65rem, 3vw, 2.3rem);
+  }
+
+  .related-posts > div {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .related-posts a {
+    display: grid;
+    gap: 0.35rem;
+    padding: 1rem;
+    color: var(--ink-800);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+  }
+
+  .related-posts a:hover {
+    border-color: var(--brick-500);
+  }
+
+  .related-posts strong {
+    color: var(--blue-900);
+  }
+
+  .related-posts span {
+    font-size: 0.82rem;
+    line-height: 1.55;
   }
 
   .article-rail__box {

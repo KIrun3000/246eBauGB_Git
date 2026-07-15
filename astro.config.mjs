@@ -12,7 +12,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) => !page.endsWith('/check/'),
+      filter: (page) => !page.endsWith('/check/') && !page.endsWith('/404/'),
     }),
   ],
 });

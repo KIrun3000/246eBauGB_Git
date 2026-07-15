@@ -14,7 +14,19 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 const visual = getBlogVisual(entry.id, entry.data.category);
-const enhanced = entry.id === 'raeumlicher-zusammenhang-pruefen-grundstueck';
+const relatedPosts = (await getCollection('blog'))
+  .filter((candidate) => candidate.id !== entry.id)
+  .map((candidate) => ({
+    id: candidate.id,
+    title: candidate.data.title,
+    description: candidate.data.description,
+    score:
+      (candidate.data.category === entry.data.category ? 4 : 0)
+      + (candidate.data.intent === entry.data.intent ? 2 : 0)
+      + candidate.data.tags.filter((tag) => entry.data.tags.includes(tag)).length,
+  }))
+  .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, 'de'))
+  .slice(0, 2);
 const wordCount = entry.body
   .replace(/---[\s\S]*?---/, '')
   .replace(/<[^>]+>|[#*_`>[\]()!-]/g, ' ')
@@ -29,12 +41,14 @@ const readingMinutes = Math.max(1, Math.ceil(wordCount / 180));
   pubDate={entry.data.pubDate}
   updatedDate={entry.data.updatedDate}
   category={entry.data.category}
+  intent={entry.data.intent}
   tags={entry.data.tags}
   sources={entry.data.sources}
   headings={headings}
   readingMinutes={readingMinutes}
   visual={visual}
-  enhanced={enhanced}
+  enhanced={true}
+  relatedPosts={relatedPosts}
 >
   <Content />
 </ArticleLayout>

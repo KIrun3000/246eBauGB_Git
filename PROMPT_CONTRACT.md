@@ -31,12 +31,14 @@ updatedDate: 2026-07-14  # Pflicht nach jedem fachlichen Review
 category: "grundlagen" | "100m" | "aussenbereich" | "ablauf" | "faq"
 tags: ["Tag1", "Tag2", "Tag3"]  # 3-5 Tags, spezifisch
 region: "Brandenburg"  # Immer "Brandenburg"
-intent: "owner"  # Immer "owner" (private Eigentümer)
+intent: "owner" | "broker" | "builder"  # Hauptzielgruppe passend zum Beitrag wählen
 sources:
   - label: "§ 246e BauGB – aktueller Gesetzestext"
     url: "https://www.gesetze-im-internet.de/bbaug/__246e.html"
+    type: "primary"
   - label: "§ 36a BauGB – Zustimmung der Gemeinde"
     url: "https://www.gesetze-im-internet.de/bbaug/__36a.html"
+    type: "primary"
 ---
 ```
 
@@ -72,7 +74,7 @@ sources:
   ```
 
 #### 4. Interne Verlinkung (REQUIRED)
-- Mindestens 2 interne Links zu Pillar-Seiten:
+- Mindestens 2 interne Links zu Grundlagenseiten:
   - `/246e-baugb-brandenburg`
   - `/100m-regel-raeumlicher-zusammenhang`
   - `/aussenbereich-brandenburg-246e`
@@ -82,6 +84,7 @@ sources:
 #### 5. Quellen (REQUIRED)
 - Mindestens 2 Quellen im Frontmatter
 - Offizielle Quellen bevorzugen (Gesetze, Ministerien, Behörden)
+- Jede Quelle ausdrücklich als `primary` (Gesetz oder Gesetzesmaterial) oder `secondary` (amtliche FAQ und Verwaltungshinweise) einordnen
 
 ### Tone of Voice
 
@@ -97,7 +100,7 @@ sources:
 - Versprechen oder Garantien
 - Rechtliche Beratung suggerieren
 - Überverkaufen oder Marketing-Sprech
-- Ohne Disclaimer arbeiten
+- Ohne Rechtshinweis arbeiten
 
 ### Disclaimer
 Jeder Artikel MUSS klar kommunizieren: **"Diese Informationen ersetzen keine Rechtsberatung."**
