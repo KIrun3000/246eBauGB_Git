@@ -14,6 +14,19 @@ Das Paket ist abgeschlossen, wenn:
 6. Herausgeber, Quellenmethode und KI-Unterstützung transparent sind,
 7. das unfertige Kartenwerkzeug nicht indexiert und nicht als fertige Leistung beworben wird.
 
+## Betriebsstand am 18. Juli 2026
+
+- `246ebaugb.de` ist die bestätigte Hauptdomain; die vier weiteren Domains leiten dauerhaft auf sie weiter.
+- Die öffentliche Kontaktadresse ist `luca@ingenbleek.io`.
+- Die Domain ist in der Google Search Console bestätigt, die Sitemap ist eingereicht und der wöchentliche Bericht ist eingerichtet.
+- Für das Google-Projekt `baugb246e-seo-berichte` warnt ein monatliches Budget von 1 Euro bei 50, 90 und 100 Prozent. Es ist eine Kostenwarnung, keine technische Ausgabensperre.
+- Google Tag Manager und Google Analytics sind technisch vorbereitet, laden aber erst nach ausdrücklicher Einwilligung.
+- Der unfertige Grundstücksprüfer bleibt von der Indexierung ausgeschlossen.
+- Technische, redaktionelle, sprachliche, rechtliche und Quellenprüfungen sind als Veröffentlichungstore eingerichtet.
+- Produktionsbereitstellungen erfolgen nach grünen Prüfungen und dokumentiertem Review automatisch aus `main`.
+
+Der Betriebsstand ersetzt keine fortlaufende Prüfung: Änderungen an Recht, Quellen, Datenschutz, externen Diensten oder Infrastruktur durchlaufen weiterhin die jeweils vorgesehene zusätzliche Review-Stufe.
+
 ## Domainstrategie
 
 - Hauptdomain: `246ebaugb.de`

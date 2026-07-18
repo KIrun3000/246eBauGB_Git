@@ -159,7 +159,7 @@ GitHub und Vercel verwenden einen geschützten Ablauf:
 - Juristische Inhalte und Automationsdateien erhalten ein zusätzliches Review-Gate.
 - Produktion wird ausschließlich aus dem geschützten `main`-Branch bereitgestellt.
 
-Bis die bereits festgestellten fachlichen Altstände und die öffentlichen Pflichtangaben bereinigt sind, bleibt das automatische Produktionsdeployment bewusst deaktiviert. Der genaue Ablauf steht in `docs/AUTOMATION.md`.
+Das Release-Gate wurde am 18. Juli 2026 geprüft und freigegeben. Ein erfolgreicher Merge nach `main` löst deshalb automatisch die Produktionsbereitstellung aus. Der genaue Ablauf und die Rückfallstrategie stehen in `docs/AUTOMATION.md`.
 
 ### Environment Variables (falls benötigt)
 
@@ -205,10 +205,10 @@ Jeder Blog-Post sollte mindestens 2 Links zu Pillar-Seiten enthalten.
 
 Diese Website bietet **keine Rechtsberatung**. Alle Inhalte dienen ausschließlich der Information. Für verbindliche Auskünfte bitte Fachanwalt für Baurecht oder Baubehörde kontaktieren.
 
-**Vor Veröffentlichung zu bestätigen**:
-- Empfang der öffentlichen Kontaktadresse testen
-- Domain, Produktionsbereitstellung und Datenschutzangaben gemeinsam freigeben
-- Datenschutzerklärung vor jeder späteren Einbindung zusätzlicher Dienste erneut prüfen
+**Im laufenden Betrieb**:
+- Empfang der öffentlichen Kontaktadresse regelmäßig prüfen
+- neue externe Dienste erst nach Datenschutz- und Einwilligungsprüfung einbinden
+- juristische Inhalte nur nach aktueller amtlicher Quellenprüfung veröffentlichen
 
 ## 🛠️ Technologie-Stack
 

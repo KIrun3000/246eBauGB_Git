@@ -46,9 +46,9 @@
 
 ## Open knowledge gaps
 
-- The README still marks final imprint details, privacy wording, contact data, and licensing as items to complete before publication.
 - The interactive property check is not implemented; `/check/` is a placeholder.
 - The errata explicitly leaves official verification of some Brandenburg reference data and future evidence about municipal practice open.
-- Current deployment, Vercel project configuration, DNS ownership, and CI status cannot be confirmed from repository files alone.
-- `package.json` defines no automated test, lint, type-check, or dedicated Astro-check script beyond the Astro CLI and build-related scripts.
+- The public site is deployed from the protected `main` branch through the linked Vercel project. Preview deployments run on task branches; production deployment is explicitly enabled in `vercel.json`.
+- `npm run check` is the combined technical, content, language, SEO, build, and audit gate. `npm run legal:check` additionally validates the official source inventory and the separated official-source NotebookLM notebook on the Mac mini.
+- Search Console reporting, public SEO monitoring, and source-freshness workflows are configured in GitHub. Their external account state still has to be verified in the respective service when an operational decision depends on it.
 - Legal and administrative source currency must be rechecked before publication; the repository snapshot alone does not establish that external sources are still current.
