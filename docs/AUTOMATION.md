@@ -15,7 +15,7 @@ Der Projektinhaber muss für normale Arbeiten keine Terminal-, GitHub- oder Verc
 5. GitHub erstellt beziehungsweise erhält einen Pull Request und wiederholt die Qualitätsprüfung.
 6. Vercel erstellt nach der Git-Verknüpfung eine Vorschau für den Branch.
 7. Unkritische Änderungen können nach grünen Checks automatisch zusammengeführt werden.
-8. Ein freigegebener Merge nach `main` löst später automatisch das Produktionsdeployment aus.
+8. Ein freigegebener Merge nach `main` löst automatisch das Produktionsdeployment aus.
 
 ## Öffentliche SEO-Prüfung
 
@@ -41,11 +41,11 @@ Die zusätzlichen Reviews führt Codex aus und dokumentiert sie im Pull Request.
 
 ## Produktionsstatus
 
-Preview-Deployments dürfen automatisiert laufen. Das automatische Produktionsdeployment ist in `vercel.json` vorübergehend für `main` deaktiviert, weil der Inhaltsaudit bekannte juristische Altstände festgestellt hat und `246ebaugb.de` noch nicht eingerichtet ist.
+Vorschauen und Produktionsbereitstellungen laufen über die bestehende Vercel-Verknüpfung. `codex/*`-Branches erzeugen Vorschauen; ausschließlich der geschützte `main`-Branch darf die öffentliche Website aktualisieren.
 
-Die Vorschauen sind derzeit durch die Vercel-Anmeldung geschützt. Die Produktionsadresse bleibt absichtlich ohne aktive Bereitstellung, bis das Release-Gate freigegeben wird.
+Das Release-Gate wurde am 18. Juli 2026 geprüft: Haupt- und Weiterleitungsdomains, öffentliche Pflichtseiten, Kontaktadresse, Datenschutz- und Einwilligungslogik, Search Console, amtliche Quellen sowie die technischen Projektprüfungen sind eingerichtet beziehungsweise erfolgreich geprüft. Die automatische Produktionsbereitstellung für `main` ist deshalb freigeschaltet.
 
-Nach Korrektur der fachlichen Basis und der öffentlichen Pflichtangaben wird `main` in einem gesondert geprüften Infrastruktur-Pull-Request für automatische Produktionsdeployments freigeschaltet.
+Eine fehlerhafte Veröffentlichung wird zuerst in Vercel auf die letzte funktionierende Bereitstellung zurückgesetzt. Die eigentliche Korrektur erfolgt anschließend auf einem neuen `codex/*`-Branch mit denselben Prüf- und Review-Stufen. Zugangsdaten und DNS-Einstellungen werden nicht im Repository gespeichert.
 
 ## Parallel arbeiten
 
