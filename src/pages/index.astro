@@ -2,12 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { SITE, absoluteSiteUrl } from '../lib/site';
+import { getBlogVisual } from '../lib/blogVisuals';
 
 const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const featuredPost = sortedPosts[0];
+const featuredVisual = featuredPost ? getBlogVisual(featuredPost.data.image) : undefined;
 const latestPosts = sortedPosts.slice(1, 5);
 const dateFormatter = new Intl.DateTimeFormat('de-DE', {
   day: '2-digit',
@@ -297,16 +299,22 @@ const structuredData = {
 
         <div class="magazine__grid">
           <article class="lead-story">
-            <div class="lead-story__visual" aria-hidden="true">
+            <figure class="lead-story__visual">
+              {featuredVisual && (
+                <img
+                  src={featuredVisual.src}
+                  srcset={featuredVisual.srcSet}
+                  sizes="(max-width: 980px) 100vw, 54vw"
+                  alt={featuredVisual.alt}
+                  width={featuredVisual.width}
+                  height={featuredVisual.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
               <span>{categoryLabels[featuredPost.data.category] || featuredPost.data.category}</span>
-              <svg viewBox="0 0 640 300">
-                <path d="M-40 248 92 204l105 18 120-72 108 34 142-98 120 24" />
-                <path d="M40 50 226 20l62 114-154 58ZM226 20l242 34-43 130-137-50Z" />
-                <circle cx="246" cy="152" r="104" />
-                <path d="M246 152h104" />
-                <rect x="102" y="116" width="76" height="52" />
-              </svg>
-            </div>
+              {featuredVisual && <figcaption>{featuredVisual.caption}</figcaption>}
+            </figure>
             <div class="lead-story__body">
               <div class="story-meta">
                 <span>{categoryLabels[featuredPost.data.category] || featuredPost.data.category}</span>
@@ -532,7 +540,7 @@ const structuredData = {
     gap: 0.7rem 1.2rem;
     list-style: none;
     color: var(--ink-600);
-    font-size: 0.78rem;
+    font-size: 0.84rem;
     font-weight: 700;
   }
 
@@ -581,8 +589,8 @@ const structuredData = {
     padding: 0.85rem 1rem;
     color: var(--ink-600);
     background: var(--white);
-    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.63rem;
+    font-family: var(--font-utility);
+    font-size: var(--type-small);
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -651,7 +659,7 @@ const structuredData = {
     display: block;
     margin-bottom: 0.35rem;
     color: #93bbc9;
-    font-size: 0.68rem;
+    font-size: var(--type-small);
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -666,7 +674,7 @@ const structuredData = {
 
   .facts a {
     color: rgba(255, 255, 255, 0.67);
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     text-underline-offset: 0.22em;
   }
 
@@ -741,7 +749,7 @@ const structuredData = {
     z-index: 1;
     margin-bottom: auto;
     color: var(--brick-600);
-    font-size: 0.7rem;
+    font-size: var(--type-small);
     font-weight: 900;
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -760,7 +768,7 @@ const structuredData = {
 
   .topic-card--feature h3 {
     color: var(--white);
-    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    font-size: clamp(1.8rem, 4vw, 2.25rem);
   }
 
   .topic-card p {
@@ -784,7 +792,7 @@ const structuredData = {
     align-items: center;
     gap: 0.5rem;
     color: var(--blue-800);
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 800;
   }
 
@@ -855,21 +863,21 @@ const structuredData = {
     display: block;
     margin-bottom: 2.5rem;
     color: #f0a28f;
-    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.8rem;
+    font-family: var(--font-utility);
+    font-size: 0.82rem;
     font-weight: 800;
   }
 
   .pathway__steps h3 {
     margin: 0 0 0.7rem;
     color: var(--white);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .pathway__steps p {
     margin: 0;
     color: rgba(255, 255, 255, 0.62);
-    font-size: 0.87rem;
+    font-size: 0.92rem;
   }
 
   .magazine {
@@ -915,39 +923,53 @@ const structuredData = {
     border-radius: var(--radius-md);
   }
 
+  .lead-story__visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 54%, rgba(16, 38, 49, 0.68));
+    pointer-events: none;
+  }
+
+  .lead-story__visual img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    transition: transform 300ms ease;
+  }
+
   .lead-story__visual > span {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    z-index: 1;
+    z-index: 2;
     padding: 0.45rem 0.6rem;
     color: var(--white);
     background: var(--brick-600);
     border-radius: var(--radius-sm);
-    font-size: 0.66rem;
+    font-size: var(--type-small);
     font-weight: 900;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  .lead-story__visual svg {
+  .lead-story__visual figcaption {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    fill: rgba(7, 59, 92, 0.09);
-    stroke: var(--blue-900);
-    stroke-width: 2;
-    transition: transform 300ms ease;
+    right: 1rem;
+    bottom: 0.85rem;
+    left: 1rem;
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: var(--type-small);
+    font-weight: 800;
+    line-height: 1.4;
+    text-shadow: 0 1px 10px rgba(16, 38, 49, 0.8);
   }
 
-  .lead-story__visual circle {
-    fill: none;
-    stroke: var(--brick-500);
-    stroke-dasharray: 8 8;
-  }
-
-  .lead-story__visual:hover svg {
+  .lead-story__visual:hover img {
     transform: scale(1.025);
   }
 
@@ -960,7 +982,7 @@ const structuredData = {
     flex-wrap: wrap;
     gap: 0.65rem 1rem;
     color: var(--ink-600);
-    font-size: 0.69rem;
+    font-size: var(--type-small);
     font-weight: 800;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -992,7 +1014,7 @@ const structuredData = {
 
   .story-link {
     color: var(--blue-900);
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 800;
     text-underline-offset: 0.22em;
   }
@@ -1026,7 +1048,7 @@ const structuredData = {
     margin: 0;
     overflow: hidden;
     color: var(--ink-600);
-    font-size: 0.83rem;
+    font-size: 0.9rem;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
@@ -1146,7 +1168,7 @@ const structuredData = {
     align-items: center;
     color: var(--ink-600);
     border-bottom: 1px solid var(--line);
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     font-weight: 700;
   }
 
@@ -1161,8 +1183,8 @@ const structuredData = {
     place-items: center;
     border: 1px solid var(--line-dark);
     border-radius: 50%;
-    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.65rem;
+    font-family: var(--font-utility);
+    font-size: var(--type-small);
   }
 
   .check-teaser__panel li.is-current {
@@ -1202,7 +1224,7 @@ const structuredData = {
 
   .legal-note p {
     margin: 0;
-    font-size: 0.86rem;
+    font-size: 0.9rem;
     line-height: 1.65;
   }
 
@@ -1225,6 +1247,21 @@ const structuredData = {
     to {
       opacity: 1;
       transform: translateY(0) rotate(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__content,
+    .parcel-plan {
+      animation: none;
+    }
+
+    .lead-story__visual img {
+      transition: none;
+    }
+
+    .lead-story__visual:hover img {
+      transform: none;
     }
   }
 

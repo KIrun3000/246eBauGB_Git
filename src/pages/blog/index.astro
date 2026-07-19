@@ -25,6 +25,13 @@ const categoryLabels: Record<string, string> = {
   ablauf: 'Verfahren',
   faq: 'Praxisfragen',
 };
+const topicLinks = [
+  { label: '§ 246e im Überblick', href: '/246e-baugb-brandenburg/' },
+  { label: '100-m-Leitplanke', href: '/100m-regel-raeumlicher-zusammenhang/' },
+  { label: 'Außenbereich', href: '/aussenbereich-brandenburg-246e/' },
+  { label: 'Gemeindezustimmung', href: '/zustimmung-gemeinde-246e/' },
+  { label: 'Grundstück einordnen', href: '/grundstueckspotenzial-brandenburg/' },
+];
 ---
 
 <BaseLayout
@@ -44,9 +51,9 @@ const categoryLabels: Record<string, string> = {
       </div>
       <div class="magazine-hero__index">
         <p>Themen im Überblick</p>
-        <ul>
-          {Object.values(categoryLabels).map((label) => <li>{label}</li>)}
-        </ul>
+        <nav aria-label="Themenwege">
+          {topicLinks.map((topic) => <a href={topic.href}>{topic.label}</a>)}
+        </nav>
       </div>
     </div>
   </header>
@@ -180,7 +187,7 @@ const categoryLabels: Record<string, string> = {
   .eyebrow {
     margin: 0 0 1rem;
     color: #f0a28f;
-    font-size: 0.73rem;
+    font-size: var(--type-small);
     font-weight: 900;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -208,29 +215,34 @@ const categoryLabels: Record<string, string> = {
   .magazine-hero__index > p {
     margin: 0 0 0.8rem;
     color: #93bbc9;
-    font-size: 0.67rem;
+    font-size: var(--type-small);
     font-weight: 900;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
-  .magazine-hero__index ul {
+  .magazine-hero__index nav {
     margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 0.45rem;
-    list-style: none;
   }
 
-  .magazine-hero__index li {
-    margin: 0;
+  .magazine-hero__index a {
     padding: 0.35rem 0.5rem;
     color: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 999px;
-    font-size: 0.65rem;
+    font-size: var(--type-small);
     font-weight: 700;
+    text-decoration: none;
+  }
+
+  .magazine-hero__index a:hover {
+    color: var(--white);
+    border-color: #f0a28f;
+    background: rgba(255, 255, 255, 0.07);
   }
 
   .magazine-content {
@@ -279,7 +291,7 @@ const categoryLabels: Record<string, string> = {
     left: 0.85rem;
     z-index: 2;
     color: rgba(255, 255, 255, 0.92);
-    font-size: 0.62rem;
+    font-size: var(--type-small);
     font-weight: 800;
     letter-spacing: 0.03em;
     text-shadow: 0 1px 10px rgba(16, 38, 49, 0.8);
@@ -294,7 +306,7 @@ const categoryLabels: Record<string, string> = {
     color: var(--white);
     background: var(--brick-600);
     border-radius: var(--radius-sm);
-    font-size: 0.65rem;
+    font-size: var(--type-small);
     font-weight: 900;
     letter-spacing: 0.09em;
     text-transform: uppercase;
@@ -310,7 +322,7 @@ const categoryLabels: Record<string, string> = {
     flex-wrap: wrap;
     gap: 0.6rem 1rem;
     color: var(--ink-600);
-    font-size: 0.68rem;
+    font-size: var(--type-small);
     font-weight: 800;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -326,7 +338,7 @@ const categoryLabels: Record<string, string> = {
 
   .featured h2 {
     margin: 1rem 0;
-    font-size: clamp(2rem, 4vw, 3.1rem);
+    font-size: clamp(2rem, 4vw, 2.25rem);
   }
 
   .featured h2 a,
@@ -360,7 +372,7 @@ const categoryLabels: Record<string, string> = {
     color: var(--ink-600);
     background: var(--blue-050);
     border-radius: 999px;
-    font-size: 0.65rem;
+    font-size: var(--type-small);
     font-weight: 700;
   }
 
@@ -369,7 +381,7 @@ const categoryLabels: Record<string, string> = {
     align-items: center;
     gap: 0.55rem;
     color: var(--blue-900);
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 900;
     text-underline-offset: 0.2em;
   }
@@ -411,7 +423,7 @@ const categoryLabels: Record<string, string> = {
   .archive__header > p {
     margin: 0;
     color: var(--ink-600);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -476,8 +488,8 @@ const categoryLabels: Record<string, string> = {
     background: rgba(7, 59, 92, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.45);
     border-radius: 50%;
-    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.7rem;
+    font-family: var(--font-utility);
+    font-size: var(--type-small);
     font-weight: 900;
   }
 
@@ -496,14 +508,14 @@ const categoryLabels: Record<string, string> = {
     margin: 0 0 1.2rem;
     overflow: hidden;
     color: var(--ink-600);
-    font-size: 0.82rem;
-    line-height: 1.58;
+    font-size: 0.92rem;
+    line-height: 1.62;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
 
   .read-link--small {
-    font-size: 0.75rem;
+    font-size: 0.84rem;
   }
 
   .empty-state {

@@ -1,0 +1,256 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  frontmatter?: {
+    title?: string;
+    description?: string;
+  };
+}
+
+const frontmatter = Astro.props.frontmatter ?? {};
+const currentPath = Astro.url.pathname;
+const topics = [
+  { href: '/246e-baugb-brandenburg/', label: 'Grundlagen' },
+  { href: '/100m-regel-raeumlicher-zusammenhang/', label: '100-m-Leitplanke' },
+  { href: '/aussenbereich-brandenburg-246e/', label: 'Außenbereich' },
+  { href: '/zustimmung-gemeinde-246e/', label: 'Gemeinde-Zustimmung' },
+];
+---
+
+<BaseLayout frontmatter={frontmatter}>
+  <article class="pillar-shell">
+    <div class="container">
+      <nav class="pillar-breadcrumb" aria-label="Brotkrümelnavigation">
+        <a href="/">Start</a>
+        <svg aria-hidden="true" viewBox="0 0 16 16">
+          <path d="m6 3 5 5-5 5" />
+        </svg>
+        <span>Grundlagen</span>
+      </nav>
+
+      <div class="pillar-layout">
+        <div class="pillar-layout__main">
+          <slot />
+        </div>
+
+        <aside class="pillar-rail" aria-label="Weitere Grundlagenthemen">
+          <div class="pillar-rail__map" aria-hidden="true">
+            <span></span>
+            <i></i>
+          </div>
+          <p>Grundlagen-Navigation</p>
+          <nav>
+            {topics.map((topic) => (
+              <a
+                href={topic.href}
+                aria-current={currentPath === topic.href ? 'page' : undefined}
+              >
+                <span>{topic.label}</span>
+                <svg aria-hidden="true" viewBox="0 0 16 16">
+                  <path d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
+              </a>
+            ))}
+          </nav>
+          <a class="pillar-rail__next" href="/grundstueckspotenzial-brandenburg/">
+            Grundstück einordnen
+          </a>
+          <small>Erste Orientierung, keine Genehmigungszusage.</small>
+        </aside>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .pillar-shell {
+    position: relative;
+    padding: clamp(2.25rem, 5vw, 4.5rem) 0 clamp(4.5rem, 9vw, 8rem);
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, rgba(7, 59, 92, 0.022) 1px, transparent 1px),
+      var(--paper);
+    background-size: 42px 42px;
+  }
+
+  .pillar-shell::before {
+    content: "";
+    position: absolute;
+    width: min(34vw, 30rem);
+    aspect-ratio: 1;
+    top: 8rem;
+    right: -12rem;
+    border: 1px dashed rgba(190, 79, 55, 0.16);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .pillar-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: clamp(2.25rem, 5vw, 4rem);
+    color: var(--ink-600);
+    font-size: var(--type-small);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .pillar-breadcrumb a {
+    color: var(--blue-800);
+    text-decoration: none;
+  }
+
+  .pillar-breadcrumb a:hover {
+    color: var(--brick-600);
+  }
+
+  .pillar-breadcrumb svg,
+  .pillar-rail nav svg {
+    width: 0.9rem;
+    height: 0.9rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+  }
+
+  .pillar-layout {
+    display: grid;
+    grid-template-columns: minmax(0, var(--editorial-measure)) minmax(15rem, 18rem);
+    justify-content: space-between;
+    gap: clamp(3rem, 8vw, 7rem);
+    align-items: start;
+  }
+
+  .pillar-layout__main {
+    min-width: 0;
+  }
+
+  .pillar-rail {
+    position: sticky;
+    top: 8.5rem;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .pillar-rail__map {
+    min-height: 7.5rem;
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(28deg, transparent 48%, rgba(7, 59, 92, 0.14) 49% 51%, transparent 52%),
+      repeating-linear-gradient(90deg, rgba(7, 59, 92, 0.08) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(rgba(7, 59, 92, 0.08) 0 1px, transparent 1px 34px),
+      var(--blue-050);
+  }
+
+  .pillar-rail__map span {
+    position: absolute;
+    width: 6rem;
+    height: 4rem;
+    top: 1.8rem;
+    left: 2.2rem;
+    border: 2px solid rgba(7, 59, 92, 0.55);
+    transform: rotate(-7deg);
+  }
+
+  .pillar-rail__map i {
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    top: 1.25rem;
+    right: 2rem;
+    border: 2px dashed var(--brick-600);
+    border-radius: 50%;
+  }
+
+  .pillar-rail > p {
+    margin: 0;
+    padding: 1rem 1rem 0.75rem;
+    color: var(--brick-600);
+    font-size: var(--type-small);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .pillar-rail nav {
+    padding: 0 1rem;
+  }
+
+  .pillar-rail nav a {
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    color: var(--ink-800);
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 800;
+  }
+
+  .pillar-rail nav a:hover,
+  .pillar-rail nav a[aria-current="page"] {
+    color: var(--brick-600);
+  }
+
+  .pillar-rail__next {
+    min-height: 3rem;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 0.9rem;
+    color: var(--white);
+    background: var(--blue-900);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 900;
+  }
+
+  .pillar-rail__next:hover {
+    color: var(--white);
+    background: var(--brick-600);
+  }
+
+  .pillar-rail small {
+    display: block;
+    margin: -0.3rem 1rem 1rem;
+    color: var(--ink-600);
+    font-size: var(--type-small);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 940px) {
+    .pillar-layout {
+      grid-template-columns: minmax(0, var(--editorial-measure));
+    }
+
+    .pillar-rail {
+      position: static;
+      max-width: var(--editorial-measure);
+    }
+
+    .pillar-rail__map {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pillar-shell {
+      padding-top: 1.75rem;
+    }
+
+    .pillar-breadcrumb {
+      margin-bottom: 1.75rem;
+    }
+  }
+</style>
