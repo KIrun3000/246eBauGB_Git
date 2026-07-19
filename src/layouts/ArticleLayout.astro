@@ -356,7 +356,7 @@ const structuredData = pubDate
     gap: 0.45rem;
     margin-bottom: clamp(2rem, 5vw, 4rem);
     color: var(--ink-600);
-    font-size: 0.72rem;
+    font-size: var(--type-small);
     font-weight: 800;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -425,7 +425,7 @@ const structuredData = pubDate
     color: var(--white);
     background: rgba(16, 38, 49, 0.84);
     border-radius: var(--radius-sm);
-    font-size: 0.67rem;
+    font-size: var(--type-small);
     font-weight: 800;
     letter-spacing: 0.03em;
   }
@@ -433,7 +433,7 @@ const structuredData = pubDate
   .article-header__category {
     margin: 0 0 1rem;
     color: var(--brick-600);
-    font-size: 0.73rem;
+    font-size: var(--type-small);
     font-weight: 900;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -460,7 +460,7 @@ const structuredData = pubDate
     flex-wrap: wrap;
     gap: 0.35rem;
     color: var(--ink-600);
-    font-size: 0.76rem;
+    font-size: 0.82rem;
   }
 
   .article-header__publisher a {
@@ -481,7 +481,7 @@ const structuredData = pubDate
     display: grid;
     grid-template-columns: auto auto;
     gap: 0.2rem 0.7rem;
-    font-size: 0.74rem;
+    font-size: 0.8rem;
   }
 
   .article-dates span {
@@ -511,14 +511,15 @@ const structuredData = pubDate
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: 999px;
-    font-size: 0.68rem;
+    font-size: var(--type-small);
     font-weight: 700;
   }
 
   .article-grid {
     display: grid;
-    grid-template-columns: minmax(0, 700px) minmax(220px, 1fr);
-    gap: clamp(3rem, 8vw, 7rem);
+    grid-template-columns: minmax(0, 720px) minmax(240px, 290px);
+    justify-content: space-between;
+    gap: clamp(3rem, 7vw, 6rem);
     align-items: start;
     padding-top: clamp(2.5rem, 6vw, 5rem);
   }
@@ -547,7 +548,7 @@ const structuredData = pubDate
   .article-summary__points > p {
     margin: 0 0 0.5rem;
     color: var(--brick-600);
-    font-size: 0.68rem;
+    font-size: var(--type-small);
     font-weight: 900;
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -590,7 +591,7 @@ const structuredData = pubDate
     padding-left: 1.35rem;
     position: relative;
     color: var(--ink-800);
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 700;
     line-height: 1.5;
   }
@@ -624,7 +625,7 @@ const structuredData = pubDate
   .article-overview__label {
     margin: 0 0 0.45rem;
     color: var(--brick-600);
-    font-size: 0.68rem;
+    font-size: var(--type-small);
     font-weight: 900;
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -638,7 +639,7 @@ const structuredData = pubDate
   .article-overview__intro > p:last-child {
     margin: 0.55rem 0 0;
     color: var(--ink-600);
-    font-size: 0.84rem;
+    font-size: 0.9rem;
   }
 
   .article-overview__nav {
@@ -670,15 +671,15 @@ const structuredData = pubDate
     padding: 0.7rem 0;
     color: var(--ink-800);
     text-decoration: none;
-    font-size: 0.84rem;
+    font-size: 0.9rem;
     font-weight: 800;
   }
 
   .article-overview__nav a::before {
     content: counter(overview, decimal-leading-zero);
     color: var(--brick-600);
-    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.65rem;
+    font-family: var(--font-utility);
+    font-size: var(--type-small);
   }
 
   .article-overview__nav a:hover {
@@ -707,7 +708,7 @@ const structuredData = pubDate
     border: 1px solid var(--line-dark);
     border-radius: var(--radius-sm);
     font: inherit;
-    font-size: 0.76rem;
+    font-size: 0.82rem;
     font-weight: 900;
     text-decoration: none;
     cursor: pointer;
@@ -736,7 +737,7 @@ const structuredData = pubDate
   .article-overview__status {
     min-height: 1.3em;
     color: var(--ink-600);
-    font-size: 0.72rem;
+    font-size: var(--type-small);
   }
 
   .article-overview__share-field {
@@ -916,8 +917,8 @@ const structuredData = pubDate
     color: var(--brick-600);
     border: 1px solid var(--brick-500);
     border-radius: 50%;
-    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.72rem;
+    font-family: var(--font-utility);
+    font-size: var(--type-small);
   }
 
   .article-content :global(h2[id^="häufige-fragen"] ~ h3 + p) {
@@ -958,7 +959,7 @@ const structuredData = pubDate
   .related-posts__label {
     margin: 0 0 0.45rem;
     color: var(--brick-600);
-    font-size: 0.68rem;
+    font-size: var(--type-small);
     font-weight: 900;
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -994,7 +995,7 @@ const structuredData = pubDate
   }
 
   .related-posts span {
-    font-size: 0.82rem;
+    font-size: 0.9rem;
     line-height: 1.55;
   }
 
@@ -1009,7 +1010,7 @@ const structuredData = pubDate
     margin: 0;
     padding: 0.5rem 0.65rem 0.9rem;
     color: var(--ink-600);
-    font-size: 0.68rem;
+    font-size: var(--type-small);
     font-weight: 900;
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -1025,7 +1026,7 @@ const structuredData = pubDate
     color: var(--ink-800);
     border-top: 1px solid var(--line);
     text-decoration: none;
-    font-size: 0.78rem;
+    font-size: 0.84rem;
     font-weight: 800;
   }
 
@@ -1064,7 +1065,7 @@ const structuredData = pubDate
 
   .article-rail__note p {
     margin: 0;
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     line-height: 1.55;
   }
 
