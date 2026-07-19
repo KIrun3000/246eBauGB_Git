@@ -87,7 +87,7 @@ Er zeigt Herkunft und Zielseiten nur ab drei Sitzungen. Darunter wird lediglich 
 
 OpenAI kennzeichnet Verweise aus der ChatGPT-Suche mit `utm_source=chatgpt.com`. Die technische Prüfung stellt wöchentlich sicher, dass `OAI-SearchBot` und `Bingbot` nicht vollständig gesperrt sind. Die getrennte Entscheidung über eine Freigabe für Modelltraining wird dadurch nicht verändert.
 
-Das bestehende kurzlebige Google-Dienstkonto hat seit dem 19. Juli 2026 ausschließlich die Rolle `Betrachter` für die Analytics-Property `545814927`; Kosten- und Umsatzmesswerte sind zusätzlich gesperrt. Die Google Analytics Data API ist im Projekt `baugb246e-seo-berichte` aktiviert. Es wird kein dauerhafter Schlüssel gespeichert. Nach der Veröffentlichung wird der Bericht mit der GitHub-Variablen `ANALYTICS_REPORT_ENABLED=true` freigeschaltet, läuft donnerstags und aktualisiert die feste GitHub-Aufgabe `KI-Verweisbericht: freiwillige Besuchsmessung`.
+Das bestehende kurzlebige Google-Dienstkonto hat seit dem 19. Juli 2026 ausschließlich die Rolle `Betrachter` für die Analytics-Property `545814927`; Kosten- und Umsatzmesswerte sind zusätzlich gesperrt. Die Google Analytics Data API ist im Projekt `baugb246e-seo-berichte` aktiviert. Es wird kein dauerhafter Schlüssel gespeichert. Der Bericht ist mit der GitHub-Variablen `ANALYTICS_REPORT_ENABLED=true` freigeschaltet, läuft mittwochs als eigener Auftrag neben der Search-Console-Auswertung und aktualisiert die feste GitHub-Aufgabe `KI-Verweisbericht: freiwillige Besuchsmessung`.
 
 Quelle:
 
