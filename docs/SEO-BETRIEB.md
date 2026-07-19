@@ -125,7 +125,7 @@ Offizielle Google-Dokumentation zu diesen Regeln:
 - `seo-live-monitor.yml` ruft die öffentliche Domain, Robots, Sitemap und alle indexierbaren Seiten ab.
 - `search-console-report.yml` wertet nach gesonderter Freigabe die Search-Console-Daten der
   vergangenen 28 Tage aus und aktualisiert eine feste GitHub-Aufgabe mit dem Wochenbericht.
-- `analytics-referral-report.yml` wertet nach einer gesonderten Lesefreigabe freiwillig gemessene
+- `search-console-report.yml` wertet in einem getrennten Auftrag zusätzlich freiwillig gemessene
   Verweise aus KI-Antwortsystemen aus und unterdrückt sehr kleine Fallzahlen.
 - Die SEO-Liveprüfung kontrolliert zusätzlich die Erreichbarkeit für `OAI-SearchBot` und `Bingbot`
   sowie die Frist der hinterlegten Wettbewerbsbeobachtung.
