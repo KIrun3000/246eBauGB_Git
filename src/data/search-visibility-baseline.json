@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "observedAt": "2026-07-19",
+  "nextReviewAt": "2026-08-19",
+  "method": {
+    "searchEngine": "Google Deutschland",
+    "language": "Deutsch",
+    "location": "Brandenburg, Deutschland",
+    "resultType": "unbezahlte Suchergebnisse",
+    "note": "Momentaufnahme; Positionen können nach Ort, Gerät, Zeitpunkt und Suchsystem abweichen."
+  },
+  "queries": [
+    {
+      "query": "246e BauGB",
+      "targetRoute": "/246e-baugb-brandenburg/",
+      "ownSiteFound": false,
+      "officialSources": ["gesetze-im-internet.de", "bmwsb.bund.de"],
+      "editorialCompetitors": ["knauthe.com", "forum-verlag.com", "weka.de", "gleisslutz.com"]
+    },
+    {
+      "query": "Bau Turbo Brandenburg Grundstück",
+      "targetRoute": "/aussenbereich-brandenburg-246e/",
+      "ownSiteFound": false,
+      "officialSources": ["mil.brandenburg.de", "bmwsb.bund.de", "neuzelle.de", "bravors.brandenburg.de"],
+      "editorialCompetitors": ["bbik.de", "handwerksblatt.de", "hausundgrund-brandenburg.de", "moz.de"]
+    },
+    {
+      "query": "100 Meter Regel 246e BauGB",
+      "targetRoute": "/100m-regel-raeumlicher-zusammenhang/",
+      "ownSiteFound": false,
+      "officialSources": ["bmwsb.bund.de", "stmb.bayern.de", "schleswig-holstein.de"],
+      "editorialCompetitors": ["sparwasser-schmidt.de", "weka.de", "ggsc.de", "liebert-roeth.de", "kpmg-law.de"]
+    },
+    {
+      "query": "Gemeindezustimmung 246e BauGB",
+      "targetRoute": "/zustimmung-gemeinde-246e/",
+      "ownSiteFound": false,
+      "officialSources": ["gesetze-im-internet.de", "bundestag.de", "bmwsb.bund.de"],
+      "editorialCompetitors": ["kpmg-law.de", "weka.de", "gleisslutz.com", "knauthe.com", "alpha-recht.de"]
+    }
+  ],
+  "sourceGroups": {
+    "official": {
+      "label": "Amtliche Vertrauensquellen",
+      "purpose": "Quellenprüfung, Rechtsstand und Belegführung; keine redaktionellen Wettbewerber.",
+      "domains": [
+        "gesetze-im-internet.de",
+        "bmwsb.bund.de",
+        "bundestag.de",
+        "mil.brandenburg.de",
+        "bravors.brandenburg.de",
+        "neuzelle.de",
+        "stmb.bayern.de",
+        "schleswig-holstein.de"
+      ]
+    },
+    "editorial": {
+      "label": "Redaktionelle und gewerbliche Wettbewerber",
+      "purpose": "Beobachtung von Suchabdeckung, Darstellungsform und unbeantworteten Leserfragen; nicht ungeprüft als Rechtsquelle verwenden.",
+      "domains": [
+        "knauthe.com",
+        "forum-verlag.com",
+        "weka.de",
+        "gleisslutz.com",
+        "kpmg-law.de",
+        "ggsc.de",
+        "sparwasser-schmidt.de",
+        "liebert-roeth.de",
+        "bbik.de",
+        "hausundgrund-brandenburg.de",
+        "handwerksblatt.de",
+        "moz.de",
+        "alpha-recht.de"
+      ]
+    }
+  }
+}

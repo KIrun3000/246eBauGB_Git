@@ -38,6 +38,11 @@ jobs:
           SITE_URL: https://246ebaugb.de
         run: npm run seo:live
 
+      - name: Frist der Wettbewerbsbeobachtung prüfen
+        id: visibility
+        continue-on-error: true
+        run: npm run sichtbarkeit:frist
+
       - name: Befund als GitHub-Aufgabe erfassen
         if: steps.live.outcome == 'failure'
         uses: actions/github-script@v9
@@ -79,6 +84,33 @@ jobs:
               await github.rest.issues.create({ owner, repo, title, body, labels: ['seo-live'] });
             }
 
+      - name: Überfällige Wettbewerbsbeobachtung erfassen
+        if: steps.visibility.outcome == 'failure'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const title = 'SEO-Beobachtung: Suchumfeld muss aktualisiert werden';
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              state: 'open',
+              per_page: 100,
+            });
+            const existing = issues.find((issue) => issue.title === title && !issue.pull_request);
+            const body = [
+              'Die hinterlegte Beobachtung der Suchergebnisse und Wettbewerber ist überfällig.',
+              '',
+              `Prüflauf: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`,
+              '',
+              'Die festgelegten Suchanfragen erneut für Brandenburg prüfen, den Bestand mit Datum aktualisieren und Änderungen fachlich einordnen. Keine Rangposition ungeprüft fortschreiben.',
+            ].join('\n');
+            if (existing) {
+              await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body });
+            } else {
+              await github.rest.issues.create({ owner, repo, title, body });
+            }
+
       - name: Prüflauf nach Benachrichtigung fehlschlagen lassen
-        if: steps.live.outcome == 'failure'
+        if: steps.live.outcome == 'failure' || steps.visibility.outcome == 'failure'
         run: exit 1

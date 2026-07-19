@@ -4,6 +4,34 @@ const siteUrl = new URL(process.env.SITE_URL ?? 'https://246ebaugb.de');
 const expectedOrigin = 'https://246ebaugb.de';
 const failures = [];
 
+function rootIsBlocked(robotsText, userAgent) {
+  const groups = [];
+  let current = { agents: [], rules: [] };
+  for (const rawLine of robotsText.split(/\r?\n/)) {
+    const line = rawLine.replace(/#.*$/, '').trim();
+    if (!line) {
+      if (current.agents.length || current.rules.length) groups.push(current);
+      current = { agents: [], rules: [] };
+      continue;
+    }
+    const match = line.match(/^([^:]+):\s*(.*)$/);
+    if (!match) continue;
+    const name = match[1].trim().toLowerCase();
+    const value = match[2].trim();
+    if (name === 'user-agent') current.agents.push(value.toLowerCase());
+    if (name === 'allow' || name === 'disallow') current.rules.push({ type: name, path: value });
+  }
+  if (current.agents.length || current.rules.length) groups.push(current);
+
+  const normalizedAgent = userAgent.toLowerCase();
+  const specific = groups.filter((group) => group.agents.includes(normalizedAgent));
+  const applicable = specific.length ? specific : groups.filter((group) => group.agents.includes('*'));
+  const matchingRules = applicable.flatMap((group) => group.rules)
+    .filter((rule) => rule.path && '/'.startsWith(rule.path.replace(/\$$/, '')))
+    .sort((left, right) => right.path.length - left.path.length || (left.type === 'allow' ? -1 : 1));
+  return matchingRules[0]?.type === 'disallow';
+}
+
 async function fetchText(url) {
   const response = await fetch(url, {
     headers: { 'user-agent': '246eBauGB-Livepruefung/1.0' },
@@ -23,8 +51,14 @@ try {
   if (!robots.text.includes('Sitemap: https://246ebaugb.de/sitemap-index.xml')) {
     failures.push('robots.txt enthält nicht die kanonische Sitemap-Adresse.');
   }
-  if (/^\s*Disallow:\s*\/\s*$/mi.test(robots.text)) {
+  if (rootIsBlocked(robots.text, '*')) {
     failures.push('robots.txt sperrt die gesamte Website.');
+  }
+  if (rootIsBlocked(robots.text, 'OAI-SearchBot')) {
+    failures.push('robots.txt sperrt OAI-SearchBot und damit die Aufnahme in die ChatGPT-Suche.');
+  }
+  if (rootIsBlocked(robots.text, 'Bingbot')) {
+    failures.push('robots.txt sperrt Bingbot und damit die Auffindbarkeit in Bing und Copilot.');
   }
 
   const sitemapIndexUrl = new URL('/sitemap-index.xml', siteUrl);

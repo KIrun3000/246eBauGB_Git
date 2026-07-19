@@ -68,6 +68,22 @@ test('erkennt eine vollständig gesperrte Robots-Datei', async () => {
   assert.match(result.stderr, /sperrt die gesamte Website/);
 });
 
+test('erkennt eine gezielte Sperre des ChatGPT-Suchcrawlers', async () => {
+  const result = await runFixture({
+    '/robots.txt': `User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nDisallow: /\n\nSitemap: ${canonicalOrigin}/sitemap-index.xml\n`,
+  });
+  assert.notEqual(result.code, 0);
+  assert.match(result.stderr, /sperrt OAI-SearchBot/);
+});
+
+test('erkennt eine gezielte Sperre von Bingbot', async () => {
+  const result = await runFixture({
+    '/robots.txt': `User-agent: *\nAllow: /\n\nUser-agent: Bingbot\nDisallow: /\n\nSitemap: ${canonicalOrigin}/sitemap-index.xml\n`,
+  });
+  assert.notEqual(result.code, 0);
+  assert.match(result.stderr, /sperrt Bingbot/);
+});
+
 test('erkennt eine leere Sitemap', async () => {
   const result = await runFixture({
     '/sitemap-0.xml': '<?xml version="1.0"?><urlset></urlset>',
