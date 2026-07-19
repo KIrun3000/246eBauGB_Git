@@ -21,6 +21,10 @@ Das Paket ist abgeschlossen, wenn:
 - Die Domain ist in der Google Search Console bestätigt, die Sitemap ist eingereicht und der wöchentliche Bericht ist eingerichtet.
 - Für das Google-Projekt `baugb246e-seo-berichte` warnt ein monatliches Budget von 1 Euro bei 50, 90 und 100 Prozent. Es ist eine Kostenwarnung, keine technische Ausgabensperre.
 - Google Tag Manager und Google Analytics sind technisch vorbereitet, laden aber erst nach ausdrücklicher Einwilligung.
+- Das kurzlebige Google-Dienstkonto besitzt für Analytics nur Betrachterrechte ohne Kosten- und
+  Umsatzmesswerte; die Analytics-Berichtsschnittstelle ist aktiviert.
+- `246ebaugb.de` ist aus der Search Console in Bing Webmaster Tools übernommen; die Sitemap ist
+  eingereicht und der Bing-Bericht zu KI-Zitaten ist erreichbar.
 - Der unfertige Grundstücksprüfer bleibt von der Indexierung ausgeschlossen.
 - Technische, redaktionelle, sprachliche, rechtliche und Quellenprüfungen sind als Veröffentlichungstore eingerichtet.
 - Produktionsbereitstellungen erfolgen nach grünen Prüfungen und dokumentiertem Review automatisch aus `main`.
@@ -121,6 +125,10 @@ Offizielle Google-Dokumentation zu diesen Regeln:
 - `seo-live-monitor.yml` ruft die öffentliche Domain, Robots, Sitemap und alle indexierbaren Seiten ab.
 - `search-console-report.yml` wertet nach gesonderter Freigabe die Search-Console-Daten der
   vergangenen 28 Tage aus und aktualisiert eine feste GitHub-Aufgabe mit dem Wochenbericht.
+- `analytics-referral-report.yml` wertet nach einer gesonderten Lesefreigabe freiwillig gemessene
+  Verweise aus KI-Antwortsystemen aus und unterdrückt sehr kleine Fallzahlen.
+- Die SEO-Liveprüfung kontrolliert zusätzlich die Erreichbarkeit für `OAI-SearchBot` und `Bingbot`
+  sowie die Frist der hinterlegten Wettbewerbsbeobachtung.
 - Fehler erzeugen eine GitHub-Aufgabe; Inhalte oder Prüfdaten werden nicht automatisch umgeschrieben.
 - Der Prüflauf wird erst nach erfolgreichem Produktivstart mit der GitHub-Variablen `SEO_LIVE_ENABLED=true` freigeschaltet.
 - Der Search-Console-Bericht wird erst nach Einrichtung der Google-Arbeitslastidentität mit
@@ -133,7 +141,7 @@ freiwillige Besuchsmessung mit Google Analytics erfolgen. Google Tag Manager und
 werden erst nach einer ausdrücklichen Einwilligung geladen. Werbemessung und personalisierte
 Werbung bleiben ausgeschaltet; die Auswahl kann im Fußbereich jeder Seite widerrufen werden.
 
-Ausgewertet werden später in einem rollierenden Zeitraum von 28 Tagen:
+Ausgewertet werden in einem rollierenden Zeitraum von 28 Tagen:
 
 - indexierte und ausgeschlossene Seiten,
 - Suchanfragen und Zielseiten,
@@ -143,10 +151,20 @@ Ausgewertet werden später in einem rollierenden Zeitraum von 28 Tagen:
 - Seiten mit vielen Impressionen, aber unklarer Suchintention oder schwacher Klickrate.
 
 Erst diese Daten entscheiden über neue Beiträge, Zusammenführungen oder neue Seitenschwerpunkte.
-Der Search-Console-Wochenbericht meldet Chancen, Rückgänge und mögliche Überschneidungen mehrerer
-Zielseiten. Er ändert weder Beiträge noch Weiterleitungen automatisch. Google-Analytics-Daten
-werden zunächst nur in der Benutzeroberfläche ausgewertet; eine spätere automatische Auswertung
-benötigt eine eigene, dokumentierte Freigabe.
+Der Search-Console-Wochenbericht ordnet Suchanfragen den festgelegten Themenfeldern und
+redaktionellen Zielgruppen zu. Er meldet Chancen, Rückgänge, noch nicht zugeordnete Suchanfragen
+und mögliche Überschneidungen mehrerer Zielseiten über 90 Tage. Er ändert weder Beiträge noch
+Weiterleitungen automatisch.
+
+Die allgemeine Suchnachfrage in Brandenburg ist davon getrennt: Die Search Console zeigt nur
+Suchanfragen, bei denen die eigene Website sichtbar war. Regionale Nachfragewerte werden erst aus
+einem vollständig eingerichteten Google-Ads-Keyword-Planer übernommen und als Schätzwerte
+gekennzeichnet. Der Ausgangsbestand zu Suchumfeld, Wettbewerbern, KI-Prüffragen und Zielseiten
+steht in `src/data/seo-observation-model.json` und `src/data/search-visibility-baseline.json`.
+
+Google-Analytics-Verweise aus KI-Antwortsystemen können nach der dokumentierten Lesefreigabe
+wöchentlich automatisch ausgewertet werden. Der öffentliche Bericht zeigt Herkunft und Zielseite
+erst ab drei Sitzungen. Einzelne Besucher oder sehr kleine Fallzahlen werden nicht offengelegt.
 
 Nach dem Produktivstart werden klassische und generative Sichtbarkeit getrennt erfasst, aber derselben kanonischen Seite zugeordnet:
 
@@ -155,4 +173,7 @@ Nach dem Produktivstart werden klassische und generative Sichtbarkeit getrennt e
 - Verweise aus ChatGPT und anderen Antwortsystemen, soweit sie in der freiwilligen Besuchsmessung erkennbar sind,
 - ergänzende Beobachtung weiterer Antwortsysteme ohne behauptete Ranggarantie.
 
-Die spätere Search-Console-Prüfung meldet Suchanfragen, für die mehrere Seiten derselben gepflegten Leseraufgabe sichtbar werden. Sie erzeugt Prüfaufgaben und ändert niemals automatisch Inhalte oder Weiterleitungen.
+Die Search-Console-Prüfung meldet Suchanfragen, für die mehrere Seiten derselben gepflegten Leseraufgabe sichtbar werden. Sie erzeugt Prüfaufgaben und ändert niemals automatisch Inhalte oder Weiterleitungen.
+
+Die vollständige Betriebsbeschreibung, Quellen und noch nötigen Kontofreigaben stehen in
+[SICHTBARKEITSBETRIEB.md](./SICHTBARKEITSBETRIEB.md).

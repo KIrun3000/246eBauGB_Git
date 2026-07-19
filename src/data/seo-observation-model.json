@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-19",
+  "region": "Brandenburg",
+  "audiences": [
+    {
+      "id": "owner",
+      "label": "Grundstückseigentümer am Ortsrand"
+    },
+    {
+      "id": "broker",
+      "label": "Regionale Grundstücksmakler"
+    },
+    {
+      "id": "builder",
+      "label": "Bauwillige Eigentümer und Vorhabenträger"
+    },
+    {
+      "id": "municipality",
+      "label": "Gemeinden und Bauaufsichten"
+    }
+  ],
+  "brandPatterns": [
+    "246ebaugb\\.de",
+    "246e baugb de"
+  ],
+  "topicGroups": [
+    {
+      "id": "grundlagen",
+      "label": "§ 246e und Bau-Turbo verstehen",
+      "priority": 10,
+      "primaryAudience": "owner",
+      "canonicalRoute": "/246e-baugb-brandenburg/",
+      "topics": ["246e-grundlagen"],
+      "patterns": ["\\b246\\s*e\\b", "bau[ -]?turbo", "baubeschleunigung", "wohnungsbau.*beschleunigung"],
+      "seedQueries": ["246e BauGB", "Bau-Turbo Brandenburg", "§ 246e BauGB Voraussetzungen"]
+    },
+    {
+      "id": "raeumlicher-zusammenhang",
+      "label": "Räumlicher Zusammenhang und 100-Meter-Leitplanke",
+      "priority": 70,
+      "primaryAudience": "owner",
+      "canonicalRoute": "/100m-regel-raeumlicher-zusammenhang/",
+      "topics": ["raeumlicher-zusammenhang", "innenentwicklung"],
+      "patterns": ["100\\s*(meter|m)\\b", "räumlich", "raeumlich", "zusammenhang", "anschlussbebauung", "hinterland", "zweite reihe", "nachverdichtung"],
+      "seedQueries": ["100 Meter Regel 246e BauGB", "räumlicher Zusammenhang Grundstück 246e", "Hinterlandbebauung Bau-Turbo"]
+    },
+    {
+      "id": "aussenbereich",
+      "label": "Außenbereich und Grundstück am Ortsrand",
+      "priority": 65,
+      "primaryAudience": "owner",
+      "canonicalRoute": "/aussenbereich-brandenburg-246e/",
+      "topics": ["aussenbereich"],
+      "patterns": ["außenbereich", "aussenbereich", "\\b35\\s*baugb\\b", "acker", "wiese", "gartenland", "ortsrand"],
+      "seedQueries": ["Bau-Turbo Außenbereich Brandenburg", "Wiese bebauen 246e BauGB", "Grundstück am Ortsrand bebauen"]
+    },
+    {
+      "id": "gemeindezustimmung",
+      "label": "Gemeindezustimmung und Ablehnung",
+      "priority": 90,
+      "primaryAudience": "builder",
+      "canonicalRoute": "/zustimmung-gemeinde-246e/",
+      "topics": ["gemeindezustimmung"],
+      "patterns": ["gemeinde.*zustimm", "zustimm.*gemeinde", "\\b36\\s*a\\b", "ablehn", "versag"],
+      "seedQueries": ["Gemeindezustimmung 246e BauGB", "§ 36a BauGB Zustimmung", "Gemeinde lehnt Bau-Turbo ab"]
+    },
+    {
+      "id": "verfahren-und-fristen",
+      "label": "Verfahren, Unterlagen und Fristen",
+      "priority": 60,
+      "primaryAudience": "builder",
+      "canonicalRoute": "/246e-baugb-brandenburg/",
+      "topics": ["frist-2030"],
+      "patterns": ["unterlagen", "antrag", "beantrag", "verfahren", "bauvorbescheid", "baugenehmigung", "frist", "befrist", "2030"],
+      "seedQueries": ["246e BauGB Antrag Unterlagen", "Bau-Turbo Frist 2030", "Bauvorbescheid 246e"]
+    },
+    {
+      "id": "erschliessung",
+      "label": "Erschließung und technische Voraussetzungen",
+      "priority": 80,
+      "primaryAudience": "builder",
+      "canonicalRoute": "/aussenbereich-brandenburg-246e/",
+      "topics": ["erschliessung"],
+      "patterns": ["erschließ", "erschliess", "zufahrt", "abwasser", "trinkwasser", "stromanschluss"],
+      "seedQueries": ["Erschließung 246e BauGB", "Zufahrt Außenbereich Bau-Turbo"]
+    },
+    {
+      "id": "umwelt-und-naturschutz",
+      "label": "Umweltprüfung, Naturschutz und Ausgleich",
+      "priority": 80,
+      "primaryAudience": "builder",
+      "canonicalRoute": "/aussenbereich-brandenburg-246e/",
+      "topics": ["naturschutz-ausgleich", "umweltpruefung"],
+      "patterns": ["naturschutz", "ausgleich", "umweltprüfung", "umweltpruefung", "strategische umwelt", "\\bsup\\b", "artenschutz"],
+      "seedQueries": ["Naturschutz 246e BauGB", "Umweltprüfung Bau-Turbo", "Ausgleich Außenbereich Brandenburg"]
+    },
+    {
+      "id": "umbau-und-nutzungswechsel",
+      "label": "Aufstockung, Anbau und Nutzungsänderung",
+      "priority": 75,
+      "primaryAudience": "builder",
+      "canonicalRoute": "/246e-baugb-brandenburg/",
+      "topics": ["nutzungsaenderung"],
+      "patterns": ["aufstock", "anbau", "nutzungsänder", "nutzungsaender", "gewerbe.*wohnen", "umbau"],
+      "seedQueries": ["Aufstockung 246e BauGB", "Nutzungsänderung Gewerbe Wohnen Bau-Turbo"]
+    }
+  ],
+  "aiQuestions": [
+    {
+      "id": "owner-first-check",
+      "audience": "owner",
+      "topicGroup": "grundlagen",
+      "question": "Kann § 246e BauGB helfen, ein Grundstück am Ortsrand in Brandenburg zu bebauen?",
+      "targetRoute": "/246e-baugb-brandenburg/"
+    },
+    {
+      "id": "owner-100m",
+      "audience": "owner",
+      "topicGroup": "raeumlicher-zusammenhang",
+      "question": "Wie wird der räumliche Zusammenhang bei der 100-Meter-Leitplanke geprüft?",
+      "targetRoute": "/100m-regel-raeumlicher-zusammenhang/"
+    },
+    {
+      "id": "owner-outside",
+      "audience": "owner",
+      "topicGroup": "aussenbereich",
+      "question": "Welche Hürden bleiben bei einem §-246e-Vorhaben im Außenbereich Brandenburgs?",
+      "targetRoute": "/aussenbereich-brandenburg-246e/"
+    },
+    {
+      "id": "builder-consent",
+      "audience": "builder",
+      "topicGroup": "gemeindezustimmung",
+      "question": "Welche Rolle spielt die Gemeindezustimmung bei § 246e BauGB?",
+      "targetRoute": "/zustimmung-gemeinde-246e/"
+    },
+    {
+      "id": "broker-listing",
+      "audience": "broker",
+      "topicGroup": "raeumlicher-zusammenhang",
+      "question": "Welche Unterlagen sollte ein Makler für die Vorprüfung eines Ortsrandgrundstücks sammeln?",
+      "targetRoute": "/blog/raeumlicher-zusammenhang-pruefen-grundstueck/"
+    }
+  ]
+}

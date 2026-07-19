@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { analyzeSearchConsole, renderMarkdown, reportPeriods } from './search-console-report.mjs';
+import { analyzeSearchConsole, classifySearchQuery, renderMarkdown, reportPeriods } from './search-console-report.mjs';
 
 const row = (keys, clicks, impressions, position, ctr = clicks / impressions) => ({
   keys,
@@ -15,7 +15,18 @@ test('creates two consecutive 28-day periods with a three-day delay', () => {
   assert.deepEqual(reportPeriods(new Date('2026-07-16T18:00:00Z')), {
     current: { startDate: '2026-06-16', endDate: '2026-07-13' },
     previous: { startDate: '2026-05-19', endDate: '2026-06-15' },
+    observation: { startDate: '2026-04-15', endDate: '2026-07-13' },
   });
+});
+
+test('assigns specific topics before the broad §-246e group', () => {
+  const classification = classifySearchQuery('Gemeindezustimmung bei 246e BauGB');
+  assert.equal(classification.topicGroupId, 'gemeindezustimmung');
+  assert.equal(classification.audienceId, 'builder');
+});
+
+test('keeps unrecognized searches visible for editorial review', () => {
+  assert.equal(classifySearchQuery('ungeklärte sonderfrage').topicGroupId, 'nicht-zugeordnet');
 });
 
 test('finds optimization opportunities, declines and competing pages', () => {
@@ -33,6 +44,7 @@ test('finds optimization opportunities, declines and competing pages', () => {
   assert.equal(analysis.declines[0].clickChange, -5);
   assert.equal(analysis.declines[1].query, 'verschwundene anfrage');
   assert.equal(analysis.overlaps[0].pages.length, 2);
+  assert.equal(analysis.topicSummaries[0].id, 'grundlagen');
 });
 
 test('renders a readable report even without rows', () => {
